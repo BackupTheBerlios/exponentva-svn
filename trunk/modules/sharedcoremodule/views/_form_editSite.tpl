@@ -27,15 +27,19 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editSite.tpl,v 1.2 2005/02/19 00:32:37 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Site Properties{else}Deploy New Site{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
 {if $is_edit == 1}
-You cannot change the path of an existing deployment.
+{#i18n_header1#}
 {else}
-To deploy a new site, choose a codebase, and enter the file system path for the new site.
+{#i18n_header2#}
 {/if}
 <br /><br />
-Note: Which modules and themes are available to this site is decided on the next page.
+{#i18n_header#}
 </div>
 {$form_html}

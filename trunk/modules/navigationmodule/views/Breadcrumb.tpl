@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Breadcrumb.tpl,v 1.5 2005/05/05 19:11:26 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {assign var=i value=0}
 {foreach from=$sections item=section}
 {if $current->numParents <= $i && ($current->id == $section->id || $current->parents[$i] == $section->id)}

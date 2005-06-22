@@ -89,7 +89,7 @@ foreach ($iconconfig as $row) {
 <tr><td colspan="<?php echo $perrow; ?>" style="font-size: 12px; font-style: italic;" id="msgTD"></td></tr>
 </table>
 <hr size="1" />
-<a class="mngmntlink administration_mngmntlink" href="#" onclick="newRow(); return false">New Row</a>
+<a class="mngmntlink administration_mngmntlink" href="#" onclick="newRow(); return false">{#i18n_create#}</a>
 <hr size="1" />
 <table cellpadding="2" cellspacing="2" rules="all" border="0">
 <tbody id="toolbar_workspace">
@@ -143,7 +143,7 @@ regenerateTable();
 Configuration Name:<br /><input type="text" name="config_name" value="<?php echo $config->name ?>" /><br />
 <input type="checkbox" name="config_activate" <?php echo ($config->active == 1 ? "checked " : "");?>/> Activate?<br />
 
-<input type="submit" value="Save" onclick="save(this.form); return false">
+<input type="submit" value="{#i18n_submit#}" onclick="save(this.form); return false">
 </form>
 
 	<?php

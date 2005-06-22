@@ -27,11 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_edit_contact.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Recipient Contact{else}New Recipient Contact{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
-Choose either a user account, or enter an email address, and this contact form will be submitted to that person.
-<br /><br />
-If you choose a user account, the email address in that user's profile will be used when sending the information entered on the Contact Form.
+{#i18n_header#}
 </div>
 {$form_html}

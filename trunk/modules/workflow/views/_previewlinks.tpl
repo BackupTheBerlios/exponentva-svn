@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _previewlinks.tpl,v 1.2 2005/02/19 00:32:38 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <br /><hr size='1' />
 <b>Approval Actions:&nbsp;&nbsp;&nbsp;&nbsp;</b>
-[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=cancel}">Cancel</a> ]
+[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=cancel}">{#i18n_cancel#}</a> ]
 &nbsp;&nbsp;&nbsp;
-[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=approve}">Approve As-Is</a> ]
+[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=approve}">{#i18n_approveasis#}</a> ]
 &nbsp;&nbsp;&nbsp;
-[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=edit}">Edit</a> ]
+[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=edit}">{#i18n_edit#}</a> ]
 &nbsp;&nbsp;&nbsp;
-[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=deny_comment}">Deny Approval</a> ]
+[ <a class="mngmntlink workflow_mngmntlink" href="{link datatype=$datatype mod=$mod id=$id action=deny_comment}">{#i18n_denyapproval#}</a> ]

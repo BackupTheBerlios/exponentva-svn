@@ -27,14 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _permissions.tpl,v 1.3 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {assign var="pgname" value="userperms"}
 {if $user_form == 1}{assign var="pgname" value="groupperms"}{/if}
 {paginate objects=$users paginateName=$pgname modulePrefix="administration" rowsPerPage=20}
 
-{if $user_form == 1}paginate.noRecords = "No normal user accounts exist.";
-{else}paginate.noRecords = "No groups exist.";
+{if $user_form == 1}paginate.noRecords = "`$smarty.config.nouseraccounts`";
+{else}paginate.noRecords = "`$smarty.config.nogroupaccounts`";
 {/if}
 
 {literal}
@@ -113,6 +116,6 @@ paginate.columns = new Array(
 {/if}
 <input type="hidden" name="_common" value="1" />
 <input type="hidden" id="permdata" name="permdata" value="" />
-<input type="submit" value="Save Permissions" onClick="serializeData(); return true;"{if $have_users == 0} disabled{/if} />
+<input type="submit" value="{#i18n_submit#}" onClick="serializeData(); return true;"{if $have_users == 0} disabled{/if} />
 <input type="button" value="Cancel" onClick="document.location.href = '{$smarty.server.HTTP_REFERER}';" />
 </form>

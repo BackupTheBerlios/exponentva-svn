@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _subsystemManager.tpl,v 1.2 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Manage Subsystems</div>
-<div class="form_header">This page lists all installed subsystems that Exponent recognizes
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
+<div class="form_header">{#i18n_header#}
 <br /><br />
 Clicking the 'View Files' link will bring up a list of files that belog to the subsystem, along with file integrity checksums.
 <br /><br />

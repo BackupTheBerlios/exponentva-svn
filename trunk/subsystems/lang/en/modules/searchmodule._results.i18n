@@ -1,0 +1,6 @@
+# i18n_formtitle = ''
+# i18n_pluralsuffix = ''
+i18n_result = 'Result'
+i18n_returned = 'returned'
+i18n_searchtermsignored = 'These search terms were ignored'
+i18n_youroperation = 'Your search'

@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _optimizedatabase.tpl,v 1.2 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Optimize Database</div>
 <div class="form_header">Exponent is running table optimization right now, to rebuild the internal structure of your database.  With large sites or sites that change regularly, this optimization can enhance the overall performance and responsiveness of the site.</div>
 <table cellspacing="0" cellpadding="0" border="0" width="100%">

@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _mimetypes.tpl,v 1.4 2005/02/19 00:32:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Manage File Types</div>
 <div class="form_header">Whenever a file is uploaded to the site, information about the file format (its MIME type) is stored.  Here, you can define what MIME types are recognized by the site, and optionally associate an icon with each type.
 <br /><br />

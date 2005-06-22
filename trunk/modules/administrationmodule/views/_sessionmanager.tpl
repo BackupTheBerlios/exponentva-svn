@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _sessionmanager.tpl,v 1.5 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Manage User Sessions</div>
 <div class="form_header">This page shows all of the active sessions, along with session information like login time, browser signature, etc.  You can forcibly end either a specific session or all sessions for a user account.  Ending a session will cause that user to be logged out of the site, and any content they were editting will be lost.
 <br /><br />

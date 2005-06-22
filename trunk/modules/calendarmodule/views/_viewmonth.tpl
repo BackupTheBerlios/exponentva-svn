@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _viewmonth.tpl,v 1.6 2005/02/19 00:32:30 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellspacing="0" cellpadding="2" width="100%" style="border: 1px solid #DDD; border-collapse: collapse" rules="all">
 <tbody>
 <tr><td align="left">
@@ -38,13 +42,13 @@
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewmonth time=$nextmonth}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}right.png"/></a>
 </td></tr>
 <tr>
-	<td align="center" style="font-weight:bold">Sunday</td>
-	<td align="center" style="font-weight:bold">Monday</td>
-	<td align="center" style="font-weight:bold">Tuesday</td>
-	<td align="center" style="font-weight:bold">Wednesday</td>
-	<td align="center" style="font-weight:bold">Thursday</td>
-	<td align="center" style="font-weight:bold">Friday</td>
-	<td align="center" style="font-weight:bold">Saturday</td>
+	<td align="center" style="font-weight:bold">{#i18n_sunday#}</td>
+	<td align="center" style="font-weight:bold">{#i18n_monday#}</td>
+	<td align="center" style="font-weight:bold">{#i18n_tuesday#}</td>
+	<td align="center" style="font-weight:bold">{#i18n_wednesday#}</td>
+	<td align="center" style="font-weight:bold">{#i18n_thursday#}</td>
+	<td align="center" style="font-weight:bold">{#i18n_friday#}</td>
+	<td align="center" style="font-weight:bold">{#i18n_saturday#}</td>
 </tr>
 {math equation="x-86400" x=$now assign=dayts}
 {foreach from=$monthly item=week key=weeknum}
@@ -64,7 +68,7 @@
 					{else}
 					{/if}
 					</td><td align="right">
-					<a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$dayts}">Week</a>
+					<a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$dayts}">{#i18n_viewweek#}</a>
 					</td></tr></table>
 				{else}
 					{if $number > -1}

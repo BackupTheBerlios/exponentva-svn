@@ -27,8 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _cat_viewCategories.tpl,v 1.4 2005/02/19 00:32:30 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Event Categories</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <table cellspacing="0" cellpadding="2" border="0">
 {foreach from=$categories item=category}
 	<td>{$category->name}</td>
@@ -38,7 +42,7 @@
 </tr>
 {foreachelse}
 <tr>
-	<td colspan="2" align="center"><i>No Categories</i></td>
+	<td colspan="2" align="center"><i>{#i18n_noitemsfound#}</i></td>
 </tr>
 {/foreach}
 </table>

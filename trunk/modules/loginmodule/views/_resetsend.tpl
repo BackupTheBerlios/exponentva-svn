@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _resetsend.tpl,v 1.3 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-{if $state == 'unable'}Your password cannot be reset.  Please contact an administrator.
-{elseif $state == 'smtp_error'}Error sending confirmation message.
-{elseif $state == 'sent'}Confirmation message sent.
-{else}Strange error.
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{if $state == 'unable'}{#i18n_operation_error1#}
+{elseif $state == 'smtp_error'}{#i18n_operation_error#}
+{elseif $state == 'sent'}{#i18n_operation_success#}
+{else}{#i18n_operation_errordefault#}
 {/if}

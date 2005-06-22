@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _workflowview.tpl,v 1.2 2005/02/19 00:32:36 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table>
 <tr><td width="22" valign="top">
 	<!-- {$file->mimetype} -->
@@ -36,7 +40,7 @@
 <td>
 	<b>{$item->name}</b><br />
 	<br />
-	<a class="mngmntlink resources_mngmntlink" href="{getfilename id=$item->file_id}">Download</a>
+	<a class="mngmntlink resources_mngmntlink" href="{getfilename id=$item->file_id}">{#i18n_download#}</a>
 </td></tr>
 </table>
 <div style="padding-left: 20px;">

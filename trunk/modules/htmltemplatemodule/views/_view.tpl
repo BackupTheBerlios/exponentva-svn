@@ -27,17 +27,21 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view.tpl,v 1.4 2005/02/19 00:32:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {$template->title}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.edit == 1}
 <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=edit id=$template->id}">
-	<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="Edit this HTML Template" alt="Edit this HTML Template" />
+	<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" />
 </a>
 {/if}
 {if $permissions.delete == 1}
-<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=delete id=$template->id}" onClick="return confirm('Are you sure you want to delete this HTML Template?');">
-	<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="Delete this HTML Template" alt="Delete this HTML Template" />
+<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=delete id=$template->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
+	<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" />
 </a>
 {/if}
 {/permissions}

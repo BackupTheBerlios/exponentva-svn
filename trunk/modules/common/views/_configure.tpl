@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _configure.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $hasConfig == 1}
-<div class="form_title">Module Configuration</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Use this form to configure the behavior of the module.
+{#i18n_header#}
 </div>
 {$form_html}
 {else}
-No Configuration Data Found.  This module cannot be configured.
+{#i18n_operation_error#}
 {/if}

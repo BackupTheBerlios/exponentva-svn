@@ -27,16 +27,20 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_edit.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Image Information{else}Upload Image to Manager{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
 {if $is_edit == 1}
-You can only change the information about this uploaded image.  If you want to change the actual image, you will need to delete this image, and then upload a new one.
+{#i18n_header1#}
 {else}
-To upload an image to the manager, click the browse button below, search your hard drive for the image file, and click OK.
+{#i18n_header2#}
 {/if}
 <br /><br />
-The "Scale %" field specifies a previewing aspect ratio.  This is only used when looking at the image manager - it does not resize the umage being upload to a given size.
+{#i18n_header#}
 </div>
-{if $dir_not_writable == 1}<br /><i>Uploading images to this Image Manager is disabled, because of bad permissions.</i><br /><br />{/if}
+{if $dir_not_writable == 1}<br /><i>{#i18n_operation_error#}</i><br /><br />{/if}
 {$form_html}

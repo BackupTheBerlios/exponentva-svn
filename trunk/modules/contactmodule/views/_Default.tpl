@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _Default.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-MESSAGE:
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{#i18n_messagetitle#}:
 
-Email:    {$post.email}
-Subject:  {$post.subject}
-Message:  {$post.message}
+{#i18n_email#}:    {$post.email}
+{#i18n_subject#}:  {$post.subject}
+{#i18n_message#}:  {$post.message}

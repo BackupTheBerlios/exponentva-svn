@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editTemplate.tpl,v 1.2 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Pageset Properties</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Pageset Properties are mapped onto section properties when a Pageset is selected as the Page Type.
+{#i18n_header1#}
 {if $is_top == 1}
 <br />
 <br />
-The name you specify for this Pageset will be used for reference only.  It will be replaced by whatever is entered into the name field of the 'Add Section' form.
+{#i18n_header2#}
 {/if}
 </div>
 {$form_html}

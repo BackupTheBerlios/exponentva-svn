@@ -27,38 +27,41 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _manager.tpl,v 1.8 2005/04/03 07:57:14 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 <td class="tab_btn tab_btn_current">
-	<a href="{link action=manage}">Hierarchy</a>
+	<a href="{link action=manage}">{#i18n_sitehierarchy#}</a>
 </td>
 {if $isAdministrator == 1}
 <td class="tab_btn tab_btn">
-	<a href="{link action=manage_standalone}">Standalone&nbsp;Pages</a>
+	<a href="{link action=manage_standalone}">{#i18n_standalonepages#}</a>
 </td>
 <td class="tab_btn">
-	<a href="{link action=manage_pagesets}">Pagesets</a>
+	<a href="{link action=manage_pagesets}">{#i18n_pagesets#}</a>
 </td>
 {else}
 <td></td>
 <td></td>
 {/if}
-<td class="tab_spacer" width="50%">
-&nbsp;
+<td class="tab_spacer" width="50%">&nbsp;
+
 </td></tr>
 <tr><td colspan="4" class="tab_main">
 
-<div class="moduletitle navigation_moduletitle">Manage Site Navigation</div>
+<div class="moduletitle navigation_moduletitle">{#i18n_formtitle#}</div>
 <div class="form_header">
-Manage the pages and site structure here.
+{#i18n_header#}
 <br />
-<a class="mngmntlink navigation_mngmntlink" href="{link action=add_section parent=0}">New Top Level Page</a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=add_section parent=0}">{#i18n_createtoppage#}</a>
 </div>
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 <tr>
-	<td class="header navigation_header">Name</td>
+	<td class="header navigation_header">{#i18n_name#}</td>
 	<td class="header navigation_header"><!-- Add Links --></td>
 	<td class="header navigation_header"><!-- Edit/Delete Links --></td>
 	<td class="header navigation_header"><!-- Permission Links --></td>
@@ -75,21 +78,21 @@ Manage the pages and site structure here.
 {/if}
 </td><td>
 {if $section->alias_type == 0 && $section->canManage == 1}
-<a class="mngmntlink navigation_mngmntlink" href="{link action=add_section parent=$section->id}">Add Subpage</a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=add_section parent=$section->id}">{#i18n_create#}</a>
 {/if}
 </td><td>
 {if $section->canManage == 1}
 {if $section->alias_type == 0}
 <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_contentpage id=$section->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0"></a>
-<a class="mngmntlink navigation_mngmntlink" href="{link action=remove id=$section->id}" onClick="return confirm('Are you sure you want to move this page and all of its subpages out of the site hiearchy?\r\n(They will not be deleted, but will instead become standalone pages)');"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"></a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=remove id=$section->id}" onClick="return confirm('{#i18n_deletecontentpage_confim#}');"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"></a>
 {elseif $section->alias_type == 1}
 {* External Link *}
 <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_externalalias id=$section->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0"></a>
-<a class="mngmntlink navigation_mngmntlink" href="{link action=delete id=$section->id}" onClick="return confirm('Are you sure you want to delete this external alias?');"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"></a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=delete id=$section->id}" onClick="return confirm('{#i18n_delete_confirm#}');"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"></a>
 {else}
 {* Internal Alias *}
 <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_internalalias id=$section->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0"></a>
-<a class="mngmntlink navigation_mngmntlink" href="{link action=delete id=$section->id}" onClick="return confirm('Are you sure you want to delete this internal alias?');"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"></a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=delete id=$section->id}" onClick="return confirm('{#i18n_delete_confirm#}');"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"></a>
 {/if}
 {/if}
 </td><td>

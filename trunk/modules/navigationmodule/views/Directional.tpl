@@ -26,16 +26,19 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * 
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
  <div>
 {math equation="x-1" x=$current->rank assign="prevrank"}
 {if $prevrank < 0}
-	&lt; Prev Page
+	{#i18n_previous#}
 {else}
 	{foreach from=$sections item=section}
 	{if $section->parent ==$current->parent && $section->rank==$prevrank}
-	<a href="{$section->link}"{if $section->new_window} target="_blank"{/if}>&lt; Prev Page</a>
+	<a href="{$section->link}"{if $section->new_window} target="_blank"{/if}>{#i18n_previous#}</a>
 	{/if}
 	{/foreach}
 {/if}
@@ -43,11 +46,11 @@
 &nbsp;|&nbsp;
 
 {if $current->parent == 0}
-	Up
+	{#i18n_up}
 {else}
-	<a href="?section={$current->parent}">Up</a>
+	<a href="?section={$current->parent}">{#i18n_up#}</a>
 	&nbsp;|&nbsp;
-	<a href="?section={$current->parents[0]}">Top</a>
+	<a href="?section={$current->parents[0]}">{#i18n_top#}</a>
 {/if}
 
 &nbsp;|&nbsp;
@@ -56,11 +59,11 @@
 {assign var=gotlink value=0}
 {foreach from=$sections item=section }
 {if $section->parent == $current->parent && $section->rank == $nextrank}
-<a href="{$section->link}"{if $section->new_window} target="_blank"{/if}>Next Page &gt;</a>
+<a href="{$section->link}"{if $section->new_window} target="_blank"{/if}>{#i18n_next#}</a>
 {assign var=gotlink value=1}
 {/if}
 {/foreach}
 {if $gotlink == 0}
-Next Page &gt;
+{#i18n_next#}
 {/if}
 </div>

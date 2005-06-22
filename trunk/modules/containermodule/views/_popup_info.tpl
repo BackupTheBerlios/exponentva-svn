@@ -27,35 +27,39 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _popup_info.tpl,v 1.3 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <html>
 	<title>Module Information</title>
 	<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}style.css" />
 </head>
 <body>
 <br /><br />
-<div align="center" style="font-weight: bold">{if $name == ''}Unknown Module{else}{$name}{/if}</div>
+<div align="center" style="font-weight: bold">{if $name == ''}{#i18n_unknownmodules#}{else}{$name}{/if}</div>
 <br />
 
 <div style="border-top: 3px dashed lightgrey; padding: 3px;">
 <table cellpadding="0" cellspacing="0" border="0">
 {if $is_orphan}
 <tr>
-	<td>Archived Module</td>
+	<td>{#i18n_archivedmodules#}</td>
 </tr>
 {else}
 <tr>
-	<td>View:&nbsp;</td>
+	<td>{#i18n_view#}:&nbsp;</td>
 	<td>{$container->view}</td>
 </tr>
 <tr>
-	<td>Title:&nbsp;</td>
-	<td>{if $container->title == ""}<i>&lt;none&gt;</i>{else}{$container->title}{/if}</td>
+	<td>{#i18n_title#}:&nbsp;</td>
+	<td>{if $container->title == ""}<i>&lt;{#i18n_none#}&gt;</i>{else}{$container->title}{/if}</td>
 </tr>
 {/if}
 </table>
 </div>
 
-<div style="border-top: 3px dashed lightgrey; padding: 3px;">{if $name == ''}<i>Module Not Found in the System</i>{elseif $info == ''}<i>No Description Provided</i>{else}{$info|nl2br}{/if}</div>
+<div style="border-top: 3px dashed lightgrey; padding: 3px;">{if $name == ''}<i>{#i18n_modulenotfound#}</i>{elseif $info == ''}<i>{#i18n_noitemsfound#}</i>{else}{$info|nl2br}{/if}</div>
 </body>
 </html>

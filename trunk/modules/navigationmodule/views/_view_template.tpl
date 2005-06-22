@@ -27,16 +27,20 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view_template.tpl,v 1.5 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="moduletitle">{$template->name}</div>
 <hr size="1" />
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-<td><b>&lt;Name of Section&gt;</b></td>
+<td><b>{#i18n_nameofsection#}</b></td>
 <td>
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template parent=$template->id}">Add Subpage</a> ]
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template id=$template->id}">Properties</a> ]
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="#" onClick="window.open('{$smarty.const.PATH_RELATIVE}modules/navigationmodule/actions/edit_page.php?sitetemplate_id={$template->id}'); return false">Page Content</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template parent=$template->id}">{#i18n_create#}</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template id=$template->id}">{#i18n_properties#}</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="#" onClick="window.open('{$smarty.const.PATH_RELATIVE}modules/navigationmodule/actions/edit_page.php?sitetemplate_id={$template->id}'); return false">{#i18n_pagecontent#}</a> ]
 </td>
 {foreach from=$subs item=sub}
 {math equation="x+1" x=$sub->rank assign=nextrank}
@@ -46,10 +50,10 @@
 <b>{$sub->name}</b>
 </td>
 <td>
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template parent=$sub->id}">Add Subpage</a> ]
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template id=$sub->id}">Properties</a> ]
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="#" onClick="window.open('{$smarty.const.PATH_RELATIVE}modules/navigationmodule/actions/edit_page.php?sitetemplate_id={$sub->id}'); return false">Page Content</a> ]
-[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=delete_template id=$sub->id}">Delete</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template parent=$sub->id}">{#i18n_create#}</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=edit_template id=$sub->id}">{#i18n_properties#}</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="#" onClick="window.open('{$smarty.const.PATH_RELATIVE}modules/navigationmodule/actions/edit_page.php?sitetemplate_id={$sub->id}'); return false">{#i18n_pagecontent#}</a> ]
+[ <a class="mngmntlink sitetemplate_mngmntlink" href="{link action=delete_template id=$sub->id}">{#i18n_delete#}</a> ]
 {if $sub->last == 0}
 	<a href="{link action=order_templates parent=$sub->parent a=$sub->rank b=$nextrank}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}down.png" border="0" /></a>
 {else}
@@ -66,4 +70,4 @@
 </table>
 <br />
 <br />
-<a class="mngmntlink navigation_mngmntlink" href="{link action=manage}">Back to Manager</a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=manage}">{#i18n_back#}</a>

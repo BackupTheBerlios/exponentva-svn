@@ -27,5 +27,6 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: You\040Are\040Here.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ *
  *}
 {$current->name}

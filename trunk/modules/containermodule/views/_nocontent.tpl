@@ -27,10 +27,14 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _nocontent.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- <html>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<html>
 	<head>
-		<title>{$smarty.const.SITE_TITLE} -- Archived Content</title>
+		<title>{$smarty.const.SITE_TITLE} -- {#i18n_archivedmodules#}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}style.css" />
 		<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}editor.css" />
@@ -39,10 +43,8 @@
 	
 	<body style="margin: 0px; padding: 0px;">
 		<br />
-		<div style="font-size: 2em">No Content Selected</div>
+		<div style="font-size: 2em">{#i18n_formtitle#}</div>
 		<hr size="1"/>
-		To use the content from an existing module, click the "Use Existing Content" link to the left to enter the Site Content Selector.  Then, find your module and click "Use This Module's Content."<br />
-		<br />
-		<i><b>Note:</b> you will only be able to re-use content from modules of the same type</i>
+		{#i18n_header#}
 	</body>
 </html>

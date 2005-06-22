@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.2 2005/02/19 00:37:08 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $smarty.const.PREVIEW_READONLY == 1}
-<i>Logged-in users see this:</i><br />
+<i>{#i18n_loggedin_info#}</i><br />
 {/if}
 {if $loggedin == true || $smarty.const.PREVIEW_READONLY == 1}
 <table cellpadding="0" cellspacing="0" border="0" style="margin-left:10px;margin-right:7px;margin-top:5px;margin-bottom: 10px;">
@@ -49,10 +53,10 @@
 		<td style="background-image: url({$smarty.const.THEME_RELATIVE}images/side_left.gif); background-repeat: repeat-y"></td>
 		<td width="100%" style="background-image: url({$smarty.const.THEME_RELATIVE}images/middle_bg.gif); text-align: justify">
 
-			<div class="login_welcom">Welcome, {$user->firstname} {$user->lastname}</div>
-			<a href="{link action=editprofile}">Edit Profile</a><br />
-			<a href="{link action=changepass}">Change Password</a><br />
-			<a href="{link action=logout}">Logout</a><br />
+			<div class="login_welcom">{#i18n_greeting#}, {$user->firstname} {$user->lastname}</div>
+			<a href="{link action=editprofile}">{#i18n_editprofile#}</a><br />
+			<a href="{link action=changepass}">{#i18n_editpassword#}</a><br />
+			<a href="{link action=logout}">{#i18n_logout#}</a><br />
 
 		</td>
 		<td style="background-image: url({$smarty.const.THEME_RELATIVE}images/side_right.gif); background-repeat: repeat-y"></td>
@@ -66,7 +70,7 @@
 {/if}
 {if $smarty.const.PREVIEW_READONLY == 1}
 <hr size="1" />
-<i>Anonymous visitors see this:</i><br />
+<i>{#i18n_loggedout_info#}</i><br />
 {/if}
 {if $loggedin == false || $smarty.const.PREVIEW_READONLY == 1}
 <table cellpadding="0" cellspacing="0" border="0" style="margin-left:10px;margin-right:7px;margin-top:5px;margin-bottom: 10px;">
@@ -91,11 +95,11 @@
 				<input type="hidden" name="module" value="loginmodule" />
 				<input type="text" name="username" id="login_username" size="15" /><br />
 				<input type="password" name="password" id="login_password" size="15" /><br />
-				<input type="submit" value="Login" /><br />
+				<input type="submit" value="{#i18n_submit#}" /><br />
 			</form>
 			{if $smarty.const.SITE_ALLOW_REGISTRATION == 1}
-			<a href="{link action=createuser}">Create</a> an account<br />
-			<a href="{link action=resetpass}">Forgot Your Password?</a><br />
+			<a href="{link action=createuser}">{#i18n_create#}</a><br />
+			<a href="{link action=resetpass}">{#i18n_retrievepassword#}</a><br />
 			{/if}
 			
 		</td>

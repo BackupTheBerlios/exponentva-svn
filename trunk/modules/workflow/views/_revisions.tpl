@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _revisions.tpl,v 1.4 2005/04/18 01:47:02 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <script type="text/javascript">
 {literal}
 var selectionCount = 0;
@@ -58,7 +62,7 @@ function confirmDelete() {
 		<tr>
 			<td style="font-weight: bold">{if $revision->title != ""}'{$revision->title}' v{else}V{/if}ersion {$revision->wf_major}.{$revision->wf_minor} :: {attribution user_id=$revision->wf_user_id}
 			{if $revision->wf_minor == 0 && $revision->wf_major != $current}
-			<input type="checkbox" name="d[{$revision->id}]" onClick="registerCheck(this)" /> Delete?
+			<input type="checkbox" name="d[{$revision->id}]" onClick="registerCheck(this)" /> {#i18n_delete#}?
 			{/if}</td>
 			<td align="right">{$revision->wf_updated|format_date:$smarty.const.DISPLAY_DATETIME_FORMAT}</td>
 		</tr>
@@ -73,7 +77,7 @@ function confirmDelete() {
 				{if $revision->wf_minor == 0 && $revision->wf_major != $current}
 					&nbsp;|&nbsp;
 					<a class="mngmntlink workflow_mngmntlink" href="{link datatype=$smarty.get.datatype m=$smarty.get.m s=$smarty.get.s action=revisions_restore major=$revision->wf_major id=$revision->wf_original}">
-						Restore
+						{#i18n_restore#}
 					</a>
 				{/if}				
 			</td>
@@ -82,7 +86,7 @@ function confirmDelete() {
 	</div>
 </div>
 {foreachelse}
-<div align="center"><i>No Revisions Found</i></div>
+<div align="center"><i>{#i18n_noitemsfound#}</i></div>
 {/foreach}
-<input type="submit" value="Delete Selected" onClick="return confirmDelete();" />
+<input type="submit" value="{#i18n_submit#}" onClick="return confirmDelete();" />
 </form>

@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _htmlareaconfigs.tpl,v 1.4 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">HTMLArea Toolbar Settings</div>
 <div class="form_header">HTMLArea is a javascript WYSIWYG (What You See is What You Get) HTML editor that is very flexible.  This form allows you to set up toolbar configurations which govern what buttons are available on the toolbar for editors to use.
 <br /><br />
 The active configuration is used for all HTMLArea controls across the entire site.
 <br /><br />
-To create a new toolbar, use the <a class="mngmntlink administration_mngmntlink" href="{link action=htmlarea_editconfig id=0}">New Configuration</a> form.
+To create a new toolbar, use the <a class="mngmntlink administration_mngmntlink" href="{link action=htmlarea_editconfig id=0}">{#i18n_create#}</a> form.
 </div>
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 	<tr>

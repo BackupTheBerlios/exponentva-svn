@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editSlide.tpl,v 1.3 2005/02/19 16:53:36 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Slide Data{else}Upload new Slide{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
 {if $is_edit == 1}
-You can change only the name, description and scaling percentage of this slide.
+{#i18n_header1#}
 {else}
-Upload a new slide.
+{#i18n_header2#}
 {/if}
 </div>
 {$form_html}

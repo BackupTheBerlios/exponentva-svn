@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editBoard.tpl,v 1.3 2005/02/19 16:42:19 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Board{else}Create Board{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit#}{else}{#i18n_create#}{/if}</div>
 <div class="form_header">
 {if $is_edit == 1}
-Use this form to edit the name and description of an existing bulletin board.
+{#i18n_header1#}
 {else}
-Use this form to create a new bulletin board.
+{#i18n_header1#}
 {/if}
 </div>
 {$form_html}

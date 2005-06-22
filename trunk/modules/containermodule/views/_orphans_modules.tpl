@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _orphans_modules.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {foreach from=$orphan_mods item=modname key=mod}
 <a class="navlink" href="{link module=$mod}">{$modname}</a><br />
 {foreachelse}
-<i>No Archived Modules</i>
+<i>{#i18n_noitemsfound#}</i>
 {/foreach}

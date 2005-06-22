@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.1 2005/04/10 23:24:02 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}" title="Assign permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}" title="Assign group permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+	<a href="{link action=userperms _common=1}" title="{#i18n_assignuserpermissionstoitem_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 {/if}
 {if $permissions.configure == 1}
-	<a href="{link action=configure _common=1}" title="Configure this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
+	<a href="{link action=configure _common=1}" title="{#i18n_editconfig_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
 {/if}
 {if $permissions.configure == 1 or $permissions.administrate == 1}
 	<br />
@@ -53,20 +57,20 @@
 	{/foreach}
 	
 	{if $question->open_voting}
-	<input type="submit" value="Vote!" />
+	<input type="submit" value="{#i18n_submit#}" />
 	{else}
-	Voting has closed for this poll.<br />
-	<input type="submit" value="Vote!" disabled="disabled" />
+	{#i18n_votingclosed_info#}<br />
+	<input type="submit" value="{#i18n_submit#}" disabled="disabled" />
 	{/if}
 	<br />
 	{if $question->open_results}
-	<a href="{link action=results id=$question->id}">Results</a>
+	<a href="{link action=results id=$question->id}">{#i18n_results#}</a>
 	{/if}
 </form>
 {/if}
 
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.manage_question == 1 || $permissions.manage_answer == 1}
-<a href="{link action=manage_questions}">Manage Questions</a>
+<a href="{link action=manage_questions}">{#i18n_manage#}<
 {/if}
 {/permissions}

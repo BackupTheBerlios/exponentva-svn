@@ -27,5 +27,10 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _email_resetdone.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-Your new password is '{$newpass}'
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+
+{#i18n_newpassis_message#} '{$newpass}'

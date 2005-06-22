@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _viewmessages.tpl,v 1.6 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <b>Private Messages for {$user->firstname} {$user->lastname}</b>
 <br />
 {$totalMessages} messages, {$unreadMessages} unread.
@@ -49,14 +53,14 @@
 		<td>{$message->from_name}</td>
 		<td>{$message->date_sent|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</td>
 		<td>
-			<a class="mngmntlink inbox_mngmntlink" href="{link action=delete id=$message->id}" onClick="return confirm('Are you sure you want to delete this Private Message?');">
-				<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="Delete this Private Message" alt="Delete this Private Message" />
+			<a class="mngmntlink inbox_mngmntlink" href="{link action=delete id=$message->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
+				<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" />
 			</a>
 		</td>
 	</tr>
 {foreachelse}
 	<tr>
-		<td colspan="4" align="center"><i>No messages in inbox</i></td>
+		<td colspan="4" align="center"><i>{#i18n_noitemsfound#}</i></td>
 	</tr>
 {/foreach}
 </table>

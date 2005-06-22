@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view_unpublished.tpl,v 1.5 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <b>Expired News</b>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
@@ -46,23 +50,23 @@
 			<td>
 				{if $permissions.edit_item == 1 || $n->permissions.edit_item == 1}
 					{if $n->approved == 2} {* in ap *}
-					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.disabled.png" title="Editting Disabled - News Item In Approval" alt="Editting Disabled - News Item In Approval" />
+					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.disabled.png" title="{#i18n_editdisabledinapproval_desc#}" alt="{#i18n_editdisabledinapproval_desc#}" />
 					{else}
-					<a class="mngmntlink news_mngmntlink" href="{link action=edit id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" title="Edit this News Item" alt="Edit this News Item" /></a>
+					<a class="mngmntlink news_mngmntlink" href="{link action=edit id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" /></a>
 					{/if}
 				{/if}
 				{if $permissions.delete_item == 1 || $n->permissions.delete_item == 1}
 					{if $n->approved == 2} {* in ap *}
-					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.disabled.png" title="Editting Disabled - News Item In Approval" alt="Deleting Disabled - News Item In Approval" />
+					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.disabled.png" title="{#i18n_editdisabledinapproval_desc#}" alt="{#i18n_deletedisabledinapproval_desc#}" />
 					{else}
-					<a onClick="return confirm('Are you sure you want to delete this news item?');" class="mngmntlink news_mngmntlink" href="{link action=delete id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="Delete this News Item" alt="Delete this News Item" /></a>
+					<a onClick="return confirm('{#i18n_delete_confirm#}');" class="mngmntlink news_mngmntlink" href="{link action=delete id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" /></a>
 					{/if}
 				{/if}
 			</td>
 		</tr>
 	{foreachelse}
 		<tr>
-			<td colspan="3" align="center"><i>No Expired News</i></td>
+			<td colspan="3" align="center"><i>{#i18n_noitemsfound#}</i></td>
 		</tr>
 	{/foreach}
 </table>
@@ -86,23 +90,23 @@
 			<td>
 				{if $permissions.edit_item == 1 || $n->permissions.edit_item == 1}
 					{if $n->approved == 2} {* in ap *}
-					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.disabled.png" title="Editting Disabled - News Item In Approval" alt="Editting Disabled - News Item In Approval" />
+					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.disabled.png" title="{#i18n_editdisabledinapproval_desc#}" alt="{#i18n_editdisabledinapproval_desc#}" />
 					{else}
-					<a class="mngmntlink news_mngmntlink" href="{link action=edit id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" title="Edit this News Item" alt="Edit this News Item" /></a>
+					<a class="mngmntlink news_mngmntlink" href="{link action=edit id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" /></a>
 					{/if}
 				{/if}
 				{if $permissions.delete_item == 1 || $n->permissions.delete_item == 1}
 					{if $n->approved == 2} {* in ap *}
-					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.disabled.png" title="Editting Disabled - News Item In Approval" alt="Deleting Disabled - News Item In Approval" />
+					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.disabled.png" title="{#i18n_editdisabledinapproval_desc#}" alt="{#i18n_deletedisabledinapproval_desc#}" />
 					{else}
-					<a onClick="return confirm('Are you sure you want to delete this news item?');" class="mngmntlink news_mngmntlink" href="{link action=delete id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="Delete this News Item" alt="Delete this News Item" /></a>
+					<a onClick="return confirm('{#i18n_delete_confirm#}');" class="mngmntlink news_mngmntlink" href="{link action=delete id=$n->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" /></a>
 					{/if}
 				{/if}
 			</td>
 		</tr>
 	{foreachelse}
 		<tr>
-			<td colspan="3" align="center"><i>No Unpublished News</i></td>
+			<td colspan="3" align="center"><i>{#i18n_noitemsfound#}</i></td>
 		</tr>
 	{/foreach}
 </table>

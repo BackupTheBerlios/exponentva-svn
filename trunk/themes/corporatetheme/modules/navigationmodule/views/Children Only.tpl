@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Children\040Only.tpl,v 1.3 2005/02/19 00:37:08 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {capture assign=output}
 <table cellpadding="0" cellspacing="0" border="0" style="margin-left:10px;margin-right:7px;margin-top:5px;margin-bottom: 10px;">
 	<tr>
@@ -56,7 +60,7 @@
 			{/foreach}
 			{if $canManage == 1}
 			<br />
-			[ <a class="navlink" href="{link action=manage}">manage</a> ]
+			[ <a class="navlink" href="{link action=manage}">{#i18n_manage#}</a> ]
 			{/if}
 		</td>
 		<td style="background-image: url({$smarty.const.THEME_RELATIVE}images/side_right.gif); background-repeat: repeat-y"></td>

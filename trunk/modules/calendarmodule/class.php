@@ -326,7 +326,7 @@ class calendarmodule {
 		
 		$cats = $db->selectObjectsIndexedArray("category","location_data='".serialize($loc)."'");
 		$cats[0] = null;
-		$cats[0]->name = "<i>No category</i>";
+		$cats[0]->name = "<i>{#i18n_noitemsfound#}</i>";
 		$cats[0]->color = "#000000";
 		$template->assign("categories",$cats);
 		

@@ -27,12 +27,16 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _contactmanager.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header contact_header">Name</td>
-		<td class="header contact_header">Email</td>
-		<td class="header contact_header">Contact Type</td>
+		<td class="header contact_header">{#i18n_name#}</td>
+		<td class="header contact_header">{#i18n_email#}</td>
+		<td class="header contact_header">{#i18n_contacttype#}</td>
 		<td class="header contact_header">&nbsp;</td>
 	</tr>
 {foreach from=$contacts item=c}
@@ -41,24 +45,24 @@
 		<td>{$c->email}</td>
 		<td>
 			{if $c->user_id != 0}
-				User Account
+				{#i18n_useraccount#}
 			{else}
-				Manually Entered Address
+				{#i18n_manualaddress#}
 			{/if}
 		</td>
 		<td>
 			<a class="mngmntlink contact_mngmntlink" href="{link action=edit_contact id=$c->id}">
-				<img border="0" src="{$smarty.const.ICON_RELATIVE}edit.gif" title="Edit this Contact" alt="Edit this Contact" />
+				<img border="0" src="{$smarty.const.ICON_RELATIVE}edit.gif" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" />
 			</a>
-			<a class="mngmntlink contact_mngmntlink" href="{link action=delete_contact id=$c->id}" onClick="return confirm('Are you sure you want to delete this Contact?');">
-				<img border="0" src="{$smarty.const.ICON_RELATIVE}delete.gif" title="Delete this Contact" alt="Delete this Contact" />
+			<a class="mngmntlink contact_mngmntlink" href="{link action=delete_contact id=$c->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
+				<img border="0" src="{$smarty.const.ICON_RELATIVE}delete.gif" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" />
 			</a>
 		</td>
 	</tr>
 {foreachelse}
 	<tr>
-		<td><i>No contacts</i></td>
+		<td><i>{#i18n_noitemsfound#}</i></td>
 	</tr>
 {/foreach}
 </table>
-<a class="mngmntlink contact_mngmntlink" href="{link action=edit_contact}">New Contact</a>
+<a class="mngmntlink contact_mngmntlink" href="{link action=edit_contact}">{#i18n_create#}</a>

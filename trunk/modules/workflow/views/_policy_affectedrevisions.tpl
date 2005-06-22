@@ -27,8 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _policy_affectedrevisions.tpl,v 1.2 2005/02/19 00:32:38 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-The following items are current under the authority of the approval policy you are trying to save.<br />
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{#i18n_header#}<br />
 <br />
 <form method="post">
 <input type="hidden" name="policy" value='{$newpolicy_serial}' />
@@ -36,13 +39,13 @@ The following items are current under the authority of the approval policy you a
 <input type="hidden" name="action" value="admin_savenormalize" />
 <table cellpadding="4" cellspacing="1" width="100%" border="0">
 	<tr>
-		<td class="header workflow_header">Title</td>
-		<td class="header workflow_header"> Version</td>
-		<td class="header workflow_header">Module</td>
-		<td class="header workflow_header">Source</td>
+		<td class="header workflow_header">{#i18n_title#}</td>
+		<td class="header workflow_header">{#i18n_version#}</td>
+		<td class="header workflow_header">{#i18n_module#}</td>
+		<td class="header workflow_header">{#i18n_source#}</td>
 		<td class="header workflow_header" colspan="1"></td>
-		<td class="header workflow_header" align="center">Re-evaluate</td>
-		<td class="header workflow_header" align="center">Restart</td>
+		<td class="header workflow_header" align="center">{#i18n_reevaluate#}</td>
+		<td class="header workflow_header" align="center">{#i18n_restart#}</td>
 	</tr>
 {foreach from=$affected key=type item=posts}
 {foreach from=$posts item=post}
@@ -53,9 +56,9 @@ The following items are current under the authority of the approval policy you a
 		<td>{$post->source}</td>
 		<td>
 			{if $post->approvals >= $newpolicy->required_approvals}
-				<span style="color: green; font-weight: bold;">Approved</span>
+				<span style="color: green; font-weight: bold;">{#i18n_approved#}</span>
 			{else}
-				No Change
+				{#i18n_nochange#}
 			{/if}
 		</td>
 		<td align="center">
@@ -69,7 +72,7 @@ The following items are current under the authority of the approval policy you a
 {/foreach}
 	<tr>
 		<td colspan="6" align="center">
-			<input type="submit" value="Save Policy" />
+			<input type="submit" value="{#i18n_submit#}" />
 		</td>
 	</tr>
 </table>

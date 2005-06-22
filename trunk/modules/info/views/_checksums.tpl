@@ -27,11 +27,15 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _checksums.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header info_header">File</td>
-		<td class="header info_header">Checksum</td>
+		<td class="header info_header">{#i18n_file#}</td>
+		<td class="header info_header">{#i18n_checksum#}</td>
 	</tr>
 {if $error == ""}
 {foreach from=$files key=file item=oldmd5}

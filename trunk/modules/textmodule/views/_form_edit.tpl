@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_edit.tpl,v 1.2 2005/02/19 00:32:37 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Edit Page Text</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_edit_desc#}</div>
 <div class="form_header">
-Simply type the text you want to appear on the site into the WYSIWYG editor below, and click Save.
+{#i18n_header#}
 </div>
 {$form_html}

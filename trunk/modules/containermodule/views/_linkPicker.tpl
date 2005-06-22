@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _linkPicker.tpl,v 1.4 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="container_editbox">
  
 	<div class="container_editheader">
@@ -43,13 +47,13 @@
 				{/if}
 					<td valign="top" class="info">
 					{$container->info.module}
-					{if $container->view != ""}<br />Shown in {$container->view} view{/if}
+					{if $container->view != ""}<br />{#i18n_shownin#} {$container->view} {#i18n_view#}{/if}
 				</td>
 				<td align="right" valign="top">
 {*					{if $container->info.clickable}
 *}
 					<a class="mngmntlink container_mngmnltink" href="{$dest}&cid={$container->id}">
-					Link to this Module
+					{#i18n_usethis#}
 					</a>
 	{*				{/if}
 	*}

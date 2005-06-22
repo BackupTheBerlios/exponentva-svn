@@ -27,8 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Three\040Column.tpl,v 1.4 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- {permissions level=$smarty.const.UILEVEL_STRUCTURE}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{permissions level=$smarty.const.UILEVEL_STRUCTURE}
 {if ($permissions.administrate == 1 || $permissions.edit_module == 1 || $permissions.delete_module == 1 || $permissions.add_module == 1 || $container->permissions.administrate == 1 || $container->permissions.edit_module == 1 || $container->permissions.delete_module == 1)}
 <b>Container Module</b>
 <br />
@@ -42,17 +46,17 @@
 		<tr>
 			<td valign="top" class="info">
 				Container Module
-				<br />Shown in {$__view} view
+				<br />{#i18n_shownin#} {$__view} {#i18n_view#}
 			</td>
 			<td align="right" valign="top">
 				{if $permissions.administrate == 1}
-					<a href="{link action=userperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="Assign user permissions on this Container Module" alt="Assign user permissions on this Container Module" /></a>&nbsp;
-					<a href="{link action=groupperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="Assign group permissions on this Container Module" alt="Assign group permissions on this Container Module" /></a>
+					<a href="{link action=userperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="{#i18n_assignuserpermissionstomodule_desc#}" alt="{#i18n_assignuserpermissionstomodule_desc#}" /></a>&nbsp;
+					<a href="{link action=groupperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="{#i18n_assigngrouppermissionstomodule_desc#}" alt="{#i18n_assigngrouppermissionstomodule_desc#}" /></a>
 				{/if}
 			
 				{if $permissions.edit_module == 1}
 					<a href="{link action=edit id=$top->id}">
-						<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configuremodule.png" title="Change the layout of this Container Module" alt="Change the layout of this Container Module" />
+						<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configuremodule.png" title="{#i18n_editlayout_desc#}" alt="{#i18n_editlayout_desc#}" />
 					</a>
 				{/if}
 			</td>

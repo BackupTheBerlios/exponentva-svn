@@ -1,4 +1,4 @@
-<div class="moduletitle news_moduletitle">Shared Content</div>
+<div class="moduletitle news_moduletitle">{#i18n_sharedcontent#}</div>
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
@@ -31,7 +31,7 @@
 		</td>
 	</tr>
 	{foreachelse}
-	<tr><td colspan="3" align="center"><i>No Shared Content</i></td></tr>
+	<tr><td colspan="3" align="center"><i>{#i18n_noitemsfound#}</i></td></tr>
 	{/foreach}
 </table>
 <br />

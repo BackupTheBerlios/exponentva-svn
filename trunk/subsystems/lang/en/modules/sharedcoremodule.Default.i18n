@@ -1,0 +1,7 @@
+# i18n_assigngrouppermissionstomodule_desc = ''
+# i18n_assignuserpermissionstoitem_desc = ''
+# i18n_create = ''
+i18n_createcore = 'New Core'
+# i18n_delete_confirm = ''
+i18n_nocoresfound = 'No Cores found.'
+# i18n_noitemsfound = ''

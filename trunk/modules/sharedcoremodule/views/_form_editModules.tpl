@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editModules.tpl,v 1.3 2005/02/26 05:21:23 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Choose Modules and Themes</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Here, you can choose which modules and themes you want to make available to the shared core site.
+{#i18n_header#}
 </div>
 {$form_html}

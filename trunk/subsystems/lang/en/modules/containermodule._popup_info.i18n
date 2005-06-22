@@ -1,0 +1,7 @@
+# i18n_archivedmodules = ''
+i18n_modulenotfound = 'Modules not Found'
+# i18n_noitemsfound = ''
+i18n_none = 'None'
+# i18n_title = ''
+i18n_unknownmodules = 'Unknown Modules'
+# i18n_view = ''

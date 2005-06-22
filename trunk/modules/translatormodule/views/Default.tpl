@@ -3,11 +3,11 @@
  *}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}" title="Assign permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}" title="Assign group permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+	<a href="{link action=userperms _common=1}" title="{#i18n_assignuserpermissionstoitem_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 {/if}
 {if $permissions.configure == 1}
-	<a href="{link action=configure _common=1}" title="Configure this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
+	<a href="{link action=configure _common=1}" title="{#i18n_editconfig_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
 {/if}
 {if $permissions.configure == 1 or $permissions.administrate == 1}
 	<br />
@@ -23,8 +23,8 @@
 		<td class="header translator_header" align="right">
 			{permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 			{if $lang->permissions.administrate == 1}
-			<a href="{link action=userperms _common=1 int=$lang->id}" title="Assign permissions on this Language"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>
-			<a href="{link action=groupperms _common=1 int=$lang->id}" title="Assign group permissions on this Language"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+			<a href="{link action=userperms _common=1 int=$lang->id}" title="{#i18n_assignuserpermissionstoitem_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>
+			<a href="{link action=groupperms _common=1 int=$lang->id}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 			{/if}
 			{/permissions}
 			{permissions level=$smarty.const.UILEVEL_NORMAL}
@@ -32,7 +32,7 @@
 			<a class="mngmntlink translator_mngmntlink" href="{link action=edit_lang id=$lang->id}">
 				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" />
 			</a>
-			<a class="mngmntlink translator_mngmntlink" href="{link action=delete_lang id=$lang->id}" onClick="return confirm('Are you sure you want to delete this language?');">
+			<a class="mngmntlink translator_mngmntlink" href="{link action=delete_lang id=$lang->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
 				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" />
 			</a>
 			&nbsp;
@@ -53,13 +53,13 @@
 		{/foreach}
 	{/foreach}
 {foreachelse}
-	<tr><td align="center"><i>No languages exist</i></td></tr>
+	<tr><td align="center"><i>{#i18n_noitemsfound#}</i></td></tr>
 {/foreach}
 </table>
 <br /><br />
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.configure == 1}
-<a class="mngmntlink translator_mngmntlink" href="{link action=edit_lang}">New Language</a>
+<a class="mngmntlink translator_mngmntlink" href="{link action=edit_lang}">{#i18n_create#}</a>
 <br />
 <a class="mngmntlink translator_mngmntlink" href="{link action=import_form}">Import Language Pack</a>
 {/if}

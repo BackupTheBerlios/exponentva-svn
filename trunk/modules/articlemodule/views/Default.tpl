@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.4 2005/03/13 18:57:28 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}" title="Assign permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}" title="Assign group permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+	<a href="{link action=userperms _common=1}" title="{#i18n_assignuserpermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 {/if}
 {if $permissions.configure == 1}
-	<a href="{link action=configure _common=1}" title="Configure this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
+	<a href="{link action=configure _common=1}" title="{#i18n_editconfig_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
 {/if}
 {if $permissions.configure == 1 or $permissions.administrate == 1}
 	<br />
@@ -51,7 +55,7 @@
 	{if $catid != 0}
 	<td colspan="2" class="category_title">{$categories[$catid]->name}</td>
 	{else}
-	<td colspan="2" class="category_title">Not Categorized</td>
+	<td colspan="2" class="category_title">{#i18n_notcategorized#}</td>
 	{/if}
 </tr>
 <tr><td>&nbsp;</td></tr>
@@ -69,10 +73,10 @@
 	</td>
 	{if $permissions.manage == 1}
 	<td align="right">
-		<a href="{link action=edit_article id=$article->id}" title="Edit this entry">
+		<a href="{link action=edit_article id=$article->id}" title="{#i18n_edit_desc#}">
 			<img border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" />
 		</a>
-		<a href="{link action=delete_article id=$article->id}" title="Delete this entry" onClick="return confirm('Are you sure you want to delete this article?');">
+		<a href="{link action=delete_article id=$article->id}" title="{#i18n_delete_desc#}" onClick="return confirm('{#i18n_delete_confirm#}');">
 			<img border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" />
 		</a>	
 		{if $smarty.foreach.a.first == 0}
@@ -105,7 +109,7 @@
 {foreachelse}
 { if ($config->enable_categories == 1 && $catid != 0) || ($config->enable_categories==0)}
 <tr>
-	<td align="center"><i>No articles were found.</i></td>
+	<td align="center"><i>{#i18n_noitemsfound#}</i></td>
 </tr>
 {/if}
 {/foreach}
@@ -115,9 +119,9 @@
 
 {if $permissions.manage == 1}
 <br>
-<a href="{link action=edit_article}">New Article</a>
+<a href="{link action=edit_article}">{#i18n_create#}</a>
 <br>
 {if $config->enable_categories == 1}
-<a href="{link module=categories action=manage orig_module=articlemodule}">Manage Categories</a>
+<a href="{link module=categories action=manage orig_module=articlemodule}">{#i18n_managecategories#}</a>
 {/if}
 {/if}

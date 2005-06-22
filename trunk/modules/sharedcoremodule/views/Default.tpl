@@ -27,11 +27,15 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.6 2005/02/26 05:21:23 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}" title="Assign permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}" title="Assign group permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+	<a href="{link action=userperms _common=1}" title="{#i18n_assignuserpermissionstoitem_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 	<br />
 {/if}
 {/permissions}
@@ -49,7 +53,7 @@
 				<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" />
 			</a>
 			<a class="mngmntlink sharedcore_mngmntlink" href="{link action=delete_core id=$core->id}">
-				<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" onClick="return confirm('Are you sure you want to delete this codebase and all sites deployed from it?');" />
+				<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" onClick="return confirm('{#i18n_delete_confirm#}');" />
 			</a>
 			{/if}
 			{/permissions}
@@ -73,7 +77,7 @@
 				<a class="mngmntlink sharedsite_mngmntlink" href="{link action=edit_site id=$site->id}">
 					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" />
 				</a>
-				<a class="mngmntlink sharedsite_mngmntlink" href="{link action=delete_site id=$site->id}" onClick="return confirm('Are you sure you want to delete this deployed site?');">
+				<a class="mngmntlink sharedsite_mngmntlink" href="{link action=delete_site id=$site->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
 					<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" />
 				</a>
 				{if $site->inactive == 1}
@@ -95,21 +99,21 @@
 	{foreachelse}
 		<tr>
 			<td colspan="3" style="padding-left: 50px">
-				<i>No sites have been deployed from this codebase.</i>
+				<i>{#i18n_noitemsfound#}</i>
 			</td>
 		</tr>
 	{/foreach}
 {foreachelse}
 	{assign var=nocores value=1}
-	<tr><td align="center"><i>No codebases found</td></tr>
+	<tr><td align="center"><i>{#i18n_nocoresfound#}</i></td></tr>
 {/foreach}
 </table>
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.manage == 1}
-<a class="mngmntlink sharedcore_mngmntlink" href="{link action=edit_core}">New Codebase</a>
+<a class="mngmntlink sharedcore_mngmntlink" href="{link action=edit_core}">{#i18n_createcore#}</a>
 {if $nocores == 0}
 <br />
-<a class="mngmntlink sharedcore_mngmntlink" href="{link action=edit_site core_id=$core->id}">Deploy New Site</a>
+<a class="mngmntlink sharedcore_mngmntlink" href="{link action=edit_site core_id=$core->id}">{#i18n_create#}</a>
 {/if}
 {/if}
 {/permissions}

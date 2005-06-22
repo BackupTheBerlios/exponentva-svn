@@ -27,17 +27,21 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _confirmpolicydelete.tpl,v 1.3 2005/02/19 00:32:37 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div>
-<b>Warning:</b> There are currently posts under the authority of this approval policy.  Deleting this policy will delete these revisions - an action wich is <b>not</b> reversible.
+{#i18n_header#}
 <br /><hr size="1" /><br />
 
 <table cellpadding="4" cellspacing="1" width="100%" border="0">
 	<tr>
-		<td class="header workflow_header">Title</td>
-		<td class="header workflow_header"> Version</td>
-		<td class="header workflow_header">Module</td>
-		<td class="header workflow_header">Source</td>
+		<td class="header workflow_header">{#i18n_title#}</td>
+		<td class="header workflow_header">{#i18n_version#}</td>
+		<td class="header workflow_header">{#i18n_module#}</td>
+		<td class="header workflow_header">{#i18n_source#}</td>
 	</tr>
 {foreach from=$affected key=type item=posts}
 {foreach from=$posts item=post}

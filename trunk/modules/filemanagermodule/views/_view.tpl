@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view.tpl,v 1.1 2005/05/04 19:11:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">{$collection->name}</div>
 <div class="form_header">
 {$collection->description}
@@ -81,9 +85,9 @@
 		{/if}
 	</td>
 	{foreachelse}
-	<td><i>No files found.</i></td>
+	<td><i>{#i18n_noitemsfound#}</i></td>
 	{/foreach}
 </tr>
 </table>
 <br />
-<a href="{link action=upload_file id=$collection->id}">New File</a>
+<a href="{link action=upload_file id=$collection->id}">{#i18n_create#}</a>

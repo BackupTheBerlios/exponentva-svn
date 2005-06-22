@@ -27,12 +27,16 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view_thread.tpl,v 1.7 2005/04/08 15:45:49 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
 	{capture assign=int}p{$thread->id}{/capture}
-	<a href="{link action=userperms _common=1 int=$int}" title="Assign permissions on this Thread"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1 int=$int}" title="Assign group permissions on this Thread"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+	<a href="{link action=userperms _common=1 int=$int}" title="{#i18n_assignuserpermissionstoitem_desc#}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1 int=$int}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 {/if}
 {/permissions}
 <table cellspacing="0" cellpadding="0" border="0"width="100%" style="border-bottom: 2px solid black;">
@@ -52,7 +56,7 @@
 			{/if}
 			{if $permissions.reply == 1}
 				<a class="mngmntlink bb_mngmntlink" href="{link action=edit_post parent=$thread->id}">
-					Post Reply
+					{#i18n_create#}
 				</a>
 			{/if}
 			{/permissions}
@@ -60,9 +64,9 @@
 	</tr>
 	<tr class="bb_threadcreditrow">
 		<td class="bb_postcredit" colspan="2">
-		Posted on {$thread->posted|format_date:"%D %T"} by {attribution user=$thread->poster}
+		{#i18n_createdon#} {$thread->posted|format_date:"%D %T"} {#i18n_by#} {attribution user=$thread->poster}
 		{if $thread->editted != 0}
-		<br />Editted on {$thread->editted|format_date:"%D %T"} by {attribution user=$thread->editor}
+		<br />{#i18n_editedon#} {$thread->editted|format_date:"%D %T"} {#i18n_by#} {attribution user=$thread->editor}
 		{/if}
 		</td>
 	</tr>
@@ -88,7 +92,7 @@
 				{/if}
 				{if $permissions.reply == 1}
 					<a class="mngmntlink bb_mngmntlink" href="{link action=edit_post parent=$reply->id}">
-						Post Reply
+						{#i18n_create#}
 					</a>
 				{/if}
 				{/permissions}
@@ -96,9 +100,9 @@
 		</tr>
 		<tr class="bb_threadcreditrow">
 			<td class="bb_replycredit" colspan="2">
-			Posted on {$reply->posted|format_date:"%D %T"} by {attribution user=$reply->poster}
+			{#i18n_createdon#} {$reply->posted|format_date:"%D %T"} {#i18n_by#} {attribution user=$reply->poster}
 			{if $reply->editted != 0}
-			<br />Editted on {$reply->editted|format_date:"%D %T"} by {attribution user=$reply->editor}
+			<br />{#i18n_createdon#} {$reply->editted|format_date:"%D %T"} {#i18n_by#} {attribution user=$reply->editor}
 			{/if}
 			</td>
 		</tr>
@@ -109,14 +113,14 @@
 		</tr>
 	{/foreach}
 </table>
-<a class="mngmntlink bb_mngmntlink" href="{link action=view_board id=$thread->board_id}">Back to Board</a>
+<a class="mngmntlink bb_mngmntlink" href="{link action=view_board id=$thread->board_id}">{#i18n_back#}</a>
 <br /><br />
 {if $loggedin == 1}
 {if $monitoring == 1}
-You are monitoring this thread for new replies.
-<br /><a class="mngmntlink bb_mngmntlink" href="{link action=monitor_thread id=$thread->id monitor=0}">Click here</a> to stop monitoring it.
+{#i18n_monitoring_info#}
+<br /><a class="mngmntlink bb_mngmntlink" href="{link action=monitor_thread id=$thread->id monitor=0}">{#i18n_stopmonitoring#}
 {else}
-You are not monitoring this thread.
-<br /><a class="mngmntlink bb_mngmntlink" href="{link action=monitor_thread id=$thread->id monitor=1}">Click here</a> to start monitoring it for new replies.
+{#i18n_notmonitoring_info#}
+<br /><a class="mngmntlink bb_mngmntlink" href="{link action=monitor_thread id=$thread->id monitor=1}">{#i18n_startmonitoring#}
 {/if}
 {/if}

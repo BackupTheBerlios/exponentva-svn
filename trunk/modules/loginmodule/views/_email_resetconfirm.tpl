@@ -27,9 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _email_resetconfirm.tpl,v 1.3 2005/03/21 17:15:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-You requested that your password be reset.
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 
-please follow this link to confirm that you do want it reset:
+{#i18n_confirmresetpass_message#}
 
 {link module=loginmodule action=resetpass_confirm token=$token->token uid=$token->uid}

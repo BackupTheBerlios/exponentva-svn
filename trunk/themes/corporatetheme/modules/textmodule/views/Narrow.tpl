@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Narrow.tpl,v 1.4 2005/02/19 00:37:08 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellpadding="0" cellspacing="0" border="0" style="margin-left:10px;margin-right:7px;margin-top:5px;margin-bottom: 10px;">
 	<tr>
 		<td><img src="{$smarty.const.THEME_RELATIVE}images/corner_topleft.gif" /></td>
@@ -58,17 +62,17 @@
 			{permissions level=$smarty.const.UILEVEL_NORMAL} 
 			{if $permissions.edit == 1}
 				{if $textitem->approved != 1}
-					<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.disabled.png" border="0" title="Editting Disabled - Content In Approval" />&nbsp;
+					<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.disabled.png" border="0" title="{#i18n_editdisabledinapproval_desc#}" />&nbsp;
 				{else}
 					<a class="mngmntlink text_mngmntlink" href="{link action=edit id=$textitem->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" /></a>
 				{/if}
 			{/if}
 			{if $textitem->approved != 1 && ($permissions.approve == 1 || $permissions.manage_approval == 1 || $permissions.edit == 1)}
-			<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=textitem m=textmodule s=$__loc->src action=summary}">View Approval</a>
+			<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=textitem m=textmodule s=$__loc->src action=summary}">{#i18n_viewapprovals#}</a>
 			{/if}
 			{if $permissions.manage_approval == 1 && ($textitem->id != 0 && $textitem->approved != 0)}
 				&nbsp;&nbsp;&nbsp;<a class="mngmntlink text_mngmntlink" href="{link module=workflow datatype=textitem m=textmodule s=$__loc->src action=revisions_view id=$textitem->id}">
-					Revisions
+					{#i18n_revisions#}
 				</a>
 			{/if}
 			{/permissions}

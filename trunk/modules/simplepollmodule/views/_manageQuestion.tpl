@@ -27,8 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _manageQuestion.tpl,v 1.2 2005/04/18 01:23:57 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="moduletitle">{$question->question}</div>
 
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
@@ -56,12 +59,12 @@
 {/if}
 </td></tr>
 {foreachelse}
-<tr><td colspan="2" align="center"><i>No answers found</i></td></tr>
+<tr><td colspan="2" align="center"><i>{#i18n_noitemsfound#}</i></td></tr>
 {/foreach}
 </table>
 <br />
 {if $permissions.manage_answer == 1}
-<a href="{link action=edit_answer question_id=$question->id}">New Answer</a>
+<a href="{link action=edit_answer question_id=$question->id}">{#i18n_create#}</a>
 <br />
 {/if}
 <br />

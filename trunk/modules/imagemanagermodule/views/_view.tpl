@@ -27,6 +27,7 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ *
  *}
 {$item->name}
 <br />

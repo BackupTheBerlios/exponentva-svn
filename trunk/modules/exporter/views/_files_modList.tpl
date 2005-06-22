@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _files_modList.tpl,v 1.4 2005/04/08 23:16:52 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Select Which Modules</div>
 <div class="form_header">
 Listed below are the module types that have uploaded files.  Select which type of modules you want to export the files for.
@@ -65,5 +69,5 @@ Listed below are the module types that have uploaded files.  Select which type o
 	</td>
 </tr>
 </table>
-<input type="submit" onClick="{literal}if (isOneSelected('mods[')) { return true; } else { alert('You must select at least one module to export files for.'); return false; }{/literal}" value="Export" />
+<input type="submit" onClick="{literal}if (isOneSelected('mods[')) { return true; } else { alert('You must select at least one module to export files for.'); return false; }{/literal}" value="{#i18n_submit#}" />
 </form>

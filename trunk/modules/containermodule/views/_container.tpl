@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _container.tpl,v 1.6 2005/05/05 19:09:25 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $container != null}
 	<a name="mod_{$container->id}"></a>
 	{if ($permissions.administrate == 1 || $permissions.edit_module == 1 || $permissions.delete_module == 1 || $permissions.add_module == 1 || $container->permissions.administrate == 1)}
@@ -42,22 +46,22 @@
 					<tr>
 						<td valign="top" class="info">
 							{$container->info.module}
-							{if $container->view != ""}<br />Shown in {$container->view} view{/if}
-							{if $container->info.workflowPolicy != ""}<br />Uses '{$container->info.workflowPolicy}' Workflow Policy{/if}
+							{if $container->view != ""}<br />{#i18n_shownin#} {$container->view} {#i18n_view#}{/if}
+							{if $container->info.workflowPolicy != ""}<br />{#i18n_uses#} '{$container->info.workflowPolicy}' {#i18n_workflowpolicy#}{/if}
 						</td>
 						<td align="right" valign="top">
 							{if $container->is_private == 1 && $permissions.administrate == 1}
-									<a href="{link action=userperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="Define which user(s) can see this module" alt="Define which user(s) can see this module" /></a>&nbsp;
-									<a href="{link action=groupperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="Define which group(s) can see this module" alt="Define which group(s) can see this module" /></a>
+									<a href="{link action=userperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="{#i18n_assignuserviewpermissionstomodule_desc#}" alt="{#i18n_assignuserviewpermissionstomodule_desc#}" /></a>&nbsp;
+									<a href="{link action=groupperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="{#i18n_assigngroupviewpermissionstomodule_desc#}" alt="{#i18n_assigngroupviewpermissionstomodule_desc#}" /></a>
 							{/if}
 							{if $permissions.edit_module == 1 || $container->permissions.administrate == 1}
 								<a href="{link action=edit id=$container->id}">
-									<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configuremodule.png" title="Change the layout of this {$container->info.module}" alt="Change the layout of this {$container->info.module}" />
+									<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configuremodule.png" title="{#i18n_editlayout_desc#} {$container->info.module}" alt="{#i18n_editlayout_desc#} {$container->info.module}" />
 								</a>
 							{/if}
 							{if $permissions.delete_module == 1 || $container->permissions.administrate == 1}
-								<a href="{link action=delete id=$container->id}" onClick="return confirm('Are you sure you want to delete this {$container->info.module}?');">
-									<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}deletemodule.png" title="Delete this {$container->info.module}" alt="Delete this {$container->info.module}" />
+								<a href="{link action=delete id=$container->id}" onClick="return confirm('{#i18n_delete_confirm#} {$container->info.module}?');">
+									<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}deletemodule.png" title="{#i18n_delete_desc#} {$container->info.module}" alt="{#i18n_delete_desc#} {$container->info.module}" />
 								</a>
 							{/if}
 							
@@ -85,7 +89,7 @@
 {else}
 	{permissions level=$smarty.const.UILEVEL_STRUCTURE}
 	{if $permissions.add_module == 1}
-		<a href="{link action=edit rank=$rank}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}add.png" title="Add a new module here" alt="Add a new module here" /></a>
+		<a href="{link action=edit rank=$rank}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}add.png" title="{#i18n_create_desc#}" alt="{#i18n_create_desc#}" /></a>
 	{/if}
 	{/permissions}
 {/if}

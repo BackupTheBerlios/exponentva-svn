@@ -27,15 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _modulemanager.tpl,v 1.2 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Manage Modules</div>
-<div class="form_header">This page lists all installed modules that Exponent recognizes, gives some information about each, and allows you to activate and deactivate specific modules.
-<br /><br />
-If you deactivate a module, existing modules of that type will still function, but users will not be able to create new modules of the type.  Active modules can be added to pages by users.
-<br /><br />
-Clicking the 'View Files' link will bring up a list of files that belog to the module type, along with file integrity checksums.
-<br /><br />
-The 'Manage Example Content' link lets you create sample content for the module.  This content will be used to populate the preview of the module when it is being added to a page.
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
+<div class="form_header">{#i18n_header#}
 <br /><br />
 To install a new module, use the <a class="mngmntlink administration_mngmntlink" href="{link action=upload_extension}">Extension Upload</a> form.</div>
 <hr size="1" />

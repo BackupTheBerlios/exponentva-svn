@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _groupmembership.tpl,v 1.4 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Group Membership</div>
 <div class="form_header">Use this form to manage which user accounts belong to the group  '{$group->name}'</div>
 
@@ -147,7 +151,7 @@
 <input type="hidden" name="action" value="gmgr_savemembers" />
 <input type="hidden" name="id" value="{$group->id}"/>
 <input type="hidden" id="membdata" name="membdata" value="" />
-<input type="submit" value="Save" onClick="serializeData(); return true;" />
+<input type="submit" value="{#i18n_submit#}" onClick="serializeData(); return true;" />
 <input type="button" value="Cancel" onClick="document.location.href = '{$__redirect}';" />
 </form>
 <br />

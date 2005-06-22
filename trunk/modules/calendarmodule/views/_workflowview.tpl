@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _workflowview.tpl,v 1.4 2005/02/19 00:32:30 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <h3>{$item->title}</h3>
 {if $item->is_allday}{$item->eventstart|format_date:$smarty.const.DISPLAY_DATE_FORMAT}
 {else}{$item->eventstart|format_date:"%b %e, $Y, %l:%M %P"} - {$item->eventend|format_date:"%l:%M %P"}

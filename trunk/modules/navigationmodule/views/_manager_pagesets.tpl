@@ -27,30 +27,32 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _manager_pagesets.tpl,v 1.2 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellpadding="0" cellspacing="0">
 <tr><td class="tab_btn">
-<a href="{link action=manage}">Hierarchy</a>
+<a href="{link action=manage}">{#i18n_sitehierarchy#}</a>
 </td><td class="tab_btn tab_btn">
-<a href="{link action=manage_standalone}">Standalone&nbsp;Pages</a>
+<a href="{link action=manage_standalone}">{#i18n_standalonepages#}</a>
 </td><td class="tab_btn tab_btn_current">
-<a href="{link action=manage_pagesets}">Pagesets</a>
-</td><td class="tab_spacer" width="50%">
-&nbsp;
+<a href="{link action=manage_pagesets}">{#i18n_pagesets#}</a>
+</td><td class="tab_spacer" width="50%">&nbsp;
+
 </td></tr>
 <tr><td colspan="4" class="tab_main">
  
-<div class="moduletitle navigation_moduletitle">Manage Pagesets</div>
+<div class="moduletitle navigation_moduletitle">{#i18n_formtitle#}</div>
 <div class="form_header">
-Pagesets are powerful tools to help you manage your site hierarchy.  A pageset is sort of like a sectional template layout - it allows you to define a commonly repeated structure as a miniature navigation hierarchy.  When you add a new section, you can set the page type to one of your Pagesets, and the sectional structure will be created for you, automatically.<br /><br />
-Another benefit of pagesets is default page content.  Any page in the page set can have modules on it, and the content of those modules is then copied to the newly created sections.
+{#i18n_header#}
 <br />
-<a class="mngmntlink navigation_mngmntlink" href="{link action=edit_template}">New Pageset</a>
+<a class="mngmntlink navigation_mngmntlink" href="{link action=edit_template}">{#i18n_create#}</a>
 </div>
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 <tr>
-	<td class="header navigation_header">Pageset Name</td>
+	<td class="header navigation_header">{#i18n_name#}</td>
 	<td class="header navigation_header"></td>
 </tr>
 {foreach from=$templates item=t}
@@ -59,12 +61,12 @@ Another benefit of pagesets is default page content.  Any page in the page set c
 <b>{$t->name}</b>
 </td><td>
 
-[ <a class="mngmntlink navigation_mngmntlink" href="{link action=view_template id=$t->id}">View</a> ]
-[ <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_template id=$t->id}">Properties</a> ]
-[ <a class="mngmntlink navigation_mngmntlink" href="{link action=delete_template id=$t->id}" onClick="return confirm('Are you sure you want to delete this template?');">Delete</a> ]
+[ <a class="mngmntlink navigation_mngmntlink" href="{link action=view_template id=$t->id}">{#i18n_view#}</a> ]
+[ <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_template id=$t->id}">{#i18n_properties#}</a> ]
+[ <a class="mngmntlink navigation_mngmntlink" href="{link action=delete_template id=$t->id}" onClick="return confirm('{#i18n_delete_confirm#}');">{#i18n_delete#}</a> ]
 </td></tr>
 {foreachelse}
-<tr><td><i>No pagesets found</i></td></tr>
+<tr><td><i>{#i18n_noitemsfound#}</i></td></tr>
 {/foreach}
 </table>
 

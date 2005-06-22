@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_edit.tpl,v 1.2 2005/02/19 00:32:36 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Resource{else}Upload A Resource{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 {if $is_edit == 0}
 <div class="form_header">
-To upload a file, click the browse button below, search your hard drive for the file, and then click OK.  Please note that large files may not upload properly, due to size limits imposed by the web server.
+{#i18n_header#}
 </div>
 {else}
 <hr size="1" />
 {/if}
-{if $dir_not_readable ==1}<i>You will not be able to upload new resources</i><br />{/if}
+{if $dir_not_readable ==1}<i>{#i18n_operation_error#}</i><br />{/if}
 {$form_html}

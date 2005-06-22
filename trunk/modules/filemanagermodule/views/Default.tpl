@@ -8,4 +8,4 @@
 	{/foreach}
 </ul>
 
-<a href="{link action=edit_collection}">New Collection</a>
+<a href="{link action=edit_collection}">{#i18n_create#}</a>

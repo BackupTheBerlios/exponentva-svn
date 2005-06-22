@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _recur_dates.tpl,v 1.5 2005/02/19 00:32:30 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {foreach from=$dates item=d}
 <tr class="row {cycle values='even_row,odd_row'}">
 	<td width="10">
@@ -52,8 +56,8 @@
 		}
 		</script>
 	{/literal}
-		<a class="mngmntlink calendar_mngmntlink" href="#" onClick="recur_selectUnselectAll(true); return false;">Select All</a>
+		<a class="mngmntlink calendar_mngmntlink" href="#" onClick="recur_selectUnselectAll(true); return false;">{#i18n_selectall#}</a>
 		&nbsp;/&nbsp;
-		<a class="mngmntlink calendar_mngmntlink" href="#" onClick="recur_selectUnselectAll(false); return false;">Unselect All</a>
+		<a class="mngmntlink calendar_mngmntlink" href="#" onClick="recur_selectUnselectAll(false); return false;">{#i18n_unselectall#}</a>
 	</td>
 </tr>

@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _profileextManager.tpl,v 1.4 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Active Extensions</div>
 <div class="form_header">Active Profile Extensions let users store more information in their profile.  Users will only be able to manage information governed by the active extensions listed below.</div>
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
@@ -63,7 +67,7 @@
 {foreachelse}
 	<tr>
 		<td colspan="2" align="center">
-			<i>No Active Extensions</i>
+			<i>{#i18n_noitemsfound#}</i>
 		</td>
 	</tr>
 {/foreach}

@@ -27,10 +27,14 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _cat_manageCategories.tpl,v 1.5 2005/02/19 00:32:30 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Manage Categories</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Below is a list of categories.
+{#i18n_header#}
 </div>
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 <tr>
@@ -76,9 +80,9 @@ Below is a list of categories.
 <tr>
 {foreachelse}
 <tr>
-	<td colspan="2" align="center"><i>No Categories</i></td>
+	<td colspan="2" align="center"><i>{#i18n_noitemsfound#}</i></td>
 </tr>
 {/foreach}
 </table>
 <br /><br />
-<a href="{link module=categories action=edit orig_module=$origmodule}" class="mngmntlink mngmntlink">New Category</a>
+<a href="{link module=categories action=edit orig_module=$origmodule}" class="mngmntlink mngmntlink">{#i18n_create#}</a>

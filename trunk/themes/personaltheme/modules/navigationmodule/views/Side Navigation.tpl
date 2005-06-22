@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Side\040Navigation.tpl,v 1.4 2005/02/26 05:21:24 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table width="85" border="0" cellspacing="0" cellpadding="0">
 	{foreach from=$sections item=section}
 	{if $section->depth == 0}
@@ -55,7 +59,7 @@
 	<tr><td align="center">
 	{permissions level=$smarty.const.UILEVEL_NORMAL}
 	{if $canManage == 1}
-	[ <a class="navlink" href="{link action=manage}">manage</a> ]
+	[ <a class="navlink" href="{link action=manage}">{#i18n_manage#}</a> ]
 	{/if}
 	{/permissions}
 	</td></tr>

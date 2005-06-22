@@ -27,8 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _contentSelector.tpl,v 1.4 2005/04/07 23:20:08 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- 
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $channel->is_open}
 <form method="post" action="">
 <input type="hidden" name="action" value="channel_pull" />
@@ -43,10 +46,10 @@
 	</div>
 	<br /><br />
 {foreachelse}
-	<div style="margin-left: auto; margin-right: auto; font-style: italic;">No News Items found.</div>
+	<div style="margin-left: auto; margin-right: auto; font-style: italic;">{#i18n_noitemsfound#}</div>
 {/foreach}
 {if $haveNews == 1}
-<input type="submit" value="Pull Selected" onClick="{literal}if (isOneSelected('item[newsitem')) return true; else { alert('You must select something.'); return false; }{/literal}" />
+<input type="submit" value="{#i18n_submit#}" onClick="{literal}if (isOneSelected('item[newsitem')) return true; else { alert('You must select something.'); return false; }{/literal}" />
 {/if}
 </form>
 {else}

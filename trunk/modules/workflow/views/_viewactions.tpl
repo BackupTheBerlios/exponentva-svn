@@ -27,10 +27,14 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _viewactions.tpl,v 1.4 2005/02/19 00:32:38 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Workflow Actions</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-This approval policy reacts to each type of action using the listed actions (in order)
+{#i18n_header#}
 </div>
 <table cellpadding="0" cellspacing="4" width="100%" border="0">
 {foreach from=$names item=name key=type}
@@ -75,13 +79,13 @@ This approval policy reacts to each type of action using the listed actions (in 
 {foreachelse}
 <tr>
 	<td colspan="4" align="center">
-		<i>No actions have been defined.</i><br />
+		<i>{#i18n_noitemsfound#}</i><br />
 	</td>
 </tr>
 {/foreach}
 <tr>
 	<td colspan="4" align="center">
-		<a class="mngmntlink workflow_mngmntlink" href="{link action=action_edit policy_id=$policy_id type=$type}">Add Action</a>
+		<a class="mngmntlink workflow_mngmntlink" href="{link action=action_edit policy_id=$policy_id type=$type}">{#i18n_create#}</a>
 	</td>
 </tr>
 {/foreach}

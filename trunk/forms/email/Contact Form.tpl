@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Contact\040Form.tpl,v 1.2 2005/02/19 00:34:17 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <form method="post" action="">
 <input type="hidden" name="module" value="{$module}"/>
 <input type="hidden" name="formname" value="{$formname}"/>
@@ -59,7 +63,7 @@
 </tr>
 <tr>
 	<td colspan="2">
-		<input type="submit" value="Send" />
+		<input type="submit" value="{#i18n_submit#}" />
 	</td>
 </tr>
 </table>

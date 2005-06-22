@@ -27,60 +27,64 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _add_whichtype.tpl,v 1.4 2005/04/03 07:57:14 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="moduletitle navigation_modultitle">Add New Page to Site Navigation</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="moduletitle navigation_modultitle">{#i18n_create_desc#}</div>
 <div class="form_header">
 {if $parent->id == 0}
-You are adding a new top-level page.
+{#i18n_header1#}
 {else}
-You are adding a new sub page to "{$parent->name}".
+{#i18n_header1#} "{$parent->name}".
 {/if}
-Please select the type of page you would like to add.
+{#i18n_header#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">
 <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_contentpage parent=$parent->id}">
-Content Page
+{#i18n_contentpage#}
 </a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-Content Pages are regular pages on the site that allow you to add modules to them.  With content pages, you are able to override the global Site Title, Site Description and Site Keywords settings.
+{#i18n_contentpage_info#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">
 <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_externalalias parent=$parent->id}">
-External Website Link
+{#i18n_externalpage#}
 </a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-If you need or want a link in your site hiearchy to link to some off-site webpage, create an External Link.
+{#i18n_externalpage_info#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">
 <a class="mngmntlink navigation_mngmntlink" href="{link action=edit_internalalias parent=$parent->id}">
-Internal Page Alias
+{#i18n_internalpage#}
 </a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-If you need or want a link to another page in your site hierarchy, use an internal page alias.
+{#i18n_internalpage_info#}
 </div>
 
 {if $havePagesets != 0}
 <div style="background-color: #CCC; padding: 5px;"><a class="mngmntlink navigation_mngmntlink" href="{link action=add_pagesetpage parent=$parent->id}">
-Pageset
+{#i18n_pageset#}
 </a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-Pagesets are powerful tools that allow you to create sections with default content and subsections by adding a single pageset.
+{#i18n_pageset_info#}
 </div>
 {/if}
 
 {if $haveStandalone != 0 && $isAdministrator == 1}
 <div style="background-color: #CCC; padding: 5px;"><a class="mngmntlink navigation_mngmntlink" href="{link action=move_standalone parent=$parent->id}">
-Move Standalone Page
+{#i18n_movestandalonepage#}
 </a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-Use this if you want to move a standalone page into the navigation hierarchy.
+{#i18n_movestandalonepage_info#}
 </div>
 {/if}

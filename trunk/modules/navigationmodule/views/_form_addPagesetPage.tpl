@@ -27,11 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_addPagesetPage.tpl,v 1.3 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Create a new Section from a Pageset</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Please select the pageset from the list below.
-<br /><br />
-Note: once you save, you will not be able to edit this information.  Using pagesets is a shortcut for creating a number of sections and giving them default content.
+{{#i18n_header#}
 </div>
 {$form_html}

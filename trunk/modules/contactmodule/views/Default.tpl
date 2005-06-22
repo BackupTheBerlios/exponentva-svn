@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $moduletitle != ""}<div class="moduletitle contact_moduletitle">{$moduletitle}</div>{/if}
 {if $numContacts != 0}
 <form method="post" action="">
@@ -37,37 +41,37 @@
 <input type="hidden" name="msg" value="_Default" />
 <table cellpadding="2" cellspacing="0" border="0">
 <tr>
-	<td width="10" style="width: 10px" valign="top">Email:</td>
+	<td width="10" style="width: 10px" valign="top">{#i18n_email#}:</td>
 	<td>
 		<input type="text" name="email" />
 	</td>
 </tr>
 <tr>
-	<td valign="top">Subject:</td>
+	<td valign="top">{#i18n_subject#}:</td>
 	<td>
 		<input type="text" name="subject" />
 	</td>
 </tr>
 <tr>
-	<td valign="top">Message:</td>
+	<td valign="top">{#i18n_message#}:</td>
 	<td>
 		<textarea name="message"></textarea>
 	</td>
 </tr>
 <tr>
 	<td colspan="2">
-		<input type="submit" value="Send" />
+		<input type="submit" value="{#i18n_submit#}" />
 	</td>
 </tr>
 </table>
 </form>
 {else}
 {if $smarty.const.PREVIEW_READONLY == 1 || $permissions.configure == 1}
-No contacts have been defined.  You will have to manage contacts for this Contact Form.<br /><br />
+{#i18n_operation_error#}<br /><br />
 {/if}
 {/if}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.configure == 1}
-<a class="mngmntlink contact_mngmntlink" href="{link action=manage_contacts}">Manage Contacts</a>
+<a class="mngmntlink contact_mngmntlink" href="{link action=manage_contacts}">{#i18n_manage#}<
 {/if}
 {/permissions}

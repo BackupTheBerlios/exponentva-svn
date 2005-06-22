@@ -27,13 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_edit.tpl,v 1.2 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit News Item{else}Post a new News Item{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/newsmodule.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/newsmodule.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
-The Publish and Unpublish dates are optional, and are not dependent on one another.  You can, for instance, specify a publish date without an Unpublish date.<br />
-<br />
-If you specify a Publish Date, the News Item will not appear on the site until that date and time.
-<br />
-If you specify an Unpublish Date, the News Item will disappear after that date and time.
+{#i18n_header#}
 </div>
 {$form_html}

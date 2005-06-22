@@ -27,8 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Top\040Nav.tpl,v 1.6 2005/04/26 04:41:40 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- {assign var=bar value=0}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{assign var=bar value=0}
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tnav">
 	<tr>
 		<td width="100%" align="left" valign="middle" class="tnav">
@@ -57,7 +61,7 @@
 		{/foreach}
 		{permissions level=$smarty.const.UILEVEL_NORMAL}
 		{if $canManage == 1}
-			&nbsp;[&nbsp;<a class="navlink" href="{link action=manage}">manage</a>&nbsp;]&nbsp;
+			&nbsp;[&nbsp;<a class="navlink" href="{link action=manage}">{#i18n_manage#}</a>&nbsp;]&nbsp;
 		{/if}
 		{/permissions}
 		</td>

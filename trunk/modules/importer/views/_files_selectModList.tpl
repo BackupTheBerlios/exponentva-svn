@@ -27,8 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _files_selectModList.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <form method="post" action="">
 <input type="hidden" name="module" value="importer" />
 <input type="hidden" name="action" value="page" />
@@ -46,6 +49,6 @@
 			<tr class="row {cycle values=even_row,odd_row}"><td></td><td>{$file}</td></tr>
 		{/foreach}
 	{/foreach}
-	<tr><td colspan="2"><input type="submit" value="Process" /></td></tr>
+	<tr><td colspan="2"><input type="submit" value="{#i18n_submit#}" /></td></tr>
 </table>
 </form>

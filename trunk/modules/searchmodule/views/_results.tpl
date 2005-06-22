@@ -27,12 +27,16 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _results.tpl,v 1.4 2005/02/19 00:32:36 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<b>Search Results</b>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<b>{#i18n_formtitle#}</b>
 <br />
-Your search for "{' '|join:$good_terms}" returned {$num_results} result{if $num_results != 1}s{/if}<br />
+{#i18n_youroperation#} "{' '|join:$good_terms}" {#i18n_returned#} {$num_results} {#i18n_result#}{if $num_results != 1}{#i18n_pluralsuffix#}{/if}<br />
 {if $have_excluded_terms != 0}
-<i>The following search terms were ignored: {', '|join:$excluded_terms}<br />
+<i>{#i18n_searchtermsignored#}: {', '|join:$excluded_terms}<br />
 {/if}
 {if $config->is_categorized == 0}{* not categorized, we just have a list of crap *}
 {foreach from=$results item=result}

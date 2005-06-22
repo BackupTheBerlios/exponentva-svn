@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view.tpl,v 1.5 2005/02/19 00:32:36 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table>
 <tr><td width="22" valign="top">
 	{if $mimetype->icon != ""}
@@ -38,50 +42,50 @@
 	<b>{$resource->name}</b><br />
 	{permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 	{if $permissions.administrate == 1 || $resource->permissions.administrate == 1}
-	<a class="mngmntlink resources_mngmntlink" href="{link action=userperms int=$resource->id _common=1}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}userperms.png" border="0" title="Assign user permissions on this Resource" alt="Assign user permissions on this Resource" /></a>
-	<a class="mngmntlink resources_mngmntlink" href="{link action=groupperms int=$resource->id _common=1}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}groupperms.png" border="0" title="Assign group permissions on this Resource" alt="Assign group permissions on this Resource" /></a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=userperms int=$resource->id _common=1}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}userperms.png" border="0" title="{#i18n_assignuserpermissionstomodule_desc#}" alt="{#i18n_assignuserpermissionstomodule_desc#}" /></a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=groupperms int=$resource->id _common=1}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}groupperms.png" border="0" title="{#i18n_assigngrouppermissionstomodule_desc#}" alt="{#i18n_assigngrouppermissionstomodule_desc#}" /></a>
 	{/if}
 	{/permissions}
 	{permissions level=$smarty.const.UILEVEL_NORMAL}
 	{if $permissions.edit == 1 || $resource->permissions.edit == 1}
-	<a class="mngmntlink resources_mngmntlink" href="{link action=edit id=$resource->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="Edit this Resource" alt="Edit this Resource" /></a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=edit id=$resource->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" /></a>
 	{/if}
 	{if $permissions.delete == 1 || $resource->permissions.delete == 1}
-	<a class="mngmntlink resources_mngmntlink" href="{link action=delete id=$resource->id}" onClick="return confirm('Are you sure you want to delete this Resource?');">
-		<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="Delete this Resource" alt="Delete this Resource" />
+	<a class="mngmntlink resources_mngmntlink" href="{link action=delete id=$resource->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
+		<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" />
 	</a>
 	{/if}
 	<br />
 	{if $resource->locked != 0 && $resource->flock_owner != $user->id && ($permissions.edit == 1 || $resource->permissions.edit == 1)}
 	<i>
-	This file is locked by {$resource->lock_owner->firstname} {$resource->lock_owner->lastname}
+	{#i18n_lockedby#} {$resource->lock_owner->firstname} {$resource->lock_owner->lastname}
 	{if $user->is_acting_admin != 1}
-	You will not be able to edit or update it.
+	<i>{#i18n_lock_info#}</i>
 	{/if}
 	</i>
 	<br />
 	{elseif $resource->locked != 0 && $resource->flock_owner == $user->id}
-	<i>You have locked this file.  Other users will not be able to update it until you unlock it.</i>
+	<i>{#i18n_locked_info#}</i>
 	<br />
 	{/if}
-	<a class="mngmntlink resources_mngmntlink" href="{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}">Download</a>
+	<a class="mngmntlink resources_mngmntlink" href="{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}">{#i18n_download#}</a>
 	{if $permissions.edit == 1 || $resource->permissions.edit == 1}
 	{if $resource->locked == 0}
 	&nbsp;|&nbsp;
-	<a class="mngmntlink resources_mngmntlink" href="{link action=updatefile id=$resource->id}">Update File</a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=updatefile id=$resource->id}">{#i18n_update#}</a>
 	&nbsp;|&nbsp;
-	<a class="mngmntlink resources_mngmntlink" href="{link action=changelock id=$resource->id}">Lock</a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=changelock id=$resource->id}">{#i18n_lock#}</a>
 	{elseif $resource->flock_owner == $user->id || $user->is_acting_admin == 1}
 	&nbsp;|&nbsp;
-	<a class="mngmntlink resources_mngmntlink" href="{link action=updatefile id=$resource->id}">Update File</a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=updatefile id=$resource->id}">{#i18n_update#}</a>
 	&nbsp;|&nbsp;
-	<a class="mngmntlink resources_mngmntlink" href="{link action=changelock id=$resource->id}">Unlock</a>
+	<a class="mngmntlink resources_mngmntlink" href="{link action=changelock id=$resource->id}">{#i18n_unlock#}</a>
 	{/if}
 	{/if}
 	{if $permissions.manage_approval == 1 || $resource->permissions.manage_approval == 1}
 		&nbsp;|&nbsp;
 		<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=resourceitem m=resourcesmodule s=$__loc->src action=revisions_view id=$resource->id}">
-			Revisions
+			{#i18n_revisions#}
 		</a>
 	{/if}
 	{/permissions}

@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _policymanager.tpl,v 1.4 2005/02/19 00:32:38 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- <div class="form_title">Manage Workflow Policies</div>
-<div class="form_header">Before you can begin to implement approval workflow on your site, you will need to define one or more workflow policies.</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
+<div class="form_header">{#i18n_header#}</div>
 <table cellpadding="2" cellspacing="0" width="100%" border="0">
 	<tr>
-		<td width="20%" class="header administration_header">Policy Name</td>
-		<td class="header administration_header">Description</td>
+		<td width="20%" class="header administration_header">{#i18n_policyname#}</td>
+		<td class="header administration_header">{#i18n_description#}</td>
 		<td width="40" class="header administration_header"></td>
 	</tr>
 	{foreach from=$policies item=policy}
@@ -47,14 +51,14 @@
 		<td valign="top">
 			<a class="mngmntlink administration_mngmntlink" href="{link action=admin_editpolicy id=$policy->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0"/></a>
 			<a class="mngmntlink administration_mngmntlink" href="{link action=admin_confirmdeletepolicy id=$policy->id}"><img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0"/></a>
-			<a class="mngmntlink administration_mngmntlink" href="{link action=admin_viewactions id=$policy->id}">Manage Actions</a>
+			<a class="mngmntlink administration_mngmntlink" href="{link action=admin_viewactions id=$policy->id}">{#i18n_manage#}<
 			<br />
 		</td>
 	</tr>
 	{foreachelse}
-		<tr><td colspan="3" align="center" style="font-style: italic">No policies have been defined.</td></tr>
+		<tr><td colspan="3" align="center" style="font-style: italic">{#i18n_noitemsfound#}</td></tr>
 	{/foreach}
 	<tr><td colspan="3">
-		<a class="mngmntlink administration_mngmntlink" href="{link action=admin_editpolicy}">New Policy</a>
+		<a class="mngmntlink administration_mngmntlink" href="{link action=admin_editpolicy}">{#i18n_create#}</a>
 	</td></tr>
 </table>

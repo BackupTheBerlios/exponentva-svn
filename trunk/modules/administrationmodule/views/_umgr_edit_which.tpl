@@ -27,44 +27,48 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _umgr_edit_which.tpl,v 1.2 2005/02/19 00:32:29 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Edit User "{$user->firstname} {$user->lastname} ({$user->username})"</div>
-<div class="form_caption">What would you like to do?</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#} "{$user->firstname} {$user->lastname} ({$user->username})"</div>
+<div class="form_caption">{#i18n_header#}</div>
 {* Lock / Unlock Account *}
 {if $user->is_locked}
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_lockuser id=$user->id value=0}">Unlock Account</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_lockuser id=$user->id value=0}">{#i18n_unlock#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-This account is locked.  The user will not be able to log in until you unlock it.
+{#i18n_unlock_info#}
 </div>
 {else}
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_lockuser id=$user->id value=1}">Lock Account</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_lockuser id=$user->id value=1}">{#i18n_lock#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-To prevent this user from logging in, you can lock the account.
+{#i18n_lock_info#}
 </div>
 {/if}
 
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_editprofile id=$user->id}">Edit Profile Information</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_editprofile id=$user->id}">{#18n_edititem#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-To change this user's real name, and other information stored in their profile, click the above link.
+{#18n_edititem_info#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_clearpass id=$user->id}">Clear Password</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_clearpass id=$user->id}">{#18n_clearpassword#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-If this user is unable to remember their password, and cannot use the password retrieval system, you can clear the account password here.  (This will reset it to nothing)
+{#18n_clearpassword_info#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_membership id=$user->id}">Manage Groups</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_membership id=$user->id}">{#i18n_assigntogroup#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-Assign this user to one or more (or zero) user groups, to ease permission management.
+{#i18n_assigntogroup_info#}
 </div>
 

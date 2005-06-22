@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _eql_tableList.tpl,v 1.5 2005/03/29 17:59:02 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Export Current Database</div>
 <div class="form_header">
 Listed below are all of the tables in your site database.  Select which tables you wish to export, and then click the 'Export Data' button.  Doing so will generate an EQL file (which you must save) that contains the data in the selected tables.  This file can be used later to restore the database to the current state.
@@ -86,7 +90,7 @@ Listed below are all of the tables in your site database.  Select which tables y
 <tr>
 	<td colspan="2">&nbsp;</td>
 	<td colspan="3">
-		<input type="submit" value="Export Data" onClick="{literal}if (isOneSelected('tables[')) { return true; } else { alert('You must select at least one table to export.'); return false; }{/literal}" />
+		<input type="submit" value="{#i18n_submit#}" onClick="{literal}if (isOneSelected('tables[')) { return true; } else { alert('You must select at least one table to export.'); return false; }{/literal}" />
 	</td>
 </tr>
 </table>

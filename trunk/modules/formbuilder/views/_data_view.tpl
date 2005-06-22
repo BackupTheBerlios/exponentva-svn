@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _data_view.tpl,v 1.5 2005/02/19 00:32:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {paginate objects=$items paginateName="dataView" modulePrefix="data" rowsPerPage=20}
 
 function links(object) {literal}{{/literal}
@@ -36,9 +40,11 @@ function links(object) {literal}{{/literal}
 	out += '{if $permissions.deletedata == 1}<a href="{link action=delete_record module=formbuilder}&id=' + object.var_id + '&form_id={$f->id}" onClick="return confirm(\'Are you sure you want to delete this record?\');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>{/if}'; 
 	
 	return out;
-{literal}}{/literal}
+{literal}}{/literal}
 
-{$sortfuncs}
+
+{$sortfuncs}
+
 
 {$columdef}
 

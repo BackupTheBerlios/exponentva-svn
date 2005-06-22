@@ -27,11 +27,15 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _final_message.tpl,v 1.2 2005/04/08 23:14:53 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $message == ''}
-Thank you for your submission
+{#i18n_submission_thankyou#}
 {else}
 {$message}
 {/if}
 <br /><br />
-<a href="index.php">Back</a>
+<a href="index.php">{#i18n_back#}</a>

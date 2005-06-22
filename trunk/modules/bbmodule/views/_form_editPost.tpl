@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editPost.tpl,v 1.4 2005/04/08 03:59:58 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Post{elseif $is_reply == 1}Post Reply{else}Start Thread{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit#}{elseif $is_reply == 1}{#i18n_createreply#}{else}{#i18n_create#}{/if}</div>
 <div class="form_header">
 {if $is_edit == 1}
-Please be considerate and respect the rights of others when editting posts.
+{#i18n_header1#}
 {else}
-Please be considerate of others when posting.
+{#i18n_header2#}
 {/if}
 </div>
 {$form_html}

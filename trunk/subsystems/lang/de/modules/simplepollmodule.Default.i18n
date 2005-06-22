@@ -1,0 +1,7 @@
+# i18n_assigngrouppermissionstomodule_desc = ''
+# i18n_assignuserpermissionstoitem_desc = ''
+# i18n_editconfig_desc = ''
+# i18n_manage = ''
+i18n_results = 'Ergebnisse'
+# i18n_submit = ''
+i18n_votingclosed_info = 'Die Abstimmung ist vorbei.'

@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _files_verifyFiles.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {assign var=haveFiles value=0}
 {assign var=failed value=0}
 {assign var=warn value=0}
@@ -50,7 +54,7 @@
 		{/if}
 	</td>
 </tr>
-{foreachelse}<tr><td colspan="2"><i>No Files found</i></td></tr>
+{foreachelse}<tr><td colspan="2"><i>{#i18n_noitemsfound#}</i></td></tr>
 {/foreach}
 {foreachelse}<tr><td colspan="2"><i>No Module Types Selected</i></td></tr>
 {/foreach}

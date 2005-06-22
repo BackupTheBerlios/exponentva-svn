@@ -27,10 +27,14 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _userpermissions.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Assign User Permissions</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_title#}</div>
 <div class="form_header">
-This form allows you to assign permissions on this module to a specific user.
+{#i18n_header#}
 </div>
 {capture assign="file"}{$smarty.const.BASE}modules/common/views/_permissions.tpl{/capture}
 {include file=$file}

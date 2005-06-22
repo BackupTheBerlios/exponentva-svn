@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _htmleditor.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <script language="javascript" src="{$smarty.const.PATH_RELATIVE}js/ImageManagerHTMLArea.js"></script>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" rules="rows" style="bortder: 1px solid lightgrey">
 {foreach from=$grid item=row}
@@ -44,6 +48,6 @@
 	{/foreach}
 	</tr>
 {foreachelse}
-	<tr><td>No images</td></tr>
+	<tr><td>{#i18n_noitemsfound#}</td></tr>
 {/foreach}
 </table>

@@ -1,0 +1,4 @@
+# i18n_email = ''
+# i18n_message = ''
+i18n_messagetitle = 'Überschrift der Nachricht'
+# i18n_subject = ''

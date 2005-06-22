@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _trimdatabaseWhich.tpl,v 1.1 2005/03/29 18:02:19 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">Trim Database</div>
 <div class="form_header">Exponent has examined the database and determined which tables are no longer being used.  Please select which ones you want to remove from the database.</div>
 <form method="post" action="">
@@ -44,7 +48,7 @@
 {$rowcount} {plural singular=Record plural=Records count=$rowcount}
 </td></tr>
 {foreachelse}
-<tr><td colspan="3"><b>No unused tables were found.</b></td></tr>
+<tr><td colspan="3"><b>{#i18n_noitemsfound#}</b></td></tr>
 {/foreach}
 {if $droppable_count != 0}
 <tr><td colspan="3">
@@ -52,7 +56,7 @@
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <a href="#" onClick="selectAll('tables[',false); return false; ">Deselect All</a>
 <br />
-<input type="submit" value="Delete Selected" onClick="{literal}if (isOneSelected('tables[')) { return true; } else { alert('You must select at least one table.'); return false; }{/literal}" />
+<input type="submit" value="{#i18n_submit#}" onClick="{literal}if (isOneSelected('tables[')) { return true; } else { alert('You must select at least one table.'); return false; }{/literal}" />
 </td></tr>
 {/if}
 </table>

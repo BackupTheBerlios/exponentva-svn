@@ -27,8 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _pm_blog_conf.tpl,v 1.2 2005/02/19 16:53:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <table cellspacing=0 width="100%">
 	<tr>
 		<td width="50%" align="left" valign="top">

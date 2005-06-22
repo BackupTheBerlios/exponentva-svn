@@ -27,8 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Marked\040Hierarchy.tpl,v 1.6 2005/04/26 04:41:40 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- <table cellpadding="1" cellspacing="0" border="0" width="100%">
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<table cellpadding="1" cellspacing="0" border="0" width="100%">
 {foreach from=$sections item=section}
 <tr><td style="padding-left: {math equation="x*20" x=$section->depth}px">
 {if $section->id == $current->id}
@@ -44,6 +48,6 @@
 </table>
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $canManage == 1}
-[ <a class="navlink" href="{link action=manage}">manage</a> ]
+[ <a class="navlink" href="{link action=manage}">{#i18n_manage#}</a> ]
 {/if}
 {/permissions}

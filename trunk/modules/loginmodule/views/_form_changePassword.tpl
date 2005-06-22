@@ -27,11 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_changePassword.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">Change Your User Account Password</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-You can use this form to change the password for your account.  To verify your identity (and keep other people from changing your password while you aren't looking) you must first enter your old password.
-<br /><br />
-If you have forgotten your password, you must contact an administrator to have it cleared.
+{#i18n_header#}
 </div>
 {$form_html}

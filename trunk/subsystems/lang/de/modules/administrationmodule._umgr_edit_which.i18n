@@ -1,0 +1,8 @@
+i18n_assigntogroup = 'Einer Gruppe Zuweisen'
+i18n_assigntogroup_info = 'Hier können Sie diesen Benutzer einer Gruppe zuordnen.'
+# i18n_formtitle = ''
+# i18n_header = ''
+# i18n_lock = ''
+# i18n_lock_info = ''
+# i18n_unlock = ''
+i18n_unlock_info = 'Nicht gesperrte Benutzer können sich auf der Webseite einloggen und die Funktionen nutzen für die sie eine Freigabe haben'

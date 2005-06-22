@@ -27,8 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: orphaned_content.tpl,v 1.3 2005/02/19 00:37:45 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
 		<title>{$smarty.const.SITE_TITLE} -- Archived Content</title>
@@ -65,7 +69,7 @@
 			<td width="80%" valign="top" style="border-left: 1px dashed #666;">
 			{if $error == ''}{$main_output}
 			{elseif $error == 'needmodule'}Please select a module from the left
-			{elseif $error == 'nomodule'}<i>No archived modules were found.</i>
+			{elseif $error == 'nomodule'}<i>{#i18n_noitemsfound#}</i>
 			{/if}
 			</td>
 		</tr>

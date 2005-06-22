@@ -27,13 +27,17 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _form_editCore.tpl,v 1.2 2005/02/19 00:32:37 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-<div class="form_title">{if $is_edit == 1}Edit Codebase{else}New Codebase{/if}</div>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
 {if $is_edit}
-You can only change the name of an existing Codebase.
+{#i18n_header1#}
 {else}
-This form allows you to register an Exponent installation as a Codebase, in order to deploy sites from it later.  Enter a descriptive name for the codebase, and the path to the root directory.
+{#i18n_header2#}
 {/if}
 </div>
 {$form_html}

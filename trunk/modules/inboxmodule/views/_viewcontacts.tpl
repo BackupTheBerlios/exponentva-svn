@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _viewcontacts.tpl,v 1.6 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="moduletitle inbox_moduletitle">Personal Contacts</div>
 <div style="border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 1em;">
 Here you can create contact lists and ban users.  Contact lists are like personal mailing lists which allow you to contact an entire group of people using one 'address'.
@@ -46,17 +50,17 @@ Here you can create contact lists and ban users.  Contact lists are like persona
 		<td valign="top">{$group->description}</td>
 		<td valign="top">
 			<a href="{link action=edit_list id=$group->id}">
-				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="Edit this Contact List" alt="Edit this Contact List" />
+				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" />
 			</a>
-			<a href="{link action=delete_list id=$group->id}" onClick="return confirm('Are you sure you want to delete this Contact List?');">
-				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="Delete this Contact List" alt="Delete this Contact List" />
+			<a href="{link action=delete_list id=$group->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
+				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" />
 			</a>
 		</td>
 	</tr>
 {foreachelse}
 	<tr>
 		<td colspan="4">
-		<i>No personal lists found</i>
+		<i>{#i18n_noitemsfound#}</i>
 		</td>
 	</tr>
 {/foreach}
@@ -84,7 +88,7 @@ Here you can create contact lists and ban users.  Contact lists are like persona
 {foreachelse}
 	<tr>
 		<td colspan="4">
-		<i>No blocked users found</i>
+		<i>{#i18n_noitemsfound#}</i>
 		</td>
 	</tr>
 {/foreach}

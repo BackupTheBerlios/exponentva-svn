@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _picker.tpl,v 1.1 2005/05/04 19:11:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <html>
 	<head>
 		<title>Testing Image Collections</title>
@@ -187,7 +191,7 @@
 						{/if}
 					</td>
 					{foreachelse}
-					<td><i>No files found.</i></td>
+					<td><i>{#i18n_noitemsfound#}</i></td>
 					{/foreach}
 				</tr>
 			</table>
@@ -197,7 +201,7 @@
 			<input type="hidden" name="collection_id" value="{$collection->id}" />
 			<input type="hidden" name="name" value="" />
 			Upload an Image: <input type="file" name="file" />
-			<input type="submit" value="Go" />
+			<input type="submit" value="{#i18n_submit#}" />
 			</form>
 		</div>
 	</body>

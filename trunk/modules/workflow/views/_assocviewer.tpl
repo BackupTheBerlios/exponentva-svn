@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _assocviewer.tpl,v 1.5 2005/03/28 21:57:40 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <br /><br />
 <hr size="1" />
 <div class="form_title">Manage Associations</div>
@@ -47,7 +51,7 @@ To override defaults, or apply a policy to just one module, click <a class="mngm
 	{assign var=def value=$defaults[$module]}
 <tr class="row {cycle values='odd,even'}_row">
 	<td>{$names[$module]}</td>
-	<td>{if $def != 0}{$policies[$def]->name}{else}<i>No Policy</i>{/if}</td>
+	<td>{if $def != 0}{$policies[$def]->name}{else}<i>{#i18n_noitemsfound#}</i>{/if}</td>
 	<td>
 		{if $policy_count != 0}
 		<a class="mngmntlink workflow_mngmntlink" href="{link action=assoc_edit m=$module p=$def}">

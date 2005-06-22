@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _sourcePicker.tpl,v 1.4 2005/02/19 00:32:38 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {foreach name=c from=$containers item=container}
 	{assign var=i value=$smarty.foreach.c.iteration}
 	<div class="container_editbox">
@@ -48,7 +52,7 @@
 						<br />
 						{if $container->info.supportsWorkflow}
 						{if $container->info.workflowUsesDefault == 1}Default: {/if}
-						{if $container->info.workflowPolicy != ""}{$container->info.workflowPolicy}{else}<i>No Workflow Policy</i>{/if}
+						{if $container->info.workflowPolicy != ""}{$container->info.workflowPolicy}{else}<i>{#i18n_noitemsfound#}</i>{/if}
 						{else}
 						
 						{/if}

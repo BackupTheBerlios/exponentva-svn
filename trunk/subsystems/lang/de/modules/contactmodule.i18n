@@ -1,0 +1,4 @@
+# i18n_edit_desc = ''
+# i18n_email = ''
+i18n_message = 'Nachricht'
+i18n_subject = 'Betreff'

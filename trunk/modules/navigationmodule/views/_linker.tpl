@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _linker.tpl,v 1.4 2005/02/19 00:32:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <html>
 	<head>
 		<meta type="Generator" value="Exponent Content Management System" />
@@ -41,7 +45,7 @@
 		</style>
 	</head>
 	<body>
-	<b>Site Hierarchy</b><hr size="1" />
+	<b>{#i18n_sitehierarchy#}</b><hr size="1" />
 		<table cellpadding="1" cellspacing="0" border="0" width="100%">
 		{foreach from=$sections item=section}
 		<tr><td style="padding-left: {math equation="x*20" x=$section->depth}px">
@@ -53,7 +57,7 @@
 		</table>
 	{if $haveStandalones}
 	<br /><br /><br />
-	<b>Standalone Pages</b><hr size="1" />
+	<b>{#i18n_standalonepages#}</b><hr size="1" />
 		<table cellpadding="1" cellspacing="0" border="0" width="100%">
 		{foreach from=$standalones item=section}
 		<tr><td style="padding-left: 20px">

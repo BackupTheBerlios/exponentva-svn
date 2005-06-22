@@ -27,10 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _lastreferencedelete.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <script type="text/javascript">
-{literal}
-if (confirm("It appears that no one else is using the content of this module.  Would you like to remove this content from the database?\n\nIf you do not remove it, it will be archived, and still available for reuse later.")) {
+if (confirm("{#i18n_delete_confirm#}")){literal} {
 	document.location = {/literal}"{link m=$iloc->mod s=$iloc->src i=$iloc->int action=delete_content}";{literal}
 } else document.location = {/literal}"{$redirect}";{literal}
 {/literal}

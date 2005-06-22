@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _view_gallery.tpl,v 1.10 2005/04/08 19:25:08 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UI_LEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}" title="Assign permissions on this Module"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}" title="Assign group permissions on this Module"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
+	<a href="{link action=userperms _common=1}" title="{#i18n_assignuserpermissionstoitem_desc#}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" /></a>
 {/if}
 {if $permissions.configure == 1}
-	<a href="{link action=configure _common=1}" title="Configure this Module"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
+	<a href="{link action=configure _common=1}" title="{#i18n_editconfig_desc#}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configure.png" /></a>
 {/if}
 {if $permissions.configure == 1 or $permissions.administrate == 1}
 	<br />
@@ -62,12 +66,12 @@ Page {$currentpage} of {$totalpages}<br />
 <input type="hidden" name="action" value="sort_images" />
 <input type="hidden" name="gid" value="{$gallery->id}" />
 <select name="sorting">
-	<option value="pathos_sorting_byNameAscending">By Name (Ascending)</option>
-	<option value="pathos_sorting_byNameDescending">By Name (Descending)</option>
-	<option value="pathos_sorting_byPostedAscending">By Creation Date (Ascending)</option>
-	<option value="pathos_sorting_byPostedDescending">By Creation Date (Descending)</option>
+	<option value="pathos_sorting_byNameAscending">{#i18n_sortbynameasc#}</option>
+	<option value="pathos_sorting_byNameDescending">{#i18n_sortbynamedesc#}</option>
+	<option value="pathos_sorting_byPostedAscending">{#i18n_sortbycreationdateasc#}</option>
+	<option value="pathos_sorting_byPostedDescending">{#i18n_sortbycreationdatedesc#}</option>
 </select>
-<input type="submit" value="Sort Images" />
+<input type="submit" value="{#i18n_submit#}" />
 </form>
 {/if}
 {/permissions}
@@ -101,7 +105,7 @@ Page {$currentpage} of {$totalpages}<br />
 					<a class="mngmntlink imagegallery_mngmntlink" href="{link action=edit_image id=$image->id}">
 						<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" />
 					</a>
-					<a class="mngmntlink imagegallery_mngmntlink" href="{link action=delete_image id=$image->id}" onClick="return confirm('Are you sure you want to delete this image?');">
+					<a class="mngmntlink imagegallery_mngmntlink" href="{link action=delete_image id=$image->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
 						<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" />
 					</a>
 					{if $smarty.foreach.i.last == false}
@@ -119,9 +123,9 @@ Page {$currentpage} of {$totalpages}<br />
 {/foreach}
 </table>
 <div style="clear: both; border-top: 2px dashed lightgrey">
-{if $currentpage != 1}<a href="{link action=view_gallery id=$gallery->id page=$prevpage view=$__view}">&lt; Previous</a>{/if}
+{if $currentpage != 1}<a href="{link action=view_gallery id=$gallery->id page=$prevpage view=$__view}">{#i18n_previous#}</a>{/if}
 {if $currentpage != 1 && $currentpage != $totalpages}&nbsp;&nbsp;|&nbsp;&nbsp;{/if}
-{if $currentpage != $totalpages}<a href="{link action=view_gallery id=$gallery->id page=$nextpage view=$__view}">Next &gt;</a>{/if}
+{if $currentpage != $totalpages}<a href="{link action=view_gallery id=$gallery->id page=$nextpage view=$__view}">{#i18n_next#}</a>{/if}
 {permissions level=$smarty.const.UI_LEVEL_NORMAL}
 {if $permissions.manage == 1}
 <br />
@@ -132,7 +136,7 @@ function validate(frm) {
 	var num = parseInt(frm.count.value);
 	
 	if (num <= 0 || isNaN(num)) {
-		alert("Please enter only positive, whole numbers.");
+		alert("{#i18n_positivenumbersonly_alert#}");
 		return false;
 	}
 	
@@ -148,7 +152,7 @@ function validate(frm) {
 <input type="hidden" name="src" value="{$__loc->src}" />
 <input type="hidden" name="gid" value="{$gallery->id}" />
 <input type="hidden" name="action" value="upload_multiple" />
-Upload Multiple files: <input type="text" size="3" name="count" value="3" /><input type="submit" value="Upload" />
+{#i18n_uploadmultiplefiles#}: <input type="text" size="3" name="count" value="3" /><input name="Submit" type="submit" value="{#i18n_submit#}" />
 </form>
 {/if}
 {/permissions}

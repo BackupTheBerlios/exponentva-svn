@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _reason_Default.tpl,v 1.2 2005/02/19 00:32:37 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- <html>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<html>
 	<head>
-		<title>Site Deactivated</title>
+		<title>{#i18n_formtitle#}</title>
 	</head>
 	<body>
 		<center>
-			<h1>This site has been deactivated</h1>
+			<h1>{#i18n_formtitle#}</h1>
 
 			{if $reason != ""}<hr size='1' />{/if}
 

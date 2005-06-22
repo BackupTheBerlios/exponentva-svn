@@ -27,12 +27,16 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _viewarticle.tpl,v 1.3 2005/03/13 18:57:28 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="article_title">{$article->title}</div>
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.manage == 1}
 	<a href="{link action=edit_article id=$article->id}"><img border="0" class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" /></a>
-	<a href="{link action=delete_article id=$article->id}" onClick="return confirm('Are you sure you want to delete this article?');"><img border="0" class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>
+	<a href="{link action=delete_article id=$article->id}" onClick="return confirm('{#i18n_delete_confirm#}');"><img border="0" class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>
 {/if}
 {/permissions}
 <br><br>

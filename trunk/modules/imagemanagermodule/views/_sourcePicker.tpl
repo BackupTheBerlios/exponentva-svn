@@ -27,7 +27,8 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _sourcePicker.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
-*}
+ *
+ *}
 {if $container->info.clickable && $container->info.class == "imagemanagermodule"}
 	<div class="container_editbox">
 		<div class="container_box">

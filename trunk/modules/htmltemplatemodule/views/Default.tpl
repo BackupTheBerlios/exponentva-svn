@@ -27,11 +27,15 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.6 2005/02/19 00:32:32 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="Assign user permissions on this HTML Template Editor" alt="Assign user permissions on this HTML Template Editor" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="Assign group permissions on this HTML Template Editor" alt="Assign group permissions on this HTML Template Editor" /></a>
+	<a href="{link action=userperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="{#i18n_assignuserpermissionstomodule_desc#}" alt="{#i18n_assignuserpermissionstomodule_desc#}" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="{#i18n_assigngrouppermissionstomodule_desc#}" alt="{#i18n_assigngrouppermissionstomodule_desc#}" /></a>
 	<br />
 {/if}
 {/permissions}
@@ -67,12 +71,12 @@ Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_
 		{permissions level=$smarty.const.UILEVEL_NORMAL}
 		{if $permissions.edit == 1}
 		<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=edit id=$t->id}">
-			<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="Edit this HTML Template" alt="Edit this HTML Template" />
+			<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" />
 		</a>
 		{/if}
 		{if $permissions.delete == 1}
-		<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=delete id=$t->id}" onClick="return confirm('Are you sure you want to delete this HTML Template?');">
-			<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="Delete this HTML Template" alt="Delete this HTML Template" />
+		<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=delete id=$t->id}" onClick="return confirm('{#i18n_delete_confirm#}');">
+			<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" />
 		</a>
 		{/if}
 		{/permissions}
@@ -80,7 +84,7 @@ Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_
 </tr>
 {foreachelse}
 <tr>
-	<td align="center"><i>No templates found.</i></td>
+	<td align="center"><i>{#i18n_noitemsfound#}</i></td>
 </tr>
 {/foreach}
 </table>

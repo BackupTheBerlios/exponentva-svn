@@ -27,14 +27,18 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: Default.tpl,v 1.3 2005/02/19 16:53:35 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
-	<a href="{link action=userperms _common=1}" title="Assign permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.gif" /></a>&nbsp;
-	<a href="{link action=groupperms _common=1}" title="Assign group permissions on this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.gif" /></a>
+	<a href="{link action=userperms _common=1}" title="{#i18n_assignuserpermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}userperms.gif" /></a>&nbsp;
+	<a href="{link action=groupperms _common=1}" title="{#i18n_assigngrouppermissionstomodule_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.gif" /></a>
 {/if}
 {if $permissions.configure == 1}
-	<a href="{link action=configure _common=1}" title="Configure this Module"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.gif" /></a>
+	<a href="{link action=configure _common=1}" title="{#i18n_editconfig_desc#}"><img border="0" src="{$smarty.const.ICON_RELATIVE}configure.gif" /></a>
 {/if}
 {if $permissions.configure == 1 or $permissions.administrate == 1}
 	<br />
@@ -49,7 +53,7 @@
 {math equation="x+1" x=$listing->rank assign=next}
 	<td align="center" valign="bottom">
 		{if $listing->picpath == ""}
-		<i>No picture available</i>
+		<i>{#i18n_noitemsfound#}</i>
 		{else}
 		<a href="{link action=view_listing id=$listing->id}">
 			<img border="0" src="{$listing->picpath}"/>
@@ -67,10 +71,10 @@
 		</a>
 		{/if}
 			
-		<a href="{link action=edit_listing id=$listing->id}" title="Edit this entry">
+		<a href="{link action=edit_listing id=$listing->id}" title="{#i18n_edit_desc#}">
 			<img border="0" src="{$smarty.const.ICON_RELATIVE}edit.gif" />
 		</a>
-		<a href="{link action=delete_listing id=$listing->id}" title="Delete this entry">
+		<a href="{link action=delete_listing id=$listing->id}" title="{#i18n_delete_desc#}">
 			<img border="0" src="{$smarty.const.ICON_RELATIVE}delete.gif" />
 		</a>
 		
@@ -86,13 +90,13 @@
 	{/if}
 	{if $smarty.foreach.a.iteration mod $__viewconfig.perrow == 0}</tr><tr><td>&nbsp;</td></tr><tr>{/if}
 {foreachelse}
-	<td align="center"><i>No listings found.</i></td>
+	<td align="center"><i>{#i18n_noitemsfound#}</i></td>
 {/foreach}
 </tr>
 </table>
 
 {if $permissions.administrate == 1}
 <br>
-<a href="{link action=edit_listing}">New Listing</a>
+<a href="{link action=edit_listing}">{#i18n_create#}</a>
 <br>
 {/if}

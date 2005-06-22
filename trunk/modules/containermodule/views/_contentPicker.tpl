@@ -27,7 +27,11 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _contentPicker.tpl,v 1.2 2005/04/06 18:52:46 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="container_editbox">
  
 	<div class="container_editheader">
@@ -38,13 +42,13 @@
 			<tr>
 				<td valign="top" class="info">
 					{$container->info.module}
-					{if $container->view != ""}<br />Shown in {$container->view} view{/if}
+					{if $container->view != ""}<br />{#i18n_shownin#} {$container->view} {#i18n_view#}{/if}
 				</td>
 				<td align="right" valign="top">
 					{if $container->info.clickable && $container->info.hasContent}
 					{*<a class="mngmntlink container_mngmnltink" href="{$dest}&ss={$container->info.source}&sm={$container->info.class}">*}
 					<a class="mngmntlink container_mngmnltink" href="{link action=content_selector module=$container->info.class src=$container->info.source channel_id=$dest}">
-					Select Content from this Module
+					{#i18n_usethis#}
 					</a>
 					{/if}
 				</td>

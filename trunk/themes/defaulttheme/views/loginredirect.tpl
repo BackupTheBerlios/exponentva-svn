@@ -27,8 +27,12 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: loginredirect.tpl,v 1.2 2005/02/19 00:37:08 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
- <html>
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+<html>
  <head>
 	<title>{$smarty.const.SITE_TITLE}</title>
 	<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}style.css" />

@@ -27,9 +27,13 @@
  * Boston, MA 02111-1307  USA
  *
  * $Id: _resetconfirm.tpl,v 1.3 2005/02/19 00:32:34 filetreefrog Exp $
+ * 2005/06/14 MaxxCorp
  *}
-{if $state == 'expired'}Your token has expired.
-{elseif $state == 'smtp_error'}Error sending confirmation message.  Contact an administrator.
-{elseif $state == 'sent'}Your new password has been emailed to you.
-{else}Strange error occurred.
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{if $state == 'expired'}{#i18n_operation_error1#}
+{elseif $state == 'smtp_error'}{#i18n_operation_error2#}
+{elseif $state == 'sent'}{#i18n_operation_success#}
+{else}{#i18n_operation_errordefault#}
 {/if}
