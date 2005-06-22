@@ -1,0 +1,126 @@
+2005-03-18  filetreefrog  <filetreefrog@scooby>
+
+	* ReleaseID, chlog.sh:
+	Added stuff for changelog generation using CVS logs
+
+	* ReleaseID, chlog.sh: New file.
+
+	* checks/module_functions.sh:
+	Tweaked the module_functions.sh script for performance
+
+2005-03-11  filetreefrog  <filetreefrog@scooby>
+
+	* buildFileReferences.php, highlighter.php, highlighter_proc.php:
+	Merging changes from 0.96.0 release
+
+2005-03-09  filetreefrog  <filetreefrog@scooby>
+
+	* highlighter.php, highlighter_proc.php:
+	Added code higlighter for documentation purposes
+
+	* highlighter.php, highlighter_proc.php: New file.
+
+	* buildFileReferences.php:
+	Replaced is_writable calls with is_really_writable (defined as a compat layer function, for windows writability)
+
+2005-02-26  filetreefrog  <filetreefrog@scooby>
+
+	* core_deps.php, subsys_deps.sh: Merge of RC2 changes
+
+2005-02-22  filetreefrog  <filetreefrog@scooby>
+
+	* subsys_deps.sh, core_deps.php: Added dep file checkers
+
+	* core_deps.php, subsys_deps.sh: New file.
+
+2005-02-21  filetreefrog  <filetreefrog@scooby>
+
+	* unclaimed_files.php:
+	Bugfix merge from 0.96rc1 (this is now 0.96.1 dev)
+
+	* unclaimed_files.php:
+	Removed compat directory from list of excluded files when checking unclaimed files.
+
+2005-02-19  filetreefrog  <filetreefrog@scooby>
+
+	* blanks/_form_default.tpl, blanks/config_datatype.php, blanks/datatype.php, blanks/formcontrol.php, blanks/license_placeholder.php, blanks/mod_action.php, blanks/mod_class.php, blanks/subsystem.info.php, blanks/theme_class.php:
+	Fixed copyright information
+	(2004-2005, stupid year change)
+
+2005-02-18  filetreefrog  <filetreefrog@scooby>
+
+	* versiontool/files_added.sh, versiontool/files_removed.sh:
+	Added release file comparison tools
+
+	* smarty_syntax.php: Added a view syntax checker
+
+2005-02-15  filetreefrog  <filetreefrog@scooby>
+
+	* unclaimed_files.php: Updated the unclaimed files script
+
+2005-02-14  filetreefrog  <filetreefrog@scooby>
+
+	* unclaimed_files.php: Updated the unclaimed files script
+
+2005-02-01  filetreefrog  <filetreefrog@scooby>
+
+	* blanks/theme_index_parts.php:
+	Updated blanks template for theme_index files
+
+2005-01-31  filetreefrog  <filetreefrog@scooby>
+
+	* testing/core/i18n.php, testing/core/spellcheck.php, testing/core/spellcheck.sh, testing/dist/boiler-php.sh, testing/dist/boiler-tpl.sh, testing/dist/boilers.sh:
+	Added some testing scripts
+
+	* blanks/view_parts.tpl: PNG Support
+
+2005-01-26  filetreefrog  <filetreefrog@scooby>
+
+	* tabledefs.php, tabledefs/0.95, tabledefs/0.96, compare.php:
+	Added table definition tracker and diff tool (for comparing table structure changes from version to version.
+
+2005-01-17  filetreefrog  <filetreefrog@scooby>
+
+	* blanks/undocumented_comment.php:
+	Added blank exdoc comment for undocumented functions
+
+	* checks/module_functions.sh:
+	Added module_functions checker script, for checking module implementation compliance
+
+2005-01-16  filetreefrog  <filetreefrog@scooby>
+
+	* environ.sh:
+	Added environment bootstrapping code for chmodding / creating views_c.
+
+	Changed final message in script to reflect new usage of the DEVELOPMENT constant.
+
+2005-01-13  filetreefrog  <filetreefrog@scooby>
+
+	* environ.sh:
+	Updated the environ script to remind developers to uncomment the define for DEVELOPMENT.  Also weeded out some nonsensical output (processing module : CVS)
+
+	* environ.sh: Fixing the environ script
+
+2005-01-12  filetreefrog  <filetreefrog@scooby>
+
+	* analysis/subsystems/datetime.txt:
+	Added formulaic analysis of the monthly recurring stuff (by weekday, which was all that needed analysis)
+
+2005-01-10  filetreefrog  <filetreefrog@scooby>
+
+	* analysis/README:
+	Starting to write analysis docs that analyze various algorithms and 'complicated' bits of code that require too much supplementary description and investigation to place in source code comments.  Most of these will be springboards and technical references for the Testing Documentation.
+
+	* analysis/subsystems/datetime.txt:
+	Added analysis of the datetime function pathos_datetime_recurringWeeklyDates()
+
+2005-01-09  filetreefrog  <filetreefrog@scooby>
+
+	* blanks/config_datatype.php, blanks/datatype.php, blanks/formcontrol.php, blanks/license_placeholder.php, blanks/mod_action.php, blanks/mod_class.php, blanks/subsystem.info.php, blanks/theme_class.php, blanks/view_parts.tpl:
+	Updating SDK
+
+2005-01-06  otte-o  <otte-o@scooby>
+
+	* blanks/_form_default.tpl, blanks/config_datatype.php, blanks/datatype.php, blanks/file_modules.php, blanks/form_header.html, blanks/formcontrol.php, blanks/info_warning_page.html, blanks/license_placeholder.php, blanks/logo.png, blanks/mod_action.php, blanks/mod_class.php, blanks/subsystem.info.php, blanks/theme_class.php, blanks/theme_index_parts.php, blanks/view_parts.tpl, badcvs, buildFileReferences.php, environ.sh, moduleRefs.sh, unclaimed_files.php, uncvs, COMPAT:
+	Adding the SDK stuff
+
