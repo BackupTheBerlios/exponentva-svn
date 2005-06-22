@@ -12,5 +12,5 @@
 # i18n_noitemsfound = ''
 i18n_pagesets = 'Seitensets'
 i18n_properties = 'Eigenschaften'
-i18n_sitehierarchy = 'Seitenhierarchy'
+i18n_sitehierarchy = 'Seitenhierarchie'
 i18n_standalonepages = 'Einzelseiten'

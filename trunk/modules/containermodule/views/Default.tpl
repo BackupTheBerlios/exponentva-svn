@@ -93,15 +93,15 @@
 							</td>
 							<td align="right" valign="top">
 								{if $container->is_private == 1 && $permissions.administrate == 1}
-									<a href="{link action=userperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="{#i18n_assignuserviewpermissionstomodule_desc#}" alt="{#i18n_assigngroupviewpermissionstomodule_desc#}" /></a>&nbsp;
-									<a href="{link action=groupperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="{#i18n_assigngroupviewpermissionstomodule_desc#}" alt="{#i18n_assigngroupviewpermissionstomodule_desc#}" /></a>
+									<a href="{link action=userperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}userperms.png" title="{#i18n_assignuserviewpermissionstoitem_desc#}" alt="{#i18n_assigngroupviewpermissionstoitem_desc#}" /></a>&nbsp;
+									<a href="{link action=groupperms _common=1 int=$container->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}groupperms.png" title="{#i18n_assigngroupviewpermissionstoitem_desc#}" alt="{#i18n_assigngroupviewpermissionstoitem_desc#}" /></a>
 								{/if}
 								{if $smarty.foreach.c.first == false}
 									{if $permissions.order_modules == 1}
 									{math equation='x - 2' x=$smarty.foreach.c.iteration assign=a}
 									{math equation='x - 1' x=$smarty.foreach.c.iteration assign=b}
 									<a href="{link action=order a=$a b=$b}">
-										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}up.png" title="{#i18n_up_desc#} {$container->info.module}" alt="{#i18n_up_desc#} {$container->info.module}"/>
+										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}up.png" title="{#i18n_up_desc#} - {$container->info.module}" alt="{#i18n_up_desc#} - {$container->info.module}"/>
 									</a>
 									{/if}
 								{/if}
@@ -109,18 +109,18 @@
 									{if $permissions.order_modules == 1}
 									{math equation='x - 1' x=$smarty.foreach.c.iteration assign=a}
 									<a href="{link action=order a=$a b=$smarty.foreach.c.iteration}">
-										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}down.png" title="{#i18n_down_desc#} {$container->info.module}" alt="{#i18n_down_desc#} {$container->info.module}" />
+										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}down.png" title="{#i18n_down_desc#} - {$container->info.module}" alt="{#i18n_down_desc#} - {$container->info.module}" />
 									</a>
 									{/if}
 								{/if}
 								{if $permissions.edit_module == 1 || $container->permissions.administrate == 1}
 									<a href="{link action=edit id=$container->id}">
-										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configuremodule.png" title="{#i18n_editlayout_desc#} {$container->info.module}" alt="{#i18n_editlayout_desc#} {$container->info.module}" />
+										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}configuremodule.png" title="{#i18n_editlayout_desc#} - {$container->info.module}" alt="{#i18n_editlayout_desc#} - {$container->info.module}" />
 									</a>
 								{/if}
 								{if $permissions.delete_module == 1 || $container->permissions.administrate == 1}
-									<a href="{link action=delete rerank=1 id=$container->id}" onClick="return confirm('{#i18n_delete_confirm#} {$container->info.module}?');">
-										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}deletemodule.png" title="{#i18n_delete_desc#} {$container->info.module}" alt="{#i18n_delete_desc#}  {$container->info.module}" />
+									<a href="{link action=delete rerank=1 id=$container->id}" onClick="return confirm('{#i18n_delete_confirm#} - {$container->info.module}');">
+										<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}deletemodule.png" title="{#i18n_delete_desc#} - {$container->info.module}" alt="{#i18n_delete_desc#}  {$container->info.module}" />
 									</a>
 								{/if}
 								
