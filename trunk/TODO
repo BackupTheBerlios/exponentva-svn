@@ -1,0 +1,78 @@
+TODO - Exponent Add-on Modules
+==============================
+
+
+articlemodule
+- Pagination, so that multiple-page articles can be created.
+
+
+bbmodule
+- REALLY in need of some formatting work
+- Avatars and some sort of forum karma would be nice.
+- Single Bulletin Board something-or-other would be nice.
+
+
+codemapmodule
+- Release?
+
+
+developermodule
+- Still in IMPLEMENTATION.
+
+
+
+donationmodule
+- Still in IMPLEMENTATION.
+
+
+
+faqmodule
+- ?
+
+
+
+greekingmodule
+- ?
+
+
+
+imagegallerymodule
+- Single Gallery view
+
+
+
+imageworkshopmodule
+- This is waiting on 0.97 and integration with the new File Manager Module
+
+
+
+linklistmodule
+- Testing and release
+
+
+
+listingmodule
+- Need to figure out exactly what this is supposed to be used for.
+
+
+
+pagemodule
+
+
+simplepollmodule
+- Release
+
+
+
+slideshowmodule
+
+
+
+tasklistmodule
+- Testing and release
+
+
+
+translatormodule
+- The i18n stuff really needs to be fully sorted out before this one can be released.
+
