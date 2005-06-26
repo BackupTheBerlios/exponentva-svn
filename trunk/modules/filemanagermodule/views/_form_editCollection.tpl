@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">{if $is_edit == 1}Edit Collection{else}New Collection{/if}</div>
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
-Enter the name of your collection, and a description of how it should be used (what files are stored here, etc.)
+{#i18n_header#}
 </div>
 {$form_html}

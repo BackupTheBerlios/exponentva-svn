@@ -34,7 +34,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {foreach from=$views item=view}
 <div style="border-top: 2px dashed #DDD">
-<b>{$view->view} View</b><br />
+<b>{$view->view}{#i18n_view#}</b><br />
 {$view->content}
 </div>
 {/foreach}

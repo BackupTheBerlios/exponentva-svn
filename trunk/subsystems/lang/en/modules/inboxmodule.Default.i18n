@@ -1,2 +1,6 @@
 # i18n_assigngrouppermissionstomodule_desc = ''
 # i18n_assignuserpermissionstomodule_desc = ''
+# i18n_back = ''
+# i18n_items = ''
+i18n_total = 'Total'
+# i18n_unread = ''

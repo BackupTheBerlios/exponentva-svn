@@ -68,10 +68,10 @@ function FlashInstalled()
 
 {if $noupload == 1}
 <div class="error">
-Uploads have been disabled.<br />
-{if $uploadError == $smarty.const.SYS_FILES_FOUNDFILE}Found a file in the directory path when creating the directory to store the files in.
-{elseif $uploadError == $smarty.const.SYS_FILES_NOTWRITABLE}Unable to create directory to store files in.
-{else}An unknown error has occurred.  Please contact the Exponent Developers.
+{#i18n_operation_error#}<br />
+{if $uploadError == $smarty.const.SYS_FILES_FOUNDFILE}{#i18n_operation_error1#}
+{elseif $uploadError == $smarty.const.SYS_FILES_NOTWRITABLE}{#i18n_operation_error2#}
+{else}{#i18n_operation_errordefault#}
 {/if}
 </div>
 {/if}
@@ -80,7 +80,7 @@ Uploads have been disabled.<br />
 	<tr>
 		<td align='{$data->_align}'>
 		{if $data->_noflash == 1}
-			No Flash file has been loaded.
+			{#i18n_noflashfile#}
 		{else}
 		<script language="javascript">
 			var flash_url = "{$data->_flashurl}";

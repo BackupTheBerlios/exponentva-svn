@@ -51,8 +51,8 @@
 	<td>Developer</td>
 	<td>
 		{if $stepstone->developer == ""}
-			This task has no developer.
-			{if $stepstone->contact != ""}<a href="{link action=contact id=$stepstone->id}">Volunteer</a>{/if}
+			{#i18n_noitemsfound#}
+			{if $stepstone->contact != ""}<a href="{link action=contact id=$stepstone->id}">{#i18n_volunteer#}</a>{/if}
 		{else}
 			{if $stepstone->contact != ""}<a href="{link action=contact id=$stepstone->id}">{$stepstone->developer}</a>
 			{else}{$stepstone->developer}
@@ -61,14 +61,14 @@
 	</td>
 </tr>
 <tr>
-	<td>Target Milestone</td>
+	<td>{#i18n_targetmilestone#}</td>
 	<td><a class="mngmntlink codemap_mngmntlink" href="{link action=milestone_view id=$stepstone->milestone_id}">
 	{$stepstone->milestone->name}
 	</a></td>
 </tr>
 <tr>
-	<td>Status</td>
-	<td>{if $stepstone->status == 0}Not Yet Started{elseif $stepstone->status == 1}In Progress{else}Completed{/if}</td>
+	<td>{#i18n_status#}</td>
+	<td>{if $stepstone->status == 0}{#i18n_notcomplete#}{elseif $stepstone->status == 1}{#i18n_inprogress#}{else}{#i18n_complete#}{/if}</td>
 </tr>
 </table>
 

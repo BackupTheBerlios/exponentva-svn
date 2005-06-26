@@ -1,2 +1,7 @@
 # i18n_assigngrouppermissionstomodule_desc = ''
 # i18n_assignuserpermissionstomodule_desc = ''
+i18n_noflashfile = 'No Flashfile'
+# i18n_operation_error = ''
+# i18n_operation_error1 = ''
+# i18n_operation_error2 = ''
+# i18n_operation_errordefault = ''

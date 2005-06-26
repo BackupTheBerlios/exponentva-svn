@@ -126,7 +126,7 @@ BLAH
 
 {if $permissions.administrate == 1}
 <br>
-<a href="{link action=edit_faq}">New FAQ Entry</a>
+<a href="{link action=edit_faq}">{#i18n_create#}</a>
 <br>
 {if $config->enable_categories == 1}
 <a href="{link module=categories action=manage orig_module=faqmodule}">{#i18n_managecategories#}</a>

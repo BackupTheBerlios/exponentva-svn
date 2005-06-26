@@ -71,6 +71,6 @@
 
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.manage_question == 1 || $permissions.manage_answer == 1}
-<a href="{link action=manage_questions}">{#i18n_manage#}<
+<a href="{link action=manage_questions}">{#i18n_manage#}</a>
 {/if}
 {/permissions}

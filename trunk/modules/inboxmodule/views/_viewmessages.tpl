@@ -32,14 +32,14 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<b>Private Messages for {$user->firstname} {$user->lastname}</b>
+<b>{#i18n_itemsfor#} {$user->firstname} {$user->lastname}</b>
 <br />
-{$totalMessages} messages, {$unreadMessages} unread.
+{$totalMessages} {#i18n_items#}, {$unreadMessages} {#i18n_unread#}.
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header inbox_header">Subject</td>
-		<td class="header inbox_header">Sender</td>
-		<td class="header inbox_header">Date Sent</td>
+		<td class="header inbox_header">{#i18n_subject#}</td>
+		<td class="header inbox_header">{#i18n_source#}</td>
+		<td class="header inbox_header">{#i18n_senton#}</td>
 		<td class="header inbox_header">&nbsp;</td>
 	</tr>
 {foreach from=$messages item=message}
@@ -65,6 +65,6 @@
 {/foreach}
 </table>
 <hr size="1" />
-<a class="mngmntlink inbox_mngmntlink" href="{link action=compose}">Compose Message</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=compose}">{#i18n_create#}</a>
 <br />
-<a class="mngmntlink inbox_mngmntlink" href="{link action=view_contacts}">Personal Contacts</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=view_contacts}">{#i18n_personalcontacts#}</a>

@@ -1,1 +1,6 @@
 # i18n_submit = ''
+# i18n_cancel = ''
+# i18n_formtitle = ''
+# i18n_header = ''
+# i18n_selectall = ''
+# i18n_unselectall = ''

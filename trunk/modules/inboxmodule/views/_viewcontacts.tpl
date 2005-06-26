@@ -32,16 +32,15 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="moduletitle inbox_moduletitle">Personal Contacts</div>
+<div class="moduletitle inbox_moduletitle">{#i18n_formtitle#}</div>
 <div style="border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 1em;">
-Here you can create contact lists and ban users.  Contact lists are like personal mailing lists which allow you to contact an entire group of people using one 'address'.
-</div>
+{#i18n_header#}</div>
 <br /><br />
-<b>Personal Lists</b>
+<b>{#i18n_personallist#}</b>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header inbox_header">List Name</td>
-		<td class="header inbox_header">Description</td>
+		<td class="header inbox_header">{#i18n_title#}</td>
+		<td class="header inbox_header">{#i18n_description#}</td>
 		<td class="header inbox_header"></td>
 	</tr>
 {foreach from=$groups item=group}
@@ -65,14 +64,14 @@ Here you can create contact lists and ban users.  Contact lists are like persona
 	</tr>
 {/foreach}
 </table>
-<a class="mngmntlink inbox_mngmntlink" href="{link action=edit_list}">Create New List</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=edit_list}">{#i18n_create#}</a>
 
 <hr size="1" />
-<b>Blocked Users</b>
+<b>{#i18n_blockedusers#}</b>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header inbox_header">Name</td>
-		<td class="header inbox_header">User Name</td>
+		<td class="header inbox_header">{#i18n_name#}</td>
+		<td class="header inbox_header">{#i18n_username#}</td>
 		<td class="header inbox_header"></td>
 	</tr>
 {foreach from=$banned item=contact}
@@ -80,8 +79,8 @@ Here you can create contact lists and ban users.  Contact lists are like persona
 		<td valign="top">{$contact->user->firstname} {$contact->user->lastname}</td>
 		<td valign="top">{$contact->user->username}</td>
 		<td valign="top">
-			<a href="{link action=unban id=$contact->id}" onClick="return confirm('Are you sure you want to unblock this user?');">
-				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="Unblock this user" alt="Unblock this user"/>
+			<a href="{link action=unban id=$contact->id}" onClick="return confirm('{#i18n_action_confirm#}');">
+				<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}delete.png" border="0" title="{#i18n_unblock#}" alt="{#i18n_unblock#}"/>
 			</a>
 		</td>
 	</tr>
@@ -93,6 +92,6 @@ Here you can create contact lists and ban users.  Contact lists are like persona
 	</tr>
 {/foreach}
 </table>
-<a class="mngmntlink inbox_mngmntlink" href="{link action=ban_user}">Block User</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=ban_user}">{#i18n_block#}</a>
 <hr size="1" />
-Back to <a class="mngmntlink inbox_mngmntlink" href="{link action=inbox}">Inbox</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=inbox}">{#i18n_back#}</a>

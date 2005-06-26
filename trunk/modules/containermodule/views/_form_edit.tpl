@@ -89,7 +89,7 @@ if (!document.body.appendChild) {
 			</tr>
 			{if $is_edit == 0}
 			<tr>
-				<td valign="top">S{#i18n_source#}</td>
+				<td valign="top">{#i18n_source#}</td>
 				<td style='padding-left: 5px;' valign="top">
 					<table cellpadding='0' cellspacing='0' border='0'>
 						<tr>
@@ -125,7 +125,7 @@ if (!document.body.appendChild) {
 				<input type="checkbox" name="is_private"{if $container->is_private == 1} {#i18n_checked#}{/if} />
 			</td></tr>
 			<tr><td valign="top">{#i18n_description#}:&nbsp;</td><td>
-				{i18n_description_info}
+				{#i18n_description_info#}
 				<textarea rows="5" cols="30" id="ta_description" {if $container->is_existing}{#i18n_disabled#}{/if} name="description">{$locref->description}</textarea>
 			</td></tr>
 			<tr><td></td><td>

@@ -72,7 +72,7 @@
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.create == 1}
 	<a class="mngmntlink imagegallery_mngmntlink" href="{link action=edit_gallery}">
-		New Gallery
+		{#i18n_create#}
 	</a>
 {/if}
 {/permissions}

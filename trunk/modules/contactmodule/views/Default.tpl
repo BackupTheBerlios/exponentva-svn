@@ -72,6 +72,6 @@
 {/if}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.configure == 1}
-<a class="mngmntlink contact_mngmntlink" href="{link action=manage_contacts}">{#i18n_manage#}<
+<a class="mngmntlink contact_mngmntlink" href="{link action=manage_contacts}">{#i18n_manage#}</a>
 {/if}
 {/permissions}

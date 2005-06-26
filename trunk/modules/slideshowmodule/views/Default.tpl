@@ -58,6 +58,6 @@ g_{$unique}_random = {$config->random};
 {/if}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.create_slide == 1 || $permissions.edit_slide == 1 || $permissions.delete_slide == 1}
-<a class="mngmntlink slideshow_mngmntlink" href="{link action=manage_slides}">{#i18n_manage#}<
+<a class="mngmntlink slideshow_mngmntlink" href="{link action=manage_slides}">{#i18n_manage#}</a>
 {/if}
 {/permissions}

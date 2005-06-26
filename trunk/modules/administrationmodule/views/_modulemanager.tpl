@@ -35,28 +35,28 @@
 <div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">{#i18n_header#}
 <br /><br />
-To install a new module, use the <a class="mngmntlink administration_mngmntlink" href="{link action=upload_extension}">Extension Upload</a> form.</div>
+To install a new module, use the <a class="mngmntlink administration_mngmntlink" href="{link action=upload_extension}">{#i18n_upload#}</a> form.</div>
 <hr size="1" />
-<a href="{link action=modmgr_activate all=1 activate=1}">Activate All Modules</a>
+<a href="{link action=modmgr_activate all=1 activate=1}">{#i18n_lockall#}</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="{link action=modmgr_activate all=1 activate=0}">Deactivate All Modules</a>
+<a href="{link action=modmgr_activate all=1 activate=0}">{#i18n_unlockall#}</a>
 <table cellpadding="4" cellspacing="0" border="0" width="100%">
 	{foreach from=$modules item=module}
 	<tr>
 		<td class="administration_modmgrheader"><b>{$module->name}</b> by {$module->author}</td>
-		<td class="administration_modmgrheader" align="right">{if $module->active == 1}<span class="active">Active</span>{else}<span class="inactive">Inactive</span>{/if}</td>
+		<td class="administration_modmgrheader" align="right">{if $module->active == 1}<span class="active">{#i18n_unlocked#}</span>{else}<span class="inactive">{#i18n_locked#}</span>{/if}</td>
 	</tr>
 	<tr>
 		<td colspan="3" class="administration_modmgrbody">
 			{if $module->active == 1}
-			<a class="mngmntlink administration_mngmntlink" href="{link action=modmgr_activate mod=$module->class activate=0}">Deactivate</a> this module to keep people from creating new ones.
+			<a class="mngmntlink administration_mngmntlink" href="{link action=modmgr_activate mod=$module->class activate=0}">{#i18n_lock#}</a> {#i18n_lock_info#}
 			{else}
-			<a class="mngmntlink administration_mngmntlink" href="{link action=modmgr_activate mod=$module->class activate=1}">Activate</a> this module to make it available to the Container Module
+			<a class="mngmntlink administration_mngmntlink" href="{link action=modmgr_activate mod=$module->class activate=1}">{#i18n_unlock#}</a> {#i18n_unlock_info#}
 			{/if}
 			<br />
-			<a class="mngmntlink administration_mngmntlink" href="{link module=info action=showfiles type=$smarty.const.CORE_EXT_MODULE name=$module->class}">View Files</a>
+			<a class="mngmntlink administration_mngmntlink" href="{link module=info action=showfiles type=$smarty.const.CORE_EXT_MODULE name=$module->class}">{#i18n_view#}</a>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
-			<a class="mngmntlink administration_mngmntlink" href="{link action=examplecontent name=$module->class}">Manage Example Content</a>
+			<a class="mngmntlink administration_mngmntlink" href="{link action=examplecontent name=$module->class}">{#i18n_manage#}</a>
 			<hr size="1"/>
 			{$module->description}
 		</td>

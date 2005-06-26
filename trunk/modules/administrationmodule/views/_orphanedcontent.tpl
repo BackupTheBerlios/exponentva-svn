@@ -32,7 +32,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="moduletitle">Archived Modules</div>
+<div class="moduletitle">{#i18n_formtitle#}</div>
 {foreach from=$modules key=class item=data}
 <div style="padding-left: 5px; border-top: 1px dashed #DDD; margin-top: 1em;">
 {$data.name}

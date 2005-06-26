@@ -1,1 +1,3 @@
 # i18n_delete_confirm = ''
+i18n_resize = 'Resize'
+i18n_rotate = 'Rotate'

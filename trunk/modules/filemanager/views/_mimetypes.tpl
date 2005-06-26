@@ -32,16 +32,15 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Manage File Types</div>
-<div class="form_header">Whenever a file is uploaded to the site, information about the file format (its MIME type) is stored.  Here, you can define what MIME types are recognized by the site, and optionally associate an icon with each type.
-<br /><br />
+<div class="form_title">}#i18n_formtitle#{</div>
+<div class="form_header">{#i18n_header#}<br /><br />
 To add support for a MIME type, use the <a class="mngmntlink administration_mngmntlink" href="{link module=filemanager action=admin_editmimetype}">New MIME Type</a> form.
 </div>
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 <tr>
-	<td class="header administration_header">MIME Type</td>
-	<td class="header administration_header">Name</td>
-	<td align="center" class="header administration_header">Icon</td>
+	<td class="header administration_header">{#i18n_type#}</td>
+	<td class="header administration_header">{#i18n_name#}</td>
+	<td align="center" class="header administration_header">{#i18n_icon#}</td>
 	<td class="header administration_header"></td>
 </tr>
 {foreach from=$types item=type}
@@ -63,4 +62,4 @@ To add support for a MIME type, use the <a class="mngmntlink administration_mngm
 {/foreach}
 </table>
 <br />
-<a class="mngmntlink administration_mngmntlink" href="{link module=filemanager action=admin_restoremimetypes}">Restore Defaults</a>
+<a class="mngmntlink administration_mngmntlink" href="{link module=filemanager action=admin_restoremimetypes}">{#i18n_restore#}</a>

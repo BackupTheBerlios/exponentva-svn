@@ -76,7 +76,7 @@
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.create_slide == 1}
 <a class="mngmntlink slideshow_mngmntlink" href="{link action=edit_slide}">
-	Create Slide
+	{#i18n_create#}
 </a>
 {/if}
 {/permissions}

@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Creae new Personal Contact</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Use this form to add a system user to your contacts list.
+{#i18n_header#}
 </div>
 {$form_html}

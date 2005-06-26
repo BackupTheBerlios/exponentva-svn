@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">{if $is_edit}Edit Group Account{else}Create Group Account{/if}</div>
+<div class="form_title">{if $is_edit}{#i18n_edit_desc#}{else}{#i18n_edit_desc#}{/if}</div>
 <div class="form_header">
-If you check the 'Default?' checkbox, user accounts created after this group is saved will be added to it.  This will not retro-actively add existing users to this group.
+{#i18n_header#}
 </div>
 {$form_html}

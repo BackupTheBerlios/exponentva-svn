@@ -57,7 +57,7 @@
 {$gallery->description}
 <hr size="1" />
 Page {$currentpage} of {$totalpages}<br />
-{$totalimages} image{if $totalimages != 1}s{/if} in gallery.
+{$totalimages} {#i18n_item#}{if $totalimages != 1}{#i18n_pluralsuffix#}{/if} {#i18n_in#} {#i18n_container#}.
 <br />
 {permissions level=$smarty.const.UI_LEVEL_NORMAL}
 {if $permissions.manage == 1}

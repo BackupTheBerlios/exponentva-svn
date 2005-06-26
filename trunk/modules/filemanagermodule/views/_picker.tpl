@@ -148,7 +148,7 @@
 	<body>
 		<div class="imagecollection_sidebar">
 			<ul>
-				<li><a href="?id=0"><i>Uncategorized</i></a></li>
+				<li><a href="?id=0"><i>{#i18n_notcategorized#}</i></a></li>
 				{foreach from=$collections item=collect}
 				<li><a href="?id={$collect->id}">{$collect->name}</a></li>
 				{/foreach}
@@ -187,7 +187,7 @@
 								{$file->name}
 							{/if}
 							<br />
-							<a href="#" onClick="window.opener.efm_pickedFile({$file->id},'{$file->directory}/{$file->filename}'); window.close(); return false;">Use</a>
+							<a href="#" onClick="window.opener.efm_pickedFile({$file->id},'{$file->directory}/{$file->filename}'); window.close(); return false;">{#i18n_usethis#}</a>
 						{/if}
 					</td>
 					{foreachelse}

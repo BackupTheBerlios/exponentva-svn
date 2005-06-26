@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Compose a Message</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-If you want to send this message to more than one user on the system, simply add their usernames to the list by highlighting them individually and clicking the '&gt;&gt;' button.
+{#i18n_header#}
 </div>
 {$form_html}

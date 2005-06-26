@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Group Membership</div>
-<div class="form_header">Use this form to manage which user accounts belong to the group  '{$group->name}'</div>
+<div class="form_title">{#i18n_formtitle#}</div>
+<div class="form_header">{#i18n_header#}  '{$group->name}'</div>
 
 
 {paginate objects=$users}
@@ -152,10 +152,10 @@
 <input type="hidden" name="id" value="{$group->id}"/>
 <input type="hidden" id="membdata" name="membdata" value="" />
 <input type="submit" value="{#i18n_submit#}" onClick="serializeData(); return true;" />
-<input type="button" value="Cancel" onClick="document.location.href = '{$__redirect}';" />
+<input type="button" value="{#i18n_cancel#}" onClick="document.location.href = '{$__redirect}';" />
 </form>
 <br />
 
-<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(true); return false;">Select All</a>
+<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(true); return false;">{#i18n_selectall#}</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(false); return false;">Unselect All</a>
+<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(false); return false;">{#i18n_unselectall#}</a>

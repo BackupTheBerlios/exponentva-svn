@@ -138,10 +138,10 @@
 <input type="hidden" name="id" value="{$user->id}"/>
 <input type="hidden" id="membdata" name="membdata" value="" />
 <input type="submit" value="{#i18n_submit#}" onClick="serializeData(); return true;" />
-<input type="button" value="Cancel" onClick="document.location.href = '{$__redirect}';" />
+<input type="button" value="{#i18n_cancel#}" onClick="document.location.href = '{$__redirect}';" />
 </form>
 <br />
 
-<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(true); return false;">Select All</a>
+<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(true); return false;">{#i18n_selectall#}</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(false); return false;">Unselect All</a>
+<a class="mngmntlink administration_mngmntlink" href="#" onClick="changeAll(false); return false;">{#i18n_unselectall#}</a>

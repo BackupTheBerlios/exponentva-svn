@@ -35,7 +35,7 @@
 <div class="moduletitle">{$question->question}</div>
 
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
-<tr><td class="header">Answer</td><td class="header"></td></tr>
+<tr><td class="header"{#i18n_answer#}</td><td class="header"></td></tr>
 {foreach name=loop from=$answers item=answer}
 <tr><td>
 {$answer->answer}
@@ -68,4 +68,4 @@
 <br />
 {/if}
 <br />
-<a href="{link action=manage_questions}">Back to Manager</a>
+<a href="{link action=manage_questions}">{#i18n_back#}</a>

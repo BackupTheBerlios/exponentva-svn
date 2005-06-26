@@ -32,11 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Manage Group Accounts</div>
-<div class="form_header">Groups are used to treat a set of users as a single entity, mostly for permission management.  This form allows you to determine which users belong to which groups, create new groups, modify existing groups, and remove groups.
-<br /><br />
-When a new user account is created, it will be automatically added to all groups with a Type of 'Default'
-{if $perm_level == 2}
+<div class="form_title">{#i18n_formtitle#}</div>
+<div class="form_header">{#i18n_header#}
 <br /><br />
 To create a new group, use the <a class="mngmntlink administration_mngmntlink" href="{link action=gmgr_editprofile id=0}">New Group Account</a> form.
 {/if}

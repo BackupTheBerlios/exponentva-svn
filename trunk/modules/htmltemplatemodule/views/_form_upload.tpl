@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Upload HTML Template</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-This form allows you to upload an HTML file from your computer, and then use the contents of that file as a template
+{#i18n_header#}
 </div>
 {$form_html}

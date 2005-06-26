@@ -42,6 +42,6 @@
 	<br />
 {/if}
 {/permissions}
-You have {$unreadMessages} unread messages<br />
-{$totalMessages} total messages<br />
-<a class="mngmntlink inbox_mngmntlink" href="{link action=inbox}">Inbox</a>
+{$unreadMessages} {#i18n_unread#} {#i18n_items#}<br />
+{$totalMessages} {#i18n_total#} {#i18n_items#}<br />
+<a class="mngmntlink inbox_mngmntlink" href="{link action=inbox}">{#i18n_back#}\</a>

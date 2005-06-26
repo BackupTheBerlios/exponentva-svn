@@ -32,7 +32,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Resize {$original->name}</div>
+<div class="form_title">{#i18n_resize#} {$original->name}</div>
 <div class="form_header">
 
 	<img src="{$smarty.const.PATH_RELATIVE}thumb.php?id={$original->file_id}&constraint=1&width=400&height=400" style="border: 1px solid black;"/>

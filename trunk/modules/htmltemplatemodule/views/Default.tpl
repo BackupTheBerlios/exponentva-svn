@@ -42,22 +42,22 @@
 {if $moduletitle != ""}<div class="moduletitle htmltemplate_moduletitle">{$moduletitle}</div>{/if}
 {if $noupload == 1}
 <div class="error">
-Uploads have been disabled.<br />
-{if $uploadError == $smarty.const.SYS_FILES_FOUNDFILE}Found a file in the directory path when creating the directory to store the files in.
-{elseif $uploadError == $smarty.const.SYS_FILES_NOTWRITABLE}Unable to create directory to store files in.
-{else}An unknown error has occurred.  Please contact the Exponent Developers.
+{#i18n_operation_error#}<br />
+{if $uploadError == $smarty.const.SYS_FILES_FOUNDFILE}{#i18n_operation_error1#}
+{elseif $uploadError == $smarty.const.SYS_FILES_NOTWRITABLE}{#i18n_operation_error2#}
+{else}{#i18n_operation_errordefault#}
 {/if}
 </div>
 <br />
 {else}
-Uploads are enabled.<br />
+{#i18n_operation_success#}<br />
 {/if}
 {* Association manager currently not properly working
-Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_assocs}">Association Manager</a>
+<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_assocs}">{#i18n_association#} {#i18n_manager#}</a>
 *}
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 <tr>
-	<td class="header htmltemplate_header">Template Name</td>
+	<td class="header htmltemplate_header">{#i18n_name#}</td>
 	<td class="header htmltemplate_header">&nbsp;</td>
 </tr>
 {foreach from=$templates item=t}
@@ -91,9 +91,9 @@ Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.create == 1}
 <hr size="1" />
-<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=edit}">Create New Template</a>
+<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=edit}">{#i18n_create#}</a>
 &nbsp;&nbsp;
-<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=upload}">Upload Template</a>
+<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=upload}">{#i18n_upload#}</a>
 <br />
 {/if}
 {/permissions}

@@ -1,3 +1,7 @@
 # i18n_delete_confirm = ''
 # i18n_delete_desc = ''
 # i18n_edit_desc = ''
+# i18n_formtitle = ''
+# i18n_header = ''
+i18n_manager = 'Manager'
+# i18n_noitemsfound = ''

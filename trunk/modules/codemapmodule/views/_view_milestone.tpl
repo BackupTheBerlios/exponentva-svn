@@ -52,9 +52,9 @@
 <table cellpadding="0" cellspacing="2" border="0">
 {foreach from=$stepstones item=s}
 <tr><td><a class="mngmntlink codemap_mngmntlink" href="{link action=stepstone_view id=$s->id}">{$s->name}</a></td>
-{if $s->status == 2}<td align="right" style="color: green"><b>Completed</b></td>
-{elseif $s->status == 1}<td align="right" style="color: blue"><b>In Progress</b></td>
-{else}<td align="right" style="color: red"><b>Not Completed</b></td>
+{if $s->status == 2}<td align="right" style="color: green"><b>{#i18n_complete#}</b></td>
+{elseif $s->status == 1}<td align="right" style="color: blue"><b>{#i18n_inprogress#}</b></td>
+{else}<td align="right" style="color: red"><b>{#i18n_notcomplete#}</b></td>
 {/if}
 </tr>
 <tr><td colspan="2">

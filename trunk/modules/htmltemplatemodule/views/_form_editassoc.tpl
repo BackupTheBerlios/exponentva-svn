@@ -32,8 +32,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Associate HTML Template to a Module</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Pick the module below to associate the template to it.
-</div>
+{#i18n_header#}</div>
 {$form_html}

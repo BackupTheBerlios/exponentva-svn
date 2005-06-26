@@ -4,3 +4,7 @@
 # i18n_delete_confirm = ''
 # i18n_editconfig_desc = ''
 # i18n_noitemsfound = ''
+# i18n_complete = ''
+# i18n_item = ''
+# i18n_items = ''
+# i18n_notcomplete = ''

@@ -32,8 +32,8 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Block User</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-Use this form to block a user from contacting you.  You will be unable to contact any users you have blocked.
+{#i18n_header#}
 </div>
 {$form_html}

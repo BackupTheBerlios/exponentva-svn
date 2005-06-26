@@ -35,7 +35,7 @@
 {if $error == ''}
 {$code}
 {elseif $error == 'security'}
-<div class="error">Security Problem.  You cannot view code outside of this site.</div>
+<div class="error">{#i18n_operation_error1#}</div>
 {elseif $error == 'invalid'}
-<div class="error">Only PHP and Smarty template files can be viewed.</div>
+<div class="error">{#i18n_operation_error2#}</div>
 {/if}

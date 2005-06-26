@@ -33,14 +33,14 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 {if $template_count == 0}
-<div style="font-style: italic;">Note: No templates have been defined.  You will have to define one or more approval policies before you can associate them with modules.</div>
+<div style="font-style: italic;">{#i18n_noitemsfound#}</div>
 <hr size="1"/>
 {/if}
-Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_templates}">Template Manager</a>
+<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_templates}">{#i18n_template#} {#i18n_manager#}</a>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 	<td width="5%" style="border-right: 2px solid darkgrey;">&nbsp;</td>
-	<td width="65%" class="header htmltemplate_header" style="padding-left: 10px;">Template</td>
+	<td width="65%" class="header htmltemplate_header" style="padding-left: 10px;">{#i18n_template#}</td>
 	<td width="30%" colspan="2" class="header htmltemplate_header" style="padding-left: 10px; border-right: 2px solid darkgrey;"></td>
 </tr>
 {foreach name=s from=$modules item=module key=class}
@@ -48,7 +48,7 @@ Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_
 <td colspan="2" style="padding: 4px; background-color: lightgrey; font-weight: bold">{$module->name}</td>
 <td colspan="2" align="right" style="padding: 4px; background-color: lightgrey;">
 	{if $template_count != 0}
-	<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=edit_assoc mod=$class}">Associate Template</a>
+	<a class="mngmntlink htmltemplate_mngmntlink" href="{link action=edit_assoc mod=$class}">{#i18n_edit#}</a>
 	{/if}
 </td>
 </tr>
@@ -68,7 +68,7 @@ Jump to <a class="mngmntlink htmltemplate_mngmntlink" href="{link action=manage_
 		<tr>
 			<td width="5%" style="border-right: 2px solid darkgrey;">&nbsp;</td>
 			<td colspan="3" align="center" style="font-style: italic; border-right: 2px solid darkgrey;{if $smarty.foreach.s.last == 1} border-bottom: 2px solid darkgrey;{/if}">
-				No templates have been associated with this module.<br />
+				{#i18n_noitemsfound#}.<br />
 			</td>
 		</tr>
 	{/foreach}

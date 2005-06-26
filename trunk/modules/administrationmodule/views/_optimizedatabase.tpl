@@ -32,10 +32,10 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Optimize Database</div>
-<div class="form_header">Exponent is running table optimization right now, to rebuild the internal structure of your database.  With large sites or sites that change regularly, this optimization can enhance the overall performance and responsiveness of the site.</div>
+<div class="form_title">{#i18n_formtitle#}</div>
+<div class="form_header">{#i18n_header#}</div>
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
-<tr><td class="header administration_header">Table Name</td><td class="header administration_header" align="right">Size of Data (kb)</td></tr>
+<tr><td class="header administration_header">{#i18n_name#}</td><td class="header administration_header" align="right">{#i18n_size#} (kb)</td></tr>
 {foreach from=$before key=table item=info}
 	<tr class="row {cycle values='odd,even'}_row">
 	<td>{$table}</td>

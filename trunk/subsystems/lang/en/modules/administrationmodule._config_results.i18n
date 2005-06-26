@@ -1,0 +1,4 @@
+# i18n_back = ''
+# i18n_operation_error = ''
+i18n_operation_failure = 'The operation failed'
+# i18n_operation_success = ''

@@ -100,8 +100,8 @@
 <tr><td align="center"><i>{#i18n_noitemsfound#}</i></td></tr>
 {/foreach}
 </table>
-{$num_completed} {plural count=$num_completed singular="task has" plural="tasks have"} been completed.<br />
-{$num_uncompleted} {plural count=$num_uncompleted singular="task is" plural="tasks are"} not completed.<br />
+{$num_completed} {plural count=$num_completed singular="`$smarty.config.i18n_item`" plural="`$smarty.config.i18n_item`"} {#i18n_complete#}.<br />
+{$num_uncompleted} {plural count=$num_uncompleted singular="`$smarty.config.i18n_item`" plural="`$smarty.config.i18n_items`"} {#i18n_notcomplete#}.<br />
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.create == 1}
 <a href="{link action=edit_task}">{#i18n_create#}</a>

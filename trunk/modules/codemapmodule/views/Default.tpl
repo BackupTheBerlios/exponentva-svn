@@ -50,7 +50,7 @@
 		{foreach from=$milestones item=m}
 		<td style="background-color: black"></td>
 		{/foreach}
-		<td align="center" style="background-color: black; color: white">Developer</td>
+		<td align="center" style="background-color: black; color: white">{#i18n_developer#}</td>
 	</tr>
 	<tr>
 		<td></td>
@@ -94,7 +94,7 @@
 		{/foreach}
 		<td align="center">
 		{if $s->developer == ""}
-			{if $s->contact != ""}( <a href="{link action=contact id=$s->id}" class="mngmntlink codemap_mngmntlink">Volunteer</a> ){/if}
+			{if $s->contact != ""}( <a href="{link action=contact id=$s->id}" class="mngmntlink codemap_mngmntlink">{#i18n_volunteer#}</a> ){/if}
 		{else}
 			{if $s->contact != ""}<a href="{link action=contact id=$s->id}" class="mngmntlink codemap_mngmntlink">{$s->developer}</a>
 			{else}{$s->developer}

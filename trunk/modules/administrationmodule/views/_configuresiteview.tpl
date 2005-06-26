@@ -32,9 +32,9 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">Configure Site</div>
+<div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-This form lets you determine site-wide behavior.  Be especially careful when dealing with database settings, as you can quite easily lock yourself out of the site by switching databases.
+{#i18n_header#}
 </div>
 {$form_html}
 {if $smarty.const.CURRENTCONFIGNAME == $configname}
@@ -47,13 +47,13 @@ This form lets you determine site-wide behavior.  Be especially careful when dea
 		<i>(You cannot activate this profile - the active configuration file is unwritable.)</i><br />
 	{/if}
 	{if $candelete == 1}
-		[ <a class="mngmntlink administration_mngmntlink" href="{link action=run m=administrationmodule action=config_delete configname=$configname}">Delete</a> ]
+		[ <a class="mngmntlink administration_mngmntlink" href="{link action=run m=administrationmodule action=config_delete configname=$configname}">{#i18n_delete#}</a> ]
 	{elseif $configname != ""}
 		<i>(You cannot delete this profile - the profile configuration file is unwritable.)</i><br />
 	{/if}
 {/if}
 {if $canedit == 1}
-	[ <a class="mngmntlink administration_mngmntlink" href="{link action=run m=administrationmodule action=config_configuresite configname=$configname}">Edit</a> ]
+	[ <a class="mngmntlink administration_mngmntlink" href="{link action=run m=administrationmodule action=config_configuresite configname=$configname}">{#i18n_edit#}</a> ]
 {elseif $configname != ""}
 	<i>(You cannot edit or delete this profile - the profile's configuration file is unwritable.)</i>
 {/if}
