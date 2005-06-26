@@ -118,7 +118,7 @@
 				<td>{$current->_width}</td>
 			</tr>
 			<tr>
-				<td style="font-weight: bold; background-color: #CCC;">{#i18n_heigth#}:</td>
+				<td style="font-weight: bold; background-color: #CCC;">{#i18n_height#}:</td>
 				<td>{$current->_height}</td>
 			</tr>
 			<tr>

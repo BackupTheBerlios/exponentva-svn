@@ -1,0 +1,7 @@
+# i18n_complete = ''
+# i18n_inprogress = ''
+# i18n_noitemsfound = ''
+# i18n_notcomplete = ''
+i18n_status = 'Status'
+i18n_targetmilestone = 'Ziel'
+# i18n_volunteer = ''
