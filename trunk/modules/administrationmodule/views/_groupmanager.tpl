@@ -35,6 +35,7 @@
 <div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">{#i18n_header#}
 <br /><br />
+{if $perm_level == 2}
 To create a new group, use the <a class="mngmntlink administration_mngmntlink" href="{link action=gmgr_editprofile id=0}">New Group Account</a> form.
 {/if}
 </div>
