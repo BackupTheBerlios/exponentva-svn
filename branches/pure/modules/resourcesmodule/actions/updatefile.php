@@ -28,12 +28,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: updatefile.php,v 1.7 2005/04/18 15:50:33 filetreefrog Exp $
+# $Id: updatefile.php,v 1.8 2005/07/04 08:13:10 hanswolters Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
-$item = $db->selectObject('resourceitem','id='.$_GET['id']);
+$item = $db->selectObject('resourceitem','id='.(int)$_GET['id']);
 if ($item) {
 	$loc = unserialize($item->location_data);
 	$iloc = pathos_core_makeLocation($loc->mod,$loc->src,$item->id);

@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: save.php,v 1.5 2005/04/18 15:24:57 filetreefrog Exp $
+# $Id: save.php,v 1.6 2005/07/04 08:20:10 hanswolters Exp $
 ##################################################
 //GREP:HARDCODEDTEXT
 if (!defined("PATHOS")) exit("");
@@ -36,7 +36,7 @@ if (!defined("PATHOS")) exit("");
 $resource = null;
 $iloc = null;
 if (isset($_POST['id'])) {
-	$resource = $db->selectObject("resourceitem","id=".$_POST['id']);
+	$resource = $db->selectObject("resourceitem","id=".(int)$_POST['id']);
 	$loc = unserialize($resource->location_data);
 	$iloc = pathos_core_makeLocation($loc->mod,$loc->src,$resource->id);
 }

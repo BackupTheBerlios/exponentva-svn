@@ -28,12 +28,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete.php,v 1.3 2005/03/29 16:56:26 filetreefrog Exp $
+# $Id: delete.php,v 1.4 2005/07/04 08:20:10 hanswolters Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
-$resource = $db->selectObject("resourceitem","id=".$_GET['id']);
+$resource = $db->selectObject("resourceitem","id=".(int)$_GET['id']);
 if ($resource != null) {
 	$loc = unserialize($resource->location_data);
 	$iloc = pathos_core_makeLocation($loc->mod,$loc->src,$resource->id);

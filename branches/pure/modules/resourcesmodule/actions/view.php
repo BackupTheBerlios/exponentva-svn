@@ -28,14 +28,14 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: view.php,v 1.3 2005/04/18 15:24:57 filetreefrog Exp $
+# $Id: view.php,v 1.4 2005/07/04 07:56:00 hanswolters Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
 pathos_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 
-$resource = $db->selectObject("resourceitem","id=".$_GET['id']);
+$resource = $db->selectObject("resourceitem","id=".(int)$_GET['id']);
 if ($resource != null) {
 	$loc = unserialize($resource->location_data);
 	$iloc = pathos_core_makeLocation($loc->mod,$loc->src,$resource->id);

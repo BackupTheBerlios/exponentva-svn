@@ -26,7 +26,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _view_gallery.tpl,v 1.10 2005/04/08 19:25:08 filetreefrog Exp $
+ * $Id: _view_gallery.tpl,v 1.11 2005/06/22 22:15:23 filetreefrog Exp $
  *}
 {permissions level=$smarty.const.UI_LEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
@@ -83,11 +83,11 @@ Page {$currentpage} of {$totalpages}<br />
 				<br />
 				<a href="{link action=view_image id=$image->id}">{$image->name}</a>
 				{else}
-				<a href="" onClick="window.open('{$image->file->directory}/{$image->file->filename}','image','title=no,status=no,scrollbars=yes'); return false;">
+				<a href="#" onClick="window.open('{$image->file->directory}/{$image->file->filename}','image','title=no,status=no,scrollbars=yes'); return false;">
 					<img border="0" src="thumb.php?base={$smarty.const.BASE}&file={$image->file->directory}/{$image->file->filename}&height={$boxw}&width={$boxw}&constraint=1" alt="{$image->name}" title="{$image->name}" />
 				</a>
 				<br />
-				<a href="" onClick="window.open('{$image->file->directory}/{$image->file->filename}','image','title=no,status=no,scrollbars=yes');">{$image->name}</a>
+				<a href="#" onClick="window.open('{$image->file->directory}/{$image->file->filename}','image','title=no,status=no,scrollbars=yes'); return false;">{$image->name}</a>
 				{/if}
 				<br />
 				{permissions level=$smarty.const.UI_LEVEL_NORMAL}

@@ -28,13 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: order.php,v 1.5 2005/04/03 07:57:14 filetreefrog Exp $
+# $Id: order.php,v 1.6 2005/07/04 07:50:27 hanswolters Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
-if (pathos_permissions_check('manage',pathos_core_makeLocation('navigationmodule','',$_GET['parent']))) {
-	$db->switchValues('section','rank',$_GET['a'],$_GET['b'],'parent=' . $_GET['parent']);
+if (pathos_permissions_check('manage',pathos_core_makeLocation('navigationmodule','',(int)$_GET['parent']))) {
+	$db->switchValues('section','rank',$_GET['a'],$_GET['b'],'parent=' . (int)$_GET['parent']);
 	pathos_flow_redirect();
 } else {
 	echo SITE_403_HTML;

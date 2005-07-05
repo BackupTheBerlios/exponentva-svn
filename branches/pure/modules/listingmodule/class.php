@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: class.php,v 1.7 2005/05/09 06:00:14 filetreefrog Exp $
+# $Id: class.php,v 1.8 2005/07/01 05:19:56 filetreefrog Exp $
 ##################################################
 
 class listingmodule {
@@ -45,6 +45,7 @@ class listingmodule {
 	function permissions($internal = '') {
 		return array(
 			'administrate'=>'Administrate',
+			'manage'=>'Manage Listings',
 			'configure'=>'Configure'
 		);
 	}

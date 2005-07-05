@@ -28,12 +28,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: changelock.php,v 1.4 2005/02/19 00:32:36 filetreefrog Exp $
+# $Id: changelock.php,v 1.5 2005/07/04 08:20:10 hanswolters Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
-$item = $db->selectObject("resourceitem","id=".$_GET['id']);
+$item = $db->selectObject("resourceitem","id=".(int)$_GET['id']);
 if ($item ) {
 	if ($user) {
 		if ($item->flock_owner == 0) {
