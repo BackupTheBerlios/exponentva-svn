@@ -36,8 +36,8 @@
 {if $user_form == 1}{assign var="pgname" value="groupperms"}{/if}
 {paginate objects=$users paginateName=$pgname modulePrefix="administration" rowsPerPage=20}
 
-{if $user_form == 1}paginate.noRecords = "`$smarty.config.nouseraccounts`";
-{else}paginate.noRecords = "`$smarty.config.nogroupaccounts`";
+{if $user_form == 1}paginate.noRecords = "{#i18n_noitemsfound#}";
+{else}paginate.noRecords = "`$smarty.config.i18n_nogroupaccounts`";
 {/if}
 
 {literal}
@@ -88,8 +88,8 @@ function sortRealname(a,b) {
 {/literal}{/if}
 
 paginate.columns = new Array(
-	{if $user_form == 1}new cColumn("User","",realName,sortRealname),
-	{else}new cColumn("Group","name",null,null),
+	{if $user_form == 1}new cColumn("{#i18n_name#}","",realName,sortRealname),
+	{else}new cColumn("{#i18n_group#}","name",null,null),
 	{/if}
 {foreach from=$perms key=perm item=name name=p}
 	new cColumn("{$name}","",perms_{$perm},null){if $smarty.foreach.p.last == false},{/if}

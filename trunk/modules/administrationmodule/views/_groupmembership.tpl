@@ -120,14 +120,14 @@
 	function sortAdmin(a,b) {
 		return (a.var_is_admin > b.var_is_admin ? -1 : 1);
 	}
-	
+{/literal}	
 	paginate.columns = new Array(
-		new cColumn("User","username",null,null),
-		new cColumn("Is Member?","",isMember,sortMember),
+		new cColumn("{#i18n_username#}","username",null,null),
+		new cColumn("{#i18n_member#}?","",isMember,sortMember),
 		new cColumn("Group Admin","",isAdmin,sortAdmin)
 	);
 	
-	{/literal}
+	
 {/paginate}
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">

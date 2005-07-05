@@ -57,6 +57,7 @@
 				{/if}
 			{/permissions}
 			{permissions level=$smarty.const.UILEVEL_NORMAL}
+				{if $permissions.view == 1}+{else}-{/if}
 				{if $permissions.edit == 1 || $item->permissions.edit == 1}
 					{if $item->approved == 1}
 					<a class="mngmntlink calendar_mngmntlink" href="{link action=edit id=$item->id date_id=$item->eventdate->id}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" /></a>
@@ -92,6 +93,7 @@
 {foreachelse}
 	<tr><td align="center"><i>{#i18n_noitemsfound#}</i></td></tr>
 {/foreach}
+
 </table>
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.post == 1}

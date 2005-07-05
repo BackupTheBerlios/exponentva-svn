@@ -53,13 +53,14 @@ class calendarmodule {
 				'delete'=>TR_CALENDARMODULE_PERM_DELETE,
 				'approve'=>TR_CALENDARMODULE_PERM_APPROVE,
 				'manage_approval'=>TR_CALENDARMODULE_PERM_MANAGEAP,
-				'manage_categories'=>'Manage Categories'
+				'manage_categories'=>TR_CALENDARMODULE_PERM_MANAGECAT
 			);
 		} else {
 			return array(
 				'administrate'=>TR_CALENDARMODULE_PERM_ADMIN,
 				'edit'=>TR_CALENDARMODULE_PERM_EDIT,
-				'delete'=>TR_CALENDARMODULE_PERM_DELETE
+				'delete'=>TR_CALENDARMODULE_PERM_DELETE,
+				'view'=>'view'
 			);
 		}
 	}
@@ -320,7 +321,7 @@ class calendarmodule {
 		$template->assign('in_approval',$inapproval);
 		$template->assign('canview_approval_link',$canviewapproval);
 		$template->register_permissions(
-			array('administrate','configure','post','edit','delete','manage_approval','manage_categories'),
+			array('administrate','configure','post','edit','delete','manage_approval','manage_categories','view'),
 			$loc
 		);
 		

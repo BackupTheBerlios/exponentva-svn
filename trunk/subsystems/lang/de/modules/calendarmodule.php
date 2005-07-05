@@ -60,41 +60,11 @@ define('TR_CALENDARMODULE_PERM_EDIT',			'Bearbeiten');
 define('TR_CALENDARMODULE_PERM_DELETE',			'Löschen');
 define('TR_CALENDARMODULE_PERM_APPROVE',		'Prüfen');
 define('TR_CALENDARMODULE_PERM_MANAGEAP',		'Prüfung verwalten');
+define('TR_CALENDARMODULE_PERM_MANAGECAT',		'Kategorien verwalten');
 
 define('TR_CALENDARMODULE_PERM_EDITONE',		TR_CALENDARMODULE_PERM_EDIT);
 define('TR_CALENDARMODULE_PERM_DELETEONE',		TR_CALENDARMODULE_PERM_DELETE);
 
 define('TR_CALENDARMODULE_RECURMOVEWARNING',	'Warnung: Wenn Sie den unten stehenden Termin bearbeiten, so wird sich diese Änderung nur auf Diesen auswirken.  Alle anderen Änderungen konnen sowohl auf diesen als auch auf andere Termine angewendet werden.');
-
-//view constants definitions
-//Default.tpl
-
-define('TR_CALENDARMODULE_LISTVIEW',			'als Liste');
-define('TR_CALENDARMODULE_CALENDARVIEW',		'als Kalender');
-
-define('TR_CALENDARMODULE_SUNDAY',				'Sonntag');
-define('TR_CALENDARMODULE_MONDAY',				'Montag');
-define('TR_CALENDARMODULE_TUESDAY',				'Dienstag');
-define('TR_CALENDARMODULE_WENDSDAY',			'Mittwoch');
-define('TR_CALENDARMODULE_THURSDAY',			'Donnerstag');
-define('TR_CALENDARMODULE_FRIDAY',				'Freitag');
-define('TR_CALENDARMODULE_SATURDAY',			'Sonnabend');
-//difficult to auto-generate for e.g. asian languages
-define('TR_CALENDARMODULE_SUNDAYSHORT',			'S');
-define('TR_CALENDARMODULE_MONDAYSHORT',			'M');
-define('TR_CALENDARMODULE_TUESDAYSHORT',		'D');
-define('TR_CALENDARMODULE_WENDSDAYSHORT',		'M');
-define('TR_CALENDARMODULE_THURSDAYSHORT',		'D');
-define('TR_CALENDARMODULE_FRIDAYSHORT',			'F');
-define('TR_CALENDARMODULE_SATURDAYSHORT',		'S');
-
-define('TR_CALENDARMODULE_MONTHOF',				'Monat');
-define('TR_CALENDARMODULE_NOEVENTS',			'keine Termine');
-define('TR_CALENDARMODULE_PRINTERFRIENDLY',		'Druckansicht');
-define('TR_CALENDARMODULE_VIEWWHOLEMONTH',		'Monatsübersicht');
-define('TR_CALENDARMODULE_CREATEEVENT',			'Neuer Termin');
-define('TR_CALENDARMODULE_VIEWAPPROVAL',		'Prüfstatus');
-define('TR_CALENDARMODULE_MANAGECATEGORIES',	'Kategorien verwalten');
-		
 
 ?>

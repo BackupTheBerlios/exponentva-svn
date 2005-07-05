@@ -65,4 +65,6 @@ define('TR_CALENDARMODULE_PERM_DELETEONE',		'Delete');
 
 define('TR_CALENDARMODULE_RECURMOVEWARNING',	'Warning: If you change the date below, it will only affect this specific events.  All other changes can be applied to this and other events.');
 
+define('TR_CALENDARMODULE_PERM_MANAGECAT',			'Manage Categories');
+
 ?>

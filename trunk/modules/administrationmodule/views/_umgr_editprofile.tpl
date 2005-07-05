@@ -32,12 +32,12 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">{if $is_edit}Edit User Account{else}New User Account{/if}</div>
+<div class="form_title">{if $is_edit}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
 <div class="form_header">
 {if $is_edit}
-Use this form to modify a user's profile.
+{#i18n_header1#}
 {else}
-Use this form to create a new user.
+{#i18n_header2#}
 {/if}
 </div>
 {$form_html}

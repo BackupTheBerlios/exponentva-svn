@@ -39,10 +39,11 @@
 To create a new group, use the <a class="mngmntlink administration_mngmntlink" href="{link action=gmgr_editprofile id=0}">New Group Account</a> form.
 {/if}
 </div>
-{paginate name="groups" objects=$groups modulePrefix="administration" rowsPerPage=20}{literal}
+{paginate name="groups" objects=$groups modulePrefix="administration" rowsPerPage=20}
 
-	paginate.noRecords = "No groups exist.";
+	paginate.noRecords = "{#i18n_noitemsfound#}";
 
+{literal}
 	function links(object) {
 		var out = '';
 		{/literal}
@@ -50,11 +51,11 @@ To create a new group, use the <a class="mngmntlink administration_mngmntlink" h
 			// Edit link
 			out += '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','administrationmodule','action','gmgr_editprofile','id',object.var_id) +'"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" /></a>';
 			// Delete link
-			out += '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','administrationmodule','action','gmgr_delete','id',object.var_id) +'" onClick="return confirm(\'Are you sure you want to delete the group \\\'' + object.var_name + '\\\'?\');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>';
+			out += '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','administrationmodule','action','gmgr_delete','id',object.var_id) +'" onClick="return confirm(\'{#i18n_delete_confirm#} \\\'' + object.var_name + '\\\'?\');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>';
 			{/if}
 			// Members link
 			out += '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','administrationmodule','action','gmgr_membership','id',object.var_id) +'">Members</a>';
-		{literal}
+{literal}
 		return out;
 	}
 	
@@ -66,14 +67,14 @@ To create a new group, use the <a class="mngmntlink administration_mngmntlink" h
 	function sortType(a,b) {
 		return (a.var_inclusive > b.var_inclusive ? -1 : 1);
 	}
-
+{/literal}
 	paginate.columns = new Array(
-		new cColumn("Group Name","name",null,null),
-		new cColumn("Signup Code","code",null,null),
-		new cColumn("Type","",type,sortType),
+		new cColumn("{#i18n_name#}","name",null,null),
+		new cColumn("{#i18n_signupcode#}","code",null,null),
+		new cColumn("{#i18n_type#}","",type,sortType),
 		new cColumn("","",links,null)
 	);
-{/literal}{/paginate}
+{/paginate}
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tbody id="dataTable">
 	

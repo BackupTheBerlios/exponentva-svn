@@ -52,17 +52,17 @@
 {/if}
 
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_editprofile id=$user->id}">{#18n_edititem#}</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_editprofile id=$user->id}">{#i18n_edit#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-{#18n_edititem_info#}
+{#i18n_edit_info#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">
-<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_clearpass id=$user->id}">{#18n_clearpassword#}</a>
+<a class="mngmntlink administration_mngmntlink" href="{link action=umgr_clearpass id=$user->id}">{#i18n_resetpassword#}</a>
 </div>
 <div style="padding: .5em; padding-bottom: 1.5em;">
-{#18n_clearpassword_info#}
+{#i18n_resetpassword_info#}
 </div>
 
 <div style="background-color: #CCC; padding: 5px;">

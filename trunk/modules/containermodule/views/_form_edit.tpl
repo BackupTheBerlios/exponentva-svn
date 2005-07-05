@@ -64,7 +64,7 @@ if (!document.body.appendChild) {
 			{if $can_activate_modules == 1 && $is_edit == 0}
 			<tr>
 				<td></td>
-				<td><i>{#i18n_enableadditionalmodules_info#}</i></td>
+				<td><i>{#i18n_enableadditionalmodules_info#} Click <a class="mngmntlink container_mngmntlink" href="{link module=administrationmodule action=managemodules}">here</a> to access the Module Manager'</i></td>
 			</tr>
 			{/if}
 			<tr>
