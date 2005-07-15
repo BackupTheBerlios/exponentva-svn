@@ -6,3 +6,7 @@ i18n_assigntogroup_info = 'Use this control to assign users to a group'
 # i18n_lock_info = ''
 # i18n_unlock = ''
 i18n_unlock_info = 'When unlocked, users can freely log in to your website and operate the controls they have been granted permission to.'
+# i18n_edit = ''
+i18n_edit_info = "Edit this user's profile. Users can be made Administrators here."
+i18n_resetpassword = 'Clear Passwword'
+i18n_resetpassword_info = "Reset this accoont's password. Users can then login with a blank password."
