@@ -72,18 +72,18 @@
 {/if}
 {/permissions}
 </div>
-<div class="subheader weblog_subheader">Posted by {attribution user_id=$post->poster} on {$post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
+<div class="subheader weblog_subheader">{#i18n_createdby#} {attribution user_id=$post->poster} {#i18n_on#} {$post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
 <div>{$post->body|summarize:html:para}</div>
 {if $smarty.const.MEANINGFUL_URLS}
-<div><a href="{$smarty.const.URL_FULL}content/blog/{$post->internal_name}">Read More</a></div>
+<div><a href="{$smarty.const.URL_FULL}content/blog/{$post->internal_name}">{#i18n_more#}</a></div>
 {else}
-<div><a href="{$smarty.const.URL_FULL}content/blog.php?id={$post->id}">Read More</a></div>
+<div><a href="{$smarty.const.URL_FULL}content/blog.php?id={$post->id}">{#i18n_more#}</a></div>
 {/if}
 <hr size="1" />
 </div>
 {/foreach}
 {if $total_posts > $config->items_per_page}
-	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=1}">Next</a>
+	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=1}">{#i18n_next#}</a>
 {/if}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.post == 1}

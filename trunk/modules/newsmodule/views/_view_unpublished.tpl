@@ -72,10 +72,10 @@
 </table>
 
 <hr size="1" />
-<b>Awaiting Publication</b>
+<b>{#i18n_queued_desc#}</b>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header news_header" width="30%">Title</td>
+		<td class="header news_header" width="30%">{#i18n_title#}</td>
 		<td class="header news_header" width="30%">Publication Date</td>
 		<td class="header news_header" width="30%">Time to publication</td>
 		<td class="header news_header" width="10%"></td>

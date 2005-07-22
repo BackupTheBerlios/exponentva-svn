@@ -71,7 +71,7 @@
 {/if}
 {/permissions}
 </div>
-<div class="subheader weblog_subheader">Posted by {attribution user_id=$post->poster} on {$post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
+<div class="subheader weblog_subheader">{#i18n_createdby#} {attribution user_id=$post->poster} {#i18n_on#} {$post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
 <div>{$post->body}</div>
 {if $config->allow_comments}
 	<div class="comments" style="padding-left: 35px;">
@@ -97,7 +97,7 @@
 				{/if}
 				{/permissions}
 				</div>
-				<div class="weblog_comment_attribution">Posted by {attribution user_id=$comment->poster} on {$comment->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
+				<div class="weblog_comment_attribution">{#i18n_createdby#} {attribution user_id=$comment->poster} {#i18n_on#} {$comment->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
 				<div class="weblog_comment_body">{$comment->body}</div>
 			</div>
 		{/foreach}
@@ -108,11 +108,11 @@
 {/foreach}
 {if $page != 0}
 	{math equation="x-1" x=$page assign=prevpage}
-	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=$prevpage}">Previous</a>&nbsp;&nbsp;
+	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=$prevpage}">{#i18n_previous#}</a>&nbsp;&nbsp;
 {/if}
 {if $shownext}
 	{math equation="x+1" x=$page assign=nextpage}
-	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=$nextpage}">Next</a>
+	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=$nextpage}">{#i18n_next#}</a>
 {/if}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.post == 1}

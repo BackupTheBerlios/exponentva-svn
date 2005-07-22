@@ -61,7 +61,7 @@
 {/permissions}
 <div class="itemtitle news_itemtitle">{$newsitem->title}</div>
 <div class="itembody news_itembody">
-posted by {attribution user_id=$newsitem->poster} on {$newsitem->real_posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}<br /><br />
+{#i18n_createdby#} {attribution user_id=$newsitem->poster} {#i18n_on#} {$newsitem->real_posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}<br /><br />
 {$newsitem->body}
 </div>
 </div>

@@ -73,12 +73,12 @@
 {/if}
 {/permissions}
 </div>
-<div class="subheader weblog_subheader">Posted by {attribution user_id=$this_post->poster} on {$this_post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
+<div class="subheader weblog_subheader">{#i18n_createdby#} {attribution user_id=$this_post->poster} {#i18n_on#} {$this_post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
 <div>{$this_post->body}</div>
 {if $config->allow_comments}
 	<div class="comments" style="padding-left: 35px;">
 	{if $post->is_draft}
-		<i>This is a draft.  Commenting has been disabled.</i>
+		<i>{#i18n_operation_disabled#}</i>
 	{else}
 		{permissions level=$smarty.const.UILEVEL_NORMAL}
 		{if $permissions.comment == 1 || $this_post->permissions.comment == 1}

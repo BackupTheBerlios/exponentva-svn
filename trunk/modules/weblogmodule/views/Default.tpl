@@ -72,13 +72,13 @@
 {/if}
 {/permissions}
 </div>
-<div class="subheader weblog_subheader">Posted by {attribution user_id=$post->poster} on {$post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
+<div class="subheader weblog_subheader">{#i18n_createdby#} {attribution user_id=$post->poster} {#i18n_on#} {$post->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
 <div>{$post->body}</div>
 {if $config->allow_comments}
 	<div class="comments" style="padding-left: 35px;">
 		{permissions level=$smarty.const.UILEVEL_NORMAL}
 		{if $permissions.comment == 1 || $post->permissions.comment == 1}
-		<a class="mngmntlink weblog_mngmntlink" href="{link action=comment_edit parent_id=$post->id}">Comment</a>
+		<a class="mngmntlink weblog_mngmntlink" href="{link action=comment_edit parent_id=$post->id}">{#i18n_create#}</a>
 		{/if}
 		{/permissions}
 		{foreach from=$post->comments item=comment}
@@ -98,7 +98,7 @@
 				{/if}
 				{/permissions}
 				</div>
-				<div class="weblog_comment_attribution">Posted by {attribution user_id=$comment->poster} on {$comment->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
+				<div class="weblog_comment_attribution">{#i18n_createdby#} {attribution user_id=$comment->poster} {#i18n_on#} {$comment->posted|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</div>
 				<div class="weblog_comment_body">{$comment->body}</div>
 			</div>
 		{/foreach}
@@ -108,7 +108,7 @@
 </div>
 {/foreach}
 {if $total_posts > $config->items_per_page}
-	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=1}">Next</a>
+	<a class="mngmntlink weblog_mngmntlink" href="{link action=view_page page=1}">{#i18n_next#}</a>
 {/if}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.post == 1}
