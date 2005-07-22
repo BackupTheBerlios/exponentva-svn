@@ -10,3 +10,6 @@
 i18n_unlock_info = 'Unlocked Items are accessable to users with neccessary permissions'
 # i18n_unselectall = ''
 # i18n_view = ''
+# i18n_edit = ''
+# i18n_edit_desc = ''
+# i18n_unlock = ''

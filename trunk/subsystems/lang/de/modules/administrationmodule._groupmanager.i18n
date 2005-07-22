@@ -1,2 +1,7 @@
 # i18n_formtitle = ''
 # i18n_header = ''
+# i18n_delete_confirm = ''
+# i18n_name = ''
+# i18n_noitemsfound = ''
+i18n_signupcode = ''
+# i18n_type = ''
