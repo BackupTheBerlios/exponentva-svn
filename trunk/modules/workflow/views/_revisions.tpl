@@ -43,10 +43,10 @@ function registerCheck(cb) {
 
 function confirmDelete() {
 	if (selectionCount == 0) {
-		alert("You have not selected any revisions.");
+		alert("{/literal}{#i18n_emptyselection_desc#}{literal}");
 		return false;
 	}
-	return confirm('Are you sure you want to delete these revisions?');
+	return confirm('{/literal}{#i18n_delete_confirm#}{literal}');
 }
 {/literal}
 </script>
@@ -72,7 +72,7 @@ function confirmDelete() {
 		<tr>
 			<td colspan="2">
 				<a class="mngmntlink workflow_mngmntlink" href="{link datatype=$smarty.get.datatype m=$smarty.get.m s=$smarty.get.s action=revisions_viewrevision id=$revision->id}">
-					View
+					{#i18n_view#}
 				</a>
 				{if $revision->wf_minor == 0 && $revision->wf_major != $current}
 					&nbsp;|&nbsp;
