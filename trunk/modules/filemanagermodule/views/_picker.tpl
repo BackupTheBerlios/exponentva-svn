@@ -155,7 +155,7 @@
 			</ul>
 		</div>
 		<div class="imagecollection_previews">
-			<div style="font-size: larger;">{$collection->name} ({$numfiles} {plural singular=`smarty.config.i18n_file` plural=`smarty.conf.i18n_files` count=$numfiles})</div>
+			<div style="font-size: larger;">{$collection->name} ({$numfiles} {plural singular="`$smarty.config.i18n_file`" plural="`$smarty.config.i18n_files`" count=$numfiles})</div>
 			<div style="padding-left: 2em; margin-bottom: 1em; border-bottom: 2px solid black;">{$collection->description}</div>
 			<table>
 				<tr>
