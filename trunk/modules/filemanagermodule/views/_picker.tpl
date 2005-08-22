@@ -155,7 +155,7 @@
 			</ul>
 		</div>
 		<div class="imagecollection_previews">
-			<div style="font-size: larger;">{$collection->name} ({$numfiles} {plural singular=file plural=files count=$numfiles})</div>
+			<div style="font-size: larger;">{$collection->name} ({$numfiles} {plural singular=´smarty.config.i18n_file´ plural=´smarty.conf.i18n_files´ count=$numfiles})</div>
 			<div style="padding-left: 2em; margin-bottom: 1em; border-bottom: 2px solid black;">{$collection->description}</div>
 			<table>
 				<tr>
@@ -172,7 +172,7 @@
 						</a>
 						<br />
 						<a href="{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}" onClick="return openWindow('{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}',{$file->image_width},{$file->image_height});" target="_blank">
-							Full Image
+							{#i18n_showfull#}
 						</a>
 						<br />
 						<a href="{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}" onClick="return openWindow('{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}',{$file->image_width},{$file->image_height});" target="_blank">
@@ -200,7 +200,7 @@
 			<form method="post" action="upload_standalone.php" enctype="multipart/form-data">
 			<input type="hidden" name="collection_id" value="{$collection->id}" />
 			<input type="hidden" name="name" value="" />
-			Upload an Image: <input type="file" name="file" />
+			{#i18n_upload#}: <input type="file" name="file" />
 			<input type="submit" value="{#i18n_submit#}" />
 			</form>
 		</div>
