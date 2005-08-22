@@ -58,7 +58,7 @@
 <br />
 {if $no_directory == 1}Cannot upload files, because the files directory is not writable.
 {else}
-<a href="{link action=upload}" class="mngmntlink page_mngmntlink" title="Upload page to display" alt="Upload page to display">Upload Page</a>
+<a href="{link action=upload}" class="mngmntlink page_mngmntlink" title="Upload page to display" alt="Upload page to display">{#i18n_upload#}</a>
 <br />
 {/if}
 {/if}
