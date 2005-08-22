@@ -83,8 +83,8 @@ class popupdatetimecontrol extends formcontrol {
 
 	function onRegister(&$form) {
 		$form->addScript("jscal-calendar",      PATH_RELATIVE."external/jscalendar/calendar.js");
-		$form->addScript("jscal-calendar-lang", PATH_RELATIVE."external/jscalendar/lang/calendar-en.js");
-		$form->addScript("jscal-calendar-setup",PATH_RELATIVE."external/jscalendar/calendar-setup.js");
+		$form->addScript("jscal-calendar-lang", PATH_RELATIVE."external/jscalendar/lang/calendar-" . LANG . ".js");
+		$form->addScript("jscal-calendar-setup",PATH_RELATIVE."config/calendar-setup.js");
 		$form->addScript("popupdatetimecontrol",PATH_RELATIVE."js/PopupDateTimeControl.js");
 	}
 	
