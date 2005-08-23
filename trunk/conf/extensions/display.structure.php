@@ -65,6 +65,11 @@ return array(
 			'title'=>TR_CONFIG_DISPLAY_TIME_FORMAT,
 			'description'=>TR_CONFIG_DISPLAY_TIME_FORMAT_DESC,
 			'control'=>new dropdowncontrol(null,pathos_config_dropdownData('time_format'))
+		),
+		'DISPLAY_WEEK_STARTSON'=>array(
+			'title'=>TR_CONFIG_DISPLAY_WEEK_STARTSON,
+			'description'=>TR_CONFIG_DISPLAY_WEEK_STARTSON_DESC,
+			'control'=>new dropdowncontrol(null,pathos_config_dropdownData('week_startson'))
 		)
 	)
 );

@@ -179,7 +179,7 @@ class popupdatetimecontrol extends formcontrol {
 		$html .= "\n";
 		$html .= '		step           :    1,';
 		$html .= "\n";
-		$html .= '		firstDay	:    1';
+		$html .= '		firstDay	:    ' . DISPLAY_WEEK_STARTSON ;
 		$html .= "\n";
 		$html .= '    });';
 		$html .= "\n";

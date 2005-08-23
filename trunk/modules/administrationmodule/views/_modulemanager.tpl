@@ -37,9 +37,9 @@
 <br /><br />
 To install a new module, use the <a class="mngmntlink administration_mngmntlink" href="{link action=upload_extension}">{#i18n_upload#}</a> form.</div>
 <hr size="1" />
-<a href="{link action=modmgr_activate all=1 activate=1}">{#i18n_lockall#}</a>
+<a href="{link action=modmgr_activate all=1 activate=1}">{#i18n_unlockall#}</a>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="{link action=modmgr_activate all=1 activate=0}">{#i18n_unlockall#}</a>
+<a href="{link action=modmgr_activate all=1 activate=0}">{#i18n_lockall#}</a>
 <table cellpadding="4" cellspacing="0" border="0" width="100%">
 	{foreach from=$modules item=module}
 	<tr>
