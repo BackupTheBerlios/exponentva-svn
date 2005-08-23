@@ -84,7 +84,7 @@ class popupdatetimecontrol extends formcontrol {
 	function onRegister(&$form) {
 		$form->addScript("jscal-calendar",      PATH_RELATIVE."external/jscalendar/calendar.js");
 		$form->addScript("jscal-calendar-lang", PATH_RELATIVE."external/jscalendar/lang/calendar-" . LANG . ".js");
-		$form->addScript("jscal-calendar-setup",PATH_RELATIVE."config/calendar-setup.js");
+		$form->addScript("jscal-calendar-setup",PATH_RELATIVE."external/jscalendar/calendar-setup.js");
 		$form->addScript("popupdatetimecontrol",PATH_RELATIVE."js/PopupDateTimeControl.js");
 	}
 	
@@ -147,36 +147,39 @@ class popupdatetimecontrol extends formcontrol {
 		//$html .= "\n";
 		$html .= '    Calendar.setup({';
 		$html .= "\n";
-		$html .= '	         inputField     :    "'.$name.'_hidden",';
+		$html .= '		inputField     :    "'.$name.'_hidden",';
 		$html .= "\n";
-		$html .= '                  ifFormat       :    "%m/%d/%Y %H:%M",';
+		$html .= '		ifFormat       :    "%m/%d/%Y %H:%M",';
 		$html .= "\n";
-		$html .= '                  displayArea    :    "'.$name.'_span",';
+		$html .= '		displayArea    :    "'.$name.'_span",';
 		if ($this->showtime) {
 			$html .= "\n";
-			$html .= '                  daFormat       :    "%A, %B %d, %Y %l:%M %P",';
+			$html .= '		daFormat       :    "%A, %B %d, %Y %l:%M %P",';
 			$html .= "\n";
-			$html .= '                  showsTime      :    true,';
+			$html .= '		showsTime      :    true,';
 			$html .= "\n";
-			$html .= '                  singleClick    :    false,';
+			$html .= '		singleClick    :    false,';
 		} else {
 			$html .= "\n";
-			$html .= '                  daFormat       :    "%A, %B %d, %Y",';
+			$html .= '		daFormat       :    "%A, %B %d, %Y",';
 			$html .= "\n";
-			$html .= '                  singleClick    :    true,';
+			$html .= '		singleClick    :    true,';
 		}
 		$html .= "\n";
-		$html .= '                  timeFormat     :    "12",';
+		$html .= '		timeFormat     :    "24",';
 		$html .= "\n";
-		$html .= '                  button         :    "'.$name.'_trigger",';
+		$html .= '		button         :    "'.$name.'_trigger",';
 		$html .= "\n";
-		$html .= '                  align          :    "Tl",';
+		$html .= '		align          :    "Tl",';
+		$html .= "\n";
 		if ($this->default != null) {
-		//	$html .= '                  date           :    Date.parse("'.strftime("%D %T",$this->default).'"),';
-			$html .= '                  date           :    new Date().setTime('.($this->default*1000).'),';
+		//	$html .= '		date           :    Date.parse("'.strftime("%D %T",$this->default).'"),';
+			$html .= '		date           :    new Date().setTime('.($this->default*1000).'),';
 		}
 		$html .= "\n";
-		$html .= '                  step           :    1';
+		$html .= '		step           :    1,';
+		$html .= "\n";
+		$html .= '		firstDay	:    1';
 		$html .= "\n";
 		$html .= '    });';
 		$html .= "\n";

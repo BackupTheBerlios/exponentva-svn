@@ -50,7 +50,7 @@ if (phpversion() >= 5) {
 	 * of autoloading
 	 * @node Subsystems:Autoloader
 	 */
-	$auto_dirs = array('datatypes'=>BASE.'datatypes');
+	$auto_dirs = array(BASE .'datatypes', BASE . 'subsystems/forms', BASE . 'subsystems/forms/controls');
 	
 	/* exdoc
 	 * This function overrides the default PHP5 autoloader,
