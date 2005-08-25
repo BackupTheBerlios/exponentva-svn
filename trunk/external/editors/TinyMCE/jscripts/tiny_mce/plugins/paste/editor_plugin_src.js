@@ -11,27 +11,6 @@ function TinyMCE_paste_getInfo() {
 	};
 };
 
-function TinyMCE_paste_initInstance(inst) {
-	if (tinyMCE.isMSIE && tinyMCE.getParam("paste_auto_cleanup_on_paste", true))
-		tinyMCE.addEvent(inst.getBody(), "paste", TinyMCE_paste_handleEvent);
-}
-
-function TinyMCE_paste_handleEvent(e) {
-	switch (e.type) {
-		case "paste":
-			var html = TinyMCE_paste__clipboardHTML();
-
-			if (html && html.length > 0)
-				tinyMCE.execCommand('mcePasteWord', false, html);
-
-			//tinyMCE.debug("paste");
-			tinyMCE.cancelEvent(e);
-			return false;
-	}
-
-	return true;
-}
-
 function TinyMCE_paste_getControlHTML(control_name) { 
 	switch (control_name) { 
 		case "pastetext": 
@@ -171,70 +150,9 @@ function TinyMCE_paste__insertWordContent(content) {
 
 		content = content.replace(/<\/?div[^>]*>/gi, "");
 
-		// Convert all middlot lists to UL lists
-		if (tinyMCE.getParam("paste_convert_middot_lists", true)) {
-			var div = document.createElement("div");
-			div.innerHTML = content;
-
-			// Convert all middot paragraphs to li elements
-			while (TinyMCE_paste_convertMiddots(div)) ;
-
-			content = div.innerHTML;
-		}
-
-		// Replace all headers with strong
-		if (tinyMCE.getParam("paste_convert_middot_lists", true)) {
-			content = content.replace(/<h[1-6]>&nbsp;<\/h[1-6]>/gi, '<p>&nbsp;&nbsp;</p>');
-			content = content.replace(/<h[1-6]>/gi, '<p><b>');
-			content = content.replace(/<\/h[1-6]>/gi, '</b></p>');
-			content = content.replace(/<b>&nbsp;<\/b>/gi, '<b>&nbsp;&nbsp;</b>');
-			content = content.replace(/^(&nbsp;)*/gi, '');
-		}
-
 		// Insert cleaned content
 		tinyMCE.execCommand("mceInsertContent", false, content);
 	}
-}
-
-function TinyMCE_paste_convertMiddots(div) {
-	var mdot = String.fromCharCode(183);
-	var nodes = div.getElementsByTagName("p");
-	for (var i=0; i<nodes.length; i++) {
-		var p = nodes[i];
-
-		// Is middot
-		if (p.innerHTML.indexOf(mdot) != -1) {
-			var ul = document.createElement("ul");
-
-			ul.className = tinyMCE.getParam("paste_unindented_list_class", "unIndentedList");
-
-			// Add the first one
-			var li = document.createElement("li");
-			li.innerHTML = p.innerHTML.replace(new RegExp('' + mdot + '|&nbsp;', "gi"), '');
-			ul.appendChild(li);
-
-			// Add the rest
-			var np = p.nextSibling;
-			while (np) {
-				// Not element or middot paragraph
-				if (np.nodeType != 1 || np.innerHTML.indexOf(mdot) == -1)
-					break;
-
-				var cp = np.nextSibling;
-				var li = document.createElement("li");
-				li.innerHTML = np.innerHTML.replace(new RegExp('' + mdot + '|&nbsp;', "gi"), '');
-				np.parentNode.removeChild(np);
-				ul.appendChild(li);
-				np = cp;
-			}
-
-			p.parentNode.replaceChild(ul, p);
-
-			return true;
-		}
-	}
-
-	return false;
 }
 
 function TinyMCE_paste__clipboardHTML() {

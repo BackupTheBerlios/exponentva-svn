@@ -49,18 +49,3 @@ th {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 13px;
 }
-
-p {
-	margin: 0px;
-	padding: 0px;
-}
-
-.unIndentedList {
-	margin: 0px;
-	list-style-position: inside;
-}
-
-ul {
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
