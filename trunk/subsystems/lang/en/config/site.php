@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc., Maxim Mueller
 #
 # This file is part of Exponent
 #
@@ -29,6 +29,7 @@
 # Boston, MA 02111-1307  USA
 #
 # $Id: site.php,v 1.5 2005/04/08 23:13:34 filetreefrog Exp $
+# 2005/08/24 MaxxCorp
 ##################################################
 
 define('TR_CONFIG_SITE_TITLE','General Site Configuration');
@@ -60,6 +61,9 @@ define('TR_CONFIG_SITE_403_DESC','HTML to show to a user when they try to perfor
 
 define('TR_CONFIG_SITE_DEFAULT_SECTION','Default Section');
 define('TR_CONFIG_SITE_DEFAULT_SECTION_DESC','The default section.');
+
+define('TR_CONFIG_SITE_WYSIWYG_EDITOR','WYSIWYG Editor');
+define('TR_CONFIG_SITE_WYSIWYG_EDITOR_DESC',"The Site's What-You-See-Is-What-You-Get Editor.");
 
 define('TR_CONFIG_SITE_SESSION_TIMEOUT','Session Timeout');
 define('TR_CONFIG_SITE_SESSION_TIMEOUT_DESC','How long a user can be idle (in seconds) before they are automatically logged out.');

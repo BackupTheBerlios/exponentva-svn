@@ -2,3 +2,7 @@
 # i18n_submit = ''
 # i18n_notcategorized = ''
 # i18n_usethis = ''
+# i18n_file = ''
+i18n_files = ''
+i18n_showfull = ''
+# i18n_upload = ''

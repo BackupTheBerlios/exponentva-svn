@@ -62,6 +62,9 @@ define('TR_CONFIG_SITE_403_DESC',					'HTML Text der dem User angezeigt werden s
 define('TR_CONFIG_SITE_DEFAULT_SECTION',			'Standard Sektion');
 define('TR_CONFIG_SITE_DEFAULT_SECTION_DESC',		'Die Standard Sektion.');
 
+define('TR_CONFIG_SITE_WYSIWYG_EDITOR','WYSIWYG Editor');
+define('TR_CONFIG_SITE_WYSIWYG_EDITOR_DESC',"Der zu verwendende Texteditor.");
+
 define('TR_CONFIG_SITE_SESSION_TIMEOUT',			'Zeitlimit für Sitzungen');
 define('TR_CONFIG_SITE_SESSION_TIMEOUT_DESC',		'Legt die Zeit fest, nach der ein inaktiver Benutzer automatisch ausgeloggt wird.');
 

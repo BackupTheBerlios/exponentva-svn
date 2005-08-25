@@ -2,3 +2,6 @@
 # i18n_noitemsfound = ''
 i18n_restore = 'Wiederherstellen'
 # i18n_submit = ''
+# i18n_delete_confirm = ''
+i18n_emptyselection_desc = ''
+# i18n_view = ''

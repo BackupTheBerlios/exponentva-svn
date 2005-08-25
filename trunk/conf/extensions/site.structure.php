@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc., Maxim Mueller
 #
 # This file is part of Exponent
 #
@@ -29,11 +29,18 @@
 # Boston, MA 02111-1307  USA
 #
 # $Id: site.structure.php,v 1.14 2005/04/25 15:35:53 filetreefrog Exp $
+# 24/08/2005 MaxxCorp
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 pathos_lang_loadDictionary('config','site');
+
+foreach (glob(BASE . "external/editors/*.glue") as $installed_glue_file) {
+   $installed_editor = basename($installed_glue_file, ".glue"); 
+   $installed_editors[$installed_editor] = $installed_editor;
+}
+
 
 $stuff = array(
 	TR_CONFIG_SITE_TITLE,
@@ -82,6 +89,11 @@ $stuff = array(
 			'title'=>TR_CONFIG_SITE_DEFAULT_SECTION,
 			'description'=>TR_CONFIG_SITE_DEFAULT_SECTION_DESC,
 			'control'=>new dropdowncontrol('',navigationmodule::hierarchyDropDownControlArray())
+		),
+		'SITE_WYSIWYG_EDITOR'=>array(
+			'title'=>TR_CONFIG_SITE_WYSIWYG_EDITOR,
+			'description'=>TR_CONFIG_SITE_WYSIWYG_EDITOR_DESC,
+			'control'=>new dropdowncontrol(null,$installed_editors)
 		),
 		'SESSION_TIMEOUT'=>array(
 			'title'=>TR_CONFIG_SITE_SESSION_TIMEOUT,

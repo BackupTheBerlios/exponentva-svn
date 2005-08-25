@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc., Maxim Mueller
 #
 # This file is part of Exponent
 #
@@ -29,6 +29,7 @@
 # Boston, MA 02111-1307  USA
 #
 # $Id: site.defaults.php,v 1.9 2005/04/25 15:35:53 filetreefrog Exp $
+# 2005/08/24 MaxxCorp
 ##################################################
 
 if (!defined('SITE_TITLE')) define('SITE_TITLE','My New Exponent Site');
@@ -42,6 +43,8 @@ if (!defined('SITE_403_REAL_HTML')) define('SITE_403_REAL_HTML',html_entity_deco
 if (!defined('SITE_KEYWORDS')) define('SITE_KEYWORDS','');
 if (!defined('SITE_DESCRIPTION')) define('SITE_DESCRIPTION','');
 if (!defined('SITE_DEFAULT_SECTION')) define('SITE_DEFAULT_SECTION',1);
+
+if (!defined('SITE_WYSIWYG_EDITOR')) define('SITE_WYSIWYG_EDITOR','HTMLArea');
 
 if (!defined('SESSION_TIMEOUT')) define('SESSION_TIMEOUT',5*3600);
 if (!defined('SESSION_TIMEOUT_HTML')) define('SESSION_TIMEOUT_HTML',html_entity_decode('<h3>Expired Login Session</h3>Your session has expired, because you were idle too long.  You will have to log back into the system to continue what you were doing.'));

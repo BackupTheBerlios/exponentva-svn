@@ -62,7 +62,7 @@
 {/if}
 <h3>{$item->title}</h3>
 {if $item->is_allday == 1}
-{$item->eventstart|format_date:$smarty.const.DISPLAY_DATE_FORMAT}, All Day
+{$item->eventstart|format_date:$smarty.const.DISPLAY_DATE_FORMAT}, {#i18n_allday#}
 {else}
 {$item->eventstart|format_date:"%B %e, %Y, %l:%M %P"} - {$item->eventend|format_date:"%l:%M %P"}
 {/if}

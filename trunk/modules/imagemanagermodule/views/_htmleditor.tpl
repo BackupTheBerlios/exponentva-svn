@@ -33,7 +33,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <script language="javascript" src="{$smarty.const.PATH_RELATIVE}js/ImageManagerHTMLArea.js"></script>
-<table cellpadding="2" cellspacing="0" border="0" width="100%" rules="rows" style="bortder: 1px solid lightgrey">
+<table cellpadding="2" cellspacing="0" border="0" width="100%" rules="rows" style="border: 1px solid lightgrey">
 {foreach from=$grid item=row}
 	<tr>
 	{foreach from=$row item=item}
