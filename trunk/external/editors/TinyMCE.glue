@@ -1,0 +1,69 @@
+<?PHP
+##################################################
+#
+# Copyright (c) 2005  Maxim Mueller
+#
+# This file is part of Exponent
+#
+# Exponent is free software; you can redistribute
+# it and/or modify it under the terms of the GNU
+# General Public License as published by the Free
+# Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# Exponent is distributed in the hope that it
+# will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License
+# for more details.
+#
+# You should have received a copy of the GNU
+# General Public License along with Exponent; if
+# not, write to:
+#
+# Free Software Foundation, Inc.,
+# 59 Temple Place,
+# Suite 330,
+# Boston, MA 02111-1307  USA
+#
+# $Id: TinyMCE.glue,v 1.0 2005/8/26 18:00 MaxxCorp Exp $
+##################################################
+
+#This glue file is included by subsystems/forms/controls/htmleditorcontrol.php
+#it provides the code for the htmleditorcontrol class' controltoHTML() method 
+
+ob_start(); 
+if (!defined("CTL_HTMLAREAINIT")) {  
+?>
+
+	<script language="javascript" type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>/jscripts/tiny_mce/tiny_mce.js"></script>
+	<script language="javascript" type="text/javascript">
+		tinyMCE.init({
+			mode			: "textareas",
+			editor_selector : "mceEditor",
+			theme_advanced_toolbar_location : "top",
+			add_unload_trigger : false,
+			language		: "<?PHP echo LANG?>"
+		});
+	</script>
+
+
+<?PHP
+	define("CTL_HTMLAREAINIT",1);
+	echo '<script type="text/javascript">htmleditorcontrols = new Array();</script>'; 
+} 
+?>
+
+
+<script type="text/javascript">htmleditorcontrols[htmleditorcontrols.length] = "<?php echo $name; ?>";</script> 
+
+<textarea class="mceEditor" id="<?php echo $name; ?>" name="<?php echo $name; ?>" style="width:100%" rows="24" cols="80"><?php echo htmlentities($this->default, ENT_COMPAT, LANG_CHARSET);?></textarea> 
+
+
+<?PHP
+
+$html = ob_get_contents();
+ob_end_clean(); 
+
+?>
