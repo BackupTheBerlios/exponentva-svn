@@ -1,0 +1,9 @@
+.dropdown_top {
+	background-color : #ffffff;
+}
+
+.dropdown_menu { 
+	position: absolute; 
+	visibility: hidden; 
+	border: 1px solid #444444;
+}

@@ -32,6 +32,12 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-<div class="form_title">{if $is_edit == 1}Edit Weblog Entry{else}Create a Weblog Entry{/if}</div>
+<div class="form_title">{if $is_edit == 1}{#i18n_edit_desc#}{else}{#i18n_create_desc#}{/if}</div>
+{if $is_edit == 0}
+<div class="form_header">
+{#i18n_header#}
+</div>
+{else}
 <hr size="1" />
+{/if}
 {$form_html}

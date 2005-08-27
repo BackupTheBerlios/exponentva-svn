@@ -4,7 +4,7 @@
 
 return array(
 	'modules/weblogmodule/class.php'=>'',
-	'modules/weblogmodule/actions/post_edit.php'=>'',
+	'modules/weblogmodule/actions/edit_post.php'=>'',
 	'modules/weblogmodule/actions/post_save.php'=>'',
 	'modules/weblogmodule/actions/post_delete.php'=>'',
 	'modules/weblogmodule/actions/comment_edit.php'=>'',

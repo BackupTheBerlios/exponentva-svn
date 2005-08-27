@@ -1,5 +1,19 @@
-TODO - Exponent Add-on Modules
-==============================
+TODO
+====
+
+
+ALL(Exponent VA)
+-major cleanup of naming conventions, coding styles, API sanity is required
+-redesign stuff to be smarty based
+1)php form controls
+2)themes
+3)pathos/exponent system messages (error, maintenance etc.)
+4)in short: everything exponent displays should go through the same template engine pipeline
+ 
+-perhaps integrate some database abstraction engine ?
+-factor out common components that are repeatedly used in the modules, standardize functionality
+
+
 
 
 articlemodule
@@ -14,6 +28,11 @@ bbmodule
 
 codemapmodule
 - Release?
+
+
+calendarmodule
+-replace the time selector with the one from jscalendar(display:none all unneeded parts of it)
+-set the 24/12 h setting automatically depending on the preferred time format setting and make all jscalendars react to it
 
 
 developermodule

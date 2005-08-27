@@ -63,6 +63,7 @@ class htmleditorcontrol extends formcontrol {
 
 		if(is_readable($PATH_TO_INCs . SITE_WYSIWYG_EDITOR . '.glue')){
 			include($PATH_TO_INCs . SITE_WYSIWYG_EDITOR . '.glue');
+			//TODO: handle fallback here
 			return $html;
 		}
 		else {

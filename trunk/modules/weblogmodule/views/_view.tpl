@@ -62,7 +62,7 @@
 {/permissions}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.edit == 1 || $this_post->permissions.edit == 1}
-<a class="mngmntlink weblog_mngmntlink" href="{link action=post_edit id=$this_post->id}">
+<a class="mngmntlink weblog_mngmntlink" href="{link action=edit_post id=$this_post->id}">
 	<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" />
 </a>
 {/if}

@@ -1,6 +1,6 @@
 {*
  *
- * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.,Maxim Müller
  *
  * This file is part of Exponent
  *
@@ -36,6 +36,8 @@
 <span style="font-weight: bold; font-size: 16px">{$now|format_date:"%A, %B %e, %Y"}</span>
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewday time=$nextday}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}right.png" title="{#i18n_next#}" alt="{#i18n_next#}" /></a>
 <br />
+<a class="mngmntlink calendar_mngmntlink" href="{link action=viewmonth time=$now}" title="{#i18n_viewmonth_desc#}" alt="{#i18n_viewmonth_desc#}">{#i18n_viewmonth#}</a>
+<a class="vertical_split">|</a>
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$now}" title="{#i18n_viewweek_desc#}" alt="{#i18n_viewweek_desc#}">{#i18n_viewweek#}</a>
 <br /><hr size="1" />
 <table cellpadding="2" cellspacing="0" width="100%" border="0">

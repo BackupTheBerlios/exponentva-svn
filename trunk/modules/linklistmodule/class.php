@@ -86,10 +86,12 @@ class linklistmodule {
 	}
 	
 	function deleteIn($loc) {
+		global $db;
 		$db->delete('linklist_link',"location_data='".serialize($loc)."'");
 	}
 	
 	function copyContent($oloc,$nloc) {
+		global $db;
 		foreach ($db->selectObjects('linklist_link',"location_data='".serialize($oloc)."'") as $l) {
 			$l->location_data = serialize($nloc);
 			$db->insertObject($l,'linklist_link');

@@ -49,8 +49,8 @@ define('TR_CONFIG_DISPLAY_DATE_FORMAT_DESC',		'Systemweites Format für Anzeigen,
 define('TR_CONFIG_DISPLAY_TIME_FORMAT',				'Zeitformat');
 define('TR_CONFIG_DISPLAY_TIME_FORMAT_DESC',		'Systemweites Format für Anzeigen, in denen nur die Zeit anzeigt wird.');
 
-define('TR_CONFIG_DISPLAY_WEEK_STARTSON','Wochenbeginn');
-define('TR_CONFIG_DISPLAY_WEEK_STARTSON_DESC','Der Tag, mit dem die Wochenkalender beginnen.');
+define('TR_CONFIG_DISPLAY_WEEKS_STARTON','Wochenbeginn');
+define('TR_CONFIG_DISPLAY_WEEKS_STARTON_DESC','Der Tag, mit dem die Wochenkalender beginnen.');
 
 
 ?>

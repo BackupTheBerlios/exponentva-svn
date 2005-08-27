@@ -33,7 +33,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$startprevweek}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}left.png" title="{#i18n_previous#}" alt="{#i18n_previous#}" /></a>
-<span style="font-weight: bold; font-size: 16px">{#i18n_eventsforweekof#}{$startweek|format_date:"%B %e, %Y"}</span>
+<span style="font-weight: bold; font-size: 16px">{#i18n_eventsforweekof#} {$startweek|format_date:"%B %e, %Y"}</span>
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$startnextweek}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}right.png" title="{#i18n_next#}" alt="{#i18n_next#}" /></a>
 <br />
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewmonth time=$startweek}" title="{#i18n_viewmonth_desc#}" alt="{#i18n_viewmonth_desc#}">{#i18n_viewmonth#}</a>

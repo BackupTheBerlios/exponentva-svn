@@ -73,5 +73,6 @@
 <hr size="1" />
 {/if}
 {$form}
-<a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$item->eventstart}" title="{#i18n_viewweek_desc#}" alt="{#i18n_viewweek_desc#}">{#i18n_viewweek#}</a>&nbsp;|&nbsp;
-<a class="mngmntlink calendar_mngmntlink" href="{link action=viewmonth time=$item->eventstart}" title="{#i18n_viewmonth_desc#}" alt="{#i18n_viewmonth_desc#}">{#i18n_viewmonth#}</a><br />
+<a class="mngmntlink calendar_mngmntlink" href="{link action=viewmonth time=$item->eventstart}" title="{#i18n_viewmonth_desc#}" alt="{#i18n_viewmonth_desc#}">{#i18n_viewmonth#}</a>
+<a class="vertical_split">|</a>
+<a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$item->eventstart}" title="{#i18n_viewweek_desc#}" alt="{#i18n_viewweek_desc#}">{#i18n_viewweek#}</a>

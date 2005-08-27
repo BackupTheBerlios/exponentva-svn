@@ -80,7 +80,6 @@ class calendarmodule {
 		$canviewapproval = false;
 		$inapproval = false;
 		
-		global $user;
 		if ($user) $canviewapproval = (pathos_permissions_check("approve",$loc) || pathos_permissions_check("manage_approval",$loc));
 		if ($db->countObjects("calendar","location_data='".serialize($loc)."' AND approved!=1")) {
 			foreach ($db->selectObjects("calendar","location_data='".serialize($loc)."' AND approved!=1") as $c) {
@@ -106,8 +105,11 @@ class calendarmodule {
 			}
 		}
 		
+		
+		
 		if ($viewconfig['type'] == "minical") {
 			$monthly = array();
+			$datesWithEvents = array();
 			$info = getdate(time());
 			$info = getdate(time());
 			// Grab non-day numbers only (before end of month)
@@ -126,19 +128,29 @@ class calendarmodule {
 			$endofmonth = pathos_datetime_endOfMonthDay(time());
 			for ($i = 1; $i <= $endofmonth; $i++) {
 				$start = mktime(0,0,0,$info['mon'],$i,$info['year']);
-				if ($i == $info['mday']) $currentweek = $week;
+				if ($i == $info['mday']) {
+					$currentweek = $week;
+				};
 				#$monthly[$week][$i] = array("ts"=>$start,"number"=>$db->countObjects("calendar","location_data='".serialize($loc)."' AND approved!=0 AND (eventstart >= $start AND eventend <= " . ($start+86399) . ")"));
 				// NO WORKFLOW CONSIDERATIONS
 				$monthly[$week][$i] = array("ts"=>$start,"number"=>$db->countObjects("eventdate","location_data='".serialize($loc)."' AND date = $start"));
+				
+				if ($monthly[$week][$i]["number"] > 0) {
+					$datesWithEvents[] = $i;
+				};
+				
 				if ($weekday >= 6) {
 					$week++;
 					$monthly[$week] = array(); // allocate an array for the next week
 					$weekday = 0;
-				} else $weekday++;
+				} else {
+					$weekday++;
+				};
 			}
 			// Grab non-day numbers only (after end of month)
 			for ($i = 1; $weekday && $i <= (7-$weekday); $i++) $monthly[$week][$i+$endofmonth] = -1;
 			
+			$template->assign("datesWithEvents",implode(",",$datesWithEvents));
 			$template->assign("monthly",$monthly);
 			$template->assign("currentweek",$currentweek);
 			$template->assign("currentday",$currentday);

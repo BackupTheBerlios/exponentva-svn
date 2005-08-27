@@ -63,7 +63,7 @@ function onOK() {
 
 	__dlg_close(param);
 	window.close();
-	return false;
+	return true;
 };
 
 

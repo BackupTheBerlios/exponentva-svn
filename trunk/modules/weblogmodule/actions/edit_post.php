@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: post_edit.php,v 1.3 2005/02/19 00:32:37 filetreefrog Exp $
+# $Id: edit_post.php,v 1.3 2005/02/19 00:32:37 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');

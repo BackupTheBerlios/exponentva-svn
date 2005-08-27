@@ -48,8 +48,8 @@ define('TR_CONFIG_DISPLAY_DATE_FORMAT_DESC','Default system-wide date format, di
 define('TR_CONFIG_DISPLAY_TIME_FORMAT','Time Format');
 define('TR_CONFIG_DISPLAY_TIME_FORMAT_DESC','Default system-wide date format, displaying time only.');
 
-define('TR_CONFIG_DISPLAY_WEEK_STARTSON','Week Starts On');
-define('TR_CONFIG_DISPLAY_WEEK_STARTSON_DESC','The day on which the calendars week views start.');
+define('TR_CONFIG_DISPLAY_WEEKS_STARTON','Week Starts On');
+define('TR_CONFIG_DISPLAY_WEEKS_STARTON_DESC','The day on which the calendars week views start.');
 
 
 ?>

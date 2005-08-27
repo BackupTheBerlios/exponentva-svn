@@ -40,6 +40,25 @@ var onLoadInits = new Array(); // array of functions
 
 var openWindows = new Array(); // array of window references.
 
+function pathosJSIncludeOnce(id, file) {
+		// do we even have to do something ?
+		if (!document.getElementById(id)){
+		
+			//TODO: check for html spelling, right now we assume XHTML
+			// get the head element 
+			myHeadElem = document.getElementsByTagName("head").item(0);
+		
+			myNewElem = document.createElement("script");
+			myNewElem.setAttribute("id",id);
+			myNewElem.setAttribute("type","text/javascript");
+			myNewElem.setAttribute("defer","false");
+			myNewElem.setAttribute("src",file);
+			myHeadElem.appendChild(myNewElem);
+		} else {
+			//TODO: write handling for overiding of scripts, e.g. by themes.
+		};	
+};
+
 function pathosJSinitialize() {
 	for (i = 0; i < onLoadInits.length; i++) {
 		onLoadInits[i]();

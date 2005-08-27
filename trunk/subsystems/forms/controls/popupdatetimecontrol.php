@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc., Maxim Mueller
 #
 # This file is part of Exponent
 #
@@ -29,6 +29,7 @@
 # Boston, MA 02111-1307  USA
 #
 # $Id: popupdatetimecontrol.php,v 1.8 2005/04/18 15:47:58 filetreefrog Exp $
+# MaxxCorp
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -82,14 +83,15 @@ class popupdatetimecontrol extends formcontrol {
 	}
 
 	function onRegister(&$form) {
-		$form->addScript("jscal-calendar",      PATH_RELATIVE."external/jscalendar/calendar.js");
-		$form->addScript("jscal-calendar-lang", PATH_RELATIVE."external/jscalendar/lang/calendar-" . LANG . ".js");
-		$form->addScript("jscal-calendar-setup",PATH_RELATIVE."external/jscalendar/calendar-setup.js");
+#		$form->addScript("jscalendar1",      PATH_RELATIVE."external/jscalendar/calendar.js");
+#		$form->addScript("jscalendar2", PATH_RELATIVE."external/jscalendar/lang/calendar-" . LANG . ".js");
+#		$form->addScript("jscalendar3",PATH_RELATIVE."external/jscalendar/calendar-setup.js");
 		$form->addScript("popupdatetimecontrol",PATH_RELATIVE."js/PopupDateTimeControl.js");
 	}
 	
 	function controlToHTML($name) {
-		$html = "";
+		ob_start();
+
 		if ($this->default == 0) {
 			$this->default = time();
 		}
@@ -99,92 +101,92 @@ class popupdatetimecontrol extends formcontrol {
 		}
 		
 		if (is_readable(THEME_BASE."popupdatetimecontrol.css")) {
-			$html .= '<style type="text/css"> @import url('.THEME_RELATIVE.'popupdatetimecontrol.css);</style>';
+			echo '<style type="text/css"> @import url('.THEME_RELATIVE.'popupdatetimecontrol.css);</style>';
 		} else {
-			$html .= '<style type="text/css"> @import url('.PATH_RELATIVE.'external/jscalendar/default.css);</style>';
+			echo '<style type="text/css"> @import url('.PATH_RELATIVE.'external/jscalendar/calendar-system.css);</style>';
 		}
 		
 		$default = "";
-		if ($this->default != null) $default = strftime("%m/%d/%Y %H:%M",$this->default);
-		
-		$html .= '<input type="hidden" name="'.$name.'_hidden" id="'.$name.'_hidden" value="'.($default).'" />';
-		$html .= "\n";
-		$html .= '<span class="';
-		if ($this->disabled) $html .= 'datefield_disabled';
-		else $html .= 'datefield';
-		$html .= '" id="'.$name.'_span">';
-		# for testing
-		#$this->default = time();
 		if ($this->default == null) {
-			$html .= '&lt;No Date Selected&gt;';
-		} else {
-			if ($this->showtime) $html .= strftime("%A, %B %d, %Y %l:%M %P",$this->default);
-			else $html .= strftime("%A, %B %d, %Y",$this->default);
+			$this->default = time;
 		}
-		$html .= '</span>';
-		$html .= "\n";
-		$html .= '<img align="texttop" src="'.$imgsrc.'" id="'.$name.'_trigger" ';
+		$default = strftime("%m/%d/%Y %H:%M",$this->default);
+		
+		echo '<input type="hidden" name="' . $name . '_hidden" id="' . $name . '_hidden" value="' . $default . '" />';
+		echo '<span class="';
+ 
 		if ($this->disabled) {
-			$html .= 'style="visibility: hidden;" ';
+			echo 'datefield_disabled';
 		} else {
-			$html .= 'style="cursor: pointer;" ';
+			echo 'datefield';
 		}
-		$html .= 'title="Date selector" onclick="return true;" onmouseover="this.style.background=\'red\';" onmouseout="this.style.background=\'\'" />';
-		$html .= "\n";
+		echo '" id="' . $name . '_span">';
+		
+		
+		if ($this->default == null) {
+			echo '&lt;No Date Selected&gt;';
+		} else {
+			if ($this->showtime) {
+				echo strftime("%A, %B %d, %Y %l:%M %P",$this->default);	
+			} else {
+				echo strftime("%A, %B %d, %Y",$this->default);
+			}
+		}
+
+		echo '</span>';
+
+		echo '<img align="texttop" src="'.$imgsrc.'" id="'.$name.'_trigger" ';
+		if ($this->disabled) {
+			echo 'style="visibility: hidden;" ';
+		} else {
+			echo 'style="cursor: pointer;" ';
+		}
+		echo 'title="Date selector" onclick="initPopupJSCalendar_' . $name . '();" onmouseover="this.style.background=\'red\';" onmouseout="this.style.background=\'\'" />';
+
 		if ($this->disable_text != "") {// popupdatetimecontrol_enable(this.form,\''.$name.'\');
-			$html .= '<input align="texttop" style="margin-top: -2px;" type="checkbox" name="'.$name.'_disabled" onChange="popupdatetimecontrol_enable(this.form,\''.$name.'\');" onClick="popupdatetimecontrol_enable(this.form,\''.$name.'\');" ';
-			if ($this->disabled) $html .= ' checked';
-			$html .= '/>'.$this->disable_text;
+			echo '<input align="texttop" style="margin-top: -2px;" type="checkbox" name="'.$name.'_disabled" onChange="popupdatetimecontrol_enable(this.form,\''.$name.'\');" onClick="popupdatetimecontrol_enable(this.form,\''.$name.'\');" ';
+			if ($this->disabled) {
+				echo ' checked';
+			}
+			echo '/>'.$this->disable_text;
 		} else {
 		#	$html .= '<input type="hidden" name="'.$name.'_enabled" value="1" />';
 		}
-		$html .= '<script type="text/javascript">';
-		$html .= "\n";
-		//$html .= "var d = new Date();\nd.setTime(". ($this->default*1000) .");\nalert(d);";
-		$html .= "\n";
-		//$html .= 'alert(new Date().setTime('.$this->default . '));';
-		//$html .= 'var d = new Date();  alert(d.getTime()); alert(d.getMilliseconds()); alert("'.time().'");';
-		//$html .= "\n";
-		$html .= '    Calendar.setup({';
-		$html .= "\n";
-		$html .= '		inputField     :    "'.$name.'_hidden",';
-		$html .= "\n";
-		$html .= '		ifFormat       :    "%m/%d/%Y %H:%M",';
-		$html .= "\n";
-		$html .= '		displayArea    :    "'.$name.'_span",';
-		if ($this->showtime) {
-			$html .= "\n";
-			$html .= '		daFormat       :    "%A, %B %d, %Y %l:%M %P",';
-			$html .= "\n";
-			$html .= '		showsTime      :    true,';
-			$html .= "\n";
-			$html .= '		singleClick    :    false,';
-		} else {
-			$html .= "\n";
-			$html .= '		daFormat       :    "%A, %B %d, %Y",';
-			$html .= "\n";
-			$html .= '		singleClick    :    true,';
-		}
-		$html .= "\n";
-		$html .= '		timeFormat     :    "24",';
-		$html .= "\n";
-		$html .= '		button         :    "'.$name.'_trigger",';
-		$html .= "\n";
-		$html .= '		align          :    "Tl",';
-		$html .= "\n";
-		if ($this->default != null) {
-		//	$html .= '		date           :    Date.parse("'.strftime("%D %T",$this->default).'"),';
-			$html .= '		date           :    new Date().setTime('.($this->default*1000).'),';
-		}
-		$html .= "\n";
-		$html .= '		step           :    1,';
-		$html .= "\n";
-		$html .= '		firstDay	:    ' . DISPLAY_WEEK_STARTSON ;
-		$html .= "\n";
-		$html .= '    });';
-		$html .= "\n";
-		$html .= '</script>';
-		$html .= "\n";
+?>
+	<script type="text/javascript">
+		
+		pathosJSIncludeOnce("jscalendar1", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/calendar.js");
+		pathosJSIncludeOnce("jscalendar2", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/lang/calendar-<?PHP echo LANG ?>.js");
+		pathosJSIncludeOnce("jscalendar3", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/calendar-setup.js");
+			
+		pathosJSregister(initPopupJSCalendar<?PHP echo "_" . $name;?>);
+		
+		function initPopupJSCalendar<?PHP echo "_" . $name;?>() {
+			Calendar.setup({
+				inputField			:    "<?PHP echo $name ?>_hidden",
+				ifFormat			:    "%m/%d/%Y %H:%M",
+				displayArea			:    "<?PHP echo $name ?>_span",
+				<?PHP if ($this->showtime) { ?>
+					daFormat		:    "%A, %B %d, %Y %l:%M %P",
+					showsTime		:    true,
+					singleClick		:    false,
+				<?PHP } else {?>
+					daFormat		:    "%A, %B %d, %Y",
+					singleClick		:    true,
+				<?PHP } ?>
+				timeFormat			:	"24",
+				button				:	"<?PHP echo $name ?>_trigger",
+				align				:	"Tl",
+				date				:	new Date().setTime(<?PHP echo $this->default * 1000 ?>),
+				step				:	1,
+				firstDay			:	<?PHP echo DISPLAY_WEEKS_STARTON?>
+			});		
+		};
+
+	</script>
+<?PHP
+		$html = ob_get_contents();
+		ob_end_clean();
 		return $html;
 	}
 	

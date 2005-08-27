@@ -61,7 +61,7 @@
 {/permissions}
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.edit == 1 || $post->permissions.edit == 1}
-<a class="mngmntlink weblog_mngmntlink" href="{link action=post_edit id=$post->id}">
+<a class="mngmntlink weblog_mngmntlink" href="{link action=edit_post id=$post->id}">
 	<img class="mngmnt_icon" src="{$smarty.const.ICON_RELATIVE}edit.png" border="0" title="{#i18n_edit_desc#}" alt="{#i18n_edit_desc#}" />
 </a>
 {/if}
@@ -113,6 +113,6 @@
 {permissions level=$smarty.const.UILEVEL_NORMAL}
 {if $permissions.post == 1}
 <br />
-<a class="mngmntlink weblog_mngmntlink" href="{link action=post_edit}">{#i18n_create#}</a>
+<a class="mngmntlink weblog_mngmntlink" href="{link action=edit_post}">{#i18n_create#}</a>
 {/if}
 {/permissions}

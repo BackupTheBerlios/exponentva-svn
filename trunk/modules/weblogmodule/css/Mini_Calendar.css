@@ -1,0 +1,209 @@
+/* The main calendar widget.  DIV containing a table. */
+
+/* Header part -- contains navigation buttons and day names. */
+
+.weblog_Mini_Calendar .calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
+  display:none;
+}
+
+.weblog_Mini_Calendar .calendar thead .title { /* This holds the current "month, year" */
+  display:none;
+}
+
+
+.weblog_Mini_Calendar .calendar thead .name { /* Cells <TD> containing the day names */
+  border-bottom: 1px solid ButtonShadow;
+  padding: 2px;
+  text-align: center;
+}
+
+.weblog_Mini_Calendar .calendar thead .weekend { /* How a weekend day name shows in header */
+  color: #f00;
+}
+
+.weblog_Mini_Calendar .calendar thead .hilite { /* How do the buttons in header appear when hover */
+  border: 2px solid;
+  padding: 0px;
+  border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+}
+
+.weblog_Mini_Calendar .calendar thead .active { /* Active (pressed) buttons in header */
+  border-width: 1px;
+  padding: 2px 0px 0px 2px;
+  border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+}
+
+/* The body part -- contains all the days in month. */
+
+.weblog_Mini_Calendar .calendar tbody .day { /* Cells <TD> containing month days dates */
+  width: 2em;
+  text-align: right;
+  padding: 2px 4px 2px 2px;
+}
+.weblog_Mini_Calendar .calendar tbody .day.othermonth {
+  font-size: 80%;
+  color: #aaa;
+}
+.weblog_Mini_Calendar .calendar tbody .day.othermonth.oweekend {
+  color: #faa;
+}
+
+.weblog_Mini_Calendar .calendar table .wn {
+  padding: 2px 3px 2px 2px;
+  border-right: 1px solid ButtonShadow;
+}
+
+.weblog_Mini_Calendar .calendar tbody .rowhilite td {
+  background: Highlight;
+  color: HighlightText;
+}
+
+.weblog_Mini_Calendar .calendar tbody td.hilite { /* Hovered cells <TD> */
+  padding: 1px 3px 1px 1px;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #fff;
+}
+
+.calendar tbody td.active { /* Active (pressed) cells <TD> */
+  padding: 2px 2px 0px 2px;
+  border: 1px solid;
+  border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+}
+
+.weblog_Mini_Calendar .calendar tbody td.selected { /* Cell showing selected date */
+  font-weight: bold;
+  border: 1px solid;
+  border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+  padding: 2px 2px 0px 2px;
+}
+
+.weblog_Mini_Calendar .calendar tbody td.weekend { /* Cells showing weekend days */
+  color: #f00;
+}
+
+.weblog_Mini_Calendar .calendar tbody td.today { /* Cell showing today date */
+
+  font-weight: bold;
+  color: #00f;
+}
+
+.weblog_Mini_Calendar .calendar tbody td.disabled { color: GrayText; }
+
+.weblog_Mini_Calendar .calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
+  visibility: hidden;
+}
+
+.weblog_Mini_Calendar .calendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
+  display: none;
+}
+
+/* The footer part -- status bar and "Close" button */
+
+.weblog_Mini_Calendar .calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
+}
+
+.weblog_Mini_Calendar .calendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */
+  display:none;
+}
+
+.weblog_Mini_Calendar .calendar tfoot .hilite { /* Hover style for buttons in footer */
+  border-top: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #fff;
+  padding: 1px;
+  background: #e4e0d8;
+}
+
+.weblog_Mini_Calendar .calendar tfoot .active { /* Active (pressed) style for buttons in footer */
+  padding: 2px 0px 0px 2px;
+  border-top: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #000;
+}
+
+/* Combo boxes (menus that display months/years for direct selection) */
+
+.weblog_Mini_Calendar .calendar .combo {
+  position: absolute;
+  display: none;
+  width: 4em;
+  top: 0px;
+  left: 0px;
+  cursor: default;
+  border: 1px solid;
+  border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+  background: Menu;
+  color: MenuText;
+  font-size: 90%;
+  padding: 1px;
+}
+
+.weblog_Mini_Calendar .calendar .combo .label,
+.weblog_Mini_Calendar .calendar .combo .label-IEfix {
+  text-align: center;
+  padding: 1px;
+}
+
+.weblog_Mini_Calendar .calendar .combo .label-IEfix {
+  width: 4em;
+}
+
+.weblog_Mini_Calendar .calendar .combo .active {
+  padding: 0px;
+  border: 1px solid #000;
+}
+
+.weblog_Mini_Calendar .calendar .combo .hilite {
+  background: Highlight;
+  color: HighlightText;
+}
+
+.weblog_Mini_Calendar .calendar td.time {
+  border-top: 1px solid ButtonShadow;
+  padding: 1px 0px;
+  text-align: center;
+}
+
+.weblog_Mini_Calendar .calendar td.time .hour,
+.weblog_Mini_Calendar .calendar td.time .minute,
+.weblog_Mini_Calendar .calendar td.time .ampm {
+  padding: 0px 3px 0px 4px;
+  border: 1px solid #889;
+  font-weight: bold;
+  background-color: Menu;
+}
+
+.weblog_Mini_Calendar .calendar td.time .ampm {
+  text-align: center;
+}
+
+.weblog_Mini_Calendar .calendar td.time .colon {
+  padding: 0px 2px 0px 3px;
+  font-weight: bold;
+}
+
+.weblog_Mini_Calendar .calendar td.time span.hilite {
+  border-color: #000;
+  background-color: Highlight;
+  color: HighlightText;
+}
+
+.weblog_Mini_Calendar .calendar td.time span.active {
+  border-color: #f00;
+  background-color: #000;
+  color: #0f0;
+}
+
+.weblog_Mini_Calendar .hasEvents {
+	color	: #00ff00;
+}
+
+.weblog_Mini_Calendar .Mini_Calendar_header {
+	color		:	black;
+	border		:	2px solid black;
+	text-align	:	center;
+}

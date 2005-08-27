@@ -66,10 +66,10 @@ return array(
 			'description'=>TR_CONFIG_DISPLAY_TIME_FORMAT_DESC,
 			'control'=>new dropdowncontrol(null,pathos_config_dropdownData('time_format'))
 		),
-		'DISPLAY_WEEK_STARTSON'=>array(
-			'title'=>TR_CONFIG_DISPLAY_WEEK_STARTSON,
-			'description'=>TR_CONFIG_DISPLAY_WEEK_STARTSON_DESC,
-			'control'=>new dropdowncontrol(null,pathos_config_dropdownData('week_startson'))
+		'DISPLAY_WEEKS_STARTON'=>array(
+			'title'=>TR_CONFIG_DISPLAY_WEEKS_STARTON,
+			'description'=>TR_CONFIG_DISPLAY_WEEKS_STARTON_DESC,
+			'control'=>new dropdowncontrol(null,pathos_config_dropdownData('weeks_starton'))
 		)
 	)
 );

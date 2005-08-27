@@ -27,10 +27,14 @@ function showMenu( parent, child ) {
 	}  
 } 
  
-function keepMenu( child ) { 
-	child.style.visibility = 'visible'; 
+function keepMenu( child ) {
+	if (child){ 
+		child.style.visibility = 'visible'; 
+	}
 } 
  
 function hideMenu( child ) { 
-	child.style.visibility = 'hidden'; 
+	if (child) {
+		child.style.visibility = 'hidden'; 
+	}
 } 

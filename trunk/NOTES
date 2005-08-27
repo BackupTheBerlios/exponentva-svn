@@ -1,0 +1,19 @@
+JSCalendar
+----------
+- This system is used to provide the Mini_Calendar Views in the Calendar Weblog modules, as well as the popup datetime control
+
+currently the implementation has some slight issues:
+1) when htmlarea is displayed on the page, the first of the JSCalendars is not displayed (the javascripts are racing - investigation & fix underway )
+
+2) when using popupdatetime controls (e.g. calendar event time selection), two clicks on the popup button are needed (1.init 2.display ) this is a workaround for an Exponent bug that prevents E's form controls from initializing JS properly
+
+3) the css files in calendar-,weblogmodule/css/Mini_calendar.css need some work for a decent default display. this would also fix the problem of mini-calendars displaying strange colors, when popupdatetime controls are there, too. clash between external/jscalendar/calendar-system.css and modules/calendar- or weblogmodule/css/Mini_calendar.css
+
+
+
+PHP 4.3/5
+---------
+
+- conf/extensions/site.structure.php uses glob() function, which is only available from php 4.3+ 
+
+- sdk/build_i18n_files.php might use some PHP5 constructs
