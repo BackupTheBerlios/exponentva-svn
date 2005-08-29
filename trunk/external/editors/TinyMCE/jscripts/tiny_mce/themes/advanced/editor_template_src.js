@@ -233,8 +233,8 @@ function TinyMCE_advanced_execCommand(editor_id, element, command, user_interfac
 			var template = new Array();
 
 			template['file'] = 'source_editor.htm';
-			template['width'] = tinyMCE.getParam("theme_advanced_source_editor_width", 500);
-			template['height'] = tinyMCE.getParam("theme_advanced_source_editor_height", 400);
+			template['width'] = parseInt(tinyMCE.getParam("theme_advanced_source_editor_width", 500));
+			template['height'] = parseInt(tinyMCE.getParam("theme_advanced_source_editor_height", 400));
 
 			tinyMCE.openWindow(template, {editor_id : editor_id, resizable : "yes", scrollbars : "no", inline : "yes"});
 			//mceCodeEditor
@@ -827,11 +827,9 @@ function TinyMCE_advanced_handleNodeChange (editor_id, node, undo_index,
 				nodeData += "id: " + path[i].getAttribute('id') + " ";
 			}
 
-			var className = tinyMCE.getVisualAidClass(getAttrib(path[i], "className"), false);
+			var className = tinyMCE.getVisualAidClass(tinyMCE.getAttrib(path[i], "class"), false);
 			if (className != "" && className.indexOf('mceItem') == -1)
-			{
 				nodeData += "class: " + className + " ";
-			}
 
 			if (getAttrib(path[i], 'src') != "")
 			{
@@ -858,11 +856,9 @@ function TinyMCE_advanced_handleNodeChange (editor_id, node, undo_index,
 
 			if (getAttrib(path[i], 'name').indexOf("mce_") != 0)
 			{
-				var className = tinyMCE.getVisualAidClass(tinyMCE.getAttrib(path[i], "className"), false);
+				var className = tinyMCE.getVisualAidClass(tinyMCE.getAttrib(path[i], "class"), false);
 				if (className != "" && className.indexOf('mceItem') == -1)
-				{
 					nodeName += "." + className;
-				}
 			}
 
 			if (tinyMCE.isMSIE)

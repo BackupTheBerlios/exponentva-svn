@@ -64,8 +64,13 @@ class checkboxcontrol extends formcontrol {
 	var $flip = false;
 	var $jsHooks = array();
 	
-	function name() { return "Checkbox"; }
-	function isSimpleControl() { return true; }
+	function name() {
+		return "Checkbox";
+	}
+	
+	function isSimpleControl() {
+		return true;
+	}
 	
 	function getFieldDefinition() { 
 		return array(

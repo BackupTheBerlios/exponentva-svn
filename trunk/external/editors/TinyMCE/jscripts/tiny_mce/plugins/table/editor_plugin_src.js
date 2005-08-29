@@ -12,8 +12,18 @@ function TinyMCE_table_getInfo() {
 };
 
 function TinyMCE_table_initInstance(inst) {
-	if (tinyMCE.isGecko)
-		tinyMCE.addEvent(inst.getDoc(), "mouseup", TinyMCE_table_mouseDownHandler);
+	if (tinyMCE.isGecko) {
+		var doc = inst.getDoc();
+
+		tinyMCE.addEvent(doc, "mouseup", TinyMCE_table_mouseDownHandler);
+
+		try {
+			// For future FF versions
+			doc.execCommand('enableInlineTableEditing', false, false);
+		} catch (e) {
+			// Ignore
+		}
+	}
 
 	inst.tableRowClipboard = null;
 }

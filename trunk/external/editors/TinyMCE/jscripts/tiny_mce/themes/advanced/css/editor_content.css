@@ -47,9 +47,33 @@ p {
 }
 */
 
+/* Fix for MS Office unindeted lists */
+/*
+.unIndentedList {
+	margin: 0px;
+	list-style-position: inside;
+}
+*/
+
+/* Fix for MS Office UL lists */
+/*
+ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+*/
+
 /* Important is needed in Gecko browsers inorder to style links */
 /*
 a {
 	color: green !important;
+}
+*/
+
+/* Style selection range colors in Gecko browsers */
+/*
+::-moz-selection {
+	background-color: red;
+	color: green;
 }
 */

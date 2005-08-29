@@ -100,10 +100,10 @@ class popupdatetimecontrol extends formcontrol {
 			$imgsrc = THEME_RELATIVE."icons/calendar_trigger.gif";
 		}
 		
-		if (is_readable(THEME_BASE."popupdatetimecontrol.css")) {
-			echo '<style type="text/css"> @import url('.THEME_RELATIVE.'popupdatetimecontrol.css);</style>';
+		if (is_readable(THEME_BASE."css/popupdatetimecontrol.css")) {
+			echo '<style type="text/css"> @import url('.THEME_RELATIVE.'css/popupdatetimecontrol.css);</style>';
 		} else {
-			echo '<style type="text/css"> @import url('.PATH_RELATIVE.'external/jscalendar/calendar-system.css);</style>';
+			echo '<style type="text/css"> @import url('.PATH_RELATIVE.'css/popupdatetimecontrol.css);</style>';
 		}
 		
 		$default = "";
@@ -159,9 +159,9 @@ class popupdatetimecontrol extends formcontrol {
 		pathosJSIncludeOnce("jscalendar2", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/lang/calendar-<?PHP echo LANG ?>.js");
 		pathosJSIncludeOnce("jscalendar3", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/calendar-setup.js");
 			
-		pathosJSregister(initPopupJSCalendar<?PHP echo "_" . $name;?>);
+		pathosJSregister(initPopupDateTimeControl<?PHP echo "_" . $name;?>);
 		
-		function initPopupJSCalendar<?PHP echo "_" . $name;?>() {
+		function initPopupDateTimeControl<?PHP echo "_" . $name;?>() {
 			Calendar.setup({
 				inputField			:    "<?PHP echo $name ?>_hidden",
 				ifFormat			:    "%m/%d/%Y %H:%M",
@@ -177,7 +177,8 @@ class popupdatetimecontrol extends formcontrol {
 				timeFormat			:	"24",
 				button				:	"<?PHP echo $name ?>_trigger",
 				align				:	"Tl",
-				date				:	new Date().setTime(<?PHP echo $this->default * 1000 ?>),
+				//TODO: write proper timezone handling for Exponent
+				date				:	new Date(<?PHP echo $this->default * 1000;?> + (new Date().getTimezoneOffset() * 60 * 1000)),
 				step				:	1,
 				firstDay			:	<?PHP echo DISPLAY_WEEKS_STARTON?>
 			});		

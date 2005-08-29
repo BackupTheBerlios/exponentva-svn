@@ -16,7 +16,11 @@ function pathos_forms_disable_datetime(id,frm,disable) {
 	}
 	
 	for (var i = 0; i < ctl_elems.length; i++) {
-		if (disable) ctl_elems[i].setAttribute("disabled","disabled");
-		else ctl_elems[i].removeAttribute("disabled");
+		if (disable) {
+			ctl_elems[i].setAttribute("disabled","disabled");
+		} else {
+			ctl_elems[i].removeAttribute("disabled");
+		}
 	}
 }
+

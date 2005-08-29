@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.,Maxim Mueller
 #
 # This file is part of Exponent
 #
@@ -29,6 +29,7 @@
 # Boston, MA 02111-1307  USA
 #
 # $Id: pathos.js.php,v 1.12 2005/04/06 18:52:14 filetreefrog Exp $
+# MaxxCorp
 ##################################################
 
 //Initialize Pathos Framework

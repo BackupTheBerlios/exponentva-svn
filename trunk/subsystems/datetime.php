@@ -427,4 +427,30 @@ function pathos_datetime_recurringYearlyDates($start,$end,$freq) {
 	return $dates;
 }
 
+/* exdoc
+ * Determines whether 12h or 24h format is used,
+ * currently based on the DISPLAY_TIME_FORMAT constant
+ * and searches it for format strings
+ * that relate to time formatting
+ *
+ * @node Subsystems:DateTime
+ */
+function pathos_datetime_hourFormat() {
+	#TODO: Add handling for the "preferred presentation format": %X 
+	$twelveHourIndicators = array("r", "p", "I","l");
+	
+	$is12h = false;
+	
+	foreach ($twelveHourIndicators as $indicator){
+		if (strpos(DISPLAY_TIME_FORMAT,$indicator) != false ) {
+			$is12h = true;
+		}
+	}
+	
+	if ($is12h) {
+		return "12"; 
+	} else {
+		return "24";
+	}
+}
 ?>

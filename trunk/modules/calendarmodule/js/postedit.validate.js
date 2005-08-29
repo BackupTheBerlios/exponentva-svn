@@ -11,7 +11,7 @@ function validate(frm) {
 	
 	//alert("This is an event.  Testing date/time stuff");
 	
-	var startTS = Date.parse(frm.eventstart_hidden.value);
+	var startTS = Date.parse(frm.eventdate_hidden.value);
 	var endTS = Date.parse(frm.eventend_hidden.value);
 	
 	if (startTS > endTS) {

@@ -51,7 +51,7 @@ if (!defined('PATHOS')) exit('');
 require_once(BASE."subsystems/forms/controls/formcontrol.php");
 
 /**
- * Contact Control
+ * DateTime Control
  *
  * @package Subsystems
  * @subpackage Forms
@@ -60,8 +60,14 @@ class datetimecontrol extends formcontrol {
 	var $showdate = true;
 	var $showtime = true;
 	
-	function name() { return "Date / Time Field"; }
-	function isSimpleControl() { return true; }
+	function name() {
+		return "Date / Time Field";
+	}
+	
+	function isSimpleControl() {
+		return true;
+	}
+	
 	function getFieldDefinition() {
 		return array(
 			DB_FIELD_TYPE=>DB_DEF_TIMESTAMP);
@@ -76,13 +82,22 @@ class datetimecontrol extends formcontrol {
 	}
 
 	function toHTML($label,$name) {
-		if (!$this->showdate && !$this->showtime) return "";
+		if (!$this->showdate && !$this->showtime) {
+			return "";
+		}
+		
 		return parent::toHTML($label,$name);
 	}
 	
 	function controlToHTML($name) {
-		if (!$this->showdate && !$this->showtime) return "";
-		if ($this->default == 0) $this->default = time();
+		if (!$this->showdate && !$this->showtime) {
+			return "";
+		}
+		
+		if ($this->default == 0) {
+			$this->default = time();
+		}
+		
 		$default_date = getdate($this->default);
 		$hour = $default_date['hours'];
 		if ($hour > 12) $hour -= 12;
@@ -98,12 +113,23 @@ class datetimecontrol extends formcontrol {
 			$html .= '<input type="text" id="' . $name . '_year" name="' . $name . '_year" size="5" maxlength="4" value="' . $default_date['year'] . '" />';
 		}
 		if ($this->showtime) {
-			$html .= '<input type="text" id="' . $name . '_hour" name="' . $name . '_hour" size="3" maxlength="2" value="' . $hour . '" />';
-			$html .= '<input type="text" id="' . $name . '_minute" name="' . $name . '_minute" size="3" maxlength="2" value="' . $minute . '" />';
-			$html .= '<select id="' . $name . '_ampm" name="' . $name . '_ampm" size="1">';
-			$html .= '<option value="am"' . ($default_date['hours'] < 12 ? " selected":"") . '>am</option>';
-			$html .= '<option value="pm"' . ($default_date['hours'] < 12 ? "":" selected") . '>pm</option>';
-			$html .= '</select>';
+			ob_start();
+			
+				echo	'<input type="text" id="' . $name . '_hour" name="' . $name . '_hour" size="3" maxlength="2" value="' . $hour . '" />';
+				echo	'<input type="text" id="' . $name . '_minute" name="' . $name . '_minute" size="3" maxlength="2" value="' . $minute . '" />';
+				echo	'<select id="' . $name . '_ampm" name="' . $name . '_ampm" size="1">';
+				echo	'<option value="am"' . ($default_date['hours'] < 12 ? " selected":"") . '>am</option>';
+				echo	'<option value="pm"' . ($default_date['hours'] < 12 ? "":" selected") . '>pm</option>';
+				echo	'</select>';
+	
+				if (is_readable(THEME_BASE."css/datetimecontrol.css")) {
+					echo '<style type="text/css"> @import url('.THEME_RELATIVE.'css/datetimecontrol.css);</style>';
+				} else {
+					echo '<style type="text/css"> @import url('.PATH_RELATIVE.'css/datetimecontrol.css);</style>';
+				}		
+			
+			$html .= ob_get_contents();
+			ob_end_clean();
 		}
 		return $html;
 	}

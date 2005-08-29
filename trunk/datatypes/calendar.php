@@ -67,10 +67,13 @@ class calendar {
 		$form->register('eventdate',TR_CALENDARMODULE_EVENTDATE,new popupdatetimecontrol($object->eventdate->date,'',false));
 		
 		$cb = new checkboxcontrol($object->is_allday,true);
-		$cb->jsHooks = array('onClick'=>'pathos_forms_disable_datetime(\'eventstart\',this.form,this.checked); pathos_forms_disable_datetime(\'eventend\',this.form,this.checked);');
+		#Warning: when the box returns true, we have to switch off the time controls
+		$cb->jsHooks = array('onClick'=>'pathos_forms_switch_time(\'eventstart\', this.form, this.checked ? false : true); pathos_forms_switch_time(\'eventend\',this.form, this.checked ? false : true);');
 		$form->register('is_allday',TR_CALENDARMODULE_ISALLDAY,$cb);
-		$form->register('eventstart',TR_CALENDARMODULE_EVENTSTART,new datetimecontrol($object->eventstart,false));
-		$form->register('eventend',TR_CALENDARMODULE_EVENTEND,new datetimecontrol($object->eventend,false));
+		
+		#Warning: when the box returns true, we have to switch off the time controls
+		$form->register('eventstart',TR_CALENDARMODULE_EVENTSTART,new timeControl($object->eventstart, $object->is_allday ? false : true));
+		$form->register('eventend',TR_CALENDARMODULE_EVENTEND,new timeControl($object->eventend, $object->is_allday ? false : true));
 		
 		if (!isset($object->id)) {
 			$customctl = file_get_contents(BASE.'modules/calendarmodule/form.part');
@@ -112,8 +115,8 @@ class calendar {
 		
 		$object->is_allday = (isset($values['is_allday']) ? 1 : 0);
 		
-		$object->eventstart = datetimecontrol::parseData('eventstart',$values);
-		$object->eventend = datetimecontrol::parseData('eventend',$values);
+		$object->eventstart = timeControl::parseData('eventstart',$values);
+		$object->eventend = timeControl::parseData('eventend',$values);
 		
 		if (!isset($object->id)) {
 			global $user;

@@ -60,7 +60,6 @@ class calendarmodule {
 				'administrate'=>TR_CALENDARMODULE_PERM_ADMIN,
 				'edit'=>TR_CALENDARMODULE_PERM_EDIT,
 				'delete'=>TR_CALENDARMODULE_PERM_DELETE,
-				'view'=>'view'
 			);
 		}
 	}

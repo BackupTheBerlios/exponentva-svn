@@ -22,6 +22,7 @@ jsTrim("jscripts/tiny_mce/plugins/fullscreen/editor_plugin_src.js", "jscripts/ti
 jsTrim("jscripts/tiny_mce/plugins/directionality/editor_plugin_src.js", "jscripts/tiny_mce/plugins/directionality/editor_plugin.js");
 jsTrim("jscripts/tiny_mce/plugins/inlinepopups/editor_plugin_src.js", "jscripts/tiny_mce/plugins/inlinepopups/editor_plugin.js");
 jsTrim("jscripts/tiny_mce/plugins/autosave/editor_plugin_src.js", "jscripts/tiny_mce/plugins/autosave/editor_plugin.js");
+jsTrim("jscripts/tiny_mce/plugins/noneditable/editor_plugin_src.js", "jscripts/tiny_mce/plugins/noneditable/editor_plugin.js");
 
 sub jsTrim {
 	my $inFile = $_[0];

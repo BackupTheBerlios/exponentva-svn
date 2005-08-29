@@ -1,7 +1,7 @@
 /**
  * $RCSfile: tiny_mce_src.js,v $
- * $Revision: 1.231 $
- * $Date: 2005/08/23 17:01:39 $
+ * $Revision: 1.233 $
+ * $Date: 2005/08/26 15:20:32 $
  *
  * @author Moxiecode
  * @copyright Copyright © 2004, Moxiecode Systems AB, All rights reserved.
@@ -532,7 +532,6 @@ TinyMCE.prototype.addEventHandlers = function(editor_id) {
 		tinyMCE.addEvent(doc, "keydown", TinyMCE.prototype.eventPatch);
 		tinyMCE.addEvent(doc, "mouseup", TinyMCE.prototype.eventPatch);
 		tinyMCE.addEvent(doc, "click", TinyMCE.prototype.eventPatch);
-		tinyMCE.addEvent(doc.body, "blur", TinyMCE.prototype.eventPatch);
 	} else {
 		var inst = tinyMCE.instances[editor_id];
 		var doc = inst.getDoc();
@@ -709,6 +708,10 @@ TinyMCE.prototype.setupContent = function(editor_id) {
 	if (!tinyMCE.isMSIE)
 		TinyMCE.prototype.addEventHandlers(editor_id);
 
+	// Add blur handler
+	if (tinyMCE.isMSIE)
+		tinyMCE.addEvent(inst.getBody(), "blur", TinyMCE.prototype.eventPatch);
+
 	// Trigger node change, this call locks buttons for tables and so forth
 	tinyMCE.selectedInstance = inst;
 	tinyMCE.selectedElement = inst.contentWindow.document.body;
@@ -720,7 +723,7 @@ TinyMCE.prototype.setupContent = function(editor_id) {
 	tinyMCE._setEventsEnabled(inst.getBody(), true);
 
 	inst.startContent = tinyMCE.trim(inst.getBody().innerHTML);
-	inst.undoLevels[inst.undoLevels.length] =inst.startContent;
+	inst.undoLevels[inst.undoLevels.length] = inst.startContent;
 };
 
 TinyMCE.prototype.cancelEvent = function(e) {
@@ -1660,7 +1663,7 @@ TinyMCE.prototype.parseStyle = function(str) {
 		if (st[i] == '')
 			continue;
 
-		var re = new RegExp('^\\W*(.*):\\W*(.*)\\W*$');
+		var re = new RegExp('^\\W*([^:]*):\\W*(.*)\\W*$');
 		var pa = st[i].replace(re, '$1||$2').split('||');
 //tinyMCE.debug(pa[0] + "=" + pa[1]);
 		if (pa.length == 2)
@@ -2379,7 +2382,7 @@ TinyMCE.prototype.getParentBlockElement = function(node) {
 };
 
 TinyMCE.prototype.getNodeTree = function(node, node_array, type, node_name) {
-	if (typeof(type) == "undefined" || node.nodeType == type && (typeof(node_name) == "undefined" || node.nodeName.toLowerCase() == node_name.toLowerCase()))
+	if (typeof(type) == "undefined" || node.nodeType == type && (typeof(node_name) == "undefined" || node.nodeName == node_name))
 		node_array[node_array.length] = node;
 
 	if (node.hasChildNodes()) {
