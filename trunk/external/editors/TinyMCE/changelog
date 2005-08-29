@@ -27,7 +27,6 @@ Version 2.0RC1 (2005-08-xx)
 	Added new editor_selector/editor_deselector options that enables you to specify a include/exclude from convertion class.
 	Added new tinyMCE.addToLang function to reduce the overall size of the language files.
 	Added new auto save plugin. This plugin will confirm that the user want's the leave any modifications unsaved.
-	Added new noneditable plugin. This plugin enables you to disable/enable the possibility to edit various elements.
 	Added missing entities eactute,iacute,oacute,uacute,Aacute,Eacute,Iacute,Oacute,Uacute,Yacute,Aacute.
 	Added updated Hebrew language pack contributed by Liron Newman.
 	Added visual aid icon for invisible anchors elements.

@@ -57,7 +57,7 @@ require_once(BASE."subsystems/forms/controls/formcontrol.php");
  * @subpackage Forms
  */
 class timeControl extends formcontrol {
-	var $showTime = true;
+	var $showControl = true;
 	
 	function name() {
 		return "Time Widget";
@@ -77,10 +77,10 @@ class timeControl extends formcontrol {
 	 * 
 	 * Parameters:
 	 * $default -> intitialize with this unix timestamp
-	 * $showtime -> indicate whether this control should be displayed or hidden 
+	 * $showControl -> indicate whether this control should be displayed or hidden 
 	 * 
 	 */ 
-	function timeControl($default = 0, $showTime = true) {
+	function timeControl($default = 0, $showControl = true) {
 		if (!defined("SYS_DATETIME")) {
 			require_once(BASE."subsystems/datetime.php");
 		}
@@ -90,7 +90,7 @@ class timeControl extends formcontrol {
 		}
 		
 		$this->default = $default;
-		$this->showTime = $showTime;
+		$this->showControl = $showControl;
 	}
 
 	function toHTML($label,$name) {
@@ -162,7 +162,7 @@ class timeControl extends formcontrol {
 		
 		function setInitState<?PHP echo "_" . $name; ?> () {
 			//server-generated: is Timecontrol active(= is it no allday event) ?
-			pathos_forms_switch_time("<?PHP echo $name; ?>", this.form, <?PHP echo ($this->showTime ? 'true' : 'false'); ?>);
+			pathos_forms_switch_time("<?PHP echo $name; ?>", this.form, <?PHP echo ($this->showControl ? 'true' : 'false'); ?>);
 		
 		}
 		
@@ -195,7 +195,7 @@ class timeControl extends formcontrol {
 	}
 	
 	function templateFormat($db_data, $ctl) {
-		if ($ctl->showtime) {
+		if ($ctl->showControl) {
 			return strftime(DISPLAY_TIME_FORMAT, $db_data);
 		}
 		else {
@@ -211,7 +211,7 @@ class timeControl extends formcontrol {
 		if (!isset($object->identifier)) {
 			$object->identifier = "";
 			$object->caption = "";
-			$object->showtime = true;
+			$object->showControl = true;
 		} 
 		
 		pathos_lang_loadDictionary('standard','formcontrols');
@@ -219,7 +219,7 @@ class timeControl extends formcontrol {
 		
 		$form->register("identifier",TR_FORMCONTROLS_IDENTIFIER,new textcontrol($object->identifier));
 		$form->register("caption",TR_FORMCONTROLS_CAPTION, new textcontrol($object->caption));
-		$form->register("showtime",TR_FORMCONTROLS_SHOWTIME, new checkboxcontrol($object->showtime,false));
+		$form->register("showControl",TR_FORMCONTROLS_SHOWCONTROL, new checkboxcontrol($object->showControl,false));
 		
 		$form->register("submit","",new buttongroupcontrol(TR_CORE_SAVE,"",TR_CORE_CANCEL));
 		
@@ -240,7 +240,7 @@ class timeControl extends formcontrol {
 		}
 		$object->identifier = $values['identifier'];
 		$object->caption = $values['caption'];
-		$object->showtime = isset($values['showtime']);
+		$object->showControl = isset($values['showControl']);
 		return $object;
 	}
 }
