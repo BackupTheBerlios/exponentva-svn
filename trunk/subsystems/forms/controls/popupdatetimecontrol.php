@@ -83,9 +83,6 @@ class popupdatetimecontrol extends formcontrol {
 	}
 
 	function onRegister(&$form) {
-#		$form->addScript("jscalendar1",      PATH_RELATIVE."external/jscalendar/calendar.js");
-#		$form->addScript("jscalendar2", PATH_RELATIVE."external/jscalendar/lang/calendar-" . LANG . ".js");
-#		$form->addScript("jscalendar3",PATH_RELATIVE."external/jscalendar/calendar-setup.js");
 		$form->addScript("popupdatetimecontrol",PATH_RELATIVE."js/PopupDateTimeControl.js");
 	}
 	
@@ -141,7 +138,7 @@ class popupdatetimecontrol extends formcontrol {
 		} else {
 			echo 'style="cursor: pointer;" ';
 		}
-		echo 'title="Date selector" onclick="initPopupJSCalendar_' . $name . '();" onmouseover="this.style.background=\'red\';" onmouseout="this.style.background=\'\'" />';
+		echo 'title="Date selector" onclick="initPopupDateTimeControl_' . $name . '();" onmouseover="this.style.background=\'red\';" onmouseout="this.style.background=\'\'" />';
 
 		if ($this->disable_text != "") {// popupdatetimecontrol_enable(this.form,\''.$name.'\');
 			echo '<input align="texttop" style="margin-top: -2px;" type="checkbox" name="'.$name.'_disabled" onChange="popupdatetimecontrol_enable(this.form,\''.$name.'\');" onClick="popupdatetimecontrol_enable(this.form,\''.$name.'\');" ';
@@ -158,8 +155,7 @@ class popupdatetimecontrol extends formcontrol {
 		pathosJSIncludeOnce("jscalendar1", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/calendar.js");
 		pathosJSIncludeOnce("jscalendar2", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/lang/calendar-<?PHP echo LANG ?>.js");
 		pathosJSIncludeOnce("jscalendar3", "<?PHP echo PATH_RELATIVE ?>external/jscalendar/calendar-setup.js");
-			
-		pathosJSregister(initPopupDateTimeControl<?PHP echo "_" . $name;?>);
+		
 		
 		function initPopupDateTimeControl<?PHP echo "_" . $name;?>() {
 			Calendar.setup({
@@ -181,8 +177,10 @@ class popupdatetimecontrol extends formcontrol {
 				date				:	new Date(<?PHP echo $this->default * 1000;?> + (new Date().getTimezoneOffset() * 60 * 1000)),
 				step				:	1,
 				firstDay			:	<?PHP echo DISPLAY_WEEKS_STARTON?>
-			});		
-		};
+			})		
+		}
+		
+		pathosJSregister(initPopupDateTimeControl<?PHP echo "_" . $name;?>);
 
 	</script>
 <?PHP
