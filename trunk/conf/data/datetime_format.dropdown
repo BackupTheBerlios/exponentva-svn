@@ -35,3 +35,5 @@
 %a %b %d %Y %H:%M
 	Mon Nov 01 2004 18:45
 	
+%a, %d  %b %Y %H:%M
+	Mon, 01 Nov 2004 18:45

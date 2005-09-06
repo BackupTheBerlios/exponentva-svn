@@ -30,8 +30,8 @@
  * 2005/06/14 MaxxCorp
  *}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
-{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
-{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/containermodule.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/containermodule.`$__view`.i18n" scope="local"}
 <div class="container_editbox">
  
 	<div class="container_editheader">

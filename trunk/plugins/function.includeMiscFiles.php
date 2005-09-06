@@ -34,22 +34,7 @@
  */
 function smarty_function_includeMiscFiles($params,&$smarty) {
 	
-	//convert into associative arrays
-	function glob2keyedArray($workArray){
-		$temp = array();
-		foreach($workArray as $myWorkFile){
-			$temp[basename($myWorkFile)] = $myWorkFile;
-		} 
-		return $temp;
-	}
-	
-	//convert to relative paths for linking
-	function absolute2relative($inPath) {
-		//TODO: Investigate the chances of BASE occurring more than once
-		$outPath = str_replace(BASE, PATH_RELATIVE, $inPath);
-		return $outPath;
-	}
-	
+	include_once("libSmartyHelpers.php");	
 	
 	$loc = $smarty->_tpl_vars['__loc'];
 	$myModule = $loc->mod;

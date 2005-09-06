@@ -39,7 +39,7 @@
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 <tr>
 	<td class="header" width="40">&nbsp;</td>
-	<td class="header">Name</td>
+	<td class="header">{#i18n_name#}</td>
 	<td class="header"></td>
 </tr>
 {foreach name=a from=$categories item=category}

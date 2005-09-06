@@ -27,7 +27,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: timeControl.php,v 1.0 2005/08/27 MaxxCorp Exp $
+# $Id: TimeControl.php,v 1.0 2005/08/27 MaxxCorp Exp $
 # based on the datetimecontrol class by Greg Otte, James Hunt
 ##################################################
 
@@ -56,7 +56,7 @@ require_once(BASE."subsystems/forms/controls/formcontrol.php");
  * @package Subsystems
  * @subpackage Forms
  */
-class timeControl extends formcontrol {
+class TimeControl extends formcontrol {
 	var $showControl = true;
 	
 	function name() {
@@ -80,7 +80,7 @@ class timeControl extends formcontrol {
 	 * $showControl -> indicate whether this control should be displayed or hidden 
 	 * 
 	 */ 
-	function timeControl($default = 0, $showControl = true) {
+	function TimeControl($default = 0, $showControl = true) {
 		if (!defined("SYS_DATETIME")) {
 			require_once(BASE."subsystems/datetime.php");
 		}
@@ -110,14 +110,14 @@ class timeControl extends formcontrol {
 		
 		ob_start();
 			
-			if (is_readable(THEME_ABSOLUTE."css/timeControl.css")) {
-				echo '<style type="text/css"> @import url('.THEME_RELATIVE.'css/timeControl.css);</style>';
+			if (is_readable(THEME_ABSOLUTE."css/TimeControl.css")) {
+				echo '<style type="text/css"> @import url('.THEME_RELATIVE.'css/TimeControl.css);</style>';
 			} else {
-				echo '<style type="text/css"> @import url('.PATH_RELATIVE.'css/timeControl.css);</style>';
+				echo '<style type="text/css"> @import url('.PATH_RELATIVE.'css/TimeControl.css);</style>';
 			}		
 ?>
 
-<div class="timeControl" id='jscalendar<?PHP echo "_".$name; ?>'>
+<div class="TimeControl" id='jscalendar<?PHP echo "_".$name; ?>'>
 	<input type="hidden" id="<?PHP echo $name; ?>_timestamp" name="<?PHP echo $name; ?>_timestamp" value="<?PHP echo $this->default; ?>" />
 	<script type="text/javascript">
 		pathosJSIncludeOnce("jscalendar1", "<?PHP echo PATH_RELATIVE; ?>external/jscalendar/calendar.js");
@@ -125,10 +125,10 @@ class timeControl extends formcontrol {
 		pathosJSIncludeOnce("jscalendar3", "<?PHP echo PATH_RELATIVE; ?>external/jscalendar/calendar-setup.js");
 		
 <?PHP		
-		if (is_readable(THEME_ABSOLUTE."js/timeControl.js")) {
-				echo "		pathosJSIncludeOnce('timeControl', '" . THEME_ABSOLUTE . "js/timeControl.js');";
+		if (is_readable(THEME_ABSOLUTE."js/TimeControl.js")) {
+				echo "		pathosJSIncludeOnce('TimeControl', '" . THEME_ABSOLUTE . "js/TimeControl.js');";
 			} else {
-				echo "		pathosJSIncludeOnce('timeControl', '" .  PATH_RELATIVE . "js/timeControl.js');";
+				echo "		pathosJSIncludeOnce('TimeControl', '" .  PATH_RELATIVE . "js/TimeControl.js');";
 			}	
 ?>
 
@@ -195,12 +195,7 @@ class timeControl extends formcontrol {
 	}
 	
 	function templateFormat($db_data, $ctl) {
-		if ($ctl->showControl) {
-			return strftime(DISPLAY_TIME_FORMAT, $db_data);
-		}
-		else {
-			return "";
-		}
+		return strftime(DISPLAY_TIME_FORMAT, $db_data);
 	}
 	
 	function form($object) {
@@ -228,7 +223,7 @@ class timeControl extends formcontrol {
 	
 	function update($values, $object) {
 		if ($object == null) { 
-			$object = new timeControl();
+			$object = new TimeControl();
 			$object->default = 0; //This will force the control to always show the current time as default
 		}
 		if ($values['identifier'] == "") {

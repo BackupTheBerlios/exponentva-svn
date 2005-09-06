@@ -30,8 +30,8 @@
  * 2005/06/14 MaxxCorp
  *}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
-{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
-{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/workflow.i18n" scope="local"}
+{config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/workflow.`$__view`.i18n" scope="local"}
 {foreach name=c from=$containers item=container}
 	{assign var=i value=$smarty.foreach.c.iteration}
 	<div class="container_editbox">

@@ -31,3 +31,6 @@
 	
 %a %b %d %Y
 	Mon Nov 01 2004
+
+%a, %d %b %Y
+	Mon, 01 Nov 2004

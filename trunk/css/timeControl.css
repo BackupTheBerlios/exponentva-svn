@@ -2,81 +2,81 @@
 
 /* Header part -- contains navigation buttons and day names. */
 
-.timeControl .calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
+.TimeControl .calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
 	display:none;
 }
 
-.timeControl .calendar thead .title { /* This holds the current "month, year" */
+.TimeControl .calendar thead .title { /* This holds the current "month, year" */
 	display:none;
 }
 
-.timeControl .calendar thead .headrow { /* Row <TR> containing navigation buttons */
+.TimeControl .calendar thead .headrow { /* Row <TR> containing navigation buttons */
 	display:none;
 }
 
-.timeControl .calendar thead .daynames { /* Row <TR> containing the day names */
+.TimeControl .calendar thead .daynames { /* Row <TR> containing the day names */
 }
 
-.timeControl .calendar thead .name { /* Cells <TD> containing the day names */
+.TimeControl .calendar thead .name { /* Cells <TD> containing the day names */
 	display:none;
 }
 
 /* The body part -- contains all the days in month. */
 
-.timeControl .calendar tbody .day { /* Cells <TD> containing month days dates */
+.TimeControl .calendar tbody .day { /* Cells <TD> containing month days dates */
 	display:none;
 }
 
-.timeControl .calendar tbody td.disabled { color: GrayText; }
+.TimeControl .calendar tbody td.disabled { color: GrayText; }
 
-.timeControl .calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
+.TimeControl .calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
 	display:none;
 }
 
-.timeControl .calendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
+.TimeControl .calendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
 	display: none;
 }
 
 /* The footer part -- status bar and "Close" button */
 
-.timeControl .calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
+.TimeControl .calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
 	display:none;
 }
 
 /* Combo boxes (menus that display months/years for direct selection) */
 
-.timeControl .calendar td.time {
+.TimeControl .calendar td.time {
   border-top: 1px solid ButtonShadow;
   padding: 1px 0px;
   text-align: center;
   background-color: ButtonFace;
 }
 
-.timeControl .calendar td.time .hour,
-.timeControl .calendar td.time .minute,
-.timeControl .calendar td.time .ampm {
+.TimeControl .calendar td.time .hour,
+.TimeControl .calendar td.time .minute,
+.TimeControl .calendar td.time .ampm {
   padding: 0px 3px 0px 4px;
   border: 1px solid #889;
   font-weight: bold;
   background-color: Menu;
 }
 
-.timeControl .calendar td.time .ampm {
+.TimeControl .calendar td.time .ampm {
   text-align: center;
 }
 
-.timeControl .calendar td.time .colon {
+.TimeControl .calendar td.time .colon {
   padding: 0px 2px 0px 3px;
   font-weight: bold;
 }
 
-.timeControl .calendar td.time span.hilite {
+.TimeControl .calendar td.time span.hilite {
   border-color: #000;
   background-color: Highlight;
   color: HighlightText;
 }
 
-.timeControl .calendar td.time span.active {
+.TimeControl .calendar td.time span.active {
   border-color: #f00;
   background-color: #000;
   color: #0f0;
