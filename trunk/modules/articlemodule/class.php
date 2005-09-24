@@ -58,6 +58,9 @@ class articlemodule {
 		
 		$config = $db->selectObject('articlemodule_config',"location_data='".serialize($loc)."'");
 		if ($config == null) {
+			$object->sortorder = 'ASC';
+			$object->sortfield = 'rank';
+			$object->item_limit = 10;
 			$config->enable_categories = 0;
 			$config->recalc = 0; // No need to recalculate, no categories
 		} else  if ($config->recalc == 1) {
@@ -132,8 +135,8 @@ class articlemodule {
 				$data[$id] = $tmp;
 			}
 		} else {
-			$tmp = $db->selectObjects("article","location_data='".serialize($loc)."' AND category_id=0");
-			usort($tmp, 'pathos_sorting_byRankAscending');
+			$tmp = $db->selectObjects("article","location_data='".serialize($loc)."' ORDER BY ".$config->sortfield." " . $config->sortorder . $db->limit($config->item_limit,0));
+			#usort($tmp, 'pathos_sorting_byRankAscending');
 			$data[0] = $tmp;
 		}
 		

@@ -1,4 +1,4 @@
-﻿<?PHP
+<?PHP
 #
 #this file is part of Exponent
 #
@@ -127,7 +127,7 @@ function compute_entryvalue($compare_array,$item)
 	}
 	else
 	{
-		return $item . " = 'TRANSLATE ME'\n";
+		return $item . " = ''\n";
 	}
 }
 

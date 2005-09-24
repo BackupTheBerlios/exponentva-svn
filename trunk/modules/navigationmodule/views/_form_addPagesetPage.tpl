@@ -1,6 +1,6 @@
 {*
  *
- * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc., Maxim Mueller
  *
  * This file is part of Exponent
  *
@@ -34,6 +34,6 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <div class="form_title">{#i18n_formtitle#}</div>
 <div class="form_header">
-{{#i18n_header#}
+{#i18n_header#}
 </div>
 {$form_html}

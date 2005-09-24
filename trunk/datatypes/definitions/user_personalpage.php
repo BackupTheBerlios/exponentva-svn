@@ -28,30 +28,17 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: articlemodule_config.php,v 1.3 2005/02/19 16:53:34 filetreefrog Exp $
+# $Id: user_address.php,v 1.4 2005/02/19 00:39:00 filetreefrog Exp $
 ##################################################
+
 if (!defined('PATHOS')) exit('');
 
 return array(
-	"id"=>array(
+	'uid'=>array(
 		DB_FIELD_TYPE=>DB_DEF_ID,
-		DB_PRIMARY=>true,
-		DB_INCREMENT=>true),
-	"location_data"=>array(
-		DB_FIELD_TYPE=>DB_DEF_STRING,
-		DB_FIELD_LEN=>200),
-	"enable_categories"=>array(
-		DB_FIELD_TYPE=>DB_DEF_INTEGER),
-	"recalc"=>array(
-		DB_FIELD_TYPE=>DB_DEF_BOOLEAN),
-	"sortorder"=>array(
-		DB_FIELD_TYPE=>DB_DEF_STRING,
-		DB_FIELD_LEN=>100),
-	"sortfield"=>array(
-		DB_FIELD_TYPE=>DB_DEF_STRING,
-		DB_FIELD_LEN=>100),
-	"item_limit"=>array(
-		DB_FIELD_TYPE=>DB_DEF_INTEGER)
+		DB_PRIMARY=>true),
+	'ppSectionId'=>array(
+		DB_FIELD_TYPE=>DB_DEF_ID)
 );
 
 ?>
