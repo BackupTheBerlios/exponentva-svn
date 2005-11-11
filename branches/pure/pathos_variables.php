@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: pathos_variables.php,v 1.12 2005/03/21 17:15:09 filetreefrog Exp $
+# $Id: pathos_variables.php,v 1.13 2005/11/10 07:36:42 filetreefrog Exp $
 ##################################################
 
 
@@ -83,7 +83,7 @@ if (!defined('URL_BASE')) {
 	 * It does not include the PATH_RELATIVE information.  The automatic
 	 * detection code can figure out if the server is running in SSL mode or not
 	 */
-	define('URL_BASE',((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://') . HOSTNAME);
+	define('URL_BASE',((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://') . HOSTNAME . (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] != 80 ? ':' . $_SERVER['SERVER_PORT'] : ''));
 }
 if (!defined('URL_FULL')) {
 	/*

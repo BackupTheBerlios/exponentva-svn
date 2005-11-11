@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: geo_country.php,v 1.4 2005/02/19 00:39:00 filetreefrog Exp $
+# $Id: geo_country.php,v 1.5 2005/11/10 07:28:00 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -49,6 +49,6 @@ return array(
 		DB_FIELD_LEN=>3),
 	'iso_code_number'=>array(
 		DB_FIELD_TYPE=>DB_DEF_INTEGER)
-)
+);
 
 ?>

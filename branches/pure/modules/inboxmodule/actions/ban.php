@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: ban.php,v 1.7 2005/04/18 15:24:02 filetreefrog Exp $
+# $Id: ban.php,v 1.9 2005/11/10 06:56:40 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
@@ -36,15 +36,20 @@ if (!defined("PATHOS")) exit("");
 $u = null;
 if (isset($_REQUEST['uid'])) {
 	if (!defined("SYS_USERS")) require_once(BASE."subsystems/users.php");
-	$u = pathos_users_getUserById($_REQUEST['uid']);
+	$u = pathos_users_getUserById((int)$_REQUEST['uid']);
 }
 
 if ($user && $u) {
-	$ban = null;
-	$ban->owner = $user->id;
-	$ban->user_id = $u->id;
-	$db->insertObject($ban,"inbox_contactbanned");
-	pathos_flow_redirect();
+	if ($user->id == $u->id || $u->is_acting_admin == 1) {
+		// GREP:HARDCODEDTEXT
+		echo 'You cannot ban yourself or an administrator from sending mail.';
+	} else {
+		$ban = null;
+		$ban->owner = $user->id;
+		$ban->user_id = $u->id;
+		$db->insertObject($ban,"inbox_contactbanned");
+		pathos_flow_redirect();
+	}
 } else {
 	echo SITE_404_HTML;
 }

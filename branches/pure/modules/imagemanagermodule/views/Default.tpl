@@ -26,7 +26,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: Default.tpl,v 1.8 2005/03/21 17:15:29 filetreefrog Exp $
+ * $Id: Default.tpl,v 1.9 2005/11/10 07:01:36 filetreefrog Exp $
  *}
 {if $show == 1}
 {if $permissions.configure == 1 or $permissions.administrate == 1 or $permissions.post == 1 or $permissions.edit == 1 or $permissions.delete == 1 || $smarty.const.PREVIEW_READONLY}
@@ -58,7 +58,7 @@
 				{if $item->scale == 100}
 				<img src="{$smarty.const.PATH_RELATIVE}{$files[$fid]->directory}/{$files[$fid]->filename}" border="0" title="Use this Image" alt="Use this Image"/>
 				{else}
-				<img src="{$smarty.const.PATH_RELATIVE}thumb.php?base={$smarty.const.BASE}&file={$files[$fid]->directory}/{$files[$fid]->filename}&scale={$item->scale}" border="0" title="Use this Image" alt="Use this Image"/>
+				<img src="{$smarty.const.PATH_RELATIVE}thumb.php?file={$files[$fid]->directory}/{$files[$fid]->filename}&scale={$item->scale}" border="0" title="Use this Image" alt="Use this Image"/>
 				{/if}
 			</a>
 			{else}
@@ -66,7 +66,7 @@
 				{if $item->scale == 100}
 				<img src="{$smarty.const.PATH_RELATIVE}{$files[$fid]->directory}/{$files[$fid]->filename}" border="0" title="View this Image" alt="View this Image"/>
 				{else}
-				<img src="{$smarty.const.PATH_RELATIVE}thumb.php?base={$smarty.const.BASE}&file={$files[$fid]->directory}/{$files[$fid]->filename}&scale={$item->scale}" border="0" title="View this Image" alt="View this Image"/>
+				<img src="{$smarty.const.PATH_RELATIVE}thumb.php?file={$files[$fid]->directory}/{$files[$fid]->filename}&scale={$item->scale}" border="0" title="View this Image" alt="View this Image"/>
 				{/if}
 			</a>
 			{/if}

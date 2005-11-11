@@ -26,10 +26,14 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_banUser.tpl,v 1.3 2005/02/19 00:32:34 filetreefrog Exp $
+ * $Id: _form_banUser.tpl,v 1.4 2005/11/10 06:56:40 filetreefrog Exp $
  *}
+ {if $error == "nousers"}
+ There are no users to ban.
+ {else}
 <div class="form_title">Block User</div>
 <div class="form_header">
 Use this form to block a user from contacting you.  You will be unable to contact any users you have blocked.
 </div>
 {$form_html}
+{/if}

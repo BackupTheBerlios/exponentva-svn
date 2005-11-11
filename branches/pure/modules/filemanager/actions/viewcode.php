@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: viewcode.php,v 1.6 2005/04/18 15:23:13 filetreefrog Exp $
+# $Id: viewcode.php,v 1.7 2005/11/10 06:17:32 filetreefrog Exp $
 ##################################################
 //GREP:HARDCODEDTEXT
 if (!defined('PATHOS')) exit('');
@@ -37,7 +37,7 @@ $template = new template('filemanager','_viewcode',$loc);
 
 $file = $_GET['file'];
 $path = realpath(BASE.$file);
-if (strpos($path,BASE) != 0) {
+if (strpos($path,BASE) != 0 || $user->is_admin == 0) {
 	$template->assign('error','security');
 } else {
 	$ext = substr($path,-3,3);

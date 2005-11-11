@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: pathos_version.php,v 1.19 2005/04/21 20:10:39 filetreefrog Exp $
+# $Id: pathos_version.php,v 1.20 2005/11/10 07:43:59 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS_VERSION_MAJOR')) {
@@ -45,11 +45,11 @@ if (!defined('PATHOS_VERSION_MAJOR')) {
 	/* exdoc
 	 * This is the minor version number of Exponent; the 96 in 0.96.2-beta3
 	 */
-	define('PATHOS_VERSION_MINOR',97);
+	define('PATHOS_VERSION_MINOR',96);
 	/* exdoc
 	 * This is the revision version number of Exponent; the 2 in 0.96.2-beta3
 	 */
-	define('PATHOS_VERSION_REVISION',0);
+	define('PATHOS_VERSION_REVISION',4);
 	/* exdoc
 	 * This is the date that this version of Exponent was exported from CVS and built.
 	 */
@@ -57,7 +57,7 @@ if (!defined('PATHOS_VERSION_MAJOR')) {
 	/* exdoc
 	 * This specifies the type of release, either 'alpha','beta','rc' or '' (for stable).
 	 */
-	define('PATHOS_VERSION_TYPE','alpha');
+	define('PATHOS_VERSION_TYPE','');
 	/* exdoc
 	 * This number is bumped each time a distribution of a single version is
 	 * released.  For instance, the 3rd beta has an version type iteration of 3.

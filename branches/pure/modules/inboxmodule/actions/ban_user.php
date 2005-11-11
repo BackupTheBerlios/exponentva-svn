@@ -28,18 +28,22 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: ban_user.php,v 1.4 2005/02/19 00:32:34 filetreefrog Exp $
+# $Id: ban_user.php,v 1.5 2005/11/10 06:56:40 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
 if ($user) {
-	$form = inbox_contactbanned::form(null);
-	$form->meta("module","inboxmodule");
-	$form->meta("action","ban");
-	
 	$template = new template("inboxmodule","_form_banUser",$loc);
-	$template->assign("form_html",$form->toHTML());
+	
+	$form = inbox_contactbanned::form(null);
+	if ($form == null) {
+		$template->assign('error','nousers');
+	} else {
+		$form->meta("module","inboxmodule");
+		$form->meta("action","ban");
+		$template->assign("form_html",$form->toHTML());
+	}
 	$template->output();
 }
 

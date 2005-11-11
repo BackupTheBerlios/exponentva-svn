@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: save.php,v 1.5 2005/04/21 19:18:47 filetreefrog Exp $
+# $Id: save.php,v 1.6 2005/11/10 06:37:11 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
@@ -58,6 +58,16 @@ if (	($item == null && pathos_permissions_check("post",$loc)) ||
 			do {
 				$fname = basename($fileinfo['basename'],$fileinfo['extension']).uniqid("").$fileinfo['extension'];
 			} while (file_exists(BASE.$directory."/$fname"));
+		}
+		
+		
+		// FIXME: Crude security fix for MIME type checking.
+		$ext3 = substr($_FILES['file']['name'],-3,3);
+		$ext4 = substr($_FILES['file']['name'],-4,4);
+		
+		if ($ext3 !== 'gif' && $ext3 != 'jpg' && $ext4 != 'jpeg' && $ext3 != 'png') {
+			echo 'You can only upload image files to the image manager.';
+			return;
 		}
 		
 		$file = file::update("file",$directory,null,$fname);
