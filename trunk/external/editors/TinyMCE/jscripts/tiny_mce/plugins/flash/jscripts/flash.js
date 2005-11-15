@@ -1,13 +1,24 @@
 var url = tinyMCE.getParam("flash_external_list_url");
 if (url != null) {
 	// Fix relative
-	if (url.charAt(0) != '/')
+	if (url.charAt(0) != '/' && url.indexOf('://') == -1)
 		url = tinyMCE.documentBasePath + "/" + url;
+
+	document.write('<sc'+'ript language="javascript" type="text/javascript" src="' + url + '"></sc'+'ript>');
 }
 
-document.write('<sc'+'ript language="javascript" type="text/javascript" src="' + url + '"></sc'+'ript>');
-
 function init() {
+	tinyMCEPopup.resizeToInnerSize();
+
+	document.getElementById("filebrowsercontainer").innerHTML = getBrowserHTML('filebrowser','file','flash','flash');
+
+	// Image list outsrc
+	var html = getFlashListHTML('filebrowser','file','flash','flash');
+	if (html == "")
+		document.getElementById("linklistrow").style.display = 'none';
+	else
+		document.getElementById("linklistcontainer").innerHTML = html;
+
 	var formObj = document.forms[0];
 	var swffile   = tinyMCE.getWindowArg('swffile');
 	var swfwidth  = '' + tinyMCE.getWindowArg('swfwidth');
@@ -32,30 +43,37 @@ function init() {
 	formObj.file.value = swffile;
 	formObj.insert.value = tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action'), 'Insert', true);
 
+	selectByValue(formObj, 'linklist', swffile);
+
 	// Handle file browser
-	if (tinyMCE.getParam("file_browser_callback") != null) {
+	if (isVisible('filebrowser'))
 		document.getElementById('file').style.width = '230px';
-
-		var html = '';
-
-		html += '<img id="browserBtn" src="../../themes/advanced/images/browse.gif"';
-		html += ' onmouseover="tinyMCE.switchClass(this,\'mceButtonOver\');"';
-		html += ' onmouseout="tinyMCE.restoreClass(this);"';
-		html += ' onmousedown="tinyMCE.restoreAndSwitchClass(this,\'mceButtonDown\');"';
-		html += ' onclick="javascript:tinyMCE.openFileBrowser(\'file\',document.forms[0].file.value,\'flash\',window);"';
-		html += ' width="20" height="18" border="0" title="' + tinyMCE.getLang('lang_browse') + '"';
-		html += ' class="mceButtonNormal" alt="' + tinyMCE.getLang('lang_browse') + '" />';
-
-		document.getElementById('browser').innerHTML = html;
-	}
 
 	// Auto select flash in list
 	if (typeof(tinyMCEFlashList) != "undefined" && tinyMCEFlashList.length > 0) {
-		for (var i=0; i<formObj.link_list.length; i++) {
-			if (formObj.link_list.options[i].value == tinyMCE.getWindowArg('swffile'))
-				formObj.link_list.options[i].selected = true;
+		for (var i=0; i<formObj.linklist.length; i++) {
+			if (formObj.linklist.options[i].value == tinyMCE.getWindowArg('swffile'))
+				formObj.linklist.options[i].selected = true;
 		}
 	}
+}
+
+function getFlashListHTML() {
+	if (typeof(tinyMCEFlashList) != "undefined" && tinyMCEFlashList.length > 0) {
+		var html = "";
+
+		html += '<select id="linklist" name="linklist" style="width: 250px" onfocus="tinyMCE.addSelectAccessibility(event, this, window);" onchange="this.form.file.value=this.options[this.selectedIndex].value;">';
+		html += '<option value="">---</option>';
+
+		for (var i=0; i<tinyMCEFlashList.length; i++)
+			html += '<option value="' + tinyMCEFlashList[i][1] + '">' + tinyMCEFlashList[i][0] + '</option>';
+
+		html += '</select>';
+
+		return html;
+	}
+
+	return "";
 }
 
 function insertFlash() {

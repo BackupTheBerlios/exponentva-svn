@@ -12,23 +12,46 @@ function preinit() {
 	var url = tinyMCE.getParam("external_link_list_url");
 	if (url != null) {
 		// Fix relative
-		if (url.charAt(0) != '/')
+		if (url.charAt(0) != '/' && url.indexOf('://') == -1)
 			url = tinyMCE.documentBasePath + "/" + url;
 
 		document.write('<sc'+'ript language="javascript" type="text/javascript" src="' + url + '"></sc'+'ript>');
 	}
 }
 
+function changeClass() {
+	var formObj = document.forms[0];
+	formObj.classes.value = getSelectValue(formObj, 'classlist');
+}
+
 function init() {
+	tinyMCEPopup.resizeToInnerSize();
+
 	var formObj = document.forms[0];
 	var inst = tinyMCE.getInstanceById(tinyMCE.getWindowArg('editor_id'));
 	var elm = inst.getFocusElement();
 	var action = "insert";
+	var html;
+
+	document.getElementById('hrefbrowsercontainer').innerHTML = getBrowserHTML('hrefbrowser','href','file','advlink');
+	document.getElementById('popupurlbrowsercontainer').innerHTML = getBrowserHTML('popupurlbrowser','popupurl','file','advlink');
+	document.getElementById('linklisthrefcontainer').innerHTML = getLinkListHTML('linklisthref','href');
+	document.getElementById('anchorlistcontainer').innerHTML = getAnchorListHTML('anchorlist','href');
+	document.getElementById('targetlistcontainer').innerHTML = getTargetListHTML('targetlist','target');
+
+	// Link list
+	html = getLinkListHTML('linklisthref','href');
+	if (html == "")
+		document.getElementById("linklisthrefrow").style.display = 'none';
+	else
+		document.getElementById("linklisthrefcontainer").innerHTML = html;
 
 	// Resize some elements
-	if (tinyMCE.getParam("file_browser_callback") != null) {
+	if (isVisible('hrefbrowser'))
 		document.getElementById('href').style.width = '260px';
-	}
+
+	if (isVisible('popupurlbrowser'))
+		document.getElementById('popupurl').style.width = '180px';
 
 	elm = tinyMCE.getParentElement(elm, "a");
 	if (elm != null && elm.nodeName == "A")
@@ -49,14 +72,12 @@ function init() {
 		href = convertURL(href, elm, true);
 
 		var onclick = tinyMCE.cleanupEventStr(tinyMCE.getAttrib(elm, 'onclick'));
-		if (onclick == null || onclick == "")
-			onclick = tinyMCE.cleanupEventStr(tinyMCE.getAttrib(elm, 'mce_onclick'));
 
 		// Setup form data
 		setFormValue('href', href);
 		setFormValue('title', tinyMCE.getAttrib(elm, 'title'));
 		setFormValue('id', tinyMCE.getAttrib(elm, 'id'));
-		setFormValue('style', elm.style.cssText.toLowerCase());
+		setFormValue('style', tinyMCE.serializeStyle(tinyMCE.parseStyle(tinyMCE.getAttrib(elm, "style"))));
 		setFormValue('rel', tinyMCE.getAttrib(elm, 'rel'));
 		setFormValue('rev', tinyMCE.getAttrib(elm, 'rev'));
 		setFormValue('charset', tinyMCE.getAttrib(elm, 'charset'));
@@ -96,9 +117,12 @@ function init() {
 		if (href.charAt(0) == '#')
 			selectByValue(formObj, 'anchorlist', href);
 
-		selectByValue(formObj, 'class', tinyMCE.getAttrib(elm, 'class'), true);
+		addClassesToList('classlist', 'advlink_styles');
+
+		selectByValue(formObj, 'classlist', tinyMCE.getAttrib(elm, 'class'), true);
 		selectByValue(formObj, 'targetlist', tinyMCE.getAttrib(elm, 'target'), true);
-	}
+	} else
+		addClassesToList('classlist', 'advlink_styles');
 
 	window.focus();
 }
@@ -180,19 +204,21 @@ function setPopupControlsDisabled(state) {
 	formObj.popupstatus.disabled = state;
 	formObj.popupreturn.disabled = state;
 	formObj.popupdependent.disabled = state;
+
+	setBrowserDisabled('popupurlbrowser', state);
 }
 
 function parseLink(link) {
 	link = link.replace(new RegExp('&#39;', 'g'), "'");
 
-	var fnName = link.replace(new RegExp("\\W*([A-Za-z0-9\.]*)\\W*\\(.*", "gi"), "$1");
+	var fnName = link.replace(new RegExp("\\s*([A-Za-z0-9\.]*)\\s*\\(.*", "gi"), "$1");
 
 	// Is function name a template function
 	var template = templates[fnName];
 	if (template) {
 		// Build regexp
 		var variableNames = template.match(new RegExp("'?\\$\\{[A-Za-z0-9\.]*\\}'?", "gi"));
-		var regExp = "\\W*[A-Za-z0-9\.]*\\W*\\(";
+		var regExp = "\\s*[A-Za-z0-9\.]*\\s*\\(";
 		var replaceStr = "";
 		for (var i=0; i<variableNames.length; i++) {
 			// Is string value
@@ -207,7 +233,7 @@ function parseLink(link) {
 			variableNames[i] = variableNames[i].replace(new RegExp("[^A-Za-z0-9]", "gi"), "");
 
 			if (i != variableNames.length-1) {
-				regExp += "\\W*,\\W*";
+				regExp += "\\s*,\\s*";
 				replaceStr += "<delim>";
 			} else
 				regExp += ".*";
@@ -348,14 +374,13 @@ function setAttrib(elm, attrib, value) {
 		elm.removeAttribute(attrib);
 }
 
-function renderAnchorList(id, target) {
+function getAnchorListHTML(id, target) {
 	var inst = tinyMCE.getInstanceById(tinyMCE.getWindowArg('editor_id'));
 	var nodes = inst.getBody().getElementsByTagName("a");
 
 	var html = "";
 
-	html += '<tr><td class="column1"><label for="' + id + '">{$lang_advlink_anchor_names}</label></td><td>';
-	html += '<select id="' + id + '" name="' + id + '" class="mceAnchorList" onchange="this.form.' + target + '.value=';
+	html += '<select id="' + id + '" name="' + id + '" class="mceAnchorList" onfocus="tinyMCE.addSelectAccessibility(event, this, window);" onchange="this.form.' + target + '.value=';
 	html += 'this.options[this.selectedIndex].value;">';
 	html += '<option value="">---</option>';
 
@@ -366,7 +391,7 @@ function renderAnchorList(id, target) {
 
 	html += '</select>';
 
-	document.write(html);
+	return html;
 }
 
 function insertAction() {
@@ -384,12 +409,36 @@ function insertAction() {
 		else
 			tinyMCEPopup.execCommand("createlink", false, "#mce_temp_url#");
 
-		var elementArray = tinyMCE.getElementsByAttributeValue(inst.contentDocument.body, "a", "href", "#mce_temp_url#");
-		for (var i=0; i<elementArray.length; i++)
-			setAllAttribs(elementArray[i]);
+		var elementArray = tinyMCE.getElementsByAttributeValue(inst.getBody(), "a", "href", "#mce_temp_url#");
+		for (var i=0; i<elementArray.length; i++) {
+			var elm = elementArray[i];
+
+			// Move cursor behind the new anchor
+			if (tinyMCE.isGecko) {
+				var sp = inst.getDoc().createTextNode(" ");
+
+				if (elm.nextSibling)
+					elm.parentNode.insertBefore(sp, elm.nextSibling);
+				else
+					elm.parentNode.appendChild(sp);
+
+				// Set range after link
+				var rng = inst.getDoc().createRange();
+				rng.setStartAfter(elm);
+				rng.setEndAfter(elm);
+
+				// Update selection
+				var sel = inst.getSel();
+				sel.removeAllRanges();
+				sel.addRange(rng);
+			}
+
+			setAllAttribs(elm);
+		}
 	} else
 		setAllAttribs(elm);
 
+	tinyMCE._setEventsEnabled(inst.getBody(), false);
 	tinyMCEPopup.execCommand("mceEndUndoLevel");
 	tinyMCEPopup.close();
 }
@@ -397,15 +446,20 @@ function insertAction() {
 function setAllAttribs(elm) {
 	var formObj = document.forms[0];
 	var href = formObj.href.value;
+	var target = getSelectValue(formObj, 'targetlist');
+
+	// Make anchors absolute
+	if (href.charAt(0) == '#')
+		href = tinyMCE.settings['document_base_url'] + href;
 
 	href = convertURL(href, elm);
 
 	setAttrib(elm, 'href', href);
 	setAttrib(elm, 'title');
-	setAttrib(elm, 'target');
+	setAttrib(elm, 'target', target == '_self' ? '' : target);
 	setAttrib(elm, 'id');
 	setAttrib(elm, 'style');
-	setAttrib(elm, 'class');
+	setAttrib(elm, 'class', getSelectValue(formObj, 'classlist'));
 	setAttrib(elm, 'rel');
 	setAttrib(elm, 'rev');
 	setAttrib(elm, 'charset');
@@ -442,15 +496,14 @@ function getSelectValue(form_obj, field_name) {
 	return elm.options[elm.selectedIndex].value;
 }
 
-function renderLinkList(elm_id, target_form_element, onchange_func) {
+function getLinkListHTML(elm_id, target_form_element, onchange_func) {
 	if (typeof(tinyMCELinkList) == "undefined" || tinyMCELinkList.length == 0)
-		return;
+		return "";
 
 	var html = "";
 
-	html += '<tr><td class="column1"><label for="' + elm_id + '">{$lang_link_list}</label></td>';
-	html += '<td colspan="2"><select id="' + elm_id + '" name="' + elm_id + '"';
-	html += ' class="mceLinkList" onchange="this.form.' + target_form_element + '.value=';
+	html += '<select id="' + elm_id + '" name="' + elm_id + '"';
+	html += ' class="mceLinkList" onfocus="tinyMCE.addSelectAccessibility(event, this, window);" onchange="this.form.' + target_form_element + '.value=';
 	html += 'this.options[this.selectedIndex].value;';
 
 	if (typeof(onchange_func) != "undefined")
@@ -461,24 +514,24 @@ function renderLinkList(elm_id, target_form_element, onchange_func) {
 	for (var i=0; i<tinyMCELinkList.length; i++)
 		html += '<option value="' + tinyMCELinkList[i][1] + '">' + tinyMCELinkList[i][0] + '</option>';
 
-	html += '</select></td></tr>';
+	html += '</select>';
 
-	document.write(html);
+	return html;
 
 	// tinyMCE.debug('-- image list start --', html, '-- image list end --');
 }
 
-function renderTargetList(elm_id, target_form_element) {
+function getTargetListHTML(elm_id, target_form_element) {
 	var targets = tinyMCE.getParam('theme_advanced_link_targets', '').split(';');
 	var html = '';
 
-	html += '<select id="' + elm_id + '" name="' + elm_id + '" onchange="this.form.' + target_form_element + '.value=';
+	html += '<select id="' + elm_id + '" name="' + elm_id + '" onfocus="tinyMCE.addSelectAccessibility(event, this, window);" onchange="this.form.' + target_form_element + '.value=';
 	html += 'this.options[this.selectedIndex].value;">';
 
 	html += '<option value="_self">' + tinyMCE.getLang('lang_advlink_target_same') + '</option>';
-	html += '<option value="_blank">' + tinyMCE.getLang('lang_advlink_target_blank') + '</option>';
-	html += '<option value="_parent">' + tinyMCE.getLang('lang_advlink_target_parent') + '</option>';
-	html += '<option value="_top">' + tinyMCE.getLang('lang_advlink_target_top') + '</option>';
+	html += '<option value="_blank">' + tinyMCE.getLang('lang_advlink_target_blank') + ' (_blank)</option>';
+	html += '<option value="_parent">' + tinyMCE.getLang('lang_advlink_target_parent') + ' (_parent)</option>';
+	html += '<option value="_top">' + tinyMCE.getLang('lang_advlink_target_top') + ' (_top)</option>';
 
 	for (var i=0; i<targets.length; i++) {
 		var key, value;
@@ -489,32 +542,12 @@ function renderTargetList(elm_id, target_form_element) {
 		key = targets[i].split('=')[0];
 		value = targets[i].split('=')[1];
 
-		html += '<option value="' + key + '">' + value + '</option>';
+		html += '<option value="' + key + '">' + value + ' (' + key + ')</option>';
 	}
 
 	html += '</select>';
 
-	document.write(html);
-}
-
-function renderClassesList(form_element_name) {
-	var csses = tinyMCE.getCSSClasses(tinyMCE.getWindowArg('editor_id'));
-	if (csses.length == 0)
-		return;
-
-	var html = "";
-
-	html += '<tr><td class="column1"><label for="class">Class</label></td><td nowrap="nowrap">';
-	html += '<select id="class" name="class" style="width: 150px" onchange="this.form.classes.value=';
-	html += 'this.options[this.selectedIndex].value;">';
-	html += '<option value="">' + tinyMCE.getLang("lang_not_set") + '</option>';
-
-	for (var i=0; i<csses.length; i++)
-		html += '<option value="' + csses[i] + '">' + csses[i] + '</option>';
-
-	html += '</select>';
-
-	document.write(html);
+	return html;
 }
 
 // While loading

@@ -1,5 +1,5 @@
 /* Import plugin specific language pack */
-tinyMCE.importPluginLanguagePack('template', 'en'); // <- Add a comma separated list of all supported languages
+tinyMCE.importPluginLanguagePack('template', 'en,he,no,ru,ru_KOI8-R,ru_UTF-8,fi,cy,es,is,pl'); // <- Add a comma separated list of all supported languages
 
 /****
  * Steps for creating a plugin from this template:
@@ -12,6 +12,19 @@ tinyMCE.importPluginLanguagePack('template', 'en'); // <- Add a comma separated 
  * 6. Upload it under the "Plugins" section at sourceforge.
  *
  ****/
+
+/**
+ * Information about the plugin.
+ */
+function TinyMCE_template_getInfo() {
+	return {
+		longname : 'Template plugin',
+		author : 'Your name',
+		authorurl : 'http://www.yoursite.com',
+		infourl : 'http://www.yoursite.com/docs/template.html',
+		version : "1.0"
+	};
+};
 
 /**
  * Gets executed when a editor instance is initialized
@@ -27,7 +40,8 @@ function TinyMCE_template_initInstance(inst) {
 function TinyMCE_template_getControlHTML(control_name) {
 	switch (control_name) {
 		case "template":
-			return '<img id="{$editor_id}_template" src="{$pluginurl}/images/template.gif" title="{$lang_template_desc}" width="20" height="20" class="mceButtonNormal" onmouseover="tinyMCE.switchClass(this,\'mceButtonOver\');" onmouseout="tinyMCE.restoreClass(this);" onmousedown="tinyMCE.restoreAndSwitchClass(this,\'mceButtonDown\');tinyMCE.execInstanceCommand(\'{$editor_id}\',\'mceTemplate\', true);" />';
+			var cmd = 'tinyMCE.execInstanceCommand(\'{$editor_id}\',\'mceTemplate\', true);return false;';
+			return '<a href="javascript:' + cmd + '" onclick="' + cmd + '" target="_self" onmousedown="return false;"><img id="{$editor_id}_template" src="{$pluginurl}/images/template.gif" title="{$lang_template_desc}" width="20" height="20" class="mceButtonNormal" onmouseover="tinyMCE.switchClass(this,\'mceButtonOver\');" onmouseout="tinyMCE.restoreClass(this);" onmousedown="tinyMCE.restoreAndSwitchClass(this,\'mceButtonDown\');" /></a>';
 	}
 
 	return "";

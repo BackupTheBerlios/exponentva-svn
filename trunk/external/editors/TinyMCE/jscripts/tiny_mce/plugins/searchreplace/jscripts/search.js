@@ -1,4 +1,6 @@
 function init() {
+	tinyMCEPopup.resizeToInnerSize();
+
 	var formObj = document.forms[0];
 
 	formObj.searchstring.value = tinyMCE.getWindowArg("searchstring");
@@ -25,6 +27,8 @@ function searchNext() {
 //			wrap : formObj.wrapatend.checked,
 //			wholeword : formObj.wholeword.checked
 		}, false);
+
+	window.focus();
 }
 
 function cancelAction() {

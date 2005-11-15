@@ -1,5 +1,5 @@
 /* Import plugin specific language pack */
-tinyMCE.importPluginLanguagePack('autosave', 'en,sv');
+tinyMCE.importPluginLanguagePack('autosave', 'en,sv,cs,he,no,hu,de,da,ru,ru_KOI8-R,ru_UTF-8,fi,cy,es,is,pl');
 
 function TinyMCE_autosave_getInfo() {
 	return {
@@ -7,7 +7,7 @@ function TinyMCE_autosave_getInfo() {
 		author : 'Moxiecode Systems',
 		authorurl : 'http://tinymce.moxiecode.com',
 		infourl : 'http://tinymce.moxiecode.com/tinymce/docs/plugin_autosave.html',
-		version : '2.0RC1'
+		version : tinyMCE.majorVersion + "." + tinyMCE.minorVersion
 	};
 };
 
@@ -17,6 +17,8 @@ function TinyMCE_autosave_beforeUnloadHandler() {
 	var anyDirty = false;
 	for (var n in tinyMCE.instances) {
 		var inst = tinyMCE.instances[n];
+		if (!tinyMCE.isInstance(inst))
+			continue;
 
 		if (inst.isDirty())
 			return msg;

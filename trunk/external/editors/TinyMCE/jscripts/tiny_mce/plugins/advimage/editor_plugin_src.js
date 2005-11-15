@@ -1,5 +1,5 @@
 /* Import plugin specific language pack */
-tinyMCE.importPluginLanguagePack('advimage', 'en,de,sv,zh_cn,cs,fa,fr_ca,fr,pl,pt_br,nl');
+tinyMCE.importPluginLanguagePack('advimage', 'en,de,sv,zh_cn,cs,fa,fr_ca,fr,pl,pt_br,nl,he,no,ru,ru_KOI8-R,ru_UTF-8,cy,es,is');
 
 function TinyMCE_advimage_getInfo() {
 	return {
@@ -7,14 +7,15 @@ function TinyMCE_advimage_getInfo() {
 		author : 'Moxiecode Systems',
 		authorurl : 'http://tinymce.moxiecode.com',
 		infourl : 'http://tinymce.moxiecode.com/tinymce/docs/plugin_advimage.html',
-		version : '2.0RC1'
+		version : tinyMCE.majorVersion + "." + tinyMCE.minorVersion
 	};
 };
 
 function TinyMCE_advimage_getControlHTML(control_name) {
 	switch (control_name) {
 		case "image":
-			return '<img id="{$editor_id}_advimage" src="{$themeurl}/images/image.gif" title="{$lang_image_desc}" width="20" height="20" class="mceButtonNormal" onmouseover="tinyMCE.switchClass(this,\'mceButtonOver\');" onmouseout="tinyMCE.restoreClass(this);" onmousedown="tinyMCE.restoreClass(this);" onmouseup="tinyMCE.execInstanceCommand(\'{$editor_id}\',\'mceAdvImage\');" />';
+			var cmd = 'tinyMCE.execInstanceCommand(\'{$editor_id}\',\'mceAdvImage\');return false;';
+			return '<a href="javascript:' + cmd + '" onclick="' + cmd + '" target="_self" onmousedown="return false;"><img id="{$editor_id}_advimage" src="{$themeurl}/images/image.gif" title="{$lang_image_desc}" width="20" height="20" class="mceButtonNormal" onmouseover="tinyMCE.switchClass(this,\'mceButtonOver\');" onmouseout="tinyMCE.restoreClass(this);" onmousedown="tinyMCE.restoreClass(this);" /></a>';
 	}
 
 	return "";
@@ -27,11 +28,11 @@ function TinyMCE_advimage_execCommand(editor_id, element, command, user_interfac
 
 			template['file']   = '../../plugins/advimage/image.htm';
 			template['width']  = 480;
-			template['height'] = 430 - (tinyMCE.isMSIE ? 30 : 0);
+			template['height'] = 380;
 
 			// Language specific width and height addons
-			template['width']  += tinyMCE.getLang('lang_insert_image_delta_width', 0);
-			template['height'] += tinyMCE.getLang('lang_insert_image_delta_height', 0);
+			template['width']  += tinyMCE.getLang('lang_advimage_delta_width', 0);
+			template['height'] += tinyMCE.getLang('lang_advimage_delta_height', 0);
 
 			tinyMCE.openWindow(template, {editor_id : editor_id, inline : "yes"});
 
