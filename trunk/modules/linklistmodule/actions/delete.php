@@ -33,17 +33,17 @@
 
 if (!defined('PATHOS')) exit('');
 
-$link = null;
+$item = null;
 if (isset($_GET['id'])) {
-	$link = $db->selectObject('linklist_link','id='.$_GET['id']);
-	if ($link) {
-		$loc = unserialize($link->location_data);
-	}
+	//TODO: devise a way to infer the database table from the data in the GET request, perhaps send item type
+	$item = $db->selectObject('linklist_link', 'id='.$_GET['id']);
 }
 
-if ($link) {
-	if (pathos_permissions_check('delete',$loc)) {
-		$db->delete('listlink_link','id='.$link->id);
+if ($item != null) {
+	$loc = unserialize($item->location_data);
+
+	if (pathos_permissions_check('delete', $loc)) {
+		$db->delete('linklist_link',' id='.$item->id);
 		pathos_flow_redirect();
 	} else {
 		echo SITE_403_HTML;
