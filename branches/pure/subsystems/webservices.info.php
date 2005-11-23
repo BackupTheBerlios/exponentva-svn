@@ -28,17 +28,17 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: webservices.info.php,v 1.5 2005/02/19 00:35:54 filetreefrog Exp $
+# $Id: webservices.info.php,v 1.6 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
-pathos_lang_loadDictionary('subsystems', 'webservices');
+$i18n = pathos_lang_loadFile('subsystems/webservices.info.php');
 
 return array(
-	'name'=>TR_WEBSERVICESSUBSYSTEM_NAME,
+	'name'=>$i18n['subsystem_name'],
 	'author'=>'James Hunt',
-	'description'=>TR_WEBSERVICESSUBSYSTEM_DESCRIPTION,
+	'description'=>$i18n['subsystem_description'],
 	'version'=>pathos_core_version(true)
 );
 

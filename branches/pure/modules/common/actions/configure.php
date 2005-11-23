@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: configure.php,v 1.10 2005/04/18 15:22:39 filetreefrog Exp $
+# $Id: configure.php,v 1.11 2005/11/22 01:16:05 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -50,26 +50,15 @@ if (pathos_permissions_check('configure',$loc)) {
 	
 		$form = call_user_func(array($_GET['module'].'_config','form'),$config);
 		
+		$form->location($loc);
+		$form->meta('action','saveconfig');
+		$form->meta('_common','1');
+		
 		if (isset($form->controls['submit'])) {
 			$submit = $form->controls['submit'];
 			$form->unregister('submit');
 		}
 		$hasConfig = 1; //We have some form of configuration
-	}
-
-	// Check for channels stuff.
-	if (is_callable(array($loc->mod,'channelType'))) {
-		$form->meta('supports_channels',1);
-		// Maybe display a message explaining what the channels stuff does?
-		$form->register(null,'',new htmlcontrol('<hr size="1" />Shared Content Settings'));
-		
-		if (!defined('SYS_CHANNELS')) require_once(BASE.'subsystems/channels.php');
-		$channel = pathos_channels_getChannel($loc);
-		
-		$form->register('open_channel','Allow others to use content from here.',new checkboxcontrol($channel->is_open,true));
-		
-		$form->register('public_channel','Allow others to submit Shared Content for review',new checkboxcontrol($channel->name != '',true));
-		$form->register('channel_name','Publishing Name',new textcontrol($channel->name));
 	}
 
 	$container = $db->selectObject('container',"internal='".serialize($loc)."'");
@@ -88,15 +77,9 @@ if (pathos_permissions_check('configure',$loc)) {
 		$form->register('submit','',$submit);
 	}
 	
-	if ($hasConfig) {	
-		// Place these last, so they ALWAYS run
-		$form->location($loc);
-		$form->meta('action','saveconfig');
-		$form->meta('_common','1');
-		
+	if ($hasConfig) {
 		$template->assign('form_html',$form->toHTML());
 	}
-	
 	$template->assign('hasConfig',$hasConfig);
 	
 	$template->output();

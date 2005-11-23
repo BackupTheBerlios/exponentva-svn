@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: htmlcontrol.php,v 1.8 2005/04/18 15:47:58 filetreefrog Exp $
+# $Id: htmlcontrol.php,v 1.9 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -88,11 +89,10 @@ require_once(BASE."subsystems/forms/controls/formcontrol.php");
 			$object->html = "";
 		} 
 		
-		pathos_lang_loadDictionary('standard','core');
+		$i18n = pathos_lang_loadFile('subsystems/forms/controls/htmlcontrol.php');
 		
 		$form->register("html",'',new htmleditorcontrol($object->html));
-		$form->register("submit","",new buttongroupcontrol(TR_CORE_SAVE,'',TR_CORE_CANCEL));
-		
+		$form->register("submit","",new buttongroupcontrol($i18n['save'],'',$i18n['cancel']));
 		return $form;
 	}
 	

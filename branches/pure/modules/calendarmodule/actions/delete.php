@@ -28,12 +28,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete.php,v 1.5 2005/02/19 00:32:29 filetreefrog Exp $
+# $Id: delete.php,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
  
 if (!defined('PATHOS')) exit('');
 
-$item = $db->selectObject('calendar','id='.$_GET['id']);
+$item = $db->selectObject('calendar','id='.intval($_GET['id']));
 if ($item) {
 	$loc = unserialize($item->location_data);
 	$iloc = pathos_core_makeLocation($loc->mod,$loc->src,$item->id);
@@ -44,7 +44,6 @@ if ($item) {
 		$db->delete('calendar','id='.$item->id);
 		$db->delete('eventdate','event_id='.$item->id);
 		
-		pathos_template_clear();
 		pathos_flow_redirect();
 	} else {
 		echo SITE_403_HTML;

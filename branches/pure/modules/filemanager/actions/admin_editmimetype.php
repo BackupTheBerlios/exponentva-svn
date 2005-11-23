@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: admin_editmimetype.php,v 1.7 2005/04/18 15:49:02 filetreefrog Exp $
+# $Id: admin_editmimetype.php,v 1.8 2005/11/22 01:16:06 filetreefrog Exp $
 ##################################################
 
 // Part of the Administration Control Panel : Files Subsystem category
@@ -38,6 +38,7 @@ if (!defined('PATHOS')) exit('');
 if (pathos_permissions_check('files_subsystem',pathos_core_makeLocation('administrationmodule'))) {
 	$type = null;
 	if (isset($_GET['type'])) {
+		// GREP:SECURITY -- SQL is created from _GET parameter that is non-numeric.  Needs to be sanitized.
 		$type = $db->selectObject('mimetype',"mimetype='".$_GET['type']."'");
 	}
 	

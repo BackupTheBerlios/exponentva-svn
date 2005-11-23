@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: workflow.php,v 1.14 2005/04/26 04:39:08 filetreefrog Exp $
+# $Id: workflow.php,v 1.15 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 /* exdoc
@@ -771,7 +771,7 @@ function pathos_workflow_form($datatype,$id) {
 function pathos_workflow_runActions($policy,$action_type,$revision) {
 	global $db;
 	$actions = $db->selectObjects("workflowaction","policy_id=".$policy->id." AND type=$action_type");
-	if (!defined('SYS_SORTING')) require_once(BASE.'subsystems/sorting.php');
+	if (!defined('SYS_SORTING')) include_once(BASE.'subsystems/sorting.php');
 	usort($actions,"pathos_sorting_byRankAscending");
 	foreach ($actions as $action) {
 		if (is_readable(BASE."subsystems/workflow/actions/".$action->method.".php")) {

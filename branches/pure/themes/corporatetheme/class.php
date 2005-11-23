@@ -28,8 +28,10 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: class.php,v 1.2 2005/02/19 00:37:08 filetreefrog Exp $
+# $Id: class.php,v 1.3 2005/11/22 01:16:25 filetreefrog Exp $
 ##################################################
+
+if (class_exists('corporatetheme')) return;
 
 class corporatetheme {
 	function name() { return "Corporate Theme"; }

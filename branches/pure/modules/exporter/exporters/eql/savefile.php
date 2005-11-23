@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,16 +29,22 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: savefile.php,v 1.10 2005/04/18 15:23:06 filetreefrog Exp $
+# $Id: savefile.php,v 1.11 2005/11/22 01:16:06 filetreefrog Exp $
 ##################################################
-//GREP:HARDCODEDTEXT
+
 if (!defined('PATHOS')) exit('');
 
 if (!isset($_POST['tables'])) { // No checkboxes clicked, and got past the JS check
-	pathos_lang_loadDictionary('exporters','eql');
-	echo TR_EXPORT_EQL_NEEDONETABLE;
+	$i18n = pathos_lang_loadFile('modules/exporters/exporter/eql/savefile.php');
+	echo $i18n['need_one'];
 } else { // All good
 	if (!defined('SYS_BACKUP')) require_once(BASE.'subsystems/backup.php');
+	
+	$filename = str_replace(
+		array('__DOMAIN__','__DB__'),
+		array(str_replace('.','_',HOSTNAME),DB_NAME),
+		$_POST['filename']);
+	$filename = preg_replace('/[^A-Za-z0-9_.-]/','-',strftime($filename,time()).'.eql');
 	
 	$filename = str_replace(
 		array('__DOMAIN__','__DB__'),

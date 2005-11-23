@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,15 +27,16 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _viewmessage.tpl,v 1.3 2005/02/19 00:32:34 filetreefrog Exp $
+ * $Id: _viewmessage.tpl,v 1.4 2005/11/22 01:16:09 filetreefrog Exp $
  *}
 <b>{$message->subject}</b>
 <div style="padding: 5px; background-color: #CCC;">
-Sent on {$message->date_sent|format_date:$smarty.const.DISPLAY_DATE_FORMAT} by {$message->from_name}
+{capture assign=date}{$message->date_sent|format_date:$smarty.const.DISPLAY_DATE_FORMAT}{/capture}
+{$_TR.sent_when|sprtinf:$date:$message->from_name}
 </div>
 <div style="padding: 5px; background-color: #DDD;">
 {$message->body}
 </div>
-<a class="mngmntlink inbox_mngmntlink" href="{link action=compose replyto=$message->id}">Reply</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=compose replyto=$message->id}">{$_TR.reply}</a>
 <hr size="1" />
-<a class="mngmntlink inbox_mngmntlink" href="{link action=inbox}">Back to Inbox</a>
+<a class="mngmntlink inbox_mngmntlink" href="{link action=inbox}">{$_TR.back}</a>

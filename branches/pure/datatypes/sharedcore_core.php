@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: sharedcore_core.php,v 1.7 2005/04/18 15:47:45 filetreefrog Exp $
+# $Id: sharedcore_core.php,v 1.8 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 class sharedcore_core {
 	function form($object) {
-		pathos_lang_loadDictionary('standard','core');
-		pathos_lang_loadDictionary('modules','sharedcoremodule');
+		$i18n = pathos_lang_loadFile('datatypes/sharedcore_core.php');
 	
 		if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 		pathos_forms_initialize();
@@ -47,9 +47,9 @@ class sharedcore_core {
 			$form->meta('id',$object->id);
 		}
 		
-		$form->register('name',TR_SHAREDCOREMODULE_CORENAME,new textcontrol($object->name));
-		$form->register('path',TR_SHAREDCOREMODULE_COREPATH,new textcontrol($object->path));
-		$form->register('submit','',new buttongroupcontrol(TR_CORE_SAVE,'',TR_CORE_CANCEL));
+		$form->register('name',$i18n['name'],new textcontrol($object->name));
+		$form->register('path',$i18n['path'],new textcontrol($object->path));
+		$form->register('submit','',new buttongroupcontrol($i18n['save'],'',$i18n['cancel']));
 		
 		return $form;
 	}

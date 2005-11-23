@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: index.php,v 1.4 2005/02/26 05:21:24 filetreefrog Exp $
+# $Id: index.php,v 1.5 2005/11/22 01:16:25 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -41,7 +41,7 @@ if (!defined('PATHOS')) exit('');
 		<link rel="stylesheet" title="default" href="<?php echo THEME_RELATIVE; ?>style.css" />
 	</head>
 	
-	<body onLoad="pathosJSinitialize();" topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0">
+	<body onload="pathosJSinitialize();" topmargin="0" leftmargin="0" bottommargin="0" rightmargin="0">
 	<?php pathos_theme_sourceSelectorInfo(); ?>
 		<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
 		<tr>

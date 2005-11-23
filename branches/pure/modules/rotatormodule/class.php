@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: class.php,v 1.7 2005/03/21 17:15:46 filetreefrog Exp $
+# $Id: class.php,v 1.8 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
 class rotatormodule {
-	function name() { return "Content Rotator"; }
-	function description() { return "Randomly displays a piece of text (which may contain images) to the user every time the page is refreshed."; }
-	function author() { return "James Hunt"; }
+	function name() { return pathos_lang_loadKey('modules/rotatormodule/class.php','module_name'); }
+	function description() { return pathos_lang_loadKey('modules/rotatormodule/class.php','module_description'); }
+	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return true; }
 	function hasContent() { return true; }
@@ -43,10 +44,10 @@ class rotatormodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		pathos_lang_loadDictionary('modules','rotatormodule');
+		$i18n = pathos_lang_loadFile('modules/rotatormodule/class.php');
 		return array(
-			'administrate'=>TR_ROTATORMODULE_PERM_ADMIN,
-			'manage'=>TR_ROTATORMODULE_PERM_MANAGE
+			'administrate'=>$i18n['perm_administrate'],
+			'manage'=>$i18n['perm_manager'],
 		);
 	}
 	

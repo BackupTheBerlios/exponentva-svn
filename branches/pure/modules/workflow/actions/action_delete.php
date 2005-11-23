@@ -28,13 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: action_delete.php,v 1.6 2005/02/19 00:32:37 filetreefrog Exp $
+# $Id: action_delete.php,v 1.7 2005/11/22 01:16:13 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
 if (pathos_permissions_check('workflow',pathos_core_makeLocation('administrationmodule'))) {
-	$action = $db->selectObject('workflowaction','id='.$_GET['id']);
+	$action = $db->selectObject('workflowaction','id='.intval($_GET['id']));
 	$db->delete('workflowaction','id='.$action->id);
 	$db->decrement('workflowaction','rank',1,'rank >= ' . $action->rank . ' AND policy_id='.$action->policy_id . ' AND type='.$action->type);
 

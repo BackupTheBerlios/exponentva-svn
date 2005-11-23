@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,25 +29,30 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete_list.php,v 1.4 2005/02/19 00:32:34 filetreefrog Exp $
+# $Id: delete_list.php,v 1.5 2005/11/22 01:16:09 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
-$list = null;
-if (isset($_GET['id'])) {
-	$list = $db->selectObject("inbox_contactlist","id=".$_GET['id']);
-} else {
-	echo SITE_404_HTML;
-}
-
-if ($list) {
-	if ($user && $list->owner == $user->id) {
-		$db->delete("inbox_contactlist_member","list_id=".$list->id);
-		$db->delete("inbox_contactlist","id=".$list->id);
-		
-		pathos_flow_redirect();
+if ($user) {
+	
+	$list = null;
+	if (isset($_GET['id'])) {
+		$list = $db->selectObject('inbox_contactlist','id='.intval($_GET['id']));
+	} else {
+		echo SITE_404_HTML;
 	}
+	
+	if ($list) {
+		if ($user && $list->owner == $user->id) {
+			$db->delete('inbox_contactlist_member','list_id='.$list->id);
+			$db->delete('inbox_contactlist','id='.$list->id);
+			
+			pathos_flow_redirect();
+		}
+	}
+} else {
+	echo SITE_403_HTML;
 }
 
 ?>

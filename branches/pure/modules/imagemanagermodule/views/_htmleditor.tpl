@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,7 +27,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _htmleditor.tpl,v 1.4 2005/11/10 07:37:37 filetreefrog Exp $
+ * $Id: _htmleditor.tpl,v 1.5 2005/11/22 01:16:09 filetreefrog Exp $
  *}
 <script language="javascript" src="{$smarty.const.PATH_RELATIVE}js/ImageManagerHTMLArea.js"></script>
 <table cellpadding="2" cellspacing="0" border="0" width="100%" rules="rows" style="border: 1px solid lightgrey">
@@ -44,6 +45,6 @@
 	{/foreach}
 	</tr>
 {foreachelse}
-	<tr><td>No images</td></tr>
+	<tr><td>{$_TR.no_images}</td></tr>
 {/foreach}
 </table>

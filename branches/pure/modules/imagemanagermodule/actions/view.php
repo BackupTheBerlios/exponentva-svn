@@ -28,14 +28,14 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: view.php,v 1.5 2005/02/26 05:21:22 filetreefrog Exp $
+# $Id: view.php,v 1.6 2005/11/22 01:16:08 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
 $item = null;
 if (isset($_GET['id'])) {
-	$item = $db->selectObject("imagemanageritem","id=".$_GET['id']);
+	$item = $db->selectObject("imagemanageritem","id=".intval($_GET['id']));
 }
 
 if ($item) {

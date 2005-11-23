@@ -28,12 +28,15 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: gmgr_savemembers.php,v 1.7 2005/02/19 00:32:28 filetreefrog Exp $
+# $Id: gmgr_savemembers.php,v 1.8 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the User Management category
 
 if (!defined('PATHOS')) exit('');
+
+// Sanitize required _GET parameters
+$_GET['id'] = intval($_GET['id']);
 
 $memb = $db->selectObject('groupmembership','member_id='.$user->id.' AND group_id='.$_GET['id'].' AND is_admin=1');
 

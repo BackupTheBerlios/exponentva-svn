@@ -26,6 +26,6 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: viewnotfound.tpl,v 1.3 2005/02/19 00:37:45 filetreefrog Exp $
+ * $Id: viewnotfound.tpl,v 1.4 2005/11/22 01:16:26 filetreefrog Exp $
  *}
-The view '{$__view}' was not found in the system.
+{$_TR.error|sprintf:$__view}

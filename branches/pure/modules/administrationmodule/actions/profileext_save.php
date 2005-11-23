@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: profileext_save.php,v 1.5 2005/02/19 00:32:28 filetreefrog Exp $
+# $Id: profileext_save.php,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the User Management category
@@ -37,7 +37,9 @@ if (!defined('PATHOS')) exit('');
 
 if (pathos_permissions_check('user_management',pathos_core_makeLocation('administrationmodule'))) {
 	$ext = null;
-	if (isset($_GET['id'])) $ext = $db->selectObject('profileextension','id='.$_GET['id']);
+	if (isset($_GET['id'])) {
+		$ext = $db->selectObject('profileextension','id='.intval($_GET['id']));
+	}
 	
 	$ext->extension = $_GET['ext'];
 	if (!isset($ext->id)) {

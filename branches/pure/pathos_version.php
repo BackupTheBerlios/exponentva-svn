@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: pathos_version.php,v 1.20 2005/11/10 07:43:59 filetreefrog Exp $
+# $Id: pathos_version.php,v 1.21 2005/11/22 01:16:02 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS_VERSION_MAJOR')) {
@@ -62,7 +62,7 @@ if (!defined('PATHOS_VERSION_MAJOR')) {
 	 * This number is bumped each time a distribution of a single version is
 	 * released.  For instance, the 3rd beta has an version type iteration of 3.
 	 */
-	define('PATHOS_VERSION_ITERATION',1); // only applies to betas/alphas / rcs
+	define('PATHOS_VERSION_ITERATION',0); // only applies to betas/alphas / rcs
 }
 
 return '0.96';

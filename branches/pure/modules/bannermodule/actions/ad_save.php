@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: ad_save.php,v 1.5 2005/02/19 00:32:29 filetreefrog Exp $
+# $Id: ad_save.php,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -47,9 +47,15 @@ if (pathos_permissions_check('manage',$loc)) {
 	if (!isset($banner->file_id)) {
 		$directory = 'files/bannermodule/'.$loc->src;
 		$file = file::update('file',$directory,null);
-		if ($file != null) {
+		if (is_object($file)) {
 			$banner->file_id = $db->insertObject($file,'file');
 			$db->insertObject($banner,'banner_ad');
+		} else {
+			// If file::update() returns a non-object, it should be a string.  That string is the error message.
+			$post = $_POST;
+			$post['_formError'] = $file;
+			pathos_sessions_set('last_POST',$post);
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}
 	} else {
 		$db->updateObject($banner,'banner_ad');

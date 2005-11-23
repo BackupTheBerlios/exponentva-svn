@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: banner_click.php,v 1.6 2005/04/18 15:21:56 filetreefrog Exp $
+# $Id: banner_click.php,v 1.7 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 define('SCRIPT_EXP_RELATIVE','modules/bannermodule/');
@@ -37,10 +37,10 @@ define('SCRIPT_FILENAME','banner_click.php');
 include_once('../../pathos.php');
 
 // Process click
-$banner = $db->selectObject('banner_ad','id='.$_GET['id']);
-if (!defined('SYS_DATETIME')) require_once(BASE.'subsystems/datetime.php');
+$banner = $db->selectObject('banner_ad','id='.intval($_GET['id']));
+if (!defined('SYS_DATETIME')) include_once(BASE.'subsystems/datetime.php');
 $start = pathos_datetime_startOfDayTimestamp(time());
-$clicks = $db->selectObject('banner_click','ad_id='.$banner->id.' AND date=$start');
+$clicks = $db->selectObject('banner_click','ad_id='.$banner->id.' AND date='.$start);
 if ($clicks != null) {
 	$clicks->clicks++;
 	$db->updateObject($clicks,'banner_click');

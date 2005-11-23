@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: class.php,v 1.6 2005/04/18 15:25:24 filetreefrog Exp $
+# $Id: class.php,v 1.7 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
 class swfmodule {
-	function name() { return "Flash Animation Module"; }
-	function author() { return "OIC Group Exponent Team / Greg Otte"; }
-	function description() { return "Manages a Flash Animation."; }
+	function name() { return pathos_lang_loadKey('modules/swfmodule/class.php','module_name'); }
+	function author() { return 'Greg Otte'; }
+	function description() { return pathos_lang_loadKey('modules/swfmodule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -43,16 +44,20 @@ class swfmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		pathos_lang_loadDictionary('modules','swfmodule');
+		$i18n = pathos_lang_loadFile('modules/swfmodule/class.php');
+		
 		return array(
-			'administrate'=>TR_SWFMODULE_PERM_ADMIN,
-			'configure'=>TR_SWFMODULE_PERM_CONFIG
+			'administrate'=>$i18n['perm_administrate'],
+			'configure'=>$i18n['perm_configure'],
 		);
 	}
 	
 	function getLocationHierarchy($loc) {
-		if ($loc->int == '') return array($loc);
-		else return array($loc,pathos_core_makeLocation($loc->mod,$loc->src));
+		if ($loc->int == '') {
+			return array($loc);
+		} else {
+			return array($loc,pathos_core_makeLocation($loc->mod,$loc->src));
+		}
 	}
 	
 	function show($view,$location = null, $title = '') {

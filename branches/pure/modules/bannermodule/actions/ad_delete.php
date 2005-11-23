@@ -28,13 +28,15 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: ad_delete.php,v 1.5 2005/02/19 00:32:29 filetreefrog Exp $
+# $Id: ad_delete.php,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 $banner = null;
-if (isset($_GET['id'])) $banner = $db->selectObject('banner_ad','id='.$_GET['id']);
+if (isset($_GET['id'])) {
+	$banner = $db->selectObject('banner_ad','id='.intval($_GET['id']));
+}
 
 if ($banner) {
 	$loc = unserialize($banner->location_data);

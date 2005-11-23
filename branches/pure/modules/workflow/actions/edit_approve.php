@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit_approve.php,v 1.6 2005/04/18 15:33:05 filetreefrog Exp $
+# $Id: edit_approve.php,v 1.7 2005/11/22 01:16:13 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -39,8 +39,8 @@ $state = unserialize($object->wf_state_data);
 
 $rloc = unserialize($object->location_data);
 if (pathos_permissions_check("approve",$rloc) || ($user && $user->id == $state[0][0])) {
-	if (!defined('SYS_WORKFLOW')) require_once(BASE.'subsystems/workflow.php');
-	pathos_workflow_processApproval($_POST['id'],$_POST['wf_datatype'],SYS_WORKFLOW_APPROVE_EDIT,$_POST['wf_comment']);
+	if (!defined('SYS_WORKFLOW')) include_once(BASE.'subsystems/workflow.php');
+	pathos_workflow_processApproval($_POST['id'],$_POST['wf_datatype'],SYS_WORKFLOW_APPROVE_EDIT);
 } else {
 	echo SITE_403_HTML;
 }

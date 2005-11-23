@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: site.defaults.php,v 1.9 2005/04/25 15:35:53 filetreefrog Exp $
+# $Id: site.defaults.php,v 1.10 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 if (!defined('SITE_TITLE')) define('SITE_TITLE','My New Exponent Site');
@@ -43,7 +43,7 @@ if (!defined('SITE_KEYWORDS')) define('SITE_KEYWORDS','');
 if (!defined('SITE_DESCRIPTION')) define('SITE_DESCRIPTION','');
 if (!defined('SITE_DEFAULT_SECTION')) define('SITE_DEFAULT_SECTION',1);
 
-if (!defined('SESSION_TIMEOUT')) define('SESSION_TIMEOUT',5*3600);
+if (!defined('SESSION_TIMEOUT')) define('SESSION_TIMEOUT',3600*5);
 if (!defined('SESSION_TIMEOUT_HTML')) define('SESSION_TIMEOUT_HTML',html_entity_decode('<h3>Expired Login Session</h3>Your session has expired, because you were idle too long.  You will have to log back into the system to continue what you were doing.'));
 
 if (!defined('ENABLE_SSL')) define('ENABLE_SSL',0);

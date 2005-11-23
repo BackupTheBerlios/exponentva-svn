@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: database.defaults.php,v 1.4 2005/02/19 00:39:18 filetreefrog Exp $
+# $Id: database.defaults.php,v 1.5 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 if (!defined('DB_TABLE_PREFIX')) define('DB_TABLE_PREFIX','exponent');
@@ -37,6 +37,5 @@ if (!defined('DB_PASS')) define('DB_PASS','not_configured');
 if (!defined('DB_NAME')) define('DB_NAME','not_configured');
 if (!defined('DB_HOST')) define('DB_HOST','localhost');
 if (!defined('DB_PORT')) define('DB_PORT','3306');
-if (!defined('DB_ENGINE')) define('DB_ENGINE','mysql');
 
 ?>

@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit.php,v 1.6 2005/04/18 15:24:51 filetreefrog Exp $
+# $Id: edit.php,v 1.7 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
@@ -36,7 +36,7 @@ if (!defined("PATHOS")) exit("");
 $news = null;
 $iloc = null;
 if (isset($_GET['id'])) {
-	$news = $db->selectObject("newsitem","id=" . $_GET['id']);
+	$news = $db->selectObject("newsitem","id=" . intval($_GET['id']));
 }
 
 if ($news != null) {
@@ -77,7 +77,7 @@ if (($news != null && pathos_permissions_check("edit_item",$loc)) ||
 	
 	$template = new template("newsmodule","_form_edit",$loc);
 	$template->assign("form_html",$form->toHTML());
-	$template->assign("is_edit",isset($_GET['id']));
+	$template->assign("is_edit", (isset($_GET['id']) ? 1 : 0) );
 	$template->output();
 } else {
 	echo SITE_403_HTML;

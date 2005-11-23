@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,10 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_upload.tpl,v 1.2 2005/02/19 00:32:32 filetreefrog Exp $
+ * $Id: _form_upload.tpl,v 1.3 2005/11/22 01:16:08 filetreefrog Exp $
  *}
-<div class="form_title">Upload HTML Template</div>
-<div class="form_header">
-This form allows you to upload an HTML file from your computer, and then use the contents of that file as a template
-</div>
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

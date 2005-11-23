@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: module_preview.php,v 1.3 2005/02/19 00:37:08 filetreefrog Exp $
+# $Id: module_preview.php,v 1.4 2005/11/22 01:16:26 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -37,7 +37,7 @@ if (!defined('PATHOS')) exit('');
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>	<head>		<title><?php echo SITE_TITLE; ?></title>		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="Generator" value="Exponent Content Management System" />		<link rel="stylesheet" title="default" href="<?php echo THEME_RELATIVE; ?>editor.css" />
 		<script type="text/javascript" src="<?php echo PATH_RELATIVE; ?>pathos.js.php"></script>
-	</head>		<body onLoad="pathosJSinitialize()">
+	</head>		<body onload="pathosJSinitialize()">
 	<?php
 	define("PREVIEW_READONLY",1);
 	

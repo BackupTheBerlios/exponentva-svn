@@ -28,10 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete.php,v 1.3 2005/03/28 21:57:02 filetreefrog Exp $
+# $Id: delete.php,v 1.4 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
+
+// Sanitize required querystring parameter
+$_GET['id'] = intval($_GET['id']);
 
 $news = $db->selectObject("newsitem","id=" . $_GET['id']);
 $iloc = null;

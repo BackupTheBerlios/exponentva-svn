@@ -28,10 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: post_delete.php,v 1.3 2005/02/19 00:32:37 filetreefrog Exp $
+# $Id: post_delete.php,v 1.4 2005/11/22 01:16:13 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
+
+// Sanitize querystring parameters.
+$_GET['id'] = intval($_GET['id']);
 
 $post = $db->selectObject('weblog_post','id='.$_GET['id']);
 if ($post) {

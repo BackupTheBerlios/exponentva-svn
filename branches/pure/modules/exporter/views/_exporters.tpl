@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,25 +27,24 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _exporters.tpl,v 1.3 2005/02/19 00:32:32 filetreefrog Exp $
+ * $Id: _exporters.tpl,v 1.4 2005/11/22 01:16:06 filetreefrog Exp $
  *}
-<div class="form_title">Data Exporters</div>
-<div class="form_header">This page lists all installed exporters that Exponent recognizes, and gives some information about each.
-</div>
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}</div>
 <table cellpadding="4" cellspacing="0" border="0" width="100%">
 	{foreach from=$exporters item=exporter key=impname}
 	<tr>
-		<td class="administration_modmgrheader"><b>{$exporter.name}</b> by {$exporter.author}</td>
+		<td class="administration_modmgrheader"><b>{$exporter.name}</b> {$_TR.by|sprintf:$exporter.author}</td>
 	</tr>
 	<tr>
 		<td class="administration_modmgrbody">
 			{$exporter.description}
 			<hr size='1'/>
-			<a class="mngmntlink administration_mngmntlink" href="{link module=exporter action=page page=start exporter=$impname}">Run</a> Data Exporter.
+			<a class="mngmntlink administration_mngmntlink" href="{link module=exporter action=page page=start exporter=$impname}">{$_TR.run}</a>
 		</td>
 	</tr>
 	<tr><td></td></tr>
 	{foreachelse}
-	<tr><td align="center"><i>No exporters are installed.</i></td></tr>
+	<tr><td align="center"><i>{$_TR.no_exporters}</i></td></tr>
 	{/foreach}
 </table>

@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,12 +29,15 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: gmgr_membership.php,v 1.7 2005/04/18 15:33:33 filetreefrog Exp $
+# $Id: gmgr_membership.php,v 1.8 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the User Management category
 
 if (!defined('PATHOS')) exit('');
+
+// Sanitize required _GET parameters
+$_GET['id'] = intval($_GET['id']);
 
 $memb = $db->selectObject('groupmembership','member_id='.$user->id.' AND group_id='.$_GET['id'].' AND is_admin=1');
 
@@ -70,7 +74,7 @@ if ($perm_level) {
 			}
 		}
 		
-		$template = new Template('administrationmodule','_groupmembership',$loc);
+		$template = new template('administrationmodule','_groupmembership',$loc);
 		$template->assign('group',$group);
 		$template->assign('users',$users);
 		$template->assign('canAdd',(count($members) < count($users) ? 1 : 0));

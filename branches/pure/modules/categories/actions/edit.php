@@ -28,13 +28,16 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit.php,v 1.4 2005/03/21 17:15:27 filetreefrog Exp $
+# $Id: edit.php,v 1.5 2005/11/22 01:16:05 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 $cat = null;
-if (isset($_GET['id'])) $cat = $db->selectObject("category","id=".$_GET['id']);
+if (isset($_GET['id'])) {
+	$cat = $db->selectObject('category','id='.intval($_GET['id']));
+}
+
 if ($cat) {
 	$loc = unserialize($cat->location_data);
 } else {
@@ -43,9 +46,9 @@ if ($cat) {
 if (pathos_permissions_check('manage_categories',$loc)) {
 	$form = category::form($cat);
 	$form->location($loc);
-	$form->meta("module","categories");
-	$form->meta("orig_module", $_GET['orig_module']);
-	$form->meta("action","save");
+	$form->meta('module','categories');
+	$form->meta('orig_module', $_GET['orig_module']);
+	$form->meta('action','save');
 	echo $form->toHTML();
 } else {
 	echo SITE_403_HTML;

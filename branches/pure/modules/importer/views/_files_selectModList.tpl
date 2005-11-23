@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,7 +27,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _files_selectModList.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * $Id: _files_selectModList.tpl,v 1.3 2005/11/22 01:16:09 filetreefrog Exp $
  *}
 
 <form method="post" action="">
@@ -39,13 +40,13 @@
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 	{foreach from=$file_data item=mod_data key=modname}
 	<tr>
-		<td class="header" width="16"><input type="checkbox" checked name="mods[{$modname}]" /></td>
-		<td class="header">{if $mod_data[0] != ''}{$mod_data[0]}{else}Unknown Module Type: {$modname}{/if}</td>
+		<td class="header" width="16"><input type="checkbox" checked="checked" name="mods[{$modname}]" /></td>
+		<td class="header">{if $mod_data[0] != ''}{$mod_data[0]}{else}{$_TR.unknown}: {$modname}{/if}</td>
 	</tr>
 		{foreach from=$mod_data[1] item=file}
 			<tr class="row {cycle values=even_row,odd_row}"><td></td><td>{$file}</td></tr>
 		{/foreach}
 	{/foreach}
-	<tr><td colspan="2"><input type="submit" value="Process" /></td></tr>
+	<tr><td colspan="2"><input type="submit" value="{$_TR.submit}" /></td></tr>
 </table>
 </form>

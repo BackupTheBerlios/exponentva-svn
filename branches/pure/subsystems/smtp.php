@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: smtp.php,v 1.12 2005/04/08 23:12:39 filetreefrog Exp $
+# $Id: smtp.php,v 1.13 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 /* exdoc
@@ -54,7 +54,7 @@ define("SYS_SMTP",1);
  */
 function pathos_smtp_mail($to_r,$from,$subject,$message,$headers=array(),$callback="",$udata=null) {
 
-	debug('Current revision of file is $Id: smtp.php,v 1.12 2005/04/08 23:12:39 filetreefrog Exp $');
+	debug('Current revision of file is $Id: smtp.php,v 1.13 2005/11/22 01:16:14 filetreefrog Exp $');
 
 	// Ugly kluge
 	$from = SMTP_FROMADDRESS; // For shared hosters
@@ -155,12 +155,15 @@ function pathos_smtp_mail($to_r,$from,$subject,$message,$headers=array(),$callba
 		
 		if (!function_exists($callback)) { // No valid callback.
 			$to = join(', ',$to_r);
+			debug('Sending mail to ' .$to .'<br />');
 			$real_headers = '';
 			foreach ($headers as $key=>$value) {
 				$real_headers .= $key.': '.$value."\r\n";
 			}
 			
 			$message = str_replace("\r\n","\n",$message);
+			
+			debug('<xmp>'.$real_headers."\r\n\r\n".$message.'</xmp>');
 			
 			if (mail($to,$subject,$message,$real_headers) == false) {
 				$return = false;

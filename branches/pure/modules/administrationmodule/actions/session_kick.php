@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: session_kick.php,v 1.6 2005/04/18 15:33:34 filetreefrog Exp $
+# $Id: session_kick.php,v 1.7 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the User Management category
@@ -36,6 +36,7 @@
 if (!defined('PATHOS')) exit('');
 
 if (pathos_permissions_check('user_management',pathos_core_makeLocation('administrationmodule'))) {
+	// GREP:SECURITY -- SQL is created from a _GET parameter that is non-numeric.  Needs to be sanitized.
 	$ticket = $db->selectObject('sessionticket',"ticket='".$_GET['ticket']."'");
 	if ($ticket) {
 		if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');

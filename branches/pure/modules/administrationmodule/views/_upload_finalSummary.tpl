@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,24 +27,22 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _upload_finalSummary.tpl,v 1.3 2005/02/19 00:32:29 filetreefrog Exp $
+ * $Id: _upload_finalSummary.tpl,v 1.4 2005/11/22 01:16:04 filetreefrog Exp $
  *}
-{if $nofiles == 1}
-No files to copy.  If you hit refresh, this is normal.
-{else}
+{if $nofiles == 1}{$_TR.no_files}{else}
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 {foreach from=$success item=status key=file}
 <tr>
 	<td>{$file}</td>
 	<td>
 		{if $status == 1}
-		<span style="color: green">Copied</span>
+		<span style="color: green">{$_TR.copied}</span>
 		{else}
-		<span style="color: red">Failed</span>
+		<span style="color: red">{$_TR.failed}</span>
 		{/if}
 	</td>
 </tr>
 {/foreach}
 </table>
-<a class="mngmntlink administration_mngmntlink" href="{$redirect}">Back</a>
+<a class="mngmntlink administration_mngmntlink" href="{$redirect}">{$_TR.back}</a>
 {/if}

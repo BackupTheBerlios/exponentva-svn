@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,24 +29,26 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: list_importers.php,v 1.5 2005/02/19 00:32:33 filetreefrog Exp $
+# $Id: list_importers.php,v 1.6 2005/11/22 01:16:09 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 if ($user && $user->is_admin == 1) {
 	$importers = array();
-	$idh = opendir(BASE."modules/importer/importers");
+	$idh = opendir(BASE.'modules/importer/importers');
 	while (($imp = readdir($idh)) !== false) {
-		if (substr($imp,0,1) != "." && is_readable(BASE."modules/importer/importers/$imp/start.php") && is_readable(BASE."modules/importer/importers/$imp/info.php")) {
-			$importers[$imp] = include(BASE."modules/importer/importers/$imp/info.php");
+		if (substr($imp,0,1) != '.' && is_readable(BASE.'modules/importer/importers/'.$imp.'/start.php') && is_readable(BASE.'modules/importer/importers/'.$imp.'/info.php')) {
+			$importers[$imp] = include(BASE.'modules/importer/importers/'.$imp.'/info.php');
 		}
 	}
 	
-	$template = new template("importer","_importers");
-	$template->assign("importers",$importers);
+	$template = new template('importer','_importers');
+	$template->assign('importers',$importers);
 	$template->output();
 	
-} else echo SITE_403_HTML;
+} else {
+	echo SITE_403_HTML;
+}
 
 ?>

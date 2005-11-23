@@ -28,12 +28,15 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: af_delete.php,v 1.5 2005/02/19 00:32:29 filetreefrog Exp $
+# $Id: af_delete.php,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 if (pathos_permissions_check('manage_af',$loc)) {
+	// Sanitize required _GET parameters to prevent injection attacks
+	$_GET['id'] = intval($_GET['id']);
+	
 	$af = $db->selectObject('banner_affiliate','id='.$_GET['id']);
 	if ($af) {
 		$db->delete('banner_affiliate','id='.$_GET['id']);

@@ -28,10 +28,9 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: display.defaults.php,v 1.3 2005/02/19 00:39:18 filetreefrog Exp $
+# $Id: display.defaults.php,v 1.4 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
-if (!defined('DISPLAY_CACHE')) define('DISPLAY_CACHE',0);
 if (!defined('DISPLAY_THEME_REAL')) define('DISPLAY_THEME_REAL','portaltheme');
 if (!defined('DISPLAY_ATTRIBUTION')) define('DISPLAY_ATTRIBUTION','username');
 if (!defined('DISPLAY_DATETIME_FORMAT')) define('DISPLAY_DATETIME_FORMAT','%D -- %T');

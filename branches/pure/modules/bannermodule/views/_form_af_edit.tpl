@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,10 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_af_edit.tpl,v 1.3 2005/02/19 00:32:29 filetreefrog Exp $
+ * $Id: _form_af_edit.tpl,v 1.4 2005/11/22 01:16:04 filetreefrog Exp $
  *}
-<div class="form_title">{if $is_edit == 1}Edit Affiliate{else}Create an Affiliate{/if}</div>
-<div class="form_header">
-Every banner in a Banner Manager is tied to an affiliate.  Normal web visitors will never see any of the affiliate information - it is strictly for the management of banners and clicks.
-</div>
+<div class="form_title">{if $is_edit == 1}{$_TR.form_title_edit}{else}{$_TR.form_title_new}{/if}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,26 +29,24 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: sef.structure.php,v 1.7 2005/04/03 08:05:53 filetreefrog Exp $
+# $Id: sef.structure.php,v 1.8 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
-pathos_lang_loadDictionary('config','sef');
+$ctl = new checkboxcontrol(false,true);
+$ctl->disabled = 1;
+
+$i18n = pathos_lang_loadFile('conf/extensions/sef.structure.php');
 
 return array(
-	'Meaningful URLs',
+	$i18n['title'],
 	array(
-		'MEANINGFUL_URLS'=>array(
-			'title'=>TR_CONFIG_MEANINGFUL_URLS,
-			'description'=>TR_CONFIG_MEANINGFUL_URLS_DESC,
-			'control'=>new checkboxcontrol(false,true)
-		),
-		'MEANINGFUL_NAV_URLS'=>array(
-			'title'=>TR_CONFIG_MEANINGFUL_NAV_URLS,
-			'description'=>TR_CONFIG_MEANINGFUL_NAV_URLS_DESC,
-			'control'=>new checkboxcontrol(false,true)
-		),
+		'SEF_URLS'=>array(
+			'title'=>$i18n['sef_urls'],
+			'description'=>$i18n['sef_urls_desc'],
+			'control'=>$ctl
+		)
 	)
 );
 

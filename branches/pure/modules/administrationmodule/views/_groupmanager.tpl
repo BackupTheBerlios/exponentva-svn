@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,15 +27,13 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _groupmanager.tpl,v 1.5 2005/03/20 17:57:52 filetreefrog Exp $
+ * $Id: _groupmanager.tpl,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
  *}
-<div class="form_title">Manage Group Accounts</div>
-<div class="form_header">Groups are used to treat a set of users as a single entity, mostly for permission management.  This form allows you to determine which users belong to which groups, create new groups, modify existing groups, and remove groups.
-<br /><br />
-When a new user account is created, it will be automatically added to all groups with a Type of 'Default'
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}
 {if $perm_level == 2}
 <br /><br />
-To create a new group, use the <a class="mngmntlink administration_mngmntlink" href="{link action=gmgr_editprofile id=0}">New Group Account</a> form.
+<a class="mngmntlink administration_mngmntlink" href="{link action=gmgr_editprofile id=0}">{$_TR.new_group}</a>
 {/if}
 </div>
 {paginate name="groups" objects=$groups modulePrefix="administration" rowsPerPage=20}{literal}

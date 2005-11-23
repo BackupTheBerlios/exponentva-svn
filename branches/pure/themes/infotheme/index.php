@@ -28,13 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: index.php,v 1.4 2005/02/26 05:21:24 filetreefrog Exp $
+# $Id: index.php,v 1.5 2005/11/22 01:16:26 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>	<head>		<?php echo pathos_theme_headerInfo($section); ?>		<link href="<?php echo THEME_RELATIVE; ?>cc.css" rel="stylesheet" type="text/css">	</head><body background="<?php echo THEME_RELATIVE; ?>images/cc_back.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="pathosJSinitialize()">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>	<head>		<?php echo pathos_theme_headerInfo($section); ?>		<link href="<?php echo THEME_RELATIVE; ?>cc.css" rel="stylesheet" type="text/css">	</head><body background="<?php echo THEME_RELATIVE; ?>images/cc_back.jpg" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="pathosJSinitialize()">
 	<?php pathos_theme_sourceSelectorInfo(); ?>	<table width="100%" height="632" border="0" cellpadding="0" cellspacing="0">		<tr>			<td height="121" align="left" valign="bottom"><img src="<?php echo THEME_RELATIVE; ?>images/cc_name.gif" width="505" height="41"></td>		</tr>		<tr>			<td height="8" background="<?php echo THEME_RELATIVE; ?>images/cc_slim_back2.gif"></td>    		</tr>		<tr>			<td height="271" align="left" valign="top" background="<?php echo THEME_RELATIVE; ?>images/cc_mid_back.gif" bgcolor="CBB061">
 				<table width="655" border="0" cellspacing="0" cellpadding="0">					<tr>						<td width="101" rowspan="2" align="left" valign="top" bgcolor="666633"><img src="<?php echo THEME_RELATIVE; ?>images/cc_left.jpg" width="101" height="255"></td>						<td height="33" colspan="2" align="left" valign="top">
 							<table width="541" border="0" cellspacing="0" cellpadding="0">								<tr>									<td width="10">&nbsp;</td>									<td width="526" height="27" bgcolor="CBB061">

@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,10 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_editassoc.tpl,v 1.2 2005/02/19 00:32:37 filetreefrog Exp $
+ * $Id: _form_editassoc.tpl,v 1.3 2005/11/22 01:16:13 filetreefrog Exp $
  *}
-<div class="form_title">Change Module's Approval Policy</div>
-<div class="form_header">
-Select an approval policy from the dropdown list and click save to make this module use that policy.  Selecting 'No Policy' will cause the module to implicitly approve new content.
-</div>
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

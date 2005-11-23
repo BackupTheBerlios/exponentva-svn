@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,15 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit.php,v 1.3 2005/02/19 00:32:37 filetreefrog Exp $
+# $Id: edit.php,v 1.4 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 $textitem = null;
-if (isset($_GET['id'])) $textitem = $db->selectObject('textitem','id=' . $_GET['id']);
+if (isset($_GET['id'])) {
+	$textitem = $db->selectObject('textitem','id=' . intval($_GET['id']));
+}
 
 if ($textitem != null) {
 	$loc = unserialize($textitem->location_data);

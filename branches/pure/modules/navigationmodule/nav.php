@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,14 +29,14 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: nav.php,v 1.3 2005/02/19 00:32:34 filetreefrog Exp $
+# $Id: nav.php,v 1.4 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
 
-define("SCRIPT_EXP_RELATIVE","modules/navigationmodule/");
-define("SCRIPT_FILENAME","nav.php");
+define('SCRIPT_EXP_RELATIVE','modules/navigationmodule/');
+define('SCRIPT_FILENAME','nav.php');
 
-include_once("../../pathos.php");
+include_once('../../pathos.php');
 
-include(BASE."modules/navigationmodule/actions/linker.php");
+include(BASE.'modules/navigationmodule/actions/linker.php');
 
 ?>

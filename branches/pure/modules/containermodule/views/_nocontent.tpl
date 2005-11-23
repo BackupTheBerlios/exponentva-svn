@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,11 +27,11 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _nocontent.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * $Id: _nocontent.tpl,v 1.3 2005/11/22 01:16:06 filetreefrog Exp $
  *}
  <html>
 	<head>
-		<title>{$smarty.const.SITE_TITLE} -- Archived Content</title>
+		<title>{$smarty.const.SITE_TITLE}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}style.css" />
 		<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}editor.css" />
@@ -39,10 +40,8 @@
 	
 	<body style="margin: 0px; padding: 0px;">
 		<br />
-		<div style="font-size: 2em">No Content Selected</div>
-		<hr size="1"/>
-		To use the content from an existing module, click the "Use Existing Content" link to the left to enter the Site Content Selector.  Then, find your module and click "Use This Module's Content."<br />
-		<br />
-		<i><b>Note:</b> you will only be able to re-use content from modules of the same type</i>
+		<div style="font-size: 2em">{$_TR.no_content}</div>
+		<hr size="1"/>{$_TR.instruction}<br />
+		<i>{$_TR.note}</i>
 	</body>
 </html>

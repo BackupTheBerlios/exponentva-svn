@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: save_internalalias.php,v 1.8 2005/04/03 07:57:14 filetreefrog Exp $
+# $Id: save_internalalias.php,v 1.9 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
 
 // Bail in case someone has visited us directly, or the Pathos framework is
@@ -51,7 +52,7 @@ if (isset($_POST['id'])) {
 
 if ($check_id != -1 && pathos_permissions_check('manage',pathos_core_makeLocation('navigationmodule','',$check_id))) {
 
-	pathos_lang_loadDictionary('modules','navigationmodule');
+	$i18n = pathos_lang_loadFile('modules/navigationmodule/actions/save_internalalias.php');
 
 	
 	// Update the section from the _POST data.
@@ -59,10 +60,10 @@ if ($check_id != -1 && pathos_permissions_check('manage',pathos_core_makeLocatio
 	if ($section->active == 0) {
 		// User tried to link to an inactive section.  This makes little or no sense in
 		// this context, so throw them back to the edit form, with an error message.
-		$_POST['_formError'] = TR_NAVIGATIONMODULE_INTERNALLINKERR;
-		pathos_sessions_set("last_POST",$_POST);
-		header("Location: " . $_SERVER['HTTP_REFERER']);
-		exit('Redirecting...');
+		$_POST['_formError'] = $i18n['internal_link_err'];
+		pathos_sessions_set('last_POST',$_POST);
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		exit('');
 	}
 	
 	if (isset($section->id)) {
@@ -85,6 +86,8 @@ if ($check_id != -1 && pathos_permissions_check('manage',pathos_core_makeLocatio
 	
 	// Go back to where we came from.  Probably the navigation manager.
 	pathos_flow_redirect();
+} else {
+	echo SITE_403_HTML;
 }
 
 ?>

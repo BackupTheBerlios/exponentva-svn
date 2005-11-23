@@ -28,14 +28,14 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: index.php,v 1.4 2005/02/26 05:21:24 filetreefrog Exp $
+# $Id: index.php,v 1.5 2005/11/22 01:16:25 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>	<head>		<?php echo pathos_theme_headerInfo($section); ?>		<link rel="stylesheet" title="default" href="<?php echo THEME_RELATIVE; ?>style.css" />
-	</head>		<body onLoad="pathosJSinitialize();">
+	</head>		<body onload="pathosJSinitialize();">
 	<?php pathos_theme_sourceSelectorInfo(); ?>		<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="width:100%; table-layout: fixed;<?php if (defined("SOURCE_SELECTOR")) echo 'border:3px dashed black;'; ?>">
 			<tr><!--
 				This is row is intended to work around the table-layout: fixed CSS situation:

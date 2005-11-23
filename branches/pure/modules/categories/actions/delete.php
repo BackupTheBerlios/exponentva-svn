@@ -28,13 +28,16 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete.php,v 1.4 2005/03/21 17:15:25 filetreefrog Exp $
+# $Id: delete.php,v 1.5 2005/11/22 01:16:05 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 $cat = null;
-if (isset($_GET['id'])) $cat = $db->selectObject("category","id=".$_GET['id']);
+if (isset($_GET['id'])) {
+	$cat = $db->selectObject('category','id='.intval($_GET['id']));
+}
+
 if ($cat) {
 	$loc = unserialize($cat->location_data);
 	$loc->mod = $_GET['orig_module'];

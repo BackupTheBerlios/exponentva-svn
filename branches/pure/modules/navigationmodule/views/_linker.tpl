@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,7 +27,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _linker.tpl,v 1.4 2005/02/19 00:32:35 filetreefrog Exp $
+ * $Id: _linker.tpl,v 1.5 2005/11/22 01:16:10 filetreefrog Exp $
  *}
 <html>
 	<head>
@@ -41,7 +42,7 @@
 		</style>
 	</head>
 	<body>
-	<b>Site Hierarchy</b><hr size="1" />
+	<b>{$_TR.hier}</b><hr size="1" />
 		<table cellpadding="1" cellspacing="0" border="0" width="100%">
 		{foreach from=$sections item=section}
 		<tr><td style="padding-left: {math equation="x*20" x=$section->depth}px">
@@ -53,7 +54,7 @@
 		</table>
 	{if $haveStandalones}
 	<br /><br /><br />
-	<b>Standalone Pages</b><hr size="1" />
+	<b>{$_TR.pages}</b><hr size="1" />
 		<table cellpadding="1" cellspacing="0" border="0" width="100%">
 		{foreach from=$standalones item=section}
 		<tr><td style="padding-left: 20px">

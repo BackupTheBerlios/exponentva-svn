@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,13 +27,13 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _results.tpl,v 1.4 2005/02/19 00:32:36 filetreefrog Exp $
+ * $Id: _results.tpl,v 1.5 2005/11/22 01:16:12 filetreefrog Exp $
  *}
 <b>Search Results</b>
 <br />
-Your search for "{' '|join:$good_terms}" returned {$num_results} result{if $num_results != 1}s{/if}<br />
+{$_TR.search_returned|sprintf:$query:$num_results}<br />
 {if $have_excluded_terms != 0}
-<i>The following search terms were ignored: {', '|join:$excluded_terms}<br />
+<i>{$_TR.ignored_terms}: {', '|join:$excluded_terms}<br />
 {/if}
 {if $config->is_categorized == 0}{* not categorized, we just have a list of crap *}
 {foreach from=$results item=result}

@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,12 +29,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: class.php,v 1.9 2005/03/21 17:15:29 filetreefrog Exp $
+# $Id: class.php,v 1.10 2005/11/22 01:16:09 filetreefrog Exp $
 ##################################################
 class inboxmodule {
-	function name() { return "Private Message Center"; }
-	function description() { return "Allows user to send and receive private messages, to and from other users on the site."; }
-	function author() { return "James Hunt"; }
+	function name() { return pathos_lang_loadKey('modules/inboxmodule/class.php','module_name'); }
+	function description() { return pathos_lang_loadKey('modules/inboxmodule/class.php','module_description'); }
+	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return false; }
 	function hasContent() { return false; }
@@ -42,10 +43,10 @@ class inboxmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		pathos_lang_loadDictionary('modules','inboxmodule');
+		$i18n = pathos_lang_loadFile('modules/inboxmodule/class.php');
 		return array(
-			'administrate'=>TR_INBOXMODULE_PERM_ADMIN,
-			'contact_all'=>TR_INBOXMODULE_PERM_CONTACTALL
+			'administrate'=>$i18n['perm_administrate'],
+			'contact_all'=>$i18n['perm_contact_all']
 		);
 	}
 	

@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete.php,v 1.5 2005/02/19 00:32:33 filetreefrog Exp $
+# $Id: delete.php,v 1.6 2005/11/22 01:16:08 filetreefrog Exp $
 ##################################################
-//GREP:HARDCODEDTEXT
 
 if (!defined("PATHOS")) exit("");
 
-$item = $db->selectObject("imagemanageritem","id=".$_GET['id']);
+$item = $db->selectObject("imagemanageritem","id=".intval($_GET['id']));
 if ($item != null) {
 	$loc = unserialize($item->location_data);
 	

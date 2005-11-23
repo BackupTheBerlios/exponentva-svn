@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,7 +27,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _workflowview.tpl,v 1.2 2005/02/19 00:32:36 filetreefrog Exp $
+ * $Id: _workflowview.tpl,v 1.3 2005/11/22 01:16:11 filetreefrog Exp $
  *}
 <table>
 <tr><td width="22" valign="top">
@@ -36,7 +37,7 @@
 <td>
 	<b>{$item->name}</b><br />
 	<br />
-	<a class="mngmntlink resources_mngmntlink" href="{getfilename id=$item->file_id}">Download</a>
+	<a class="mngmntlink resources_mngmntlink" href="{getfilename id=$item->file_id}">{$_TR.download}</a>
 </td></tr>
 </table>
 <div style="padding-left: 20px;">

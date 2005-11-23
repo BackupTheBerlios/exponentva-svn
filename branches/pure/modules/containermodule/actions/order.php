@@ -28,14 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: order.php,v 1.5 2005/02/19 00:32:31 filetreefrog Exp $
+# $Id: order.php,v 1.6 2005/11/22 01:16:06 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 if (pathos_permissions_check('order_modules',$loc)) {
 	$db->switchValues('container','rank',$_GET['a'],$_GET['b'],"external='".serialize($loc)."'");
-	pathos_template_clear();
 	pathos_flow_redirect();
 } else {
 	echo SITE_403_HTML;

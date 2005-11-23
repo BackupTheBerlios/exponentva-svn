@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete_process.php,v 1.6 2005/02/19 00:32:29 filetreefrog Exp $
+# $Id: delete_process.php,v 1.7 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
  
 if (!defined('PATHOS')) exit('');
@@ -43,9 +44,13 @@ if ($item && $item->is_recurring == 1) {
 		}
 	}
 	
-	if (!count($eventdates)) $db->delete('calendar','id='.$item->id);
+	if (!count($eventdates)) {
+		$db->delete('calendar','id='.$item->id);
+	}
 	
 	pathos_flow_redirect();
-} else echo SITE_404_HTML;
+} else {
+	echo SITE_404_HTML;
+}
 
 ?>

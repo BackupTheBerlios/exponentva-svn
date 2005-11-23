@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: viewweek.php,v 1.8 2005/04/18 15:22:16 filetreefrog Exp $
+# $Id: viewweek.php,v 1.9 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
  
 if (!defined("PATHOS")) exit("");
@@ -39,7 +39,7 @@ $template = new template("calendarmodule","_viewweek",$loc,false);
 
 $time = (isset($_GET['time']) ? $_GET['time'] : time());
 
-if (!defined("SYS_DATETIME")) require_once(BASE."subsystems/datetime.php");
+if (!defined("SYS_DATETIME")) include_once(BASE."subsystems/datetime.php");
 $startweek = pathos_datetime_startOfWeekTimestamp($time);
 $days = array();
 $counts = array();

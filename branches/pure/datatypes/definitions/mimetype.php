@@ -28,12 +28,16 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: mimetype.php,v 1.4 2005/02/19 00:39:00 filetreefrog Exp $
+# $Id: mimetype.php,v 1.5 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 return array(
+	'id'=>array(
+		DB_FIELD_TYPE=>DB_DEF_ID,
+		DB_PRIMARY=>true,
+		DB_INCREMENT=>true),
 	'mimetype'=>array(
 		DB_FIELD_TYPE=>DB_DEF_STRING,
 		DB_FIELD_LEN=>100),

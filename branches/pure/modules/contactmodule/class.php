@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: class.php,v 1.9 2005/03/21 17:15:27 filetreefrog Exp $
+# $Id: class.php,v 1.10 2005/11/22 01:16:05 filetreefrog Exp $
 ##################################################
 
 class contactmodule {
-	function name() { return "Contact Form"; }
-	function description() { return "Presents a form to the web viewer, which they can use to contact users."; }
-	function author() { return "James Hunt"; }
+	function name() { return pathos_lang_loadKey('modules/contactmodule/class.php','module_name'); }
+	function description() { return pathos_lang_loadKey('modules/contactmodule/class.php','module_description'); }
+	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return true; }
 	function hasContent() { return true; }
@@ -43,10 +44,11 @@ class contactmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		pathos_lang_loadDictionary('modules','contactmodule');
+		$i18n = pathos_lang_loadFile('modules/contactmodule/class.php');
+		
 		return array(
-			'administrate'=>TR_CONTACTMODULE_PERM_ADMIN,
-			'configure'=>TR_CONTACTMODULE_PERM_ADMIN,
+			'administrate'=>$i18n['perm_administrate'],
+			'configure'=>$i18n['perm_configure'],
 		);
 	}
 	

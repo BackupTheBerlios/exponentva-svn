@@ -2,6 +2,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -27,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: loginredirect.php,v 1.6 2005/03/28 19:02:19 filetreefrog Exp $
+# $Id: loginredirect.php,v 1.7 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
  
 if (!defined('PATHOS')) exit('');
@@ -49,7 +50,8 @@ if (pathos_sessions_loggedIn()) {
 	exit('Redirecting...');
 } 
 
-loginmodule::show('Default',null,'Log In');
+$i18n = pathos_lang_loadFile('modules/loginmodule/actions/loginredirect.php');
+loginmodule::show('Default',null,$i18n['login']);
 
 
 $template = new template('loginmodule','_login_redirect');

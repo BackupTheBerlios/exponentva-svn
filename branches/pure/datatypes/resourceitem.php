@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: resourceitem.php,v 1.7 2005/04/18 15:47:45 filetreefrog Exp $
+# $Id: resourceitem.php,v 1.8 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 class resourceitem {
 	function form($object) {
-		pathos_lang_loadDictionary('standard','core');
-		pathos_lang_loadDictionary('modules','resourcesmodule');
+		$i18n = pathos_lang_loadFile('datatypes/resourceitem.php');
 		
 		if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 		pathos_forms_initialize();
@@ -47,9 +47,10 @@ class resourceitem {
 			$form->meta('id',$object->id);
 		}
 		
-		$form->register('name',TR_RESOURCESMODULE_NAME,new textcontrol($object->name));
-		$form->register('description',TR_RESOURCESMODULE_DESCRIPTION,new htmleditorcontrol($object->description));
-		$form->register('submit','',new buttongroupcontrol(TR_CORE_SAVE,'',TR_CORE_CANCEL));
+		$form->register('name',$i18n['name'],new textcontrol($object->name));
+		$form->register('description',$i18n['description'],new htmleditorcontrol($object->description));
+		
+		$form->register('submit','',new buttongroupcontrol($i18n['save'],'',$i18n['cancel']));
 		
 		return $form;
 	}

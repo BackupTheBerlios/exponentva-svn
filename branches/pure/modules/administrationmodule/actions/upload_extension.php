@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: upload_extension.php,v 1.8 2005/04/18 15:48:51 filetreefrog Exp $
+# $Id: upload_extension.php,v 1.9 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the Extensions category
@@ -40,11 +41,11 @@ if (pathos_permissions_check('extensions',pathos_core_makeLocation('administrati
 	pathos_forms_initialize();
 	$form = new form();
 	
-	pathos_lang_loadDictionary('modules','administrationmodule');
+	$i18n = pathos_lang_loadFile('modules/administrationmodule/actions/upload_extension.php');
 	
 	$form->register(null,'',new htmlcontrol(pathos_core_maxUploadSizeMessage()));
-	$form->register('mod_archive',TR_ADMINISTRATIONMODULE_MODARCHIVE,new uploadcontrol());
-	$form->register('submit','',new buttongroupcontrol(TR_ADMINISTRATIONMODULE_INSTALL));
+	$form->register('mod_archive',$i18n['mod_archive'],new uploadcontrol());
+	$form->register('submit','',new buttongroupcontrol($i18n['install']));
 	$form->meta('module','administrationmodule');
 	$form->meta('action','install_extension');
 

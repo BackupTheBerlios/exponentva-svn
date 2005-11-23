@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: refresh_site.php,v 1.6 2005/04/18 15:25:12 filetreefrog Exp $
+# $Id: refresh_site.php,v 1.7 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -37,14 +37,14 @@ $loc = pathos_core_makeLocation('sharedcoremodule');
 if (pathos_permissions_check('manage_core',$loc) || pathos_permissions_check('manage_site',$loc)) {
 	$site = null;
 	if (isset($_GET['id'])) {
-		$site = $db->selectObject('sharedcore_site','id='.$_GET['id']);
+		$site = $db->selectObject('sharedcore_site','id='.intval($_GET['id']));
 	}
 	
 	if ($site) {
 		if ($site->inactive == 0) {
 			$core = $db->selectObject('sharedcore_core','id='.$site->core_id);
 			if ($core) {
-				if (!defined('SYS_SHAREDCORE')) require_once(BASE.'subsystems/sharedcore.php');
+				if (!defined('SYS_SHAREDCORE')) include_once(BASE.'subsystems/sharedcore.php');
 				
 				pathos_sharedcore_clear($site->path); // Not full
 				

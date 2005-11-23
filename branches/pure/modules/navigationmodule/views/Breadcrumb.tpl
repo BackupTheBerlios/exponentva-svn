@@ -26,14 +26,14 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: Breadcrumb.tpl,v 1.5 2005/05/05 19:11:26 filetreefrog Exp $
+ * $Id: Breadcrumb.tpl,v 1.6 2005/11/22 01:16:10 filetreefrog Exp $
  *}
 {assign var=i value=0}
 {foreach from=$sections item=section}
 {if $current->numParents <= $i && ($current->id == $section->id || $current->parents[$i] == $section->id)}
 {math equation="x+1" x=$i assign=i}
 {if $section->active == 1}
-<a class="mngmntlink navigation_mngmntlink" href="{$section->link}" class="navlink"{if $section->new_window} target="_blank"{/if}>{$section->name}</a>&nbsp;
+<a class="mngmntlink navigation_mngmntlink navlink" href="{$section->link}"{if $section->new_window} target="_blank"{/if}>{$section->name}</a>&nbsp;
 {else}
 <span class="navlink">{$section->name}</span>&nbsp;
 {/if}

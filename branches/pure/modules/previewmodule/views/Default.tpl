@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,11 +27,11 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: Default.tpl,v 1.2 2005/02/19 00:32:35 filetreefrog Exp $
+ * $Id: Default.tpl,v 1.3 2005/11/22 01:16:11 filetreefrog Exp $
  *}
 {if $editMode == 1}
-<a class="mngmntlink preview_mngmntlink" href="{link action=preview}">Preview</a>
+<a class="mngmntlink preview_mngmntlink" href="{link action=preview}">{$_TR.preview}</a>
 {/if}
 {if $previewMode == 1}
-<a class="mngmntlink preview_mngmntlink" href="{link action=normal}">Edit Mode</a>
+<a class="mngmntlink preview_mngmntlink" href="{link action=normal}">{$_TR.edit_mode}</a>
 {/if}

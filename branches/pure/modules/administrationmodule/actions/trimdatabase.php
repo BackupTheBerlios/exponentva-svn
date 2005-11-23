@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: trimdatabase.php,v 1.9 2005/04/18 15:33:34 filetreefrog Exp $
+# $Id: trimdatabase.php,v 1.10 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the Database category
@@ -68,10 +69,10 @@ if (pathos_permissions_check('database',pathos_core_makeLocation('administration
 	
 	$droppable_count = count($droppable_tables);
 	
-	#$template = new template('administrationmodule','_tableTrimSummary',$loc);
-	$template = new template('administrationmodule','_trimdatabaseWhich',$loc);
-	$template->assign('droppable_tables',$droppable_tables);
-	$template->assign('droppable_count',$droppable_count);
+	$template = new template('administrationmodule','_tableTrimSummary',$loc);
+	$template->assign('status',$dropped_tables);
+	$template->assign('dropped',$dropped_count);
+	$template->assign('real_dropped',$real_dropped_count);
 	$template->output();
 } else {
 	echo SITE_403_HTML;

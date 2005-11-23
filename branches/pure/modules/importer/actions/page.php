@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,16 +29,16 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: page.php,v 1.6 2005/02/19 00:32:33 filetreefrog Exp $
+# $Id: page.php,v 1.7 2005/11/22 01:16:09 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 if ($user && $user->is_admin == 1) {
-	$page = (isset($_REQUEST['page']) ? $_REQUEST['page'] : "start");
-	$importer = (isset($_REQUEST['importer']) ? $_REQUEST['importer'] : "");
-	$file = BASE."modules/importer/importers/$importer/$page.php";
-	if ($importer != "" && is_readable($file) && is_file($file)) {
+	$page = (isset($_REQUEST['page']) ? $_REQUEST['page'] : 'start');
+	$importer = (isset($_REQUEST['importer']) ? $_REQUEST['importer'] : '');
+	$file = BASE.'modules/importer/importers/'.$importer.'/'.$page.'.php';
+	if ($importer != '' && is_readable($file) && is_file($file)) {
 		include($file);
 	} else {
 		echo SITE_404_HTML;

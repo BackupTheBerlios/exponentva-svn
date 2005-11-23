@@ -28,13 +28,17 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: comment_delete.php,v 1.3 2005/02/19 00:32:37 filetreefrog Exp $
+# $Id: comment_delete.php,v 1.4 2005/11/22 01:16:13 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
+// Sanitize required querystring parameters.
+$_GET['id'] = intval($_GET['id']);
+
 $comment = $db->selectObject('weblog_comment','id='.$_GET['id']);
 $post = $db->selectObject('weblog_post','id='.$comment->parent_id);
+
 if ($comment != null && $post != null) {
 	$loc = unserialize($post->location_data);
 	$iloc = pathos_core_makeLocation($loc->mod,$loc->src,$post->id);

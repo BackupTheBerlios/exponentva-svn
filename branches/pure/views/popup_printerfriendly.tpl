@@ -26,7 +26,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: popup_printerfriendly.tpl,v 1.2 2005/02/19 00:37:45 filetreefrog Exp $
+ * $Id: popup_printerfriendly.tpl,v 1.3 2005/11/22 01:16:26 filetreefrog Exp $
  *}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <head>
@@ -53,7 +53,7 @@
 	</head>
 	<body onLoad="pathosJSinitialize()">
 	<div class="printer_link">
-		<a href="#" onClick="print(); return false;">Print</a>
+		<a href="#" onClick="print(); return false;">{$_TR.print}</a>
 		<br />
 	</div>
 	{$output}

@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit_core.php,v 1.6 2005/04/26 04:42:00 filetreefrog Exp $
+# $Id: edit_core.php,v 1.7 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -36,7 +36,7 @@ if (!defined('PATHOS')) exit('');
 if (pathos_permissions_check('manage_core',pathos_core_makeLocation('sharedcoremodule'))) {
 	$core = null;
 	if (isset($_GET['id'])) {
-		$core = $db->selectObject('sharedcore_core','id='.$_GET['id']);
+		$core = $db->selectObject('sharedcore_core','id='.intval($_GET['id']));
 	}
 	
 	$form = sharedcore_core::form($core);

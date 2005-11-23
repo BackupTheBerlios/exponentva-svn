@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,14 +27,9 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _usercsv_form_start.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ * $Id: _usercsv_form_start.tpl,v 1.3 2005/11/22 01:16:09 filetreefrog Exp $
  *}
-<div class="form_title">Import User - Enter CSV Options</div>
-<div class="form_header">
-Please enter the delimiter character of the csv file, the csv file to be uploaded, and the row within the csv file to start at. The start row is for files that have <br>
-column headers, or if you just want to skip records in the csv file.
-</div>
-<span style="color:red;">
-{$error}
-</span>
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}</div>
+<span style="color:red;">{$error}</span>
 {$form_html}

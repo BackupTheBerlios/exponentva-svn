@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,24 +29,24 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit.php,v 1.2 2005/02/19 00:32:37 filetreefrog Exp $
+# $Id: edit.php,v 1.3 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 $data = null;
-$data = $db->selectObject("swfitem","location_data='" .serialize($loc)."'");
+$data = $db->selectObject('swfitem',"location_data='" .serialize($loc)."'");
 
-if (pathos_permissions_check("configure",$loc)) {
+if (pathos_permissions_check('configure',$loc)) {
 
 	$form = swfitem::form($data);
 	$form->location($loc);
-	$form->meta("action","save");
-	$form->meta("m",$loc->mod);
-	$form->meta("s",$loc->src);
-	$form->meta("i",$loc->int);
-	$template = new template("swfmodule","_form_edit",$loc);
-	$template->assign("form_html",$form->toHTML());
+	$form->meta('action','save');
+	$form->meta('m',$loc->mod);
+	$form->meta('s',$loc->src);
+	$form->meta('i',$loc->int);
+	$template = new template('swfmodule','_form_edit',$loc);
+	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {
 	echo SITE_403_HTML;

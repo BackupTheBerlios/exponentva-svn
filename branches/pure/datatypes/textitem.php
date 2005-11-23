@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: textitem.php,v 1.3 2005/02/19 00:39:00 filetreefrog Exp $
+# $Id: textitem.php,v 1.4 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 class textitem {
 	function form($textitem = null) {
-		pathos_lang_loadDictionary('standard','core');
-	
+		$i18n = pathos_lang_loadSet('datatypes/textitem.php');
+		
 		if (!defined('SYS_FORMS')) include_once(BASE.'subsystems/forms.php');
 		pathos_forms_initialize();
 		
@@ -45,17 +46,17 @@ class textitem {
 		} else {
 			$form->meta('id',$textitem->id);
 		}
-		$form->register('text','',new htmleditorcontrol($textitem->text));
-		$form->register('submit','',new buttongroupcontrol(TR_CORE_SAVE,'',TR_CORE_CANCEL));
+		$form->register('text',$i18n['caption_text'],new htmleditorcontrol($textitem->text));
+		$form->register('submit','',new buttongroupcontrol($i18n['caption_save'],'',$i18n['caption_cancel']));
 		
 		pathos_forms_cleanup();
 		
 		return $form;
 	}
 	
-	function update($formvalues,$textitem = null) {
-		$textitem->text = $formvalues['text'];
-		return $textitem;
+	function update($values,$object = null) {
+		$object->text = $values['text'];
+		return $object;
 	}
 }
 

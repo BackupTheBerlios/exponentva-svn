@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,12 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_edit.tpl,v 1.2 2005/02/19 00:32:30 filetreefrog Exp $
+ * $Id: _form_edit.tpl,v 1.3 2005/11/22 01:16:05 filetreefrog Exp $
  *}
-<div class="form_title">{if $is_edit == 1}Edit Calendar Event{else}Create New Calendar Event{/if}</div>
-<div class="form_header">
-Enter the information about the calendar event (the date and times) below.
-<br /><br />
-Note: multiple day events are not supported.
-</div>
+<div class="form_title">{if $is_edit == 1}{$_TR.form_title_edit}{else}{$_TR.form_title_new}{/if}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

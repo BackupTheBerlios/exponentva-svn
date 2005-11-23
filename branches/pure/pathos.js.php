@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: pathos.js.php,v 1.12 2005/04/06 18:52:14 filetreefrog Exp $
+# $Id: pathos.js.php,v 1.13 2005/11/22 01:16:02 filetreefrog Exp $
 ##################################################
 
 //Initialize Pathos Framework
@@ -133,7 +133,6 @@ function isOneSelected(prefix,enabledOnly) {
 	}
 	return false;
 }
-
 
 // Patch the String object, to make string parsing a little easier in Pathos
 String.prototype.isValid = function (alpha,numeric,others) {

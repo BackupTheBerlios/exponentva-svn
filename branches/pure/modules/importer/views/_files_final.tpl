@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,6 +27,6 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _files_final.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * $Id: _files_final.tpl,v 1.3 2005/11/22 01:16:09 filetreefrog Exp $
  *}
-Successfully restored uploaded files from backup.
+{$_TR.success}

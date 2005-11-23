@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,10 +29,10 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: order_templates.php,v 1.5 2005/04/03 07:57:14 filetreefrog Exp $
+# $Id: order_templates.php,v 1.6 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 if ($user && $user->is_acting_admin == 1) {
 	$db->switchValues('section_template','rank',$_GET['a'],$_GET['b'],'parent='.$_GET['parent']);

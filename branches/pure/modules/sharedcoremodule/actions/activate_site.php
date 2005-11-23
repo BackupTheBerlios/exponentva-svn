@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,26 +29,26 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: activate_site.php,v 1.5 2005/04/18 15:25:12 filetreefrog Exp $
+# $Id: activate_site.php,v 1.6 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 if (pathos_permissions_check('manage_site',pathos_core_makeLocation('sharedcoremodule'))) {
 	$site = null;
 	if (isset($_GET['id'])) {
-		$site = $db->selectObject("sharedcore_site","id=".$_GET['id']);
+		$site = $db->selectObject('sharedcore_site','id='.intval($_GET['id']));
 	}
 	
 	if ($site) {
-		$core = $db->selectObject("sharedcore_core","id=".$site->core_id);
+		$core = $db->selectObject('sharedcore_core','id='.$site->core_id);
 		if ($core) {
 			$site->inactive = 0;
-			$db->updateObject($site,"sharedcore_site");
+			$db->updateObject($site,'sharedcore_site');
 			
-			unlink($site->path."index.php");
+			unlink($site->path.'index.php');
 			
-			if (!defined("SYS_SHAREDCORE")) require_once(BASE."subsystems/sharedcore.php");
+			if (!defined('SYS_SHAREDCORE')) include_once(BASE.'subsystems/sharedcore.php');
 			
 			pathos_sharedcore_setup($core,$site);
 			
@@ -57,7 +58,7 @@ if (pathos_permissions_check('manage_site',pathos_core_makeLocation('sharedcorem
 				CORE_EXT_THEME=>array(),
 			);
 			
-			foreach ($db->selectObjects("sharedcore_extension","site_id=".$site->id) as $e) {
+			foreach ($db->selectObjects('sharedcore_extension','site_id='.$site->id) as $e) {
 				$extensions[$e->type][] = $e->name;
 			}
 			

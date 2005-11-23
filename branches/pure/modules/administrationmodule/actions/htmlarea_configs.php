@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: htmlarea_configs.php,v 1.5 2005/02/19 00:32:28 filetreefrog Exp $
+# $Id: htmlarea_configs.php,v 1.6 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 // Part of the HTMLArea category
@@ -38,7 +39,7 @@ if (!defined('PATHOS')) exit('');
 if (pathos_permissions_check('htmlarea',pathos_core_makeLocation('administrationmodule'))) {
 	pathos_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 
-	$template = new Template('administrationmodule','_htmlareaconfigs',$loc);
+	$template = new template('administrationmodule','_htmlareaconfigs',$loc);
 	$configs = $db->selectObjects('htmlareatoolbar');
 	$template->assign('configs',$configs);
 	$template->output();

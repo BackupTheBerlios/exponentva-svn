@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: save.php,v 1.4 2005/04/18 15:26:01 filetreefrog Exp $
+# $Id: save.php,v 1.5 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -43,8 +43,7 @@ if (isset($_POST['id'])) {
 if (pathos_permissions_check('edit',$loc)) {
 	$textitem = textitem::update($_POST,$textitem);
 	$textitem->location_data = serialize($loc);
-	pathos_template_clear();
-	if (!defined('SYS_WORKFLOW')) require_once(BASE.'subsystems/workflow.php');
+	if (!defined('SYS_WORKFLOW')) include_once(BASE.'subsystems/workflow.php');
 	pathos_workflow_post($textitem,'textitem',$loc);
 } else {
 	echo SITE_403_HTML;

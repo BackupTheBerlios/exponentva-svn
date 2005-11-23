@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,10 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _eql_restoreForm.tpl,v 1.2 2005/02/19 00:32:33 filetreefrog Exp $
+ * $Id: _eql_restoreForm.tpl,v 1.3 2005/11/22 01:16:09 filetreefrog Exp $
  *}
-<div class="form_title">Restore Database</div>
-<div class="form_header">
-This form lets you upload a database backup (in EQL format) to the server.  Doing so will restore the database table to the state stored in that backup file.
-</div>
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

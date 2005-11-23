@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,23 +29,22 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: spider.php,v 1.6 2005/04/18 15:25:05 filetreefrog Exp $
+# $Id: spider.php,v 1.7 2005/11/22 01:16:12 filetreefrog Exp $
 ##################################################
-//GREP:HARDCODEDTEXT
 //GREP:VIEWIFY
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 if (pathos_permissions_check('searching',pathos_core_makeLocation('administrationmodule'))) {
 	$template = new template('searchmodule','_spiderSite');
 	
-	if (!defined("SYS_MODULES")) require_once(BASE."subsystems/modules.php");
-	$db->delete("search");
+	if (!defined('SYS_MODULES')) include_once(BASE.'subsystems/modules.php');
+	$db->delete('search');
 	$mods = array();
 	$modnames = array();
 	foreach (pathos_modules_list() as $mod) {
 		$name = call_user_func(array($mod,'name'));
-		if (class_exists($mod) && is_callable(array($mod,"spiderContent"))) {
-			if (call_user_func(array($mod,"spiderContent"))) {
+		if (class_exists($mod) && is_callable(array($mod,'spiderContent'))) {
+			if (call_user_func(array($mod,'spiderContent'))) {
 				$mods[$name] = 1;
 			}
 		} else {

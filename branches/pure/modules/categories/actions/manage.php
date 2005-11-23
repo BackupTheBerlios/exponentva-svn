@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: manage.php,v 1.9 2005/04/18 15:22:30 filetreefrog Exp $
+# $Id: manage.php,v 1.10 2005/11/22 01:16:05 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
@@ -44,7 +44,7 @@ if (pathos_permissions_check('manage_categories',$mloc)) {
 	} else {
 		$template = new template($mloc->mod,"_cat_manageCategories",$loc);
 	}	
-	if (!defined('SYS_SORTING')) require_once(BASE.'subsystems/sorting.php');
+	if (!defined('SYS_SORTING')) include_once(BASE.'subsystems/sorting.php');
 	usort($categories, "pathos_sorting_byRankAscending");
 	$template->assign("origmodule", $_GET['orig_module']);
 	$template->assign("categories",$categories);

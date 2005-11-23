@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,7 +27,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: Top\040Nav.tpl,v 1.6 2005/04/26 04:41:40 filetreefrog Exp $
+ * $Id: Top\040Nav.tpl,v 1.7 2005/11/22 01:16:10 filetreefrog Exp $
  *}
  {assign var=bar value=0}
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tnav">
@@ -57,7 +58,7 @@
 		{/foreach}
 		{permissions level=$smarty.const.UILEVEL_NORMAL}
 		{if $canManage == 1}
-			&nbsp;[&nbsp;<a class="navlink" href="{link action=manage}">manage</a>&nbsp;]&nbsp;
+			&nbsp;[&nbsp;<a class="navlink" href="{link action=manage}">{$_TR.manage}</a>&nbsp;]&nbsp;
 		{/if}
 		{/permissions}
 		</td>

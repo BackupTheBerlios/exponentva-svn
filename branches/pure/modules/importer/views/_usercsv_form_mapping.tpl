@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,11 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _usercsv_form_mapping.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ * $Id: _usercsv_form_mapping.tpl,v 1.3 2005/11/22 01:16:09 filetreefrog Exp $
  *}
-<div class="form_title">Mapping CSV Columns</div>
-<div class="form_header">
-Below is some sample data from your csv file broken out by fields.&nbsp;&nbsp;
-Map the columns from the csv file to the corresponding user property in the database.
-</div>
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

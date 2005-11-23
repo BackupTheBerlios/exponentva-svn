@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,10 +27,10 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _view_form.tpl,v 1.3 2005/02/19 00:32:32 filetreefrog Exp $
+ * $Id: _view_form.tpl,v 1.4 2005/11/22 01:16:07 filetreefrog Exp $
  *}
  
- <div align="center"><center><b>Form Editor</b><br>Use the drop down to add fields to this form.</center></div>
+ <div align="center"><center><b>{$_TR.form_title}</b><br>{$_TR.form_header}</center></div>
  <div style="border: 2px dashed lightgrey; padding: 1em;">
 {$form_html}
 </div>
@@ -46,7 +47,7 @@
 	<input type="hidden" name="module" value="formbuilder" />
 	<input type="hidden" name="action" value="edit_control" />
 	<input type="hidden" name="form_id" value="{$form->id}" />
-	Add a <select name="control_type" onChange="this.form.submit()">
+	{$_TR.add_a} <select name="control_type" onChange="this.form.submit()">
 	{foreach from=$types key=value item=caption}
 		<option value="{$value}">{$caption}</option>
 	{/foreach}
@@ -54,10 +55,10 @@
 	</form>
 </td>
 <td>
-	<a href="{$backlink}">Done</a>
+	<a href="{$backlink}">{$_TR.done}</a>
 </td>
 <td>
-	<a href="JavaScript: pickSource();">Append fields from existing form</a>
+	<a href="JavaScript: pickSource();">{$_TR.append_existing}</a>
 </td>
 </tr>
 </table>

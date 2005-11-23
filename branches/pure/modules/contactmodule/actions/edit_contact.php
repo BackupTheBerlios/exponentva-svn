@@ -28,15 +28,17 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: edit_contact.php,v 1.5 2005/02/19 00:32:31 filetreefrog Exp $
+# $Id: edit_contact.php,v 1.6 2005/11/22 01:16:05 filetreefrog Exp $
 ##################################################
  
 if (!defined('PATHOS')) exit('');
 
 $contact = null;
 if (isset($_GET['id'])) {
-	$contact = $db->selectObject('contact_contact','id='.$_GET['id']);
-	if ($contact) $loc = unserialize($contact->location_data);
+	$contact = $db->selectObject('contact_contact','id='.intval($_GET['id']));
+	if ($contact) {
+		$loc = unserialize($contact->location_data);
+	}
 }
 
 if (pathos_permissions_check('configure',$loc)) {
@@ -46,7 +48,7 @@ if (pathos_permissions_check('configure',$loc)) {
 	
 	$template = new template('contactmodule','_form_edit_contact',$loc);
 	$template->assign('form_html',$form->toHTML());
-	$template->assign('is_edit',isset($_GET['id']));
+	$template->assign('is_edit', (isset($_GET['id']) ? 1 : 0) );
 	$template->output();
 } else {
 	echo SITE_403_HTML;

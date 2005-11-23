@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: save_contentpage.php,v 1.6 2005/04/03 07:57:14 filetreefrog Exp $
+# $Id: save_contentpage.php,v 1.7 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
 
 // Bail in case someone has visited us directly, or the Pathos framework is
@@ -76,6 +77,8 @@ if ($check_id != -1 && pathos_permissions_check('manage',pathos_core_makeLocatio
 	
 	// Go back to where we came from.  Probably the navigation manager.
 	pathos_flow_redirect();
+} else {
+	echo SITE_403_HTML;
 }
 
 ?>

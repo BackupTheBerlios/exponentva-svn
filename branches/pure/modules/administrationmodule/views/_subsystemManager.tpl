@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,24 +27,22 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _subsystemManager.tpl,v 1.2 2005/02/19 00:32:29 filetreefrog Exp $
+ * $Id: _subsystemManager.tpl,v 1.3 2005/11/22 01:16:04 filetreefrog Exp $
  *}
-<div class="form_title">Manage Subsystems</div>
-<div class="form_header">This page lists all installed subsystems that Exponent recognizes
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}
 <br /><br />
-Clicking the 'View Files' link will bring up a list of files that belog to the subsystem, along with file integrity checksums.
-<br /><br />
-To install a new subsystem, use the <a class="mngmntlink administration_mngmntlink" href="{link action=upload_extension}">Extension Upload</a> form.</div>
+<a class="mngmntlink administration_mngmntlink" href="{link action=upload_extension}">{$_TR.upload_subsystem}</a></div>
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 {foreach from=$info key=subsys item=meta}
 	<tr>
-		<td style="background-color: lightgrey"><b>{$meta.name}</b> by {$meta.author} version {$meta.version}</td>
+		<td style="background-color: lightgrey"><b>{$meta.name}</b> {$_TR.by} {$meta.author} {$_TR.version}{$meta.version}</td>
 		<td style="background-color: lightgrey" align="right"><b>{$subsys}</td>
 	</tr>
 	<tr>
 		<td colspan="3" style="padding-left: 10px; border: 1px solid lightgrey;">
 			<a class="mngmntlink administration_mngmntlink" href="{link module=info action=showfiles type=$smarty.const.CORE_EXT_SUBSYSTEM name=$subsys}">
-				View Files
+				{$_TR.view_files}
 			</a>
 			<hr size="1" />
 			{$meta.description}

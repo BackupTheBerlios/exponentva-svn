@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: autoloader.php,v 1.5 2005/04/08 23:23:36 filetreefrog Exp $
+# $Id: autoloader.php,v 1.6 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -50,7 +50,7 @@ if (phpversion() >= 5) {
 	 * of autoloading
 	 * @node Subsystems:Autoloader
 	 */
-	$auto_dirs = array('datatypes'=>BASE.'datatypes');
+	$auto_dirs = array(BASE.'datatypes', BASE.'subsystems/forms', BASE.'subsystems/forms/controls');
 	
 	/* exdoc
 	 * This function overrides the default PHP5 autoloader,
@@ -63,20 +63,20 @@ if (phpversion() >= 5) {
 	 */
 	function __autoload($class) {
 		global $auto_dirs;
-		for ($i = 0; $i < count($auto_dirs); $i++) {
-			if (is_readable($auto_dirs[$i] . '/' . $class . '.php')) {
-				include_once($auto_dirs[$i] . '/' . $class . '.php');
+		foreach ($auto_dirs as $auto_dir) {
+			if (is_readable($auto_dir.'/'.$class.'.php')) {
+				include_once($auto_dir.'/'.$class.'.php');
 				return;
 			}
 		}
 	}
 } else {
 	define('SYS_AUTOLOADER',2);
-	if (is_readable(BASE . 'datatypes')) {
-		$dh = opendir(BASE . 'datatypes');
+	if (is_readable(BASE.'datatypes')) {
+		$dh = opendir(BASE.'datatypes');
 		while (($file = readdir($dh)) !== false) {
-			if (is_readable(BASE . 'datatypes/' . $file) && substr($file,-4,4) == '.php') {
-				include_once(BASE . 'datatypes/' . $file);
+			if (is_readable(BASE.'datatypes/'.$file) && substr($file,-4,4) == '.php') {
+				include_once(BASE.'datatypes/'.$file);
 			}
 		}
 	}

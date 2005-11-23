@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,17 +29,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: view.php,v 1.6 2005/04/03 08:08:45 filetreefrog Exp $
+# $Id: view.php,v 1.7 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
 
 pathos_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
-if (isset($_GET['id'])) {
-	$news = $db->selectObject("newsitem","id=" . $_GET['id']);
-} else if (isset($_GET['internal_name'])) {
-	$news = $db->selectObject("newsitem","internal_name='" . $_GET['internal_name']."'");
-}
+$news = $db->selectObject("newsitem","id=" . intval($_GET['id']));
 if ($news != null) {
 	$loc = unserialize($news->location_data);
 	$iloc = $loc;
@@ -54,7 +51,7 @@ if ($news != null) {
 	$news->real_posted = ($news->publish != 0 ? $news->publish : $news->posted);
 	
 	$view = (isset($_GET['view']) ? $_GET['view'] : "_viewSingle");
-	$template = new Template("newsmodule",$view,$loc);
+	$template = new template("newsmodule",$view,$loc);
 	
 	$template->assign("newsitem",$news);
 	$template->assign("loc",$loc);

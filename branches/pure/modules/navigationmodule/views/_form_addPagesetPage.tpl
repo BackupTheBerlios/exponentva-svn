@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,12 +27,10 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_addPagesetPage.tpl,v 1.3 2005/02/19 00:32:35 filetreefrog Exp $
+ * $Id: _form_addPagesetPage.tpl,v 1.4 2005/11/22 01:16:10 filetreefrog Exp $
  *}
-<div class="form_title">Create a new Section from a Pageset</div>
-<div class="form_header">
-Please select the pageset from the list below.
-<br /><br />
-Note: once you save, you will not be able to edit this information.  Using pagesets is a shortcut for creating a number of sections and giving them default content.
+<div class="form_title">{$_TR.form_title}</div>
+<div class="form_header">{$_TR.form_header}<br /><br />
+{$_TR.note}
 </div>
 {$form_html}

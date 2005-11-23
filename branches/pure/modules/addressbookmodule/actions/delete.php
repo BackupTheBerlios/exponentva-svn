@@ -28,14 +28,15 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: delete.php,v 1.6 2005/02/19 00:32:27 filetreefrog Exp $
+# $Id: delete.php,v 1.7 2005/11/22 01:16:04 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 $contact = null;
 if (isset($_GET['id'])) {
-	$contact = $db->selectObject('addressbook_contact','id='.$_GET['id']);
+	// Sanitize required _GET variable, to protect against injection attacks
+	$contact = $db->selectObject('addressbook_contact','id='.intval($_GET['id']));
 }
 if ($contact) {
 	$loc = unserialize($contact->location_data);

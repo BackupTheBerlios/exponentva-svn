@@ -26,10 +26,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_editmimetype.tpl,v 1.2 2005/02/19 00:32:32 filetreefrog Exp $
+ * $Id: _form_editmimetype.tpl,v 1.3 2005/11/22 01:16:06 filetreefrog Exp $
  *}
-<div class="form_title">{if $is_edit}Edit MIME Type{else}New MIME Type{/if}</div>
-<div class="form_header">
-Clicking on the '(change)' link will bring up the icon picker, which allows you to assign an icon to this MIME type.
-</div>
+<div class="form_title">{if $is_edit}{$_TR.form_title_edit}{else}{$_TR.form_title_new}{/if}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

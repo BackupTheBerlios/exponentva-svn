@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,7 +29,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: orphans_content.php,v 1.6 2005/04/26 04:40:34 filetreefrog Exp $
+# $Id: orphans_content.php,v 1.7 2005/11/22 01:16:06 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
@@ -50,6 +51,7 @@ if (!defined("PATHOS")) exit("");
 	}
 	
 	$orphans = array();
+	// GREP:SECURITY -- SQL created from _GET parameter that is non-numeric.  Needs sanitized.
 	foreach ($db->selectObjects("locationref","module='".$_GET['module']."' AND refcount=0") as $orphan) {
 		$obj = null;
 		$loc = pathos_core_makeLocation($orphan->module,$orphan->source,$orphan->internal);
@@ -73,7 +75,8 @@ if (!defined("PATHOS")) exit("");
 				"clickable"=>(($clickable_mods == null || in_array($modclass,$clickable_mods))?1:0)
 			);
 		} else {
-			$obj->output = sprintf(TR_CONTAINERMODULE_MODNOTFOUND,$orphan->module);
+			$i18n = pathos_lang_loadFile('modules/containermodule/class.php');
+			$obj->output = sprintf($i18n['mod_not_found'],$orphan->module);
 			$containers[$i]->info = array(
 					"module"=>"Unknown:".$location->mod,
 					"source"=>$orphan->source,

@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: view_all_news.php,v 1.5 2005/04/18 15:24:51 filetreefrog Exp $
+# $Id: view_all_news.php,v 1.6 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -58,7 +58,7 @@ $template->register_permissions(
 );
 
 $news = $db->selectObjects("newsitem","location_data='" . serialize($loc) . "' AND (publish = 0 or publish <= " . time() . ") AND (unpublish = 0 or unpublish > " . time() . ") AND approved != 0 ORDER BY posted " . $config->sortorder);
-if (!defined('SYS_SORTING')) require_once(BASE.'subsystems/sorting.php');
+if (!defined('SYS_SORTING')) include_once(BASE.'subsystems/sorting.php');
 usort($news,($config->sortorder == "DESC" ? "pathos_sorting_byPostedDescending" : "pathos_sorting_byPostedAscending"));
 for ($i = 0; $i < count($news); $i++) {
 	$nloc = null;

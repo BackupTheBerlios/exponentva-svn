@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,25 +29,28 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: save_item.php,v 1.2 2005/02/19 00:32:36 filetreefrog Exp $
+# $Id: save_item.php,v 1.3 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 $item = null;
-if (isset($_POST['id'])) $item = $db->selectObject("rotator_item","id=".$_POST['id']);
+if (isset($_POST['id'])) {
+	$item = $db->selectObject('rotator_item','id='.$_POST['id']);
+}
+
 if ($item) {
 	$loc = unserialize($item->location_data);
 }
 
-if (pathos_permissions_check("manage",$loc)) {
+if (pathos_permissions_check('manage',$loc)) {
 	$item = rotator_item::update($_POST,$item);
 	$item->location_data = serialize($loc);
 	
 	if (isset($item->id)) {
-		$db->updateObject($item,"rotator_item");
+		$db->updateObject($item,'rotator_item');
 	} else {
-		$db->insertObject($item,"rotator_item");
+		$db->insertObject($item,'rotator_item');
 	}
 	
 	pathos_flow_redirect();

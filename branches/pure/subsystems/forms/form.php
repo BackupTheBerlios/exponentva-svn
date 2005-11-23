@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: form.php,v 1.7 2005/04/26 04:37:39 filetreefrog Exp $
+# $Id: form.php,v 1.8 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -70,7 +70,7 @@ class form extends baseform {
 	var $validationScript = "";
 	
 	function secure() {
-		$this->action = SSL_URL . SCRIPT_RELATIVE . SCRIPT_FILENAME;
+		$this->action = (ENABLE_SSL ? SSL_URL : '') . SCRIPT_RELATIVE . SCRIPT_FILENAME;
 		$this->meta("expid",session_id());
 	}
 	

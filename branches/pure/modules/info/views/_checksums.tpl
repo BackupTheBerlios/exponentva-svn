@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,18 +27,18 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _checksums.tpl,v 1.2 2005/02/19 00:32:34 filetreefrog Exp $
+ * $Id: _checksums.tpl,v 1.3 2005/11/22 01:16:09 filetreefrog Exp $
  *}
 <table cellpadding="2" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td class="header info_header">File</td>
-		<td class="header info_header">Checksum</td>
+		<td class="header info_header">{$_TR.file}</td>
+		<td class="header info_header">{$_TR.checksum}</td>
 	</tr>
 {if $error == ""}
 {foreach from=$files key=file item=oldmd5}
 	{capture assign=relpath}{$relative[$file].dir}{$relative[$file].file}{/capture}
 	{assign var=csum value=$checksums[$file]}
-	{if $csum == ""}{assign var=csum value="&lt;no checksum - transient file&gt;"}{/if}
+	{if $csum == ""}{assign var=csum value=$_TR.no_md5}{/if}
 	<tr class="row {cycle values=even_row,odd_row}">
 		<td>{$relative[$file].dir}<b><a href="{link module=filemanager action=viewcode file=$relpath}">{$relative[$file].file}</a></b></td>
 		{if $checksums[$file] == $oldmd5}

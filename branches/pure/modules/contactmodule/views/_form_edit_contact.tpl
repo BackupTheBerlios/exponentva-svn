@@ -1,6 +1,7 @@
 {*
  *
  * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+ * All Changes as of 6/1/05 Copyright 2005 James Hunt
  *
  * This file is part of Exponent
  *
@@ -26,12 +27,8 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: _form_edit_contact.tpl,v 1.2 2005/02/19 00:32:31 filetreefrog Exp $
+ * $Id: _form_edit_contact.tpl,v 1.3 2005/11/22 01:16:05 filetreefrog Exp $
  *}
-<div class="form_title">{if $is_edit == 1}Edit Recipient Contact{else}New Recipient Contact{/if}</div>
-<div class="form_header">
-Choose either a user account, or enter an email address, and this contact form will be submitted to that person.
-<br /><br />
-If you choose a user account, the email address in that user's profile will be used when sending the information entered on the Contact Form.
-</div>
+<div class="form_title">{if $is_edit == 1}{$_TR.form_title_edit}{else}{$_TR.form_title_new}{/if}</div>
+<div class="form_header">{$_TR.form_header}</div>
 {$form_html}

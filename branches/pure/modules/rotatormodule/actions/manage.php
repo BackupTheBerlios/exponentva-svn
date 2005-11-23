@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,20 +29,20 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: manage.php,v 1.2 2005/02/19 00:32:36 filetreefrog Exp $
+# $Id: manage.php,v 1.3 2005/11/22 01:16:11 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
-if (pathos_permissions_check("manage",$loc)) {
+if (pathos_permissions_check('manage',$loc)) {
 	pathos_flow_set(SYS_FLOW_ACTION,SYS_FLOW_PROTECTED);
 
-	$objects = $db->selectObjects("rotator_item","location_data='".serialize($loc)."'");
+	$objects = $db->selectObjects('rotator_item',"location_data='".serialize($loc)."'");
 	
-	$template = new template("rotatormodule","_manage",$loc);
-	$template->assign("items",$objects);
+	$template = new template('rotatormodule','_manage',$loc);
+	$template->assign('items',$objects);
 	$template->register_permissions(
-		array("administrate","manage"),
+		array('administrate','manage'),
 		$loc);
 	$template->output();
 } else {

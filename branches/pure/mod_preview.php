@@ -28,17 +28,16 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: mod_preview.php,v 1.7 2005/02/19 00:40:17 filetreefrog Exp $
+# $Id: mod_preview.php,v 1.8 2005/11/22 01:16:02 filetreefrog Exp $
 ##################################################
 
 define('SCRIPT_EXP_RELATIVE','');
 define('SCRIPT_FILENAME','mod_preview.php');
 
-ob_start();
 // Initialize the Pathos Framework
 include_once('pathos.php');
 
-pathos_lang_loadDictionary('standard','modpreview');
+$i18n = pathos_lang_loadFile('mod_preview.php');
 
 $SYS_FLOW_REDIRECTIONPATH='previewreadonly';
 
@@ -48,7 +47,8 @@ if (is_readable(BASE.'themes/' . DISPLAY_THEME . '/module_preview.php')) {
 } else if (is_readable(BASE.'module_preview.php')) {
 	// Include the default module_preview.php, because we didn't find one in the theme.
 	include_once(BASE.'module_preview.php');
-} else echo TR_MODPREVIEW_PREVIEWUNAVAILABLE;
-ob_end_flush();
+} else {
+	echo $i18n['no_preview'];
+}
 
 ?>

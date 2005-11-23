@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,10 +29,10 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: compose.php,v 1.5 2005/02/19 00:32:34 filetreefrog Exp $
+# $Id: compose.php,v 1.6 2005/11/22 01:16:09 filetreefrog Exp $
 ##################################################
 
-if (!defined("PATHOS")) exit("");
+if (!defined('PATHOS')) exit('');
 
 if ($user) {
 	$msg = null;
@@ -39,21 +40,27 @@ if ($user) {
 		$msg->recipient = $_GET['recipient'];
 	}
 	if (isset($_GET['replyto'])) {
-		$orig = $db->selectObject("privatemessage","id=".$_GET['replyto']);
+		$orig = $db->selectObject('privatemessage','id='.intval($_GET['replyto']));
 		$msg->recipient = $orig->from_id;
-		$msg->subject = "Re: " . $orig->subject;
-		$msg->body = "";
+		$msg->subject = 'Re: ' . $orig->subject;
+		$msg->body = '';
 	} else {
-		if (isset($_GET['subject'])) $msg->subject = $_GET['subject'];
-		if (isset($_GET['body'])) $msg->body = $_GET['body'];
+		if (isset($_GET['subject'])) {
+			$msg->subject = $_GET['subject'];
+		}
+		if (isset($_GET['body'])) {
+			$msg->body = $_GET['body'];
+		}
 	}
 	$form = privatemessage::form($msg);
-	$form->meta("module","inboxmodule");
-	$form->meta("action","send");
+	$form->meta('module','inboxmodule');
+	$form->meta('action','send');
 
-	$template = new template("inboxmodule","_form_compose",$loc);
-	$template->assign("form_html",$form->toHTML());
+	$template = new template('inboxmodule','_form_compose',$loc);
+	$template->assign('form_html',$form->toHTML());
 	$template->output();
+} else {
+	echo SITE_403_HTML;
 }
 
 ?>

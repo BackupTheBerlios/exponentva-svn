@@ -26,7 +26,7 @@
  * Suite 330,
  * Boston, MA 02111-1307  USA
  *
- * $Id: loginredirect.tpl,v 1.2 2005/02/19 00:37:45 filetreefrog Exp $
+ * $Id: loginredirect.tpl,v 1.3 2005/11/22 01:16:26 filetreefrog Exp $
  *}
  <html>
  <head>
@@ -34,7 +34,7 @@
 	<link rel="stylesheet" href="{$smarty.const.THEME_RELATIVE}style.css" />
  </head>
  <body>
- <div align="center" style="font-weight: bold; font-size: 14pt;">{$smarty.const.SITE_TITLE}::Login Page</div>
+ <div align="center" style="font-weight: bold; font-size: 14pt;">{$smarty.const.SITE_TITLE}::{$_TR.login_page}</div>
 	<br />
 	<table align="center">
 		<tr>

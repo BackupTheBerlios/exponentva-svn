@@ -28,13 +28,13 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: linker.php,v 1.8 2005/04/03 02:02:41 filetreefrog Exp $
+# $Id: linker.php,v 1.9 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 if ($user) {
-	$sections = navigationmodule::getHierarchy();
+	$sections = navigationmodule::levelTemplate(0,0);
 	$standalones = $db->selectObjects('section','parent = -1');
 	$template = new template('navigationmodule','_linker');
 	$template->assign('sections',$sections);

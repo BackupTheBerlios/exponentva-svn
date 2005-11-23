@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: modules.php,v 1.7 2005/04/18 15:02:29 filetreefrog Exp $
+# $Id: modules.php,v 1.8 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 /* exdoc
@@ -124,7 +124,7 @@ function pathos_modules_moduleManagerFormTemplate($template) {
 		$moduleInfo[$module]->description = $mod->description();
 		$moduleInfo[$module]->active = ($modstate != null ? $modstate->active : 0);
 	}
-	if (!defined('SYS_SORTING')) require_once(BASE.'subsystems/sorting.php');
+	if (!defined('SYS_SORTING')) include_once(BASE.'subsystems/sorting.php');
 	uasort($moduleInfo,"pathos_sorting_byNameAscending");
 	
 	$template->assign("modules",$moduleInfo);

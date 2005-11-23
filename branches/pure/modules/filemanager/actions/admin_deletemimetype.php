@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: admin_deletemimetype.php,v 1.5 2005/02/19 00:32:32 filetreefrog Exp $
+# $Id: admin_deletemimetype.php,v 1.6 2005/11/22 01:16:06 filetreefrog Exp $
 ##################################################
 
 // Part of the Administration Control Panel : Files Subsystem category
@@ -38,6 +38,7 @@ if (!defined('PATHOS')) exit('');
 if (pathos_permissions_check('files_subsystem',pathos_core_makeLocation('administrationmodule'))) {
 	$type = null;
 	if (isset($_GET['type'])) {
+		// GREP:SECURITY -- SQL is created from _GET parameter that is non-numeric.  Needs to be sanitized.
 		$type = $db->selectObject('mimetype',"mimetype='".$_GET['type']."'");
 	}
 	if ($type) {

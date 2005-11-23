@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# All Changes as of 6/1/05 Copyright 2005 James Hunt
 #
 # This file is part of Exponent
 #
@@ -28,13 +29,12 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: calendarmodule_config.php,v 1.8 2005/04/18 15:47:45 filetreefrog Exp $
+# $Id: calendarmodule_config.php,v 1.9 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 class calendarmodule_config {
 	function form($object) {
-		pathos_lang_loadDictionary('standard','core');
-		pathos_lang_loadDictionary('modules','calendarmodule');
+		$i81n = pathos_lang_loadFile('datatypes/calendarmodule_config.php');
 	
 		if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 		pathos_forms_initialize();
@@ -47,9 +47,9 @@ class calendarmodule_config {
 			$form->meta('id',$object->id);
 		}
 		
-		$form->register('enable_categories',TR_CALENDARMODULE_ENABLECATEGORIES,new checkboxcontrol($object->enable_categories,true));
-		$form->register('enable_feedback',TR_CALENDARMODULE_ENABLEFEEDBACK,new checkboxcontrol($object->enable_feedback,true));				
-		$form->register('submit','',new buttongroupcontrol(TR_CORE_SAVE,'',TR_CORE_CANCEL));
+		$form->register('enable_categories',$i18n['enable_categories'],new checkboxcontrol($object->enable_categories,true));
+		$form->register('enable_feedback',$i18n['enable_feedback'],new checkboxcontrol($object->enable_feedback,true));				
+		$form->register('submit','',new buttongroupcontrol($i18n['save'],'',$i18n['cancel']));
 		
 		return $form;
 	}

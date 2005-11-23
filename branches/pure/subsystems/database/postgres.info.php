@@ -28,7 +28,7 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: postgres.info.php,v 1.4 2005/02/19 00:35:54 filetreefrog Exp $
+# $Id: postgres.info.php,v 1.5 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
@@ -50,6 +50,7 @@ return array(
 	"name"=>"PostGreSQL Database Backend",
 	"author"=>"James Hunt",
 	"description"=>"PostGreSQL Database Backend.",
+	'is_valid'=>(function_exists('pg_connect') ? 1 : 0),
 	"version"=>pathos_core_version(true)
 );
 
