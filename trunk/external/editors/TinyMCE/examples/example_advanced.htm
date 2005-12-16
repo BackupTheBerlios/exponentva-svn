@@ -3,7 +3,7 @@
 <head>
 <title>Advanced example</title>
 <!-- tinyMCE -->
-<script language="javascript" type="text/javascript" src="../jscripts/tiny_mce/tiny_mce_src.js"></script>
+<script language="javascript" type="text/javascript" src="../jscripts/tiny_mce/tiny_mce.js"></script>
 <script language="javascript" type="text/javascript">
 	tinyMCE.init({
 		theme : "advanced",
@@ -100,7 +100,7 @@ Some custom actions:
 <a href="javascript:tinyMCE.execCommand('Bold');">[Bold]</a> | 
 <a href="javascript:tinyMCE.execCommand('Italic');">[Italic]</a>
 <a href="javascript:void(0);" onclick="tinyMCE.execCommand('mceInsertContent',false,'<b>Hello world!!</b>');">[Insert some HTML]</a>
-<a href="javascript:void(0);" onclick="tinyMCE.execCommand('mceReplaceContent',false,'<b>{$selection}</b>');">[Replace selection]</a>
+<a href="javascript:void(0);" onclick="tinyMCE.execCommand('mceReplaceContent',false,'<!-- xxx --><b>{$selection}</b>');">[Replace selection]</a>
 
 <br />
 

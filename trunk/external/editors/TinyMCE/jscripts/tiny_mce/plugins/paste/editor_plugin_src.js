@@ -1,5 +1,5 @@
 /* Import plugin specific language pack */ 
-tinyMCE.importPluginLanguagePack('paste', 'en,sv,cs,zh_cn,fr_ca,da,he,no,de,hu,ru,ru_KOI8-R,ru_UTF-8,fi,es,cy,is,pl'); 
+tinyMCE.importPluginLanguagePack('paste', 'en,sv,cs,zh_cn,fr_ca,da,he,nb,de,hu,ru,ru_KOI8-R,ru_UTF-8,nn,fi,es,cy,is,pl,nl,fr,pt_br');
 
 function TinyMCE_paste_getInfo() {
 	return {
@@ -146,9 +146,11 @@ function TinyMCE_paste__insertText(content, bLinebreaks) {
 				} 
 			} 
 
-			content = tinyMCE.regexpReplace(content, "\r\n", "<br />", "gi"); 
-			content = tinyMCE.regexpReplace(content, "\r", "<br />", "gi"); 
-			content = tinyMCE.regexpReplace(content, "\n", "<br />", "gi"); 
+			if (tinyMCE.getParam("paste_create_linebreaks", true)) {
+				content = tinyMCE.regexpReplace(content, "\r\n", "<br />", "gi"); 
+				content = tinyMCE.regexpReplace(content, "\r", "<br />", "gi"); 
+				content = tinyMCE.regexpReplace(content, "\n", "<br />", "gi"); 
+			}
 		} 
 	
 		tinyMCE.execCommand("mceInsertRawHTML", false, content); 

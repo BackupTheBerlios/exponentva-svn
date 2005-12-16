@@ -36,9 +36,9 @@ sub jsTrim {
 	$content = <FILE>;
 	close(FILE);
 
-	if ($content =~ s#^\s*(/\*.*?\*/)##s or $content =~ s#^\s*(//.*?)\n\s*[^/]##s) {
-	  $comment = "$1\n";
-	}
+	#if ($content =~ s#^\s*(/\*.*?\*/)##s or $content =~ s#^\s*(//.*?)\n\s*[^/]##s) {
+	#$comment = "$1\n";
+	#}
 
 	local $^W;
 
@@ -67,6 +67,9 @@ sub jsTrim {
 
 	# restore string literals
 	$content =~ s/__CMPRSTR_([0-9]+)__/$strings[$1]/egs;
+
+	$content =~ s/^\s+//;
+	$content =~ s/\s+$//;
 
 	# Write to ouput file
 	open(FILE, ">$outFile");

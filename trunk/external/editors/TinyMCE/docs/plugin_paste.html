@@ -34,6 +34,7 @@ tinyMCE.init({
 	plugins : &quot;paste&quot;,
 	theme_advanced_buttons3_add : &quot;pastetext,pasteword,selectall&quot;,
 	paste_create_paragraphs : false,
+	paste_create_linebreaks : false,
 	paste_use_dialog : true,
 	paste_auto_cleanup_on_paste : true,
 	paste_convert_middot_lists : false,
@@ -52,6 +53,10 @@ tinyMCE.init({
 		<td>[paste_create_paragraphs]</td>
 		<td>If enabled double linefeeds are converted to paragraph elements when using the plain text dialog. This is enabled by default.</td>
 	</tr>
+  	<tr>
+ 		<td>[paste_create_linebreaks]</td>
+ 		<td>If enabled single linefeeds are converted to hard line break elements when using the plain text dialog. This is enabled by default.</td>
+ 	</tr>
 	<tr>
 		<td>[paste_use_dialog]</td>
 		<td>MSIE specific option, if you set this to false both Mozilla and MSIE will present a paste dialog. If you set it to true pasting in MSIE will be done directly. This option is set to false by default.</td>
