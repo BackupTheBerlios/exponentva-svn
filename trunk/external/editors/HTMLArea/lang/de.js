@@ -53,6 +53,13 @@ HTMLArea.I18N = {
 	},
 
 	dialogs: {
+		"Select a Page, or Content"							: "Verweise auf Seiten oder Inhalte",
+		"Link to a Page"									: "Verweis auf Seite",
+		"Link to Content"									: "Verweis auf Inhalt",
+		"Internal Links"									: "Interne Verweise",
+		"Manually Enter Address"							: "Adresse Manuell Eingeben",
+		"External Website"									: "Externe Website",
+		"Additional Link Options"							: "Zusätzliche Optionen",
 		"Cancel"                                            : "Abbrechen",
 		"Insert/Modify Link"                                : "Internet-Link Anlegen/Verändern",
 		"New window (_blank)"                               : "In neuem Fenster öffnen (_blank)",
@@ -64,6 +71,24 @@ HTMLArea.I18N = {
 		"Title (tooltip):"                                  : "Titel (tooltip):",
 		"Top frame (_top)"                                  : "Im obersten Rahmen (_top)",
 		"URL:"                                              : "URL:",
-		"You must enter the URL where this link points to"  : "Sie müssen eine Ziel-URL auswählen/eingeben !"
+		"You must enter the URL where this link points to"  : "Sie müssen eine Ziel-URL auswählen/eingeben !",
+		"Image Preview"										: "Voransicht",
+		"Alignment"											: "Anordnung",
+		"Border Thickness"									: "Stärke der Ränder",
+		"Spacing"											: "Abstände",
+		"Not Set"											: "k. A.",
+		"Left"												: "Links",
+		"Right"												: "Rechts",
+		"Top"												: "Oben",
+		"Middle"											: "Mitte",
+		"Bottom"											: "Unten",
+		"Baseline"											: "Grundlinie",
+		"Image URL"											: "Bild URL",
+		"Alternate Text"									: "Alternativer Text",
+		"Horizontal"										: "Horizontal",
+		"Vertical"											: "Vertikal",
+		"Insert/Modify Image"								: "Bild Einfügen/Verändern",
+		"Browse"											: "Durchsuchen"
+		
 	}
 };
