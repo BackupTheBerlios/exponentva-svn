@@ -56,10 +56,18 @@ class articlemodule_config {
 			
 			$object->enable_categories = 0;
 			$config->recalc = 0; // No need to recalculate, no categories
+			
+			//default is to show all categories
+			//necessary beacause, although categories are off by default, the user might activate them
+			//In Future Exponent serialization/deserialization should be handled in the db layer
+			//serialize now to have consistent handling later
+			$object->showCategories = serialize(array('-1'));
+			
 		} else {
 			$form->meta('id',$object->id);
 		}
 		
+		//list length, key & sortorder
 		$opts  = array('ASC'=>TR_CORE_ASCENDING,'DESC'=>TR_CORE_DESCENDING);
 		//get the names of the fields in this table
 		$fields = $db->getDataDefinition("article");
@@ -82,10 +90,28 @@ class articlemodule_config {
 		$form->register('item_limit',TR_MODULES_ITEMLIMIT,new textcontrol($object->item_limit));
 		$form->register('sortorder',TR_MODULES_SORTORDER, new dropdowncontrol($object->sortorder,$opts));
 		$form->register('sortfield',TR_MODULES_SORTFIELD, new dropdowncontrol($object->sortfield,$fields));
+				
 		
-		$form->register('enable_categories','Enable Categories?',new checkboxcontrol($object->enable_categories,true));
+		$form->register('enable_categories',TR_MODULES_ENABLECATS,new checkboxcontrol($object->enable_categories,true));
 		
 		
+		//show only these categories
+		//build list of currently defined categories
+		$categorylist_noindex = $db->selectObjects("category", "location_data='" . $object->location_data . "'");
+		$categorylist = array();
+		//turn them into an assoziative array for use in the SelectMultipleControl
+		foreach ($categorylist_noindex as $curr_category){
+			$categorylist[strval($curr_category->id)] = $curr_category->name;
+		}
+		
+		//add "All" and "Uncategorized" Items to the list
+		$categorylist = array('-1'=>TR_CORE_ALL,'0'=>TR_CORE_UNCATEGORIZED) + $categorylist;
+		
+		//TODO: investigate whether serialization/deserialization should be handled in the db layer
+		//TODO: add handling to dynamically Show/hide the control based on the enable_categories checkbox(maybe in the control itself)
+		$form->register('showCategories',TR_MODULES_SHOWCATEGORIES, new SelectMultipleControl(unserialize($object->showCategories),$categorylist));
+		
+				
 		$form->register('submit','',new buttongroupcontrol(TR_CORE_SAVE,'',TR_CORE_CANCEL));
 		
 		return $form;
@@ -103,6 +129,9 @@ class articlemodule_config {
 		$object->enable_categories = isset($values['enable_categories']);
 		// Change this later to do some better recalculation detection (more efficient)
 		$object->recalc = 1;
+		
+		//we just need the ids of the categories
+		$object->showCategories = serialize($values['showCategories']);
 		
 		return $object;
 	}

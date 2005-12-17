@@ -72,8 +72,8 @@ class calendar {
 		$form->register('is_allday',TR_CALENDARMODULE_ISALLDAY,$cb);
 		
 		#Warning: when the box returns true, we have to switch off the time controls
-		$form->register('eventstart',TR_CALENDARMODULE_EVENTSTART,new TimeControl($object->eventstart, $object->is_allday ? false : true));
-		$form->register('eventend',TR_CALENDARMODULE_EVENTEND,new TimeControl($object->eventend, $object->is_allday ? false : true));
+		$form->register('eventstart',TR_CALENDARMODULE_EVENTSTART,new timeControl($object->eventstart, $object->is_allday ? false : true));
+		$form->register('eventend',TR_CALENDARMODULE_EVENTEND,new timeControl($object->eventend, $object->is_allday ? false : true));
 		
 		if (!isset($object->id)) {
 			$customctl = file_get_contents(BASE.'modules/calendarmodule/form.part');
@@ -115,8 +115,8 @@ class calendar {
 		
 		$object->is_allday = (isset($values['is_allday']) ? 1 : 0);
 		
-		$object->eventstart = TimeControl::parseData('eventstart',$values);
-		$object->eventend = TimeControl::parseData('eventend',$values);
+		$object->eventstart = timeControl::parseData('eventstart',$values);
+		$object->eventend = timeControl::parseData('eventend',$values);
 		
 		if (!isset($object->id)) {
 			global $user;

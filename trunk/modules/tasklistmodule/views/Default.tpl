@@ -49,7 +49,7 @@
 {foreach from=$tasks item=task}
 <tr class="{cycle values=odd_row,even_row}">
 	<td width="16"><input type="checkbox" onClick="return false;" {if $task->completion == 100}checked {/if}/></td>
-	<td>{$task->name}</td>
+	<td><a href="{link action=viewItem id=$task->id}">{$task->name}</a></td>
 	<td width="40">
 		{permissions level=$smarty.const.UILEVEL_NORMAL}
 		{if $permissions.edit == 1}

@@ -66,7 +66,7 @@ class tasklist_task {
 		$completion[100] = '100% - Finished';
 		
 		$form->register('name','Name',new textcontrol($object->name));
-		$form->register('description','Description',new texteditorcontrol($object->description,10,40));
+		$form->register('description','Description',new htmleditorcontrol($object->description));
 		$form->register('priority','Priority',new dropdowncontrol($object->priority,$priorities));
 		$form->register('completion','Progress',new dropdowncontrol($object->completion,$completion));
 		$form->register('submit','',new buttongroupcontrol('Save','','Cancel'));

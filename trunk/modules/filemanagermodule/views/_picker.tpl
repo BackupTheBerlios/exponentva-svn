@@ -34,7 +34,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <html>
 	<head>
-		<title>Testing Image Collections</title>
+		<title>{#i18n_categories#}</title>
 		<style type="text/css">
 			{literal}
 			body {
@@ -84,7 +84,7 @@
 			
 			div.imagecollection_previews table tr td {
 				text-align: center;
-				NOborder: 1px solid #666;
+				/* border: 1px solid #666; */
 				font-size: 10px;
 				padding: 5px;
 			}
@@ -139,7 +139,7 @@
 					height = 400;
 				}
 				
-				window.open(filename,'image'+Math.random(),'status=no,status=no,width='+width+',height='+height);
+				window.open(filename,'image'+Math.random(),'status=no,width='+width+',height='+height);
 				return false;
 			}
 		{/literal}
@@ -189,10 +189,14 @@
 							<br />
 							<a href="#" onClick="window.opener.efm_pickedFile({$file->id},'{$file->directory}/{$file->filename}'); window.close(); return false;">{#i18n_usethis#}</a>
 						{/if}
+					
+						<a href="{link action=delete id=$file->id}" onClick="return confirm('{#i18n_delete_confirm#}');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" /></a>
+					
 					</td>
 					{foreachelse}
 					<td><i>{#i18n_noitemsfound#}</i></td>
 					{/foreach}
+				
 				</tr>
 			</table>
 		</div>

@@ -28,27 +28,27 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: newsmodule_config.php,v 1.5 2005/03/28 22:11:22 filetreefrog Exp $
+# $Id: view_article.php,v 1.3 2005/03/13 18:57:28 filetreefrog Exp $
 ##################################################
 
-if (!defined('PATHOS')) exit('');
+if (!defined("PATHOS")) exit("");
+	$item = null;
+	if (isset($_GET['id'])) {
+		$item = $db->selectObject("tasklist_task","id=".$_GET['id']);
+		if ($item != null) {
+			$loc = unserialize($item->location_data);
+		} else {
+			echo SITE_404_HTML;
+		}
+	}	
 
-return array(
-	'id'=>array(
-		DB_FIELD_TYPE=>DB_DEF_ID,
-		DB_PRIMARY=>true,
-		DB_INCREMENT=>true),
-	'location_data'=>array(
-		DB_FIELD_TYPE=>DB_DEF_STRING,
-		DB_FIELD_LEN=>200),
-	'sortorder'=>array(
-		DB_FIELD_TYPE=>DB_DEF_STRING,
-		DB_FIELD_LEN=>100),
-	'sortfield'=>array(
-		DB_FIELD_TYPE=>DB_DEF_STRING,
-		DB_FIELD_LEN=>100),
-	'item_limit'=>array(
-		DB_FIELD_TYPE=>DB_DEF_INTEGER),
-);
+	// tasklist specific transform, to be broken out later
+	$item->body = $item->description;
+		
+	$template = new template("tasklistmodule","_viewItem",$loc);
+	$template->assign('item', $item);
+	$template->register_permissions(array('manage'),$loc);
+	$template->output();
+
 
 ?>

@@ -71,11 +71,11 @@ class formbuilder_report {
 						$column_names[$control->name] = $control->caption;
 					}
 				}
-			}
+			}
 			$fields['ip'] = TR_FORMBUILDER_FIELD_IP;
-			if (in_array('ip',$cols)) $column_names['ip'] = TR_FORMBUILDER_FIELD_IP;
+			if (in_array('ip',$cols)) $column_names['ip'] = TR_FORMBUILDER_FIELD_IP;
 			$fields['user_id'] = TR_FORMBUILDER_FIELD_USERNAME;
-			if (in_array('user_id',$cols)) $column_names['user_id'] = TR_FORMBUILDER_FIELD_USERNAME;
+			if (in_array('user_id',$cols)) $column_names['user_id'] = TR_FORMBUILDER_FIELD_USERNAME;
 			$fields['timestamp'] = TR_FORMBUILDER_FIELD_TIMESTAMP;
 			if (in_array('timestamp',$cols)) $column_names['timestamp'] = TR_FORMBUILDER_FIELD_TIMESTAMP;
 		}
