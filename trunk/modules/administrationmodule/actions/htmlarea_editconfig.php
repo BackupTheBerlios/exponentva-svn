@@ -40,9 +40,9 @@ if (!defined("PATHOS")) exit("");
 
 if (pathos_permissions_check('htmlarea',pathos_core_makeLocation('administrationmodule'))) {
 
-	$imagedir = BASE."external/htmlarea/toolbaricons";
-	$imagebase = PATH_RELATIVE."external/htmlarea/toolbaricons";
-	$confdir = BASE."external/htmlarea";
+	$imagedir = BASE."external/editors/HTMLArea/toolbaricons";
+	$imagebase = PATH_RELATIVE."external/editors/HTMLArea/toolbaricons";
+	$confdir = BASE."external/editors/HTMLArea";
 
 	$config = $db->selectObject("htmlareatoolbar","id=".$_GET['id']);
 
