@@ -1,7 +1,6 @@
 {*
- *
- * Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
- * All Changes as of 6/1/05 Copyright 2005 James Hunt
+ * Copyright (c) 2004-2005 OIC Group, Inc.
+ * Written and Designed by James Hunt
  *
  * This file is part of Exponent
  *
@@ -11,23 +10,8 @@
  * Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
  *
- * Exponent is distributed in the hope that it
- * will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.  See the GNU General Public License
- * for more details.
+ * GPL: http://www.gnu.org/licenses/gpl.txt
  *
- * You should have received a copy of the GNU
- * General Public License along with Exponent; if
- * not, write to:
- *
- * Free Software Foundation, Inc.,
- * 59 Temple Place,
- * Suite 330,
- * Boston, MA 02111-1307  USA
- *
- * $Id: Default.tpl,v 1.10 2005/11/22 01:16:11 filetreefrog Exp $
  *}
  {permissions level=$smarty.const.UILEVEL_PERMISSIONS}
 {if $permissions.administrate == 1}
@@ -90,9 +74,5 @@
 {/if}
 {if $permissions.view_unpublished == 1}
 	<br /><a class="mngmntlink news_mngmntlink" href="{link action=view_expired}">{$_TR.view_expired}</a>
-{/if}
-{if $permissions.manage_channel == 1}
-	<br /><a class="mngmntlink news_mngmntlink" href="{link action=manage_channel}">Shared Content</a>
-	{if $hasNewChannelItems}(new items){/if}
 {/if}
 {/permissions}

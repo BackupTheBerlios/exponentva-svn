@@ -2,8 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
-# All Changes as of 6/1/05 Copyright 2005 James Hunt
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -13,23 +13,8 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: newsitem.php,v 1.8 2005/11/22 01:16:03 filetreefrog Exp $
 ##################################################
 
 class newsitem {
@@ -74,44 +59,6 @@ class newsitem {
 		$object->unpublish = popupdatetimecontrol::parseData('unpublish',$values);
 		
 		return $object;
-	}
-	
-	function onWorkflowPost($object,$is_new,$channels) {
-		global $db;
-		// $userdata is a list of channel ids that we need to post to.
-		
-		$channel_item = null;
-		$channel_item->tablename = 'newsitem';
-		$channel_item->titlefield = 'title';
-		$channel_item->viewlink = 'http://oicgroup.net';
-		$channel_item->item_id = $object->id; // ID of extra-modular item
-		
-		foreach ($channels as $channel_id) {
-			$channel_item->channel_id = $channel_id;
-		
-			$channel = $db->selectObject('channel','id='.$channel_id);
-			$loc = unserialize($channel->location_data);
-			
-			if (pathos_permissions_check('manage_channel',$loc)) {
-				echo 'Can manage channel.  Trying to post as real item<br />';
-				// The poster has manage_channel in the channel destination.
-				// Need to shoot this through sans-approval.
-				unset($object->id);
-				$object->location_data = serialize($loc);
-				$channel_item->published_id = $db->insertObject($object,'newsitem');
-				$channel_item->status = 0;
-				$db->insertObject($channel_item,'channelitem');
-			} else {
-				$channel_item->status = 1; // Flag this as a new post.
-				$channel_item->published_id = 0; // Set to zero, since we haven't published it yet.
-				$db->insertObject($channel_item,'channelitem');
-			}
-		}
-		if (!$is_new) {
-			$updateObject = null;
-			$updateObject->status = 2; // Edit
-			$db->updateObject($updateObject,'channelitem',"tablename='newsitem' AND item_id=".$object->id);
-		}
 	}
 }
 

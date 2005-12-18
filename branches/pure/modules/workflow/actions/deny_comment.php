@@ -2,8 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
-# All Changes as of 6/1/05 Copyright 2005 James Hunt
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -13,31 +13,16 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: deny_comment.php,v 1.7 2005/11/22 01:16:13 filetreefrog Exp $
 ##################################################
 
 if (!defined('PATHOS')) exit('');
 
 // Sanitize required _GET parameters
 $_GET['id'] = intval($_GET['id']);
+$_GET['datatype'] = preg_replace('/[^A-Za-z0-9_]/','',$_GET['datatype']);
 
-// GREP:SECURITY -- SQL is created from _GET parameter that is non-numeric.  Needs to be sanitized.
 $info = $db->selectObject($_GET['datatype']."_wf_info","real_id=".$_GET['id']);
 $object = $db->selectObject($_GET['datatype']."_wf_revision","wf_original=".$_GET['id']." AND wf_major=".$info->current_major." AND wf_minor=".$info->current_minor);
 $state = unserialize($object->wf_state_data);

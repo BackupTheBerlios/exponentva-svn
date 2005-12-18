@@ -2,8 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
-# All Changes as of 6/1/05 Copyright 2005 James Hunt
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -13,23 +13,8 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: class.php,v 1.17 2005/11/22 01:16:10 filetreefrog Exp $
 ##################################################
 
 class newsmodule {
@@ -42,11 +27,6 @@ class newsmodule {
 	function hasViews()   { return true; }
 	
 	function supportsWorkflow() { return true; }
-	
-	function supportsChannels() { return true; }
-	function channelType() {
-		return 'post';
-	}
 	
 	function permissions($internal = '') {
 		$i18n = pathos_lang_loadFile('modules/newsmodule/class.php');
@@ -131,7 +111,7 @@ class newsmodule {
 		$template = new template('newsmodule',$view,$loc);
 		$template->assign('moduletitle',$title);
 		$template->register_permissions(
-			array('administrate','configure','add_item','delete_item','edit_item','manage_approval','view_unpublished','manage_channel'),
+			array('administrate','configure','add_item','delete_item','edit_item','manage_approval','view_unpublished'),
 			$loc
 		);
 		

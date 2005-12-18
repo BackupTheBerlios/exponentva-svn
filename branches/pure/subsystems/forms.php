@@ -2,7 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -12,25 +13,9 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: forms.php,v 1.6 2005/04/18 15:47:58 filetreefrog Exp $
 ##################################################
-//GREP:HARDCODEDTEXT
 
 /* exdoc
  * The definition of this constant lets other parts
@@ -58,6 +43,8 @@ define("SYS_FORMS",1);
  * @node Subsystems:Forms
  */
 function pathos_forms_initialize() {
+	$i18n = pathos_lang_loadFile('subsystems/forms.php');
+	
 	$forms_dir = BASE."subsystems/forms";
 	$controls_dir = BASE."subsystems/forms/controls";
 	if (phpversion() < 5) {
@@ -69,7 +56,7 @@ function pathos_forms_initialize() {
 				}
 			}
 		} else {
-			echo "form directory not readable.";
+			echo $i18n['forms_dir_unreadable'];
 		}
 		if (is_readable($controls_dir)) {
 			$dh = opendir($controls_dir);
@@ -79,7 +66,7 @@ function pathos_forms_initialize() {
 				}
 			}
 		} else {
-			echo "control directory not readable.";
+			echo $i18n['controls_dir_unreadable'];
 		}
 	} else {
 		if (is_readable($controls_dir)) {
@@ -87,7 +74,7 @@ function pathos_forms_initialize() {
 			$auto_dirs["forms_forms"] = $forms_dir;
 			$auto_dirs["forms_controls"] = $controls_dir;
 		} else {
-			echo "control directory not readable.";
+			echo $i18n['controls_dir_unreadable'];
 		}
 	}
 }
@@ -103,13 +90,6 @@ function pathos_forms_initialize() {
  * @node Subsystems:Forms
  */
 function pathos_forms_cleanup() {
-/*
-	if (phpversion() >= 5) {
-		global $auto_dirs;
-		if (isset($auto_dirs["forms_forms"])) unset($auto_dirs["forms_forms"]);
-		if (isset($auto_dirs["forms_controls"])) unset($auto_dirs["forms_controls"]);
-	}
-*/
 }
 
 /* exdoc
@@ -124,7 +104,6 @@ function pathos_forms_listControlTypes() {
 			if (call_user_func(array(substr($ctl,0,-4),"isSimpleControl"))) {
 				$list[substr($ctl,0,-4)] = call_user_func(array(substr($ctl,0,-4),"name"));
 			}
-			#$list[substr($ctl,0,-4)] = $ctl;
 		}
 	}
 	return $list;

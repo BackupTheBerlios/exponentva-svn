@@ -2,8 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
-# All Changes as of 6/1/05 Copyright 2005 James Hunt
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -13,23 +13,8 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: edit_assoc.php,v 1.8 2005/11/22 01:16:08 filetreefrog Exp $
 ##################################################
 
 if (!defined("PATHOS")) exit("");
@@ -42,8 +27,7 @@ if (!defined("PATHOS")) exit("");
 	
 	$form = new form();
 	$templates = $db->selectObjectsIndexedArray("htmltemplate");
-	// GREP:SECURITY -- SQL is created from _GET parameter that is non-numeric.  Needs to be sanitized.
-	foreach ($db->selectObjects("htmltemplateassociation","module='".$_GET['mod']."'") as $existing) {
+	foreach ($db->selectObjects("htmltemplateassociation","module='".preg_replace('/[^A-Za-z0-9_]/','',$_GET['mod'])."'") as $existing) {
 		unset($templates[$existing->template_id]);
 	}
 	foreach (array_keys($templates) as $tid) {

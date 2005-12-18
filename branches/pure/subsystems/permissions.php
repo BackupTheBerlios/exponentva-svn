@@ -2,7 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -12,25 +13,9 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: permissions.php,v 1.10 2005/11/22 01:16:14 filetreefrog Exp $
 ##################################################
-//GREP:HARDCODEDTEXT
 
 /* exdoc
  * The definition of this constant lets other parts of the system know 
@@ -121,12 +106,28 @@ function pathos_permissions_load($user) {
 	
 	// Check perm stats for UI levels
 	$ui_levels = array();
+	$i18n = pathos_lang_loadFile('subsystems/permissions.php');
+	
 	if ($user->is_acting_admin == 1) {
-		$ui_levels = array('Preview','Normal','Permission Management','Structure Management');
+		$ui_levels = array(
+			$i18n['preview'],
+			$i18n['normal'],
+			$i18n['perms'],
+			$i18n['structure']
+		);
 	} else {
-		if (count($pathos_permissions_r)) $ui_levels = array('Preview','Normal');
-		if ($has_admin) $ui_levels[] = 'Permission Management';
-		if (isset($pathos_permissions_r['containermodule']) && count($pathos_permissions_r['containermodule'])) $ui_levels[] = 'Structure Management';
+		if (count($pathos_permissions_r)) {
+			$ui_levels = array(
+				$i18n['preview'],
+				$i18n['normal']
+			);
+		}
+		if ($has_admin) {
+			$ui_levels[] = $i18n['perms'];
+		}
+		if (isset($pathos_permissions_r['containermodule']) && count($pathos_permissions_r['containermodule'])) {
+			$ui_levels[] = $i18n['structure'];
+		}
 	}
 	pathos_sessions_set('uilevels',$ui_levels);
 }
@@ -233,16 +234,6 @@ function pathos_permissions_checkOnModule($permission,$module) {
 	global $pathos_permissions_r, $user;
 	if ($user && $user->is_acting_admin == 1) return true;
 	return (isset($pathos_permissions_r[$module]) && (count($pathos_permissions_r[$module]) > 0));
-}
-
-/* exdoc
- * <i>Recursive checking took care of this.</i>
- * @state Deprecated
- */
-function pathos_permissions_checkOnSource($module,$source) {
-	global $pathos_permissions_r, $user;
-	if ($user && $user->is_acting_admin == 1) return true;
-	return (isset($pathos_permissions_r[$module]) && isset($pathos_permissions_r[$module][$source]) && (count($pathos_permissions_r[$module][$source]) > 0));
 }
 
 /* exdoc

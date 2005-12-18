@@ -2,7 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -12,23 +13,8 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: admin_editmimetype.php,v 1.8 2005/11/22 01:16:06 filetreefrog Exp $
 ##################################################
 
 // Part of the Administration Control Panel : Files Subsystem category
@@ -38,8 +24,7 @@ if (!defined('PATHOS')) exit('');
 if (pathos_permissions_check('files_subsystem',pathos_core_makeLocation('administrationmodule'))) {
 	$type = null;
 	if (isset($_GET['type'])) {
-		// GREP:SECURITY -- SQL is created from _GET parameter that is non-numeric.  Needs to be sanitized.
-		$type = $db->selectObject('mimetype',"mimetype='".$_GET['type']."'");
+		$type = $db->selectObject('mimetype',"mimetype='".preg_replace('/[^A-Za-z0-9\/]/','',$_GET['type'])."'");
 	}
 	
 	if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');

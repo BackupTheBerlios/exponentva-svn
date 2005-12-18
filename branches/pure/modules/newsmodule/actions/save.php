@@ -2,7 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -12,24 +13,10 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: save.php,v 1.7 2005/04/18 15:24:51 filetreefrog Exp $
 ##################################################
+
 //GREP:HARDCODEDTEXT2
 if (!defined("PATHOS")) exit("");
 
@@ -65,13 +52,8 @@ if ((isset($news->id) && pathos_permissions_check("edit_item",$loc)) ||
 	
 	$news->location_data = serialize($loc);
 	
-	$channels = array();
-	if (isset($_POST['channels'])) {
-		$channels = array_flip($_POST['channels']);
-	}
-	
 	if (!defined("SYS_WORKFLOW")) require_once(BASE."subsystems/workflow.php");
-	pathos_workflow_post($news,"newsitem",$loc,$channels);
+	pathos_workflow_post($news,"newsitem",$loc);
 } else {
 	echo SITE_403_HTML;
 }

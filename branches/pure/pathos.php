@@ -2,7 +2,8 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2005 James Hunt and the OIC Group, Inc.
+# Copyright (c) 2004-2005 OIC Group, Inc.
+# Written and Designed by James Hunt
 #
 # This file is part of Exponent
 #
@@ -12,23 +13,8 @@
 # Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# Exponent is distributed in the hope that it
-# will be useful, but WITHOUT ANY WARRANTY;
-# without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR
-# PURPOSE.  See the GNU General Public License
-# for more details.
+# GPL: http://www.gnu.org/licenses/gpl.txt
 #
-# You should have received a copy of the GNU
-# General Public License along with Exponent; if
-# not, write to:
-#
-# Free Software Foundation, Inc.,
-# 59 Temple Place,
-# Suite 330,
-# Boston, MA 02111-1307  USA
-#
-# $Id: pathos.php,v 1.19 2005/11/22 01:16:02 filetreefrog Exp $
 ##################################################
 
 function __realpath($path) {
@@ -73,14 +59,6 @@ if (!defined('DISPLAY_THEME')) {
 	 * than the configure theme (DISPLAY_THEME_REAL) due to previewing.
 	 */
 	define('DISPLAY_THEME',DISPLAY_THEME_REAL);
-}
-if (!defined('THEME_BASE')) {
-	/* exdoc
-	 * The absolute path to the current active theme's files.  This is similar to the BASE constant.
-	 * This is deprecated beginning with 0.96 -- please use THEME_ABSOLUTE instead.
-	 * @state deprecated
-	 */
-	define('THEME_BASE',BASE.'themes/'.DISPLAY_THEME.'/');
 }
 if (!defined('THEME_ABSOLUTE')) {
 	/* exdoc
