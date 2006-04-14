@@ -78,12 +78,12 @@ $stuff = array(
 		'SITE_404_HTML'=>array(
 			'title'=>TR_CONFIG_SITE_404,
 			'description'=>TR_CONFIG_SITE_404_DESC,
-			'control'=>new texteditorcontrol('',15,50)
+			'control'=>new htmleditorcontrol('', '', 15, 50)
 		),
 		'SITE_403_REAL_HTML'=>array(
 			'title'=>TR_CONFIG_SITE_403,
 			'description'=>TR_CONFIG_SITE_403_DESC,
-			'control'=>new texteditorcontrol('',15,50)
+			'control'=>new htmleditorcontrol('', '', 15, 50)
 		),
 		'SITE_DEFAULT_SECTION'=>array(
 			'title'=>TR_CONFIG_SITE_DEFAULT_SECTION,
@@ -103,7 +103,7 @@ $stuff = array(
 		'SESSION_TIMEOUT_HTML'=>array(
 			'title'=>TR_CONFIG_SITE_TIMEOUT_ERROR,
 			'description'=>TR_CONFIG_SITE_TIMEOUT_ERROR_DESC,
-			'control'=>new texteditorcontrol('',15,50)
+			'control'=>new htmleditorcontrol('',15,50)
 		),
 		'FILE_DEFAULT_MODE_STR'=>array(
 			'title'=>TR_CONFIG_SITE_FILEPERMS,
