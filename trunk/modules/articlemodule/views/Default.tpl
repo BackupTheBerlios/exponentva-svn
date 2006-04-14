@@ -45,7 +45,7 @@
 {/if}
 {/permissions}
 <div class="moduletitle article_moduletitle">{$moduletitle}</div>
-<br>
+<br/>
 <table cellspacing="0" cellpadding="0" border="0" width="100%">
 {foreach name=c from=$data key=catid item=articles}
 
