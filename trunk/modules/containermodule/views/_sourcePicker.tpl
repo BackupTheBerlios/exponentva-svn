@@ -50,11 +50,12 @@
 					{if $container->view != ""}<br />{#i18n_shownin#} {$container->view} {#i18n_view#}{/if}
 				</td>
 				<td align="right" valign="top">
-					{if $container->info.clickable}
+					
+					{* {if $container->info.clickable} *}
 					<a class="mngmntlink container_mngmnltink" href="{$dest}&ss={$container->info.source}&sm={$container->info.class}">
 					{#i18n_usethis#}
 					</a>
-					{/if}
+					{* {/if} *}
 				</td>
 			</tr>
 		</table>
