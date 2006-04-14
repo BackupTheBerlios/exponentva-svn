@@ -81,7 +81,7 @@
 	{if $smarty.const.MEANINGFUL_URLS}
 	<a class="mngmntlink news_mngmntlink" href="{$smarty.const.URL_FULL}content/news/{$newsitem->internal_name}">{#i18n_more#}</a>
 	{else}
-	<a class="mngmntlink news_mngmntlink" href="{$smarty.const.URL_FULL}content/news.php?id={$newsitem->id}">{#i18n_more#}</a>
+	<a class="mngmntlink news_mngmntlink" href="{link action=view id=$newsitem->id}">{#i18n_more#}</a>
 	{/if}
 	<br /><br />
 {/foreach}
