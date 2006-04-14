@@ -59,11 +59,11 @@ if (pathos_permissions_check('edit',$loc)) {
 			if ($err != SYS_FILES_SUCCESS) {
 				echo '<div class="error">';
 				if ($err == SYS_FILES_FOUNDFILE) {
-					echo TR_FILEMANAGER_FILEFOUNDINPATH
+					echo TR_FILEMANAGER_FILEFOUNDINPATH;
 				} else if ($err == SYS_FILES_NOTWRITABLE) {
-					echo TR_FILEMANAGER_CANTMKDIR
+					echo TR_FILEMANAGER_CANTMKDIR;
 				} else {
-					echo TR_FILEMANAGER_UNKNOWNERROR
+					echo TR_FILEMANAGER_UNKNOWNERROR;
 				}
 				echo '</div>';
 				$db->delete('imagegallery_gallery','id='.$id);
