@@ -90,7 +90,6 @@ if (!defined("CTL_HTMLAREAINIT")) {
 					setTimeout("editors["+i+"].generate();",i*500+100);
 				}
 			});
-
 			var htmleditorconfig = new HTMLArea.Config();
 			<?php
 
@@ -128,12 +127,26 @@ if (!defined("CTL_HTMLAREAINIT")) {
 	} else {
 		echo "htmleditorconfig.imgURL = '" . $path_to_editor . "toolbaricons/';\n";
 	}
-	echo "htmleditorconfig.generateButtons();\n";
 ?>
-			// Configured toolbar.
-			htmleditorconfig.pageStyle = "@import url(<?php echo THEME_RELATIVE; ?>editor.css);";
-			</script>
-			<?php
+/*
+		//redirect Image&Link browsers to E's connector
+		//HTMLArea needs to be fixed to read these
+		htmleditorconfig.URIs = {
+			"blank": "blank.html",
+			"link": "../../connector/link.php",
+			"insert_image": "../../connector/insert_image.php",
+			"insert_table": "insert_table.html",
+			"select_color": "select_color.html",
+			"about": "about.html",
+			"help": "editor_help.html"
+		};
+*/		
+		htmleditorconfig.generateButtons();
+
+		// Configured toolbar.
+		htmleditorconfig.pageStyle = "@import url(<?php echo THEME_RELATIVE; ?>editor.css);";
+	</script>	
+<?php
 
 	define("CTL_HTMLAREAINIT", 1);
 }
