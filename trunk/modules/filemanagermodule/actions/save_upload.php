@@ -41,11 +41,11 @@ $loc = pathos_core_makeLocation('filemanagermodule');
 
 if ($collection) {
 	// PERM CHECK
-		$file = file::update('file','files.php',null);
+		$file = file::update($_POST['file'], 'files', 'files.php', null);
 		if (is_object($file)) {
 			$file->name = $_POST['name'];
 			$file->collection_id = $collection->id;
-			$db->insertObject($file,'file');
+			$db->insertObject($file,$_POST['name']);
 			pathos_flow_redirect();
 		} else {
 			echo $file;

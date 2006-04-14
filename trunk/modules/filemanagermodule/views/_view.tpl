@@ -67,7 +67,7 @@
 	{/if}
 	<td width="110" height="110" valign="top" align="center"{if $highlight_file == $file->id} id="highlight"{/if}>
 		{if $file->is_image}
-		<a href="{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}" onClick="return openWindow('{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}',{$file->image_width},{$file->image_height});" target="_blank">
+		<a href="{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}" onclick="return openWindow('{$smarty.const.PATH_RELATIVE}{$file->directory}/{$file->filename}',{$file->image_width},{$file->image_height});" target="_blank">
 			<img src="{$smarty.const.PATH_RELATIVE}thumb.php?id={$file->id}&constraint=1&width=100&height=100" border="0"/>
 		</a>
 		<br />
@@ -75,14 +75,15 @@
 			{$file->name}
 		</a>
 		{else}
-		{getfileicon id=$file->id}
-		<br />
+			{getfileicon id=$file->id}
+			<br />
 			{if $file->name == ''}
-			{$file->filename}
+				{$file->filename}
 			{else}
 				{$file->name}
 			{/if}
 		{/if}
+		<a href="{link action=delete id=$file->id}" onclick="return confirm('{#i18n_delete_confirm#}');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" title="{#i18n_delete_desc#}" alt="{#i18n_delete_desc#}" /></a>
 	</td>
 	{foreachelse}
 	<td><i>{#i18n_noitemsfound#}</i></td>

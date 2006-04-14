@@ -64,7 +64,8 @@ class filemanagermodule {
 		
 		$template = new template('filemanagermodule',$view,$loc);
 		$template->assign('collections',$collections);
-		
+
+		$template->assign('moduletitle', $title);
 		$template->output();
 	}
 	

@@ -32,7 +32,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/modules.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
-
+<div class="moduletitle article_moduletitle">{$moduletitle}</div>
 <ul>
 	{foreach from=$collections item=collection}
 	<li><a href="{link action=view_collection id=$collection->id}">{$collection->name}</a></li>
