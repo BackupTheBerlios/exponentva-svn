@@ -27,24 +27,90 @@
 # Suite 330,
 # Boston, MA 02111-1307  USA
 #
-# $Id: TinyMCE.glue,v 1.0 2005/8/26 18:00 MaxxCorp Exp $
+# $Id: TinyMCE.glue,v 1.0 2005/8/26 18:00 MaxxCorp Exp $ based on james hunt's htmleditorcontrol.php
+# - TinyMCE setup
+# v 2.0 2005/12/15 MaxxCorp
+# - Language File for Popups
+# - existing HTMLArea Link&ImageBrowser integrated
 ##################################################
 
 #This glue file is included by subsystems/forms/controls/htmleditorcontrol.php
-#it provides the code for the htmleditorcontrol class' controltoHTML() method 
+#it provides the code for the htmleditorcontrol class' controltoHTML() method
+
 
 ob_start(); 
 if (!defined("CTL_HTMLAREAINIT")) {  
 ?>
 
-	<script language="javascript" type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>/jscripts/tiny_mce/tiny_mce.js"></script>
-	<script language="javascript" type="text/javascript">
+	<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>/jscripts/tiny_mce/tiny_mce.js"></script>
+	<!-- load languagefile, prepare for HTMLArea popup(Link + Image Browsers) -->
+	<script type="text/javascript">
+		//we need this to get the data from the popup(object for "opener" interaction)
+		var Dialog = new Object();
+		//callback from the HTMLArea popup(__dlg_close())
+		Dialog._return = function (val) {
+			if (val) {
+				if (val['f_dialogType'] == "Link") {
+					tinyMCE.insertLink(val['f_href'], val['f_target'], val['f_title'], '', '');
+				}
+				if (val['f_dialogType'] == "Image") {
+					tinyMCE.insertImage(val['f_url'], val['f_alt'], val['f_border'], val['f_horiz'], val['f_vert'], "", "", val['f_align'], val['f_title'], "", "");
+				}
+			} 
+		};
+	</script>
+	
+	<script type="text/javascript">
+		function myCustomInsertLink(href, target, title, onclick, action) {
+			
+			// if editing existing link, preset values for HTMLArea popup
+			if (action == 'update') {
+				Dialog._arguments = new Array();
+				Dialog._arguments['f_href'] = href;
+				Dialog._arguments['f_target'] = target;
+				Dialog._arguments['f_title'] = title;
+			} else {
+				// just in case values were set in a previous run
+				if (Dialog._arguments) {
+					delete Dialog._arguments;
+				}
+			}
+			
+			var LinkWindow = window.open("<?PHP echo PATH_RELATIVE ?>external/editors/connector/link.php", "Link", "width=400, height=275, resizable=yes");
+			LinkWindow.focus();
+		}
+		
+		function myCustomInsertImage(src, alt, border, hspace, vspace, width, height, align, title, onmouseover, onmouseout, action) {
+			// if editing existing link, preset values for HTMLArea popup
+			if (action == 'update') {
+				Dialog._arguments = new Array();
+				Dialog._arguments['f_url'] = src;
+				Dialog._arguments['f_alt'] = alt;
+				Dialog._arguments['f_border'] = border;
+				Dialog._arguments['f_horiz'] = hspace;
+				Dialog._arguments['f_vert'] = vspace;
+				Dialog._arguments['f_align'] = align;
+				Dialog._arguments['f_title'] = title;	
+			} else {
+				// just in case values were set in a previous run
+				if (Dialog._arguments) {
+					delete Dialog._arguments;
+				}
+			}
+			
+			var ImageWindow = window.open("<?PHP echo PATH_RELATIVE ?>external/editors/connector/insert_image.php", "Image", "width=400, height=390, resizable=yes");
+			ImageWindow.focus();
+		}
+		
 		tinyMCE.init({
-			mode			: "textareas",
-			editor_selector : "mceEditor",
+			mode							: "textareas",
+			editor_selector					: "mceEditor",
 			theme_advanced_toolbar_location : "top",
-			add_unload_trigger : false,
-			language		: "<?PHP echo LANG?>"
+			add_unload_trigger				: false,
+			language						: "<?PHP echo LANG?>",
+			insertlink_callback				: "myCustomInsertLink",
+			insertimage_callback 			: "myCustomInsertImage",
+			convert_urls 					: false
 		});
 	</script>
 

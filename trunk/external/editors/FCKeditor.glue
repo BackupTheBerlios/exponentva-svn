@@ -48,17 +48,17 @@ if (!defined("CTL_HTMLAREAINIT")) {
 	$oFCKeditor->ToolbarSet = 'Default'; 
 	$oFCKeditor->Height= '300'; 
 
-	$oFCKeditor->Config['CustomConfigurationsPath'] = $path_to_editor . "fckconfig.js";
+	$oFCKeditor->Config['LinkBrowserURL'] = $path_to_editor . "../connector/FCKeditor_link.php";
+	$oFCKeditor->Config['ImageBrowserURL'] = $path_to_editor . "../../../modules/filemanagermodule/actions/picker.php?id=0";
 
 	$oFCKeditor->Create() ; 
 
  
 	define("CTL_HTMLAREAINIT",1);
-	
-	echo '<script type="text/javascript">htmleditorcontrols = new Array();</script>'; 
+	 
 } 
 
-echo '<script type="text/javascript">htmleditorcontrols[htmleditorcontrols.length] = "' . $name .'";</script>'; 
+ 
  
  
 $html = ob_get_contents();
