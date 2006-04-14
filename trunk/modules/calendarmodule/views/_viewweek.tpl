@@ -33,7 +33,7 @@
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.i18n" scope="local"}
 {config_load file="`$smarty.const.BASE`subsystems/lang/`$smarty.const.LANG`/modules/`$__loc->mod`.`$__view`.i18n" scope="local"}
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$startprevweek}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}left.png" title="{#i18n_previous#}" alt="{#i18n_previous#}" /></a>
-<span style="font-weight: bold; font-size: 16px">{#i18n_eventsforweekof#} {$startweek|format_date:"%B %e, %Y"}</span>
+<span style="font-weight: bold; font-size: 16px">{#i18n_eventsforweekof#} {$startweek|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</span>
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewweek time=$startnextweek}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}right.png" title="{#i18n_next#}" alt="{#i18n_next#}" /></a>
 <br />
 <a class="mngmntlink calendar_mngmntlink" href="{link action=viewmonth time=$startweek}" title="{#i18n_viewmonth_desc#}" alt="{#i18n_viewmonth_desc#}">{#i18n_viewmonth#}</a>
@@ -43,9 +43,9 @@
 		<hr size="1"/>
 		<b>
 		{if $counts[$ts] != 0}
-		<a class="mngmntlink calendar_mngmntlink" href="{link action=viewday time=$ts}">{$ts|format_date:"%A, %b %e"}</a>
+		<a class="mngmntlink calendar_mngmntlink" href="{link action=viewday time=$ts}">{$ts|format_date:$smarty.const.DISPLAY_DATE_FORMAT}</a>
 		{else}
-		{$ts|format_date:"%A, %b %e"}
+		{$ts|format_date:$smarty.const.DISPLAY_DATE_FORMAT}
 		{/if}
 		</b>
 	</td></tr>
@@ -81,7 +81,7 @@
 			{/if}
 			<div style="padding-left: 10px">
 				<b>{if $event->is_allday == 1}{#i18n_allday#}{else}
-				{$event->eventstart|format_date:"%l:%M %P"} - {$event->eventend|format_date:"%l:%M %P"}
+				{$event->eventstart|format_date:$smarty.const.DISPLAY_TIME_FORMAT} - {$event->eventend|format_date:$smarty.const.DISPLAY_TIME_FORMAT}
 				{/if}</b><br />
 				{$event->summary}
 			</div>
