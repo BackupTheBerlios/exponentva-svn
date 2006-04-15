@@ -1,0 +1,155 @@
+<?PHP
+##################################################
+#
+# Copyright (c) 2005  Maxim Mueller
+#
+# This file is part of Exponent
+#
+# Exponent is free software; you can redistribute
+# it and/or modify it under the terms of the GNU
+# General Public License as published by the Free
+# Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# Exponent is distributed in the hope that it
+# will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License
+# for more details.
+#
+# You should have received a copy of the GNU
+# General Public License along with Exponent; if
+# not, write to:
+#
+# Free Software Foundation, Inc.,
+# 59 Temple Place,
+# Suite 330,
+# Boston, MA 02111-1307  USA
+#
+# $Id: TinyMCE.glue,v 1.0 2005/8/26 18:00 MaxxCorp Exp $ based on james hunt's htmleditorcontrol.php
+# - TinyMCE setup
+# v 2.0 2005/12/15 MaxxCorp
+# - Language File for Popups
+# - existing HTMLArea Link&ImageBrowser integrated
+##################################################
+
+#This glue file is included by subsystems/forms/controls/htmleditorcontrol.php
+#it provides the code for the htmleditorcontrol class' controltoHTML() method
+
+
+ob_start(); 
+if (!defined("CTL_HTMLAREAINIT")) {  
+?>
+
+	<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>/jscripts/tiny_mce/tiny_mce.js"></script>
+	<!-- load languagefile, prepare for HTMLArea popup(Link + Image Browsers) -->
+	<script type="text/javascript">
+		//we need this to get the data from the popup(object for "opener" interaction)
+		var Dialog = new Object();
+		//callback from the HTMLArea popup(__dlg_close())
+		Dialog._return = function (val) {
+			if (val) {
+				if (val['f_dialogType'] == "Link") {
+					tinyMCE.execCommand('mceInsertContent',false,'<a href="' + val['f_href'] + '" target="' + val['f_target'] + '" title="' + val['f_title'] + '">' + tinyMCE.getInstanceById('<?php echo $name; ?>').selection.getSelectedHTML() + '</a>');
+				}
+				if (val['f_dialogType'] == "Image") {
+					// TODO: generate CSS styled images 
+					// if ((val['f_align'] == 'right') or (val['f_align'] == 'right')) {
+					// 	csscode = "float: " + val['f_align'];
+					// } else {
+					// 	csscode = "vertical-align: " + val['f_align'];
+					// }
+					// tinyMCE.execCommand('mceInsertContent',false,'<img src="' + val['f_url'] + '" alt="' + val['f_alt'] + '" style="margin: ' + val['f_vert'] + 'px ' + val['f_horiz'] + 'px; border: ' + val['f_border'] + 'px solid black;' + csscode + '"/>');
+					//
+					tinyMCE.execCommand('mceInsertContent',false,'<img src="' + val['f_url'] + '" alt="' + val['f_alt'] + '" align="' + val['f_align'] + '" vspace="' + val['f_vert'] + '" hspace="' + val['f_horiz'] + '" border="' + val['f_border'] + '"/>');
+				}
+			} 
+		};
+	</script>
+	
+	<script type="text/javascript">
+		function myCustomExecCommandHandler(editor_id, elm, command, user_interface, value) {
+			var linkElm, imageElm, inst;
+		
+			switch (command) {
+				case "mceLink":
+					inst = tinyMCE.getInstanceById(editor_id);
+					linkElm = tinyMCE.getParentElement(inst.selection.getFocusElement(), "a");
+		
+					//do we update or create ?
+					//if (linkElm) {
+						Dialog._arguments = new Array();
+						Dialog._arguments['f_href'] = tinyMCE.getAttrib(linkElm, "href");
+						Dialog._arguments['f_target'] = tinyMCE.getAttrib(linkElm, "target");
+						Dialog._arguments['f_title'] = tinyMCE.getAttrib(linkElm, "title");
+					//} else {
+						// just in case values were set in a previous run
+					//	if (Dialog._arguments) {
+					//		delete Dialog._arguments;
+					//	}
+					//}
+					var LinkWindow = window.open("<?PHP echo PATH_RELATIVE ?>external/editors/connector/link.php", "Link", "width=400, height=275, resizable=yes");
+					LinkWindow.focus();
+					
+					return true;
+		
+				case "mceImage":
+					inst = tinyMCE.getInstanceById(editor_id);
+					imageElm = tinyMCE.getParentElement(inst.selection.getFocusElement(), "img");
+		
+					//do we update or create ?
+					if (imageElm) {
+						Dialog._arguments = new Array();
+						Dialog._arguments['f_url'] = tinyMCE.getAttrib(imageElm, "src");
+						Dialog._arguments['f_alt'] = tinyMCE.getAttrib(imageElm, "alt");
+						Dialog._arguments['f_border'] = tinyMCE.getAttrib(imageElm, "border");;
+						Dialog._arguments['f_horiz'] = tinyMCE.getAttrib(imageElm, "hspace");;
+						Dialog._arguments['f_vert'] = tinyMCE.getAttrib(imageElm, "vspace");;
+						Dialog._arguments['f_align'] = tinyMCE.getAttrib(imageElm, "align");
+					} else {
+						// just in case values were set in a previous run
+						if (Dialog._arguments) {
+							delete Dialog._arguments;
+						}
+					}
+					var ImageWindow = window.open("<?PHP echo PATH_RELATIVE ?>external/editors/connector/insert_image.php", "Image", "width=400, height=390, resizable=yes");
+					ImageWindow.focus();
+					
+					return true;
+			}
+		
+			return false;
+		}
+		
+		
+		tinyMCE.init({
+			mode							: "textareas",
+			editor_selector					: "mceEditor",
+			theme_advanced_toolbar_location : "top",
+			add_unload_trigger				: false,
+			language						: "<?PHP echo LANG?>",
+			execcommand_callback 			: "myCustomExecCommandHandler",
+			convert_urls 					: false
+		});
+	</script>
+
+
+<?PHP
+	define("CTL_HTMLAREAINIT",1);
+	echo '<script type="text/javascript">htmleditorcontrols = new Array();</script>'; 
+} 
+?>
+
+
+<script type="text/javascript">htmleditorcontrols[htmleditorcontrols.length] = "<?php echo $name; ?>";</script> 
+
+<textarea class="mceEditor" id="<?php echo $name; ?>" name="<?php echo $name; ?>" style="width:100%" rows="24" cols="80"><?php echo htmlentities($this->default, ENT_COMPAT, LANG_CHARSET);?></textarea> 
+
+
+<?PHP
+
+$html = ob_get_contents();
+ob_end_clean(); 
+
+?>

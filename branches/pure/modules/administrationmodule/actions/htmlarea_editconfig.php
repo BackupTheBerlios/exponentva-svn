@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2006 OIC Group, Inc.
+# Copyright (c) 2004-2006 OIC Group, Inc. 
 # Written and Designed by James Hunt
 #
 # This file is part of Exponent
@@ -26,6 +26,7 @@ if (!defined("EXPONENT")) exit("");
 
 if (exponent_permissions_check('htmlarea',exponent_core_makeLocation('administrationmodule'))) {
 
+//TODO:update for multi editor support
 	$imagedir = BASE."external/htmlarea/toolbaricons";
 	$imagebase = PATH_RELATIVE."external/htmlarea/toolbaricons";
 	$confdir = BASE."external/htmlarea";
