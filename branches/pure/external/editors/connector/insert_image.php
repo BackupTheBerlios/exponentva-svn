@@ -1,26 +1,21 @@
-<?php
+<?PHP
 	define("SCRIPT_EXP_RELATIVE","external/editors/connector/");
 	define("SCRIPT_FILENAME","insert_image.php");
 
-	include_once("../../../exponent.php");
+	require_once("../../../exponent.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Insert/Modify Image</title>
-	
+
+		<script type="text/javascript" src="../../../exponent.js.php"></script>
 		<script type="text/javascript" src="popup.js"></script>
-		<script type="text/javascript">
-			// namespace for translations
-			Exponent = new Object();
-		</script>
-		<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/connector/lang/' . LANG . '.js'?>"></script>
+		<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/connector/lang/'  . LANG . '.js';?>"></script>
 		<script type="text/javascript">
 		/* <![CDATA[ */
-			<?php echo 'window.relativeExponent = "' . PATH_RELATIVE . "\"\n";?>
-			
 			I18N = Exponent.I18N;
-			
+					
 			function i18n(str) {
 			  return (I18N[str] || str);
 			};
@@ -47,7 +42,7 @@
 						window.ipreview.location.replace(param.f_url);
 					}
 					else {
-						window.ipreview.location.replace(window.relativeExponent+param.f_url);
+						window.ipreview.location.replace(Exponent.PATH_RELATIVE + param.f_url);
 					}
 				}
 			
@@ -106,7 +101,7 @@
 				if (url.substr(0,7) == "http://") {
 					window.ipreview.location.replace(url);
 				} else {
-					window.ipreview.location.replace(window.relativeExponent+url);
+					window.ipreview.location.replace(Exponent.PATH_RELATIVE + url);
 				}
 			
 				return false;

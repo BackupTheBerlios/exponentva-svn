@@ -104,11 +104,12 @@
 			}
 			{/literal}
 		</style>
+		<script type="text/javascript" src="../../../exponent.js.php"></script>
 		<script type="text/javascript">
 		{literal}
 			// fckedior unfortunately does not ship with our efm_pickedFile() :)
 			function FCKeditor_pickedFile(id, pickedFile) {
-				window.opener.SetUrl(pickedFile);
+				window.opener.SetUrl(Exponent.PATH_RELATIVE + pickedFile);
 			}
 			
 			if (typeof window.opener.efm_pickedFile != "function") {

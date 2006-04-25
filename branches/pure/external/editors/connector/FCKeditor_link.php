@@ -1,24 +1,33 @@
 <?PHP
 	define("SCRIPT_EXP_RELATIVE","external/editors/connector/");
 	define("SCRIPT_FILENAME","FCKeditor_link.php");
-
-	include_once("../../../exponent.php");
+	
+	require_once("../../../exponent.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<title>Insert/Modify Link</title>
-<!--
+
+		<script type="text/javascript" src="../../../exponent.js.php"></script>
 		<script type="text/javascript" src="popup.js"></script>
--->
+		<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/connector/lang/' . LANG . '.js'?>"></script>
   		<script type="text/javascript">
 		/* <![CDATA[ */
+			I18N = Exponent.I18N;
+			
+			function i18n(str) {
+  				return (I18N[str] || str);
+			};
+			
+			
+			
 			function onOK() {
 				
 				// FCKeditor integration
 				window.opener.SetUrl(document.getElementById("f_href").value);
-  
+
 				window.close();
 				return false;
 			};
@@ -98,7 +107,7 @@
 
 	</head>
 
-	<body>
+	<body onload="__dlg_translate(I18N);">
 		<div class="title">Insert/Modify Link</div>
 
 		<table border="0" style="width: 100%;">
@@ -124,6 +133,5 @@
 			<button type="button" name="ok" onclick="return onOK();">OK</button>
 			<button type="button" name="cancel" onclick="return onCancel();">Cancel</button>
 		</div>
-
 	</body>
 </html>

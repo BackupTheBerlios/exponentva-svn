@@ -1,9 +1,8 @@
-<?php
+<?PHP
 
 ##################################################
 #
-# Copyright (c) 2004-2006 OIC Group, Inc.
-# Written and Designed by James Hunt
+# Copyright (c) 2006  Maxim Mueller
 #
 # This file is part of Exponent
 #
@@ -17,15 +16,17 @@
 #
 ##################################################
 
-// Part of the HTMLArea category
-
-if (!defined('EXPONENT')) exit('');
-
-if (isset($_GET['id']) && exponent_permissions_check('htmlarea',exponent_core_makeLocation('administrationmodule'))) {
-	$db->delete('toolbar_' . SITE_WYSIWYG_EDITOR, 'id='.intval($_GET['id']));
-	exponent_flow_redirect();
-} else {
-	echo SITE_403_HTML;
-}
-
+header('Content-type: text/javascript', true);
 ?>
+
+alert("<?PHP echo stripslashes($_GET['plugins']); ?>");
+
+FCKConfig.ToolbarSets["Default"] = <?PHP echo stripslashes($_GET['toolbar']); ?>;
+
+plugins = <?PHP echo stripslashes($_GET['plugins']); ?>;
+
+for(currPlugin = 0; currPlugin < plugins.length; currPlugin++) {
+	FCKConfig.Plugins.Add(plugins[currPlugin], null );
+}	
+
+
