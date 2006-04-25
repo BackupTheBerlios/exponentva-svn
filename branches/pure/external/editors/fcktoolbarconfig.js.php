@@ -19,8 +19,6 @@
 header('Content-type: text/javascript', true);
 ?>
 
-alert("<?PHP echo stripslashes($_GET['plugins']); ?>");
-
 FCKConfig.ToolbarSets["Default"] = <?PHP echo stripslashes($_GET['toolbar']); ?>;
 
 plugins = <?PHP echo stripslashes($_GET['plugins']); ?>;

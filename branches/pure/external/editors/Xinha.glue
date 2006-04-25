@@ -67,7 +67,7 @@ if (!defined("CTL_HTMLAREAINIT")) {
 			}
 		}
 		
-		myConfig.setupPlugins = function (myToolbar) {
+		myConfig.setupToolbar = function (myToolbar) {
 			return myToolbar;
 		}
 		

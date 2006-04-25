@@ -111,9 +111,6 @@ if (!defined("CTL_HTMLAREAINIT")) {
 		//HACK: god, i do hate this editor ! Why can't i simply configure the toolbars and plugins from here ? There ARE other reasons to hate it ...
 		oFCKeditor.Config["CustomConfigurationsPath"] = "http://localhost:8080/external/editors/fcktoolbarconfig.js.php?toolbar=" + encodeURI(myConfig.setupToolbar(Exponent.WYSIWYG_toolbar)) + "&plugins=" + encodeURI(myConfig.setupPlugins(Exponent.WYSIWYG_toolbar));
 		
-		alert(myConfig.setupToolbar(Exponent.WYSIWYG_toolbar));
-		alert(myConfig.setupPlugins(Exponent.WYSIWYG_toolbar));
-		
 		oFCKeditor.Create();
 		
 	/* ]]> */
