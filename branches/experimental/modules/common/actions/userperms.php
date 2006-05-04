@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 if (exponent_permissions_check('administrate',$loc)) {
-	if (exponent_template_getModuleViewFile($loc->mod,'_userpermissions',false) == TEMPLATE_FALLBACK_VIEW) {
+	if (exponent_template_getViewFile("modules", $loc->mod, '_userpermissions') == TEMPLATE_FALLBACK_VIEW) {
 		$template = new template('common','_userpermissions',$loc);
 	} else {
 		$template = new template($loc->mod,'_userpermissions',$loc);

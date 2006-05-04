@@ -46,6 +46,8 @@ class fakeform extends form {
 		}
 		
 		$html = "<!-- Form Object '" . $this->name . "' -->\r\n";
+		$html = "<!-- initialize Exponent.Forms namespace -->\r\n";
+		$html .= "<script type=\"text/javascript\" src=\"" .PATH_RELATIVE."subsystems/forms/lib/js/initNS.js\"></script>\r\n";
 		$html .= "<script type=\"text/javascript\" src=\"" .PATH_RELATIVE."subsystems/forms/js/inputfilters.js.php\"></script>\r\n";
 		foreach ($this->scripts as $name=>$script) $html .= "<script type=\"text/javascript\" src=\"$script\"></script>\r\n";
 		$html .= $formError;

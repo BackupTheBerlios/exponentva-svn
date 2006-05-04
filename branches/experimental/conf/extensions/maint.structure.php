@@ -30,7 +30,7 @@ return array(
 		'MAINTENANCE_MSG_HTML'=>array(
 			'title'=>'Maintenance Mode Message',
 			'description'=>'A message to display to all non-administrators visiting the site.',
-			'control'=>new texteditorcontrol()
+			'control'=>new htmleditorcontrol()
 		)
 	)
 );

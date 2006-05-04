@@ -21,7 +21,7 @@ if (!defined('EXPONENT')) exit('');
 
 if (exponent_permissions_check('administrate',$loc)) {
 	$i18n = exponent_lang_loadFile('subsystems/users.php');
-	if (exponent_template_getModuleViewFile($loc->mod,'_grouppermissions',false) == TEMPLATE_FALLBACK_VIEW) {
+	if (exponent_template_getViewFile("modules", $loc->mod,'_grouppermissions') == TEMPLATE_FALLBACK_VIEW) {
 		$template = new template('common','_grouppermissions',$loc);
 	} else {
 		$template = new template($loc->mod,'_grouppermissions',$loc);

@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 if (exponent_permissions_check('configure',$loc)) {
-	if (exponent_template_getModuleViewFile($loc->mod,'_configure',false) == TEMPLATE_FALLBACK_VIEW) {
+	if (exponent_template_getViewFile("modules", $loc->mod, '_configure') == TEMPLATE_FALLBACK_VIEW) {
 		$template = new template('common','_configure',$loc);
 	} else {
 		$template = new template($loc->mod,'_configure',$loc);

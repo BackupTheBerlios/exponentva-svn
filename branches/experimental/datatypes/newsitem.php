@@ -41,8 +41,8 @@ class newsitem {
 		
 		$form->register('title',$i18n['title'],new textcontrol($object->title));
 		$form->register('body',$i18n['body'],new htmleditorcontrol($object->body));
-		$form->register('publish',$i18n['publish'],new popupdatetimecontrol($object->publish,$i18n['nopublish']));
-		$form->register('unpublish',$i18n['unpublish'],new popupdatetimecontrol($object->unpublish,$i18n['nounpublish']));
+		$form->register('publish',$i18n['publish'],new PopupDateTimeControl($object->publish,$i18n['nopublish']));
+		$form->register('unpublish',$i18n['unpublish'],new PopupDateTimeControl($object->unpublish,$i18n['nounpublish']));
 		$form->register('submit','',new buttongroupcontrol($i18n['save'],'',$i18n['cancel']));
 		
 		return $form;
@@ -55,8 +55,8 @@ class newsitem {
 		$object->title = $values['title'];
 		$object->internal_name = preg_replace('/--+/','-',preg_replace('/[^A-Za-z0-9_]/','-',$values['int']));
 		$object->body = $values['body'];
-		$object->publish = popupdatetimecontrol::parseData('publish',$values);
-		$object->unpublish = popupdatetimecontrol::parseData('unpublish',$values);
+		$object->publish = PopupDateTimeControl::parseData('publish',$values);
+		$object->unpublish = PopupDateTimeControl::parseData('unpublish',$values);
 		
 		return $object;
 	}

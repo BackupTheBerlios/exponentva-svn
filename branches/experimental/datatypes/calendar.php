@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2006 OIC Group, Inc.
+# Copyright (c) 2005-2006 Maxim Mueller
 # Written and Designed by James Hunt
 #
 # This file is part of Exponent
@@ -41,6 +42,8 @@ class calendar {
 			$form->meta('id',$object->id);
 		}
 		
+		$form->addScript("switchControl" , exponent_core_abs2rel(array_shift(exponent_core_resolveFilePaths("forms", "", "js", "switchControl"))));
+		
 		$form->register('title',$i18n['title'],new textcontrol($object->title));
 		$form->register('body',$i18n['body'],new htmleditorcontrol($object->body));
 		
@@ -49,17 +52,20 @@ class calendar {
 		if ($object->is_recurring == 1) {
 			$form->register(null,'',new htmlcontrol($i18n['remove_warning'],false));
 		}
-		$form->register('eventdate',$i18n['eventdate'],new popupdatetimecontrol($object->eventdate->date,'',false));
+		$form->register('eventdate',$i18n['eventdate'],new PopupDateTimeControl($object->eventdate->date,'',false));
 		
 		$cb = new checkboxcontrol($object->is_allday,true);
-		$cb->jsHooks = array('onClick'=>'exponent_forms_disable_datetime(\'eventstart\',this.form,this.checked); exponent_forms_disable_datetime(\'eventend\',this.form,this.checked);');
+		#Warning: when the box returns true, we have to switch OFF the time controls
+		$cb->jsHooks = array('onClick'=>'Exponent.Forms.switchControl(\'eventstart_TimeControl\', this.checked ? false : true); Exponent.Forms.switchControl(\'eventend_TimeControl\', this.checked ? false : true);');
 		$form->register('is_allday',$i18n['is_allday'],$cb);
-		$form->register('eventstart',$i18n['eventstart'],new datetimecontrol($object->eventstart,false));
-		$form->register('eventend',$i18n['eventend'],new datetimecontrol($object->eventend,false));
+		
+		#Warning: when the box returns true, we have to switch OFF the time controls
+		$form->register('eventstart',$i18n['eventstart'],new TimeControl($object->eventstart, $object->is_allday ? false : true));
+		$form->register('eventend',$i18n['eventend'],new TimeControl($object->eventend, $object->is_allday ? false : true));
 		
 		if (!isset($object->id)) {
 			$customctl = file_get_contents(BASE.'modules/calendarmodule/form.part');
-			$datectl = new popupdatetimecontrol($object->eventstart+365*86400,'',false);
+			$datectl = new PopupDateTimeControl($object->eventstart+365*86400,'',false);
 			$customctl = str_replace('%%UNTILDATEPICKER%%',$datectl->controlToHTML('untildate'),$customctl);
 			$form->register('recur',$i18n['recurrence'],new customcontrol($customctl));
 		} else if ($object->is_recurring == 1) {
@@ -106,8 +112,8 @@ class calendar {
 		
 		$object->is_allday = (isset($values['is_allday']) ? 1 : 0);
 		
-		$object->eventstart = datetimecontrol::parseData('eventstart',$values);
-		$object->eventend = datetimecontrol::parseData('eventend',$values);
+		$object->eventstart = TimeControl::parseData('eventstart',$values);
+		$object->eventend = TimeControl::parseData('eventend',$values);
 		
 		if (!isset($object->id)) {
 			global $user;

@@ -25,7 +25,7 @@ if (exponent_permissions_check('manage_categories',$mloc)) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	
 	$categories = $db->selectObjects("category","location_data='".serialize($mloc)."'");
-	if (exponent_template_getModuleViewFile($mloc->mod,"_cat_manageCategories",false) == TEMPLATE_FALLBACK_VIEW) {
+	if (exponent_template_getViewFile("modules", $mloc->mod, "_cat_manageCategories") == TEMPLATE_FALLBACK_VIEW) {
 		$template = new template("categories","_cat_manageCategories",$loc);
 	} else {
 		$template = new template($mloc->mod,"_cat_manageCategories",$loc);

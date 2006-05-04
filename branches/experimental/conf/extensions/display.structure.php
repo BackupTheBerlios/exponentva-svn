@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2006 OIC Group, Inc.
+# Copyright (c) 2005-2006 Maxim Mueller
 # Written and Designed by James Hunt
 #
 # This file is part of Exponent
@@ -68,6 +69,11 @@ return array(
 			'title'=>$i18n['time_format'],
 			'description'=>$i18n['time_format_desc'],
 			'control'=>new dropdowncontrol(null,exponent_config_dropdownData('time_format'))
+		),
+		'DISPLAY_WEEKS_START_ON'=>array(
+			'title'=>$i18n['weeks_start_on'],
+			'description'=>$i18n['weeks_start_on'],
+			'control'=>new dropdowncontrol(null,exponent_config_dropdownData('weeks_start_on'))
 		)
 	)
 );

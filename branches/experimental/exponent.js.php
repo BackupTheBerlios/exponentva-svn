@@ -22,15 +22,6 @@ include_once("exponent.php");
 ?>
 // exponent Javascript Support Systems
 
-//EXPERIMENTAL: introduction of a common namespace object
-//TODO: migrate all of E`s JS API to this new object
-Exponent = new Object();
-
-Exponent.LANG = "<?php echo LANG; ?>";
-Exponent.PATH_RELATIVE = "<?php echo PATH_RELATIVE; ?>";
-Exponent.THEME_RELATIVE = "<?php echo THEME_RELATIVE; ?>";
-Exponent.ICON_RELATIVE = "<?php echo ICON_RELATIVE; ?>";
-
 var onLoadInits = new Array(); // array of functions
 
 var openWindows = new Array(); // array of window references.
@@ -49,7 +40,13 @@ function pathosGetCookie(name) {
 
 function exponentJSinitialize() {
 	for (i = 0; i < onLoadInits.length; i++) {
-		onLoadInits[i]();
+		// if the last sign is a ")", then we are likely to have a function -> new style allows for function parameters
+		if (onLoadInits[i].charAt(onLoadInits[i].length - 1) == ")") {
+			eval(onLoadInits[i]);
+		} else {
+			onLoadInits[i]();
+		}
+		
 	}
 }
 
@@ -186,3 +183,33 @@ String.prototype.trim = function() {
 	}
 	return str;
 }
+
+//EXPERIMENTAL: introduction of a common namespace object
+//TODO: migrate all of E`s JS API to this new object
+Exponent = new Object();
+
+Exponent.LANG = "<?php echo LANG; ?>";
+Exponent.PATH_RELATIVE = "<?php echo PATH_RELATIVE; ?>";
+Exponent.THEME_RELATIVE = "<?php echo THEME_RELATIVE; ?>";
+Exponent.ICON_RELATIVE = "<?php echo ICON_RELATIVE; ?>";
+
+Exponent.includeOnce = function(id, file) {
+		// do we even have to do something ?
+		if (!document.getElementById(id)){
+		
+			//TODO: check for html spelling, right now we assume XHTML
+			// get the head element 
+			myHeadElem = document.getElementsByTagName("head").item(0);
+		
+			myNewElem = document.createElement("script");
+			myNewElem.setAttribute("id",id);
+			myNewElem.setAttribute("type","text/javascript");
+			myNewElem.setAttribute("defer","false");
+			myNewElem.setAttribute("src",file);
+			myHeadElem.appendChild(myNewElem);
+		} else {
+			//TODO: write handling for overiding of scripts, e.g. by themes.
+		};	
+};
+
+Exponent.register = exponentJSregister;	

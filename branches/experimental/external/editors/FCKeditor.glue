@@ -21,8 +21,7 @@
 # it's based on James Hunt's code for that original class
  
 ob_start(); 
-if (!defined("CTL_HTMLAREAINIT")) { 
-	// We are the first htmleditor control. Set up basic initializations 
+ 
 ?>
 	<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>/fckeditor.js"></script>
 	<script type="text/javascript" src="<?php echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>_toolbox.js"></script>
@@ -117,11 +116,7 @@ if (!defined("CTL_HTMLAREAINIT")) {
 	/* ]]> */
 	</script>
 <?PHP 
-	define("CTL_HTMLAREAINIT",1);
-	 
-} 
 
- 
 $html = ob_get_contents();
 ob_end_clean(); 
 

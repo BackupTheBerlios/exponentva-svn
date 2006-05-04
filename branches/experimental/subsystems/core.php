@@ -357,4 +357,119 @@ function exponent_core_maxUploadSizeMessage() {
 	return sprintf($i18n['max_upload'],$size_msg);
 }
 
+
+/* exdoc
+ * This function converts an absolute path, such as the one provided
+ * by the exponent_core_resolveFilePaths() function into a relative one.
+ * 
+ * This is useful if the file is not to be included server-
+ * but loaded client-side
+ *
+ * @param string $inPath The absolute file path
+ * @node Subsystems:Core
+ */
+function exponent_core_abs2rel($inPath) {
+	//TODO: Investigate the chances of BASE occurring more than once
+	$outPath = str_replace(BASE, PATH_RELATIVE, $inPath);
+	return $outPath;
+}
+
+
+//helper function
+function glob2keyedArray($workArray){
+	$temp = array();
+	foreach($workArray as $myWorkFile){
+		$temp[basename($myWorkFile)] = $myWorkFile;
+	} 
+	return $temp;
+}
+
+
+/* exdoc
+ * This function finds the most appropriate version of a file
+ *  - if given wildcards, files -
+ * and returns an array with the file's physical loaction's full path or,
+ * if no file was found, false
+ *
+ * @param string $type (to be superceeded) type of base ressource (= directory name)
+ * @param string $name (hopefully in the future type named) Ressource identifier (= class name = directory name)
+ * @param string $subtype type of the actual file (= file extension = (future) directory name)
+ * @param string $subname name of the actual file (= filename name without extension)
+ * 
+ * @node Subsystems:Core
+ */
+function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
+	//TODO: implement caching
+	
+	// new style name processing
+	//$type = array_pop(preg_split("*(?=[A-Z])*", $name));
+	
+	// convert types into paths
+	$relpath = '';
+	if ($type == "modules") {
+		$relpath .= "modules/";
+	} elseif($type == "forms") {
+		$relpath .= "subsystems/forms/";
+	} elseif($type == "controls") {
+		$relpath .= "subsystems/forms/controls/";
+	// new style names
+	} elseif($type == "Control") {
+		$relpath .= "subsystems/forms/controls/";
+	} elseif($type == "Form") {
+		$relpath .= "subsystems/forms/";
+	} elseif($type == "Module") {
+		$relpath .= "modules/";
+	}
+	
+	// for later use for searching in lib/common
+	$typepath = $relpath;
+	if ($name != "") {
+		$relpath .= $name . "/";
+	}
+	
+	// for later use for searching in lib/common
+	$relpath2 = '';
+	if ($subtype == "css") {
+		$relpath2 .= "css/";
+	} elseif($subtype == "js") {
+		$relpath2 .= "js/";
+	} elseif($subtype == "tpl") {
+		$relpath2 .= "views/";
+	} elseif($subtype == "form") {
+		$relpath2 .= "views/";
+	}
+	
+	$relpath2 .= $subname . "." . $subtype;
+	$relpath .= $relpath2;
+	
+	//TODO: handle subthemes
+	//latter override the precursors
+	$locations = array(BASE, THEME_ABSOLUTE);
+	foreach($locations as $location) {
+		// legacy support
+		$checkpaths[] = $location . $typepath . "common/" . $relpath2;
+		$checkpaths[] = $location . $typepath . "lib/" . $relpath2;
+		$checkpaths[] = $location . $relpath;
+	}
+	
+	//TODO: handle the - currently unused - case where there is 
+	//the same file in different $type categories 
+	$myFiles = array();
+	foreach($checkpaths as $checkpath) {
+		$tempFiles = glob2keyedArray(glob($checkpath));
+		if ($tempFiles != false) {
+			$myFiles = array_merge($myFiles, $tempFiles);
+		}
+	}
+	
+	if(count($myFiles) != 0) {
+		return array_values($myFiles);
+	} else {
+		//TODO: invent better error handling, maybe an error message channel ?
+		//die("The file " . basename($filepath) . " could not be found in the filesystem");
+		return false;
+	}
+		
+}
+
 ?>

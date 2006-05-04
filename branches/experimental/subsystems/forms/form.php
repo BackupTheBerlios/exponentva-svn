@@ -192,7 +192,9 @@ class form extends baseform {
 		}
 		
 		$html = "<!-- Form Object '" . $this->name . "' -->\r\n";
-		$html .= "<script type=\"text/javascript\" src=\"" .PATH_RELATIVE."subsystems/forms/js/inputfilters.js.php\"></script>\r\n";
+		$html = "<!-- initialize Exponent.Forms namespace -->\r\n";
+		$html .= "<script type=\"text/javascript\" src=\"" .PATH_RELATIVE . "subsystems/forms/lib/js/initNS.js\"></script>\r\n";
+		$html .= "<script type=\"text/javascript\" src=\"" .PATH_RELATIVE . "subsystems/forms/js/inputfilters.js.php\"></script>\r\n";
 		foreach ($this->scripts as $name=>$script) $html .= "<script type=\"text/javascript\" src=\"$script\"></script>\r\n";
 		$html .= '<div class="error">'.$formError.'</div>';
 		$html .= "<form name=\"" . $this->name . "\" method=\"" . $this->method . "\" action=\"" . $this->action . "\" enctype=\"".$this->enctype."\">\r\n";

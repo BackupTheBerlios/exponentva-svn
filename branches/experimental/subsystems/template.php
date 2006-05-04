@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2006 OIC Group, Inc.
+# Copyright (c) 2006 Maxim Mueller
 # Written and Designed by James Hunt
 #
 # This file is part of Exponent
@@ -27,8 +28,6 @@ if (!defined('EXPONENT')) exit('');
 define('SYS_TEMPLATE',1);
 
 define('TEMPLATE_FALLBACK_VIEW',BASE.'views/viewnotfound.tpl');
-
-include_once(BASE.'external/Smarty/libs/Smarty.class.php');
 
 class basetemplate {
 	// Smarty template object.
@@ -63,8 +62,7 @@ class basetemplate {
 	 */
 	function output() {
 		// Load language constants
-		//$this->tpl->assign('_TR',exponent_lang_loadFile($this->viewdir.'/'.$this->view.'.php')); //fix lamp issue
-		$this->tpl->assign('_TR',exponent_lang_loadFile($this->langdir."".$this->view.'.php')); //fix lamp issue
+		$this->tpl->assign('_TR', exponent_lang_loadFile($this->langdir."/".$this->view.'.php')); //fix lamp issue
 		
 		$this->tpl->display($this->view.'.tpl');
 	}
@@ -78,7 +76,7 @@ class basetemplate {
 				$permissions_register[$perm] = (exponent_permissions_check($perm,$loc) ? 1 : 0);
 			}
 		}
-		$this->tpl->assign('permissions',$permissions_register);
+		$this->tpl->assign('permissions', $permissions_register);
 	}
 	
 	/*
@@ -94,15 +92,20 @@ class basetemplate {
  * Wraps the template system in use, to provide a uniform and consistent
  * interface to templates.
  */
+//TODO: prepare this class for multiple template systems
+//TODO: implement php5 constructor
 class template extends basetemplate {	
 	var $module = '';	
 	function template($module,$view = null,$loc=null,$caching=false) {
+		
+		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
+		
 		// Set up the Smarty template variable we wrap around.
 		$this->tpl = new Smarty();
 		$this->tpl->php_handling = SMARTY_PHP_REMOVE;
-		$this->tpl->plugins_dir[] = BASE.'plugins';
+		$this->tpl->plugins_dir[] = BASE . 'subsystems/template/Smarty/plugins';
 		
-		$this->viewfile = exponent_template_getModuleViewFile($module,$view);
+		$this->viewfile = exponent_template_getViewFile("modules", $module, $view);
 		$this->viewparams = exponent_template_getViewParams($this->viewfile);
 		//$this->viewdir = str_replace(BASE,'',realpath(dirname($this->viewfile)));
 		$this->viewdir = realpath(dirname($this->viewfile));
@@ -115,8 +118,7 @@ class template extends basetemplate {
 		//$this->langdir = $this->viewdir;
 		//
 		
-		// Make way for i18n
-		// $this->tpl->compile_dir = $this->viewdir."_c";
+
 		$this->tpl->compile_dir = BASE.'/views_c';
 		$this->tpl->compile_id = md5($this->viewfile);
 		
@@ -125,6 +127,7 @@ class template extends basetemplate {
 		$this->tpl->assign("__view",$expected_view);
 		if ($loc == null) $loc = exponent_core_makeLocation($module);
 		$this->tpl->assign("__loc",$loc);
+		$this->tpl->assign("__name", $module);
 		$this->tpl->assign("__redirect",exponent_flow_get());
 		
 		// View Config
@@ -140,6 +143,47 @@ class template extends basetemplate {
 	
 }
 
+/* exdoc
+ * 
+ * Control Template wrapper
+ * 
+ * 
+ */
+class ControlTemplate extends basetemplate {
+	
+	//PHP5 constructor
+	function __constructor($control, $view = "Default", $loc = null) {
+		ControlTemplate($control, $view , $loc=null);
+	}
+	
+	//PHP4 fallback constructor
+	function ControlTemplate($control, $view = "Default", $loc = null) {
+		
+		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
+		
+		// Set up the Smarty template variable we wrap around.
+		$this->tpl = new Smarty();
+		$this->tpl->php_handling = SMARTY_PHP_REMOVE;
+		$this->tpl->plugins_dir[] = BASE . 'subsystems/template/Smarty/plugins';
+		
+		//autoload filters
+		$this->tpl->autoload_filters = array('post' => array('includeMiscFiles'));
+		
+		$this->viewfile = exponent_template_getViewFile("controls", $control, $view);
+		$this->viewdir = realpath(dirname($this->viewfile));
+				
+		$this->view = substr(basename($this->viewfile),0,-4);
+		$this->tpl->template_dir = $this->viewdir;
+		
+		$this->tpl->compile_dir = BASE.'/views_c';
+		$this->tpl->compile_id = md5($this->viewfile);
+		
+		$this->tpl->assign("__view", $this->view);
+		$this->tpl->assign("__name", $control);
+		$this->tpl->assign("__redirect", exponent_flow_get());
+	}
+}
+
 /*
  * Form Template Wrapper
  *
@@ -149,25 +193,17 @@ class template extends basetemplate {
  * @subpackage Template
  */
 class formtemplate extends basetemplate {
-	function formtemplate($formtype,$view) {
-	
+	function formtemplate($form, $view) {
+		
+		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
+		
 		$langdir = (LANG == 'en' ? '' : LANG.'/');
 	
 		$this->tpl = new Smarty();
 		$this->tpl->php_handling = SMARTY_PHP_REMOVE;
-		$this->tpl->plugins_dir[] = BASE."plugins";
+		$this->tpl->plugins_dir[] = BASE . 'subsystems/template/Smarty/plugins';
 		
-		if (is_readable(THEME_ABSOLUTE."forms/".$formtype."/".$langdir.$view.".tpl")) {
-			$this->viewfile = THEME_ABSOLUTE."forms/".$formtype."/".$langdir.$view.".tpl";
-		} else if (is_readable(THEME_ABSOLUTE."forms/".$formtype."/".$view.".tpl")) {
-			$this->viewfile = THEME_ABSOLUTE."forms/".$formtype."/".$view.".tpl";
-		} else if (is_readable(BASE."forms/".$formtype."/".$langdir.$view.".tpl")) {
-			$this->viewfile = BASE."forms/".$formtype."/".$langdir.$view.".tpl";
-		} else if (is_readable(BASE."forms/".$formtype."/".$view.".tpl")) {
-			$this->viewfile = BASE."forms/".$formtype."/".$view.".tpl";
-		} else {
-			$this->viewfile = TEMPLATE_FALLBACK_VIEW;
-		}
+		$this->viewfile = exponent_template_getViewFile("forms", $form , $view);
 		
 		$this->view = substr(basename($this->viewfile),0,-4);
 		$this->viewdir = realpath(dirname($this->viewfile));
@@ -178,7 +214,7 @@ class formtemplate extends basetemplate {
 		$this->tpl->compile_id = md5($this->viewfile);
 		
 		$this->tpl->assign("__view",$this->view);
-		
+		$this->tpl->assign("__name", $form);
 		$this->tpl->assign("__redirect",exponent_flow_get());
 	}
 	
@@ -187,10 +223,13 @@ class formtemplate extends basetemplate {
 
 class filetemplate extends basetemplate {
 	function filetemplate($file) {
+		
+		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
+		
 		$this->tpl = new Smarty();
 		//$this->tpl->security = true;
 		$this->tpl->php_handling = SMARTY_PHP_REMOVE;
-		$this->tpl->plugins_dir[] = BASE."plugins";
+		$this->tpl->plugins_dir[] = BASE . 'subsystems/template/Smarty/plugins';
 		
 		$this->view = substr(basename($file),0,-4);
 		$this->viewdir = realpath(dirname($file));
@@ -201,7 +240,7 @@ class filetemplate extends basetemplate {
 		$this->tpl->compile_dir = BASE.'/views_c';
 		$this->tpl->compile_id = md5($this->viewfile);
 		
-		$this->tpl->assign("__view",$view);
+		$this->tpl->assign("__view", $this->view);
 		$this->tpl->assign("__redirect",exponent_flow_get());
 	}
 }
@@ -217,12 +256,15 @@ class filetemplate extends basetemplate {
  */
 class standalonetemplate extends basetemplate {
 	function standalonetemplate($view) {
+		
+		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
+		
 		$this->tpl = new Smarty();
 		//$this->tpl->security = true;
 		$this->tpl->php_handling = SMARTY_PHP_REMOVE;
-		$this->tpl->plugins_dir[] = BASE."plugins";
+		$this->tpl->plugins_dir[] = BASE . 'subsystems/template/Smarty/plugins';
 		
-		$file = exponent_template_getViewFile($view);
+		$file = exponent_template_getViewFile("", "", $view);
 		
 		$this->view = substr(basename($file),0,-4);
 		$this->viewdir = str_replace(BASE,'',realpath(dirname($file)));
@@ -239,42 +281,42 @@ class standalonetemplate extends basetemplate {
 }
 
 /*
- * Retrieve Module-Independent View File
+ * Retrieve View File
  *
  * Looks in the theme and the /views directory for a .tpl file
- * corresponding to the passed view.  This is for resolving non-module
- * views.
+ * corresponding to the passed view.
  *
- * @param string $view The name of the view.
+ * @param string $type One of "modules"", "controls"", "forms" or ""
+ * @param string $name The name the object we are requesting a view from
+ * @param string $view The name of the requested view
  *
- * @return string The filename of the view template, or "" if none found.
+ * @return string The full filepath of the view template
  */
-function exponent_template_getViewFile($view) {
-	$langdir = (LANG == 'en' ? '' : LANG.'/');
-	if (is_readable(THEME_ABSOLUTE."views/$langdir$view.tpl")) {
-		return THEME_ABSOLUTE."views/$langdir$view.tpl";
-	} else if (is_readable(THEME_ABSOLUTE."views/$view.tpl")) {
-		return THEME_ABSOLUTE."views/$view.tpl";
-	} else if (is_readable(BASE."views/$langdir$view.tpl")) {
-		return BASE."views/$langdir$view.tpl";
-	} else if (is_readable(BASE."views/$view.tpl")) {
-		return BASE."views/$view.tpl";
+function exponent_template_getViewFile($type="", $name="", $view) {
+	$viewfilepath = array_shift(exponent_core_resolveFilePaths($type, $name, "tpl", $view));
+	if ($viewfilepath != false) {
+		return $viewfilepath;
+	} else if ($view != DEFAULT_VIEW) {
+		// If we get here, try it with a different view.
+		return exponent_template_getViewFile($type, $name, DEFAULT_VIEW);
 	} else {
+		// Something is really screwed up.
 		// Fall back to something that won't error.
 		return TEMPLATE_FALLBACK_VIEW;
 	}
 }
 
+//backward compatibility wrapper
+function exponent_template_getModuleViewFile($name, $view, $recurse=true) {
+	return exponent_template_getViewFile("modules", $name, $view);
+}
 
 // I thing these still need to be i18n-ized
 function exponent_template_getViewConfigForm($module,$view,$form,$values) {
 	$form_file = "";
-	if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form")) $form_file = BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form";
-	else if (is_readable(BASE . "modules/$module/views/$view.form")) $form_file = BASE . "modules/$module/views/$view.form";
-	else if ($view != DEFAULT_VIEW) {
-		$view = DEFAULT_VIEW;
-		if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form")) $form_file = BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form";
-		else if (is_readable(BASE . "modules/$module/views/$view.form")) $form_file = BASE . "modules/$module/views/$view.form";
+	$filepath = array_shift(exponent_core_resolveFilePaths("modules", $module , "form" , $view));
+	if ($filepath != false) {
+		$form_file = $filepath;
 	}
 	
 	if (!defined("SYS_FORMS")) require_once(BASE."subsystems/forms.php");
@@ -308,14 +350,10 @@ function exponent_template_getViewConfigForm($module,$view,$form,$values) {
 }
 
 function exponent_template_getViewConfigOptions($module,$view) {
-// Can we simplify this?
 	$form_file = "";
-	if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form")) $form_file = BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form";
-	else if (is_readable(BASE . "modules/$module/views/$view.form")) $form_file = BASE . "modules/$module/views/$view.form";
-	else if ($view != DEFAULT_VIEW) {
-		$view = DEFAULT_VIEW;
-		if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form")) $form_file = BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.form";
-		else if (is_readable(BASE . "modules/$module/views/$view.form")) $form_file = BASE . "modules/$module/views/$view.form";
+	$filepath = array_shift(exponent_core_resolveFilePaths("modules", $module, "form", $view));
+	if ($filepath != false) {
+		$form_file = $filepath;
 	}
 	if ($form_file == "") return array(); // no form file, no options
 	
@@ -335,67 +373,18 @@ function exponent_template_getFormTemplates($type) {
 	$forms = array();
 	
 	//Get the forms from the base form diretory
-	if (is_dir(BASE.'forms/'.$type)) {
-		if ($dh = opendir(BASE.'forms/'.$type)) {
-			 while (false !== ($file = readdir($dh))) {
-				if ( (substr($file,-4,4) == ".tpl") && ($file{0} != '_')) {
-					$forms[substr($file,0,-4)] = substr($file,0,-4);
-				}
-			}
-		}
+	$formFiles = exponent_core_resolveFilePaths("forms", $type, "tpl", "[!_]*");
+	foreach($formFiles as $formFile) {
+		$forms[substr(basename($formFile), 0, -4)] = substr(basename($formFile), 0, -4);
 	}
-	//Get the forms from the themes form directory.  If the theme has forms of the same
-	//name as the base form dir, then they will overwrite the ones already  in the array $forms.
-	if (is_dir(THEME_ABSOLUTE.'forms/'.$type)) {
-		if ($dh = opendir(THEME_ABSOLUTE.'forms/'.$type)) {
-			 while (false !== ($file = readdir($dh))) {
-				if ( (substr($file,-4,4) == ".tpl") && ($file{0} != '_')) {
-					$forms[substr($file,0,-4)] = substr($file,0,-4);
-				}
-			}
-		}
-	}
-	
 	return $forms;
-}
-
-/* exdoc
- * Resolves a view name to a real .tpl file.
- * Consults both the theme and the standard views directory (in that order)
- * to determine where the template code for a view is stored.  Returns the absolute path
- * to the template file, or "" if no matching view file found.
- *
- * @node Subsystems:Template
- */
-function exponent_template_getModuleViewFile($module,$view,$recurse = true) {
-	$langdir = (LANG == 'en' ? '' : LANG . '/');
-	if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/views/$langdir$view.tpl")) {
-		// Try the language directory in theme
-		return BASE."themes/".DISPLAY_THEME."/modules/$module/views/$langdir$view.tpl";
-	}else if (is_readable(BASE . "modules/$module/views/$langdir$view.tpl")) {
-		// Failing that, try the language directory in the module.
-		return BASE . "modules/$module/views/$langdir$view.tpl";
-	} else if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.tpl")) {
-		// Try the english directory in the theme.
-		return BASE."themes/".DISPLAY_THEME."/modules/$module/views/$view.tpl";
-	} else if (is_readable(BASE . "modules/$module/views/$view.tpl")) {
-		// Failing even that, try the english directory in the module.
-		return BASE . "modules/$module/views/$view.tpl";
-	} else if ($recurse && $view != DEFAULT_VIEW) {
-		// If we get here, try it with a different view.
-		return exponent_template_getModuleViewFile($module,DEFAULT_VIEW);
-	} else {
-		// Something is really screwed up.
-		// Fall back to something that won't error.
-		return TEMPLATE_FALLBACK_VIEW;
-	}
 }
 
 
 /* exdoc
  * Looks through the module's views directory and returns
- * all non-internal views that are found there.  The current theme
- * is not consulted.  Returns an array of all standard view names.
+ * all non-internal views that are found there.
+ * Returns an array of all standard view names.
  * This array is unsorted.
  *
  * @param string $module The classname of the module to get views for.
@@ -403,26 +392,13 @@ function exponent_template_getModuleViewFile($module,$view,$recurse = true) {
  */
 function exponent_template_listModuleViews($module,$lang = LANG) {
 	$views = array();
-	$langdir = ($lang == 'en' ? '' : $lang.'/');
-	if (is_readable(BASE."modules/$module/views/$langdir")) {
-		$dh = opendir(BASE."modules/$module/views/$langdir");
-		while (($file = readdir($dh)) !== false) {
-			if (substr($file,-4,4) == ".tpl" && substr($file,0,1) != "_") $views[] = substr($file,0,-4);
-		}
-	}
-	if (is_readable(THEME_ABSOLUTE."modules/$module/views/$langdir")) {
-		$dh = opendir(THEME_ABSOLUTE."modules/$module/views/$langdir");
-		while (($file = readdir($dh)) !== false) {
-			if (substr($file,-4,4) == ".tpl" && substr($file,0,1) != "_") {
-				$view = substr($file,0,-4);
-				if (!in_array($view,$views)) $views[] = $view;
-			}
-		}
-	}
-	if (!count($views) && $lang != 'en') {
-		return exponent_template_listModuleViews($module,'en');
+	//Get the views
+	$viewFiles = exponent_core_resolveFilePaths("modules", $module, "tpl", "[!_]*");
+	foreach($viewFiles as $viewFile) {
+		$views[] = substr(basename($viewFile), 0, -4);
 	}
 	return $views;
+
 }
 
 function exponent_template_getViewParams($viewfile) {

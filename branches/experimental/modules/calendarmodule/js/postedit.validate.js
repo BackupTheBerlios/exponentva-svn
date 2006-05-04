@@ -11,25 +11,19 @@ function validate(frm) {
 	
 	//alert("This is an event.  Testing date/time stuff");
 	
-	var startTS = Date.parse(frm.eventstart_hidden.value);
-	var endTS = Date.parse(frm.eventend_hidden.value);
+	var startDate = new Date(frm.eventstart_timestamp.value * 1000);
+	var endDate = new Date(frm.eventend_timestamp.value * 1000);
 	
-	if (startTS > endTS) {
+	if (startDate.getTime() > endDate.getTime()) {
 		alert("Specified Event Start Date is after the Event's End Date");
 		return false;
 	}
 	
-	var startDate = new Date();
-	startDate.setTime(startTS); // WILL NOT WORK IN IE
-	var endDate = new Date();
-	endDate.setTime(endTS); // WILL NOT WORK IN IE
-	
-	if (startDate.getDate() == endDate.getDate() && startDate.getMonth() == endDate.getMonth() && startDate.getYear() == endDate.getYear()) {
+	//if (startDate.getDate() == endDate.getDate() && startDate.getMonth() == endDate.getMonth() && startDate.getYear() == endDate.getYear()) {
 		// dates match
-	} else {
-		alert("The Event Dates you entered do not match.  Events that span multiple days are not supported.");
-		return false;
-	}
-	
+	//} else {
+	//	alert("The Event Dates you entered do not match.  Events that span multiple days are not supported.");
+	//	return false;
+	//}	
 	return true;
 }
