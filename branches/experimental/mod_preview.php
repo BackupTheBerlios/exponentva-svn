@@ -27,7 +27,7 @@ $i18n = exponent_lang_loadFile('mod_preview.php');
 
 $SYS_FLOW_REDIRECTIONPATH='previewreadonly';
 
-$previewFile = exponent_core_resolveFile("", "", "", "mod_preview.php");
+$previewFile = exponent_core_resolveFilePaths("", "", "", "module_preview.php");
 if ($previewFile != false) {
 	include_once(array_shift($previewFile));
 } else {

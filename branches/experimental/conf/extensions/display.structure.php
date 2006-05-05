@@ -21,7 +21,7 @@
 if (!defined('EXPONENT')) exit('');
 
 $themes = array();
-$themeFiles = exponent_core_resolveFilePaths("", "", "", "*Theme.php");
+$themeFiles = exponent_core_resolveFilePaths("themes", "", "", "*Theme.php");
 if ($themeFiles != false) {
 	foreach ($themeFiles as $themeFile) {
 		// Need to avoid the duplicate theme problem. e.g. it has been loaded before
