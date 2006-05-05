@@ -37,11 +37,11 @@ if (exponent_sessions_loggedIn()) {
 } else if (isset($_REQUEST['module']) && isset($_REQUEST['action'])) {
 	$SYS_FLOW_REDIRECTIONPATH = 'loginredirect'; 
 	exponent_theme_runAction();
-	loginmodule::show(DEFAULT_VIEW,null);
+	LoginModule::show(DEFAULT_VIEW,null);
 } else {
 	$SYS_FLOW_REDIRECTIONPATH = 'loginredirect'; 
 	exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_SECTIONAL);
-	loginmodule::show(DEFAULT_VIEW,null);
+	LoginModule::show(DEFAULT_VIEW,null);
 }
 
 $template = new standalonetemplate('loginredirect');

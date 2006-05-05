@@ -25,7 +25,7 @@ $time = (isset($_GET['time']) ? $_GET['time'] : time());
 $info = getdate(intval($time));
 $start = mktime(0,0,0,$info['mon'],$info['mday'],$info['year']);
 
-$template = new template("calendarmodule","_viewday",$loc,false,$loc);
+$template = new template("CalendarModule","_viewday",$loc,false,$loc);
 
 $dates = $db->selectObjects("eventdate","location_data='".serialize($loc)."' AND date = '" . $start . "'");
 $events = array();

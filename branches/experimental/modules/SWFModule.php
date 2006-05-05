@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class swfmodule {
-	function name() { return exponent_lang_loadKey('modules/swfmodule/class.php','module_name'); }
+class SWFModule {
+	function name() { return exponent_lang_loadKey('modules/SWFModule/class.php','module_name'); }
 	function author() { return 'Greg Otte'; }
-	function description() { return exponent_lang_loadKey('modules/swfmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/SWFModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class swfmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/swfmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/SWFModule/class.php');
 		
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
@@ -49,14 +49,14 @@ class swfmodule {
 		global $user;
 		global $db;
 	
-		$template = new template('swfmodule',$view,$location);
+		$template = new template('SWFModule',$view,$location);
 		$template->assign('moduletitle',$title);
 			
 		if (defined('PREVIEW_READONLY') && !defined('SELECTOR')) {
 			return;
 		} 
 		if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
-		$directory = 'files/swfmodule';
+		$directory = 'files/SWFModule';
 		if (!file_exists(BASE.$directory)) {
 			$err = exponent_files_makeDirectory($directory);
 			if ($err != SYS_FILES_SUCCESS) {

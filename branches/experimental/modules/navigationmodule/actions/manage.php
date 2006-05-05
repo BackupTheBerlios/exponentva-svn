@@ -19,12 +19,12 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_checkOnModule('manage','navigationmodule')) {
+if (exponent_permissions_checkOnModule('manage','NavigationModule')) {
 	exponent_flow_set(SYS_FLOW_PROTECTED, SYS_FLOW_ACTION);
 	
-	$template = new template('navigationmodule','_manager',$loc);
+	$template = new template('NavigationModule','_manager',$loc);
 	
-	$template->assign('sections',navigationmodule::levelTemplate(0,0));
+	$template->assign('sections',NavigationModule::levelTemplate(0,0));
 	// Templates
 	$tpls = $db->selectObjects('section_template','parent=0');
 	$template->assign('templates',$tpls);

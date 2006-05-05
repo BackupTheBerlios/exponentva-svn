@@ -33,7 +33,7 @@ if ($resource != null) {
 		$db->delete('resourceitem','id='.$resource->id);
 		$db->delete('resourceitem_wf_revision','wf_original='.$resource->id);
 		//Delete search entries
-		$db->delete('search',"ref_module='resourcesmodule' AND ref_type='resourceitem' AND original_id=".$resource->id);
+		$db->delete('search',"ref_module='ResourceModule' AND ref_type='resourceitem' AND original_id=".$resource->id);
 		
 		unset($_SESSION['resource_cache']);
 		exponent_flow_redirect(SYS_FLOW_SECTIONAL);

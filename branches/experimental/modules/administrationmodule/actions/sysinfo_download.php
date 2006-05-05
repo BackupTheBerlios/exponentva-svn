@@ -21,13 +21,13 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('configuration',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('configuration',exponent_core_makeLocation('AdministrationModule'))) {
 	ob_end_clean();
 	
 	header('Content-type: application/octet-stream');
 	header('Content-Disposition: inline; filename="exponent.phpinfo.html"');
 	
-	$template = new template('administrationmodule','_sysinfo',$loc);
+	$template = new template('AdministrationModule','_sysinfo',$loc);
 	
 	ob_start();
 	phpinfo(INFO_GENERAL+INFO_CONFIGURATION+INFO_MODULES);

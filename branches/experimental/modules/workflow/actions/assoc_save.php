@@ -19,7 +19,7 @@
 
 if (!defined("EXPONENT")) exit("");
 
-if (exponent_permissions_check('workflow',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('workflow',exponent_core_makeLocation('AdministrationModule'))) {
 	if (isset($_POST['s'])) {
 		$assoc = $db->selectObject("approvalpolicyassociation","module='".$_POST['m']."' AND source='".$_POST['s']."' AND is_global=0");
 		if ($assoc) {

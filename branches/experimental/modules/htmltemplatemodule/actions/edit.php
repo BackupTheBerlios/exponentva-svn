@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 $t = null;
-$loc = exponent_core_makeLocation('htmltemplatemodule');
+$loc = exponent_core_makeLocation('HTMLTemplateModule');
 if (isset($_GET['id'])) {
 	$t = $db->selectObject('htmltemplate','id='.intval($_GET['id']));
 }
@@ -30,10 +30,10 @@ if ((!$t && exponent_permissions_check('create',$loc)) || ($t  && exponent_permi
 	exponent_forms_initialize();
 	
 	$form = htmltemplate::form($t);
-	$form->meta('module','htmltemplatemodule');
+	$form->meta('module','HTMLTemplateModule');
 	$form->meta('action','save');
 	
-	$template = new template('htmltemplatemodule','_form_edit',$loc);
+	$template = new template('HTMLTemplateModule','_form_edit',$loc);
 	$template->assign('is_edit',(isset($t->id) ? 1 : 0));
 	$template->assign('form_html',$form->toHTML());
 	$template->output();

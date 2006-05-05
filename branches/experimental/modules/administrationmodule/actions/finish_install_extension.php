@@ -21,9 +21,9 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 
-	$template = new template('administrationmodule','_upload_finalSummary',$loc);
+	$template = new template('AdministrationModule','_upload_finalSummary',$loc);
 
 	$sessid = session_id();
 	if (!file_exists(BASE."extensionuploads/$sessid") || !is_dir(BASE."extensionuploads/$sessid")) {
@@ -48,7 +48,7 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('administ
 		$template->assign('redirect',exponent_flow_get());
 		
 		ob_start();
-		include(BASE.'modules/administrationmodule/actions/installtables.php');
+		include(BASE.'modules/AdministrationModule/actions/installtables.php');
 		ob_end_clean();
 	}
 	

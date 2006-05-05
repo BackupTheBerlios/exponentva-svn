@@ -34,10 +34,10 @@ if ($user && ($list == null || $list->owner == $user->id)) {
 	}
 	
 	$form = inbox_contactlist::form($list);
-	$form->meta('module','inboxmodule');
+	$form->meta('module','InboxModule');
 	$form->meta('action','save_list');
 
-	$template = new template('inboxmodule','_form_editGroup',$loc);
+	$template = new template('InboxModule','_form_editGroup',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

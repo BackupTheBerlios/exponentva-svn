@@ -48,13 +48,13 @@ if ($user && $user->is_acting_admin == 1) {
 }	
 
 if ($check_id != -1 && 
-    exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$check_id))) {
+    exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$check_id))) {
 	$form = section::internalAliasForm($section);
-	$form->meta('module','navigationmodule');
+	$form->meta('module','NavigationModule');
 	$form->meta('action','save_internalalias');
 	// Create a template for the form's output, to allow the themer to optionally
 	// change the form's title and caption.  This will also help with translation.
-	$template = new template('navigationmodule','_form_editInternalAlias');
+	$template = new template('NavigationModule','_form_editInternalAlias');
 	// Assign the customary 'is_edit' flag with the template, to allow the view to
 	// display different text to the user when they are editting an alias and when they
 	// are creating a new alias.

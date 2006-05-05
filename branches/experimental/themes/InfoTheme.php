@@ -17,9 +17,9 @@
 #
 ##################################################
 
-if (class_exists('infotheme')) return;
+if (class_exists('InfoTheme')) return;
 
-class infotheme {
+class InfoTheme {
 	function name() { return "Info Theme"; }
 	function author() { return "Shane Thomison"; }
 	function description() { return "Theme for an informational website (like an online brochure)."; }

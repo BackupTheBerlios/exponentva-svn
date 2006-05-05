@@ -66,7 +66,7 @@
 	{/if}
 	{if $permissions.manage_approval == 1 || $resource->permissions.manage_approval == 1}
 		&nbsp;|&nbsp;
-		<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=resourceitem m=resourcesmodule s=$__loc->src action=revisions_view id=$resource->id}">
+		<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=resourceitem m=ResourceModule s=$__loc->src action=revisions_view id=$resource->id}">
 			{$_TR.revisions}
 		</a>
 	{/if}

@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_sessions_set('display_theme',$_GET['theme']);
 	exponent_flow_redirect();
 } else {

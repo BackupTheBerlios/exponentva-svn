@@ -29,17 +29,16 @@
 #
 # 
 ##################################################
-/*
- * This function creates html loaders for - currently - JS and CSS Files 
+/* exdoc
+ * 
+ * This function creates html loaders for - currently - JS and CSS Files
+ * Please note it wil only work for newtype __names (SomeModule, SomeForm, SomeTheme, SomeControl...)
  */
-function smarty_postfilter_includeMiscFiles($compiledsource,&$smarty) {	
-
-	$type = array_pop(preg_split("*(?=[A-Z])*", $smarty->_tpl_vars['__name']));
-	
+function smarty_postfilter_includeMiscFiles($compiledsource,&$smarty) {		
 	ob_start();
 
 		//CSS	
-		$myCSS = exponent_core_resolveFilePaths($type, $smarty->_tpl_vars['__name'], "css", $smarty->_tpl_vars['__view'] . "*");
+		$myCSS = exponent_core_resolveFilePaths("guess", $smarty->_tpl_vars['__name'], "css", $smarty->_tpl_vars['__view'] . "*");
 		
 		if($myCSS != false) {
 			foreach($myCSS as $myCSSFile){
@@ -48,7 +47,7 @@ function smarty_postfilter_includeMiscFiles($compiledsource,&$smarty) {
 		}
 		
 		//JavaScript
-		$myJS = exponent_core_resolveFilePaths($type, $smarty->_tpl_vars['__name'], "js", $smarty->_tpl_vars['__view'] . "*");
+		$myJS = exponent_core_resolveFilePaths("guess", $smarty->_tpl_vars['__name'], "js", $smarty->_tpl_vars['__view'] . "*");
 		
 		if($myJS != false) {
 			foreach($myJS as $myJSFile){
@@ -61,5 +60,4 @@ function smarty_postfilter_includeMiscFiles($compiledsource,&$smarty) {
 	return $html . $compiledsource;
 
 }
-
 ?>

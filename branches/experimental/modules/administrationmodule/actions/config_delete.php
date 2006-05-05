@@ -20,7 +20,7 @@
 // Part of the Configuration category
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('configuration',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('configuration',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_CONFIG')) require_once(BASE.'subsystems/config.php');
 	exponent_config_deleteProfile($_GET['configname']);
 	exponent_flow_redirect();

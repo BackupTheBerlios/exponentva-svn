@@ -17,7 +17,7 @@
 #
 ##################################################
 
-define('SCRIPT_EXP_RELATIVE','modules/bannermodule/');
+define('SCRIPT_EXP_RELATIVE','modules/BannerModule/');
 define('SCRIPT_FILENAME','banner_click.php');
 
 include_once('../../exponent.php');

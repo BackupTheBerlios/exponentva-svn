@@ -25,15 +25,15 @@ if (SITE_ALLOW_REGISTRATION == 1) {
 	exponent_forms_initialize();
 	
 	$form = exponent_users_form(null);
-	$form->meta('module','loginmodule');
+	$form->meta('module','LoginModule');
 	$form->meta('action','saveuser');
 	if (SITE_USE_CAPTCHA && EXPONENT_HAS_GD) {
-		$i18n = exponent_lang_loadFile('modules/loginmodule/actions/createuser.php');
+		$i18n = exponent_lang_loadFile('modules/LoginModule/actions/createuser.php');
 		$form->registerBefore('submit',null,'',new htmlcontrol(sprintf($i18n['captcha_description'],'<img src="'.PATH_RELATIVE.'captcha.php" />'),false));
 		$form->registerBefore('submit','captcha_string','',new textcontrol('',6));
 	}
 	
-	$template = new template('loginmodule','_form_createUser',$loc);
+	$template = new template('LoginModule','_form_createUser',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 }

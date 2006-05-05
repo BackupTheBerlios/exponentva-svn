@@ -17,11 +17,11 @@
 #
 ##################################################
 
-define('SCRIPT_EXP_RELATIVE','modules/navigationmodule/');
+define('SCRIPT_EXP_RELATIVE','modules/NavigationModule/');
 define('SCRIPT_FILENAME','nav.php');
 
 include_once('../../exponent.php');
 
-include(BASE.'modules/navigationmodule/actions/linker.php');
+include(BASE.'modules/NavigationModule/actions/linker.php');
 
 ?>

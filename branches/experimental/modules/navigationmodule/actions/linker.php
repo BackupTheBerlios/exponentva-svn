@@ -20,9 +20,9 @@
 if (!defined('EXPONENT')) exit('');
 
 if ($user) {
-	$sections = navigationmodule::levelTemplate(0,0);
+	$sections = NavigationModule::levelTemplate(0,0);
 	$standalones = $db->selectObjects('section','parent = -1');
-	$template = new template('navigationmodule','_linker');
+	$template = new template('NavigationModule','_linker');
 	$template->assign('sections',$sections);
 	$template->assign('standalones',$standalones);
 	$template->assign('haveStandalones',count($standalones));

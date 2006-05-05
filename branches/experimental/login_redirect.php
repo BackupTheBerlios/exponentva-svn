@@ -50,10 +50,10 @@ if (exponent_sessions_loggedIn()) {
 	exit('Redirecting...');
 } else if (isset($_REQUEST['module']) && isset($_REQUEST['action'])) {
 	exponent_theme_runAction();
-	loginmodule::show(DEFAULT_VIEW,null);
+	LoginModule::show(DEFAULT_VIEW,null);
 } else {
 	exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_SECTIONAL);
-	loginmodule::show(DEFAULT_VIEW,null);
+	LoginModule::show(DEFAULT_VIEW,null);
 }
 
 $template = new standalonetemplate('loginredirect');

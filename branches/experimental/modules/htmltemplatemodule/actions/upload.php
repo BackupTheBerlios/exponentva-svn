@@ -28,15 +28,15 @@ if (exponent_permissions_check('create',$loc)) {
 	if (!defined('SYS_FORMS')) include_once(BASE.'subsystems/forms.php');
 	exponent_forms_initialize();
 	
-	$i18n = exponent_lang_loadFile('modules/htmltemplatemodule/actions/upload.php');
+	$i18n = exponent_lang_loadFile('modules/HTMLTemplateModule/actions/upload.php');
 	
 	$form = htmltemplate::form($t);
 	$form->registerBefore('submit','file',$i18n['upload'],new uploadcontrol());
 	$form->unregister('body');
-	$form->meta('module','htmltemplatemodule');
+	$form->meta('module','HTMLTemplateModule');
 	$form->meta('action','save_upload');
 	
-	$template = new template('htmltemplatemodule','_form_upload',$loc);
+	$template = new template('HTMLTemplateModule','_form_upload',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

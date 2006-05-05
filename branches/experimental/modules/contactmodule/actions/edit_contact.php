@@ -32,7 +32,7 @@ if (exponent_permissions_check('configure',$loc)) {
 	$form->location($loc);
 	$form->meta('action','save_contact');
 	
-	$template = new template('contactmodule','_form_edit_contact',$loc);
+	$template = new template('ContactModule','_form_edit_contact',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_edit', (isset($_GET['id']) ? 1 : 0) );
 	$template->output();

@@ -26,8 +26,8 @@ if ($user && $user->is_acting_admin == 1) {
 	if (isset($_SESSION['nav_cache']['kids']))
 			unset($_SESSION['nav_cache']['kids']);
 	$form->meta('action','reparent_standalone');
-	$form->meta('module','navigationmodule');
-	$template = new template('navigationmodule','_move_standalone');
+	$form->meta('module','NavigationModule');
+	$template = new template('NavigationModule','_move_standalone');
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

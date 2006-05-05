@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
 	
 	$sessid = session_id();
@@ -37,7 +37,7 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('administ
 		}
 	}
 	
-	$template = new template('administrationmodule','_upload_filesList',$loc);
+	$template = new template('AdministrationModule','_upload_filesList',$loc);
 	$template->assign('relative','extensionuploads/'.$sessid);
 	$template->assign('files',$files);
 	$template->output();

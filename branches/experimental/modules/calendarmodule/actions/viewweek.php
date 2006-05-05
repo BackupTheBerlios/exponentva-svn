@@ -21,7 +21,7 @@ if (!defined("EXPONENT")) exit("");
 
 exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 
-$template = new template("calendarmodule","_viewweek",$loc,false);
+$template = new template("CalendarModule","_viewweek",$loc,false);
 
 $time = (isset($_GET['time']) ? $_GET['time'] : time());
 $time = intval($time);

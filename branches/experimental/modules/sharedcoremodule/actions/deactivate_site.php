@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedcoremodule'))) {
+if (exponent_permissions_check('manage_site',exponent_core_makeLocation('SharedCoreModule'))) {
 	$site = null;
 	if (isset($_POST['site_id'])) {
 		$site = $db->selectObject('sharedcore_site','id='.intval($_POST['site_id']));
@@ -29,7 +29,7 @@ if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedc
 		if (!defined('SYS_SHAREDCORE')) require_once(BASE.'subsystems/sharedcore.php');
 		exponent_sharedcore_clear($site->path); // Do not delete other stuff.
 		
-		$template = new template('sharedcoremodule',$_POST['tpl']);
+		$template = new template('SharedCoreModule',$_POST['tpl']);
 		$template->assign('reason',$_POST['reason']);
 		
 		$fh = fopen($site->path.'index.php','w');

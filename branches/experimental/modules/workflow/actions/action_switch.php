@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('workflow',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('workflow',exponent_core_makeLocation('AdministrationModule'))) {
 	$db->switchValues('workflowaction','rank',intval($_GET['a']),intval($_GET['b']),"policy_id='".intval($_GET['policy_id'])."' AND type=".$_GET['type']);
 	exponent_flow_redirect();
 } else {

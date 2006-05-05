@@ -41,7 +41,7 @@ if (isset($_REQUEST['vview'])) {
 if (isset($_REQUEST['vmod'])) {
 	$source_select['module'] = $_REQUEST['vmod'];
 } else if (!isset($source_select['module'])) {
-	$source_select['module'] = 'containermodule';
+	$source_select['module'] = 'ContainerModule';
 }
 
 if (isset($_REQUEST['showmodules'])) {
@@ -70,7 +70,7 @@ $template = new standalonetemplate('orphaned_content');
 
 ob_start();
 // Include the orphans_modules action of the container, to get a list of modules types with orhpans.
-include_once(BASE.'modules/containermodule/actions/orphans_modules.php');
+include_once(BASE.'modules/ContainerModule/actions/orphans_modules.php');
 $template->assign('modules_output',ob_get_contents());
 ob_end_clean();
 
@@ -78,7 +78,7 @@ ob_end_clean();
 if (isset($_GET['module'])) {
 	ob_start();
 	// Include the orphans_content action of the container module, to show all modules of the specified type.
-	include_once(BASE.'modules/containermodule/actions/orphans_content.php');
+	include_once(BASE.'modules/ContainerModule/actions/orphans_content.php');
 	$template->assign('main_output',ob_get_contents());
 	$template->assign('error','');
 	ob_end_clean();

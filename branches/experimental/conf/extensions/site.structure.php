@@ -73,7 +73,7 @@ $stuff = array(
 		'SITE_DEFAULT_SECTION'=>array(
 			'title'=>$i18n['default_section'],
 			'description'=>$i18n['default_section_desc'],
-			'control'=>new dropdowncontrol('',navigationmodule::levelDropDownControlArray(0))
+			'control'=>new dropdowncontrol('',NavigationModule::levelDropDownControlArray(0))
 		),
 		'SITE_WYSIWYG_EDITOR'=>array(
 			'title'=>$i18n['wysiwyg_editor'],

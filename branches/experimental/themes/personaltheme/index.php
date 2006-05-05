@@ -61,7 +61,7 @@ if (!defined('EXPONENT')) exit('');
 													<tr>
 														<td align="left" valign="top">
 														<br /><br />
-															<?php exponent_theme_showModule("navigationmodule","Side Navigation"); ?>
+															<?php exponent_theme_showModule("NavigationModule","Side Navigation"); ?>
 														</td>
 													</tr>
 												</table>
@@ -74,7 +74,7 @@ if (!defined('EXPONENT')) exit('');
 								<td rowspan="3" width="12" valign="bottom"><img src="<?php echo THEME_RELATIVE; ?>images/jde_radiusblft.gif" /></td>
 								<td rowspan="3" width="247" align="left" valign="top" style="padding: 5px">
 								<img src="<?php echo THEME_RELATIVE; ?>images/spacer.gif" width="278" height="1">
-								<?php exponent_theme_showModule("textmodule","Default","","welcometext"); ?>
+								<?php exponent_theme_showModule("TextModule","Default","","welcometext"); ?>
 								</td>
 								<td rowspan="3" background="<?php echo THEME_RELATIVE; ?>images/jde_image_area_rt.gif" style="background-repeat: repeat-y; border-top: 1px solid #000; border-bottom: 1px solid #000;" width="29"><img src="<?php echo THEME_RELATIVE; ?>images/jde_image_area_rt.gif"/></td>
 							</tr>
@@ -128,7 +128,7 @@ if (!defined('EXPONENT')) exit('');
 																<tr>
 																	<td align="left" valign="top" style="border-top: 1px dashed #CDCCCC;">
 																		<br />
-																		<?php exponent_theme_showModule("textmodule","Default","","footer"); ?>
+																		<?php exponent_theme_showModule("TextModule","Default","","footer"); ?>
 																	</td>
 																</tr>
 															</table>
@@ -154,8 +154,8 @@ if (!defined('EXPONENT')) exit('');
 										<tr>
 											<td width="22" rowspan="5" align="left" valign="top">&nbsp;</td>
 											<td width="186" align="left" valign="top">
-												<?php exponent_theme_showModule("loginmodule","Default"); ?>
-												<?php exponent_theme_showModule("previewmodule","Default"); ?>
+												<?php exponent_theme_showModule("LoginModule","Default"); ?>
+												<?php exponent_theme_showModule("PreviewModule","Default"); ?>
 											</td>
 											<td width="1" rowspan="5">&nbsp;</td>
 										</tr>
@@ -164,7 +164,7 @@ if (!defined('EXPONENT')) exit('');
 										</tr>
 										<tr>
 											<td width="186" align="left" valign="top">
-												<?php exponent_theme_showModule("navigationmodule","Children Only"); ?>
+												<?php exponent_theme_showModule("NavigationModule","Children Only"); ?>
 											</td>
 										</tr>
 										
@@ -173,7 +173,7 @@ if (!defined('EXPONENT')) exit('');
 										</tr>
 										<tr>
 											<td align="left" valign="top">
-												<?php exponent_theme_showSectionalModule("containermodule","Default","","@right"); ?>
+												<?php exponent_theme_showSectionalModule("ContainerModule","Default","","@right"); ?>
 											</td>
 										</tr>
 										<tr>

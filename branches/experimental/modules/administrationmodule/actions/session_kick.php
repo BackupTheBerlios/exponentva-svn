@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	$ticket = $db->selectObject('sessionticket',"ticket='".preg_replace('/[^A-Za-z0-9]/','',$_GET['ticket'])."'");
 	if ($ticket) {
 		if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');

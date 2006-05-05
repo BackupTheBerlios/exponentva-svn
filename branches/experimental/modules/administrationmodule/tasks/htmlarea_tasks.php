@@ -19,13 +19,13 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$i18n = exponent_lang_loadFile('modules/administrationmodule/tasks/htmlarea_tasks.php');
+$i18n = exponent_lang_loadFile('modules/AdministrationModule/tasks/htmlarea_tasks.php');
 
 return array(
 	SITE_WYSIWYG_EDITOR=>array(
 		'htmlarea_configs'=>array(
 			'title'=>$i18n['toolbar_settings'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'htmlarea_configs'
 		)
 	)

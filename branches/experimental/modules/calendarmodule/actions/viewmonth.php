@@ -21,6 +21,6 @@ if (!defined('EXPONENT')) exit('');
 
 exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 
-calendarmodule::show(DEFAULT_VIEW,$loc);
+CalendarModule::show(DEFAULT_VIEW,$loc);
 
 ?>

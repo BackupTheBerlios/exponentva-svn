@@ -44,13 +44,13 @@ if (($item == null && exponent_permissions_check('post',$loc)) ||
 	$form->meta('action','save');
 	$form->location($loc);
 	
-	$config = $db->selectObject('calendarmodule_config',"location_data='".serialize($loc)."'");
+	$config = $db->selectObject('CalendarModule_config',"location_data='".serialize($loc)."'");
 	if (!$config) {
 		$config->enable_categories = 0;
 		$config->enable_feedback = 0;
 	}
 	
-	$i18n = exponent_lang_loadFile('modules/calendarmodule/actions/edit.php');
+	$i18n = exponent_lang_loadFile('modules/CalendarModule/actions/edit.php');
 	
 	if ($config->enable_categories == 1) {
 		$ddopts = array();
@@ -66,16 +66,21 @@ if (($item == null && exponent_permissions_check('post',$loc)) ||
 		$form->registerBefore('submit', null,'', new htmlcontrol('<hr size="1" />'));
 		$allforms = array();
 		$allforms[''] = $i18n['no_feedback'];
-		$allforms = array_merge($allforms, exponent_template_getFormTemplates('email'));
+		//convert to something the dropdowncontrol can digest
+		foreach(exponent_template_listFormTemplates('email') as $template) {
+			$allforms[$template] = $template;
+		}
+		$allforms = array_merge($allforms, exponent_template_listFormTemplates('email'));
+		
 		$form->registerAfter('eventend', 'feedback_form', $i18n['feedback_form'], new dropdowncontrol($item->feedback_form, $allforms));
 		$form->registerAfter('feedback_form', 'feedback_email', $i18n['feedback_email'], new textcontrol($item->feedback_email, 20));
 		$form->registerBefore('feedback_form', null, '', new htmlcontrol('<br />'));
 	}
 	
 	if (!defined('SYS_MODULES')) include_once(BASE.'subsystems/modules.php');
-	$form->validationScript = exponent_modules_getJSValidationFile('calendarmodule','postedit');
+	$form->validationScript = exponent_modules_getJSValidationFile('CalendarModule','postedit');
 	
-	$template = new template('calendarmodule','_form_edit',$loc);
+	$template = new template('CalendarModule','_form_edit',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_edit',($item == null ? 0 : 1));
 	

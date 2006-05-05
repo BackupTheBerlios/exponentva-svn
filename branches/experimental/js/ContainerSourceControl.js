@@ -102,7 +102,7 @@ if (document.body.appendChild) {
 				} else if (g_radio_new.checked == true || module.var_supportsSources == 0) {
 					iframe.src = PATH_RELATIVE+"mod_preview.php?module="+modclass+"&view="+g_ctl_views.options[g_ctl_views.selectedIndex].value+"&title="+escape(titleText.value);
 				} else {
-					iframe.src = PATH_RELATIVE+"modules/containermodule/nosourceselected.php";
+					iframe.src = PATH_RELATIVE+"modules/ContainerModule/nosourceselected.php";
 				}
 			}
 		}
@@ -170,9 +170,9 @@ if (document.body.appendChild) {
 	function pickSource() {
 		activate("Existing");
 		var mod = currentModule();
-		//var url = PATH_RELATIVE+"source_selector.php?showmodules="+mod+"&dest="+escape("modules/containermodule/picked_source.php?dummy")+"&vmod=containermodule&vview=_sourcePicker";
+		//var url = PATH_RELATIVE+"source_selector.php?showmodules="+mod+"&dest="+escape("modules/ContainerModule/picked_source.php?dummy")+"&vmod=ContainerModule&vview=_sourcePicker";
 		//window.open(url,'sourcePicker','title=no,toolbar=no,width=640,height=480,scrollbars=yes');
-		openSelector(mod,"modules/containermodule/picked_source.php?dummy","containermodule","_sourcePicker");
+		openSelector(mod,"modules/ContainerModule/picked_source.php?dummy","ContainerModule","_sourcePicker");
 	}
 	
 	function sourcePicked(src,desc) {

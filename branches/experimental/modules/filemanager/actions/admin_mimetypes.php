@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('files_subsystem',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('files_subsystem',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	$template = new template('filemanager','_mimetypes',$loc);
 	$template->assign('types',$db->selectObjects('mimetype'));

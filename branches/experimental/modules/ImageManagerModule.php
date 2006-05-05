@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class imagemanagermodule {
-	function name() { return exponent_lang_loadKey('modules/imagemanagermodule/class.php','module_name'); }
+class ImageManagerModule {
+	function name() { return exponent_lang_loadKey('modules/ImageManagerModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description()  { return exponent_lang_loadKey('modules/imagemanagermodule/class.php','module_description'); }
+	function description()  { return exponent_lang_loadKey('modules/ImageManagerModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class imagemanagermodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = "") {
-		$i18n = exponent_lang_loadFile('modules/imagemanagermodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/ImageManagerModule/class.php');
 		
 		if ($internal == '') {
 			return array(
@@ -48,14 +48,14 @@ class imagemanagermodule {
 	
 	function show($view,$loc,$title = '') {
 		
-		$template = new template('imagemanagermodule',$view,$loc);
+		$template = new template('ImageManagerModule',$view,$loc);
 		
 		$uilevel = 99; // MAX
 		if (exponent_sessions_isset("uilevel")) $uilevel = exponent_sessions_get("uilevel");
 		$template->assign('show',((defined('SELECTOR') || $uilevel > UILEVEL_PREVIEW) ? 1 : 0));
 		
 		if (!defined('SYS_FILES')) include_once(BASE.'subsystems/files.php');
-		$directory = 'files/imagemanagermodule/'.$loc->src;
+		$directory = 'files/ImageManagerModule/'.$loc->src;
 		if (!file_exists(BASE.$directory)) {
 			$err = exponent_files_makeDirectory($directory);
 			if ($err != SYS_FILES_SUCCESS) {
@@ -90,7 +90,7 @@ class imagemanagermodule {
 	
 	function deleteIn($loc) {
 		global $db;
-		$directory = 'files/imagemanagermodule/'.$loc->src;
+		$directory = 'files/ImageManagerModule/'.$loc->src;
 		foreach ($db->selectObjectsIndexedArray("file","directory='$directory'") as $file) {
 			file::delete($file);
 		}
@@ -100,7 +100,7 @@ class imagemanagermodule {
 	
 	function copyContent($oloc,$nloc) {
 		global $db;
-		$directory = 'files/imagemanagermodule/'.$nloc->src;
+		$directory = 'files/ImageManagerModule/'.$nloc->src;
 		if (!file_exists(BASE.$directory) && exponent_files_makeDirectory($directory) != SYS_FILES_SUCCESS) {
 			return;
 		}

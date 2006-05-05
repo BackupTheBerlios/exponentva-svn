@@ -35,9 +35,9 @@ if (isset($_POST['id'])) {
 	$check_id = $_POST['parent'];
 }
 
-if ($check_id != -1 && exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$check_id))) {
+if ($check_id != -1 && exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$check_id))) {
 
-	$i18n = exponent_lang_loadFile('modules/navigationmodule/actions/save_internalalias.php');
+	$i18n = exponent_lang_loadFile('modules/NavigationModule/actions/save_internalalias.php');
 
 	
 	// Update the section from the _POST data.

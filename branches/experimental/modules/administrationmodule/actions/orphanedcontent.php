@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('database',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('database',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 
 	$nullrefs = $db->selectObjects('locationref','refcount=0');
@@ -49,7 +49,7 @@ if (exponent_permissions_check('database',exponent_core_makeLocation('administra
 		}
 	}
 	
-	$template = new template('administrationmodule','_orphanedcontent');
+	$template = new template('AdministrationModule','_orphanedcontent');
 	$template->assign('modules',$mods);
 	$template->assign('have_bad_orphans',$have_bad_orphans);
 	

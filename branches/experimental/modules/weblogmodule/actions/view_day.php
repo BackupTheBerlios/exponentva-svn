@@ -32,7 +32,7 @@ if (!exponent_permissions_check('view_private',$loc)) {
 	$where .= ' AND is_private = 0';
 }
 
-$config = $db->selectObject('weblogmodule_config',"location_data='".serialize($loc)."'");
+$config = $db->selectObject('WeblogModule_config',"location_data='".serialize($loc)."'");
 if ($config == null) {
 	$config->allow_comments = 1;
 }
@@ -57,7 +57,7 @@ for ($i = 0; $i < count($posts); $i++) {
 }
 usort($posts,'exponent_sorting_byPostedDescending');
 			
-$template = new template('weblogmodule','_view_day',$loc);
+$template = new template('WeblogModule','_view_day',$loc);
 $template->assign('posts',$posts);
 $template->register_permissions(
 	array('administrate'/*,'configure'*/,'post','edit','delete','comment','edit_comments','delete_comments','view_private'),

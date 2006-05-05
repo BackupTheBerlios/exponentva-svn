@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class navigationmodule {
-	function name() { return exponent_lang_loadKey('modules/navigationmodule/class.php','module_name'); }
+class NavigationModule {
+	function name() { return exponent_lang_loadKey('modules/NavigationModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description() { return exponent_lang_loadKey('modules/navigationmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/NavigationModule/class.php','module_description'); }
 	
 	function hasContent() { return false; }
 	function hasSources() { return false; }
@@ -29,7 +29,7 @@ class navigationmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/navigationmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/NavigationModule/class.php');
 		
 		return array(
 			'view'=>$i18n['perm_view'],
@@ -50,7 +50,7 @@ class navigationmodule {
 				
 				if( $current->parent == -1 )
 				{
-					$sections = navigationmodule::levelTemplate(-1,0);
+					$sections = NavigationModule::levelTemplate(-1,0);
 					foreach ($sections as $section) {
 						if ($section->id == $id) {
 							$current = $section;
@@ -58,7 +58,7 @@ class navigationmodule {
 						}
 					}
 				} else {
-					$sections = navigationmodule::levelTemplate(0,0);
+					$sections = NavigationModule::levelTemplate(0,0);
 					foreach ($sections as $section) {
 						if ($section->id == $id) {
 							$current = $section;
@@ -68,7 +68,7 @@ class navigationmodule {
 				}
 			break;
 			default:
-				$sections = navigationmodule::levelTemplate(0,0);
+				$sections = NavigationModule::levelTemplate(0,0);
 				foreach ($sections as $section) {
 					if ($section->id == $id) {
 						$current = $section;
@@ -78,7 +78,7 @@ class navigationmodule {
 			break;
 		}
 		
-		$template = new template('navigationmodule',$view,$loc);
+		$template = new template('NavigationModule',$view,$loc);
 		$template->assign('sections',$sections);
 		$template->assign('current',$current);
 		global $user;
@@ -116,7 +116,7 @@ class navigationmodule {
 		if (!defined('SYS_SORTING')) include_once(BASE.'subsystems/sorting.php');
 		usort($nodes,'exponent_sorting_byRankAscending');
 		foreach ($nodes as $node) {
-			if (($node->public == 1 || exponent_permissions_check('view',exponent_core_makeLocation('navigationmodule','',$node->id))) && !in_array($node->id,$ignore_ids)) {
+			if (($node->public == 1 || exponent_permissions_check('view',exponent_core_makeLocation('NavigationModule','',$node->id))) && !in_array($node->id,$ignore_ids)) {
 				$html .= '<option value="' . $node->id . '" ';
 				if ($default == $node->id) $html .= 'selected';
 				$html .= '>';
@@ -126,10 +126,10 @@ class navigationmodule {
 					$html .= str_pad('',$depth*3,'.',STR_PAD_LEFT) . '('.$node->name.')';
 				}
 				$html .= '</option>';
-				$html .= navigationmodule::levelShowDropdown($node->id,$depth+1,$default,$ignore_ids);
+				$html .= NavigationModule::levelShowDropdown($node->id,$depth+1,$default,$ignore_ids);
 			}
 		}
-		return $options;
+		return $nodes;
 	}
 	
 	/*
@@ -145,14 +145,14 @@ class navigationmodule {
 		if (!defined('SYS_SORTING')) include_once(BASE.'subsystems/sorting.php');
 		usort($nodes,'exponent_sorting_byRankAscending');
 		foreach ($nodes as $node) {
-			if (($node->public == 1 || exponent_permissions_check('view',exponent_core_makeLocation('navigationmodule','',$node->id))) && !in_array($node->id,$ignore_ids)) {
+			if (($node->public == 1 || exponent_permissions_check('view',exponent_core_makeLocation('NavigationModule','',$node->id))) && !in_array($node->id,$ignore_ids)) {
 				if ($node->active == 1) {
 					$text = str_pad('',($depth+($full?1:0))*3,'.',STR_PAD_LEFT) . $node->name;
 				} else {
 					$text = str_pad('',($depth+($full?1:0))*3,'.',STR_PAD_LEFT) . '('.$node->name.')';
 				}
 				$ar[$node->id] = $text;
-				foreach (navigationmodule::levelDropdownControlArray($node->id,$depth+1,$ignore_ids,$full) as $id=>$text) {
+				foreach (NavigationModule::levelDropdownControlArray($node->id,$depth+1,$ignore_ids,$full) as $id=>$text) {
 					$ar[$id] = $text;
 				}
 			}
@@ -179,7 +179,7 @@ class navigationmodule {
 		for ($i = 0; $i < count($kids); $i++) {
 			$child = $kids[$i];
 			//foreach ($kids as $child) {
-			if ($child->public == 1 || exponent_permissions_check('view',exponent_core_makeLocation('navigationmodule','',$child->id))) {
+			if ($child->public == 1 || exponent_permissions_check('view',exponent_core_makeLocation('NavigationModule','',$child->id))) {
 				$child->numParents = count($parents);
 				$child->depth = $depth;
 				$child->first = ($i == 0 ? 1 : 0);
@@ -217,13 +217,12 @@ class navigationmodule {
 				}
 				$child->numChildren = $db->countObjects('section','parent='.$child->id);
 				$nodes[] = $child;
-				$nodes = array_merge($nodes,navigationmodule::levelTemplate($child->id,$depth+1,$parents));
+				$nodes = array_merge($nodes,NavigationModule::levelTemplate($child->id,$depth+1,$parents));
 			}
 		}
 		return $nodes;
 	}
 
-	
 	function getTemplateHierarchyFlat($parent,$depth = 1) {
 		global $db;
 		
@@ -239,7 +238,7 @@ class navigationmodule {
 			$page->first = ($i == 0 ? 1 : 0);
 			$page->last = ($i == count($kids)-1 ? 1 : 0);
 			$arr[] = $page;
-			$arr = array_merge($arr,navigationmodule::getTemplateHierarchyFlat($page->id,$depth + 1));
+			$arr = array_merge($arr,NavigationModule::getTemplateHierarchyFlat($page->id,$depth + 1));
 		}
 		return $arr;
 	}
@@ -269,7 +268,7 @@ class navigationmodule {
 		
 		// Grab sub pages
 		foreach ($db->selectObjects('section_template','parent='.$template->id) as $t) {
-			navigationmodule::process_subsections($section,$t);
+			NavigationModule::process_subsections($section,$t);
 		}
 		
 	}
@@ -290,14 +289,14 @@ class navigationmodule {
 		
 		$section->id = $db->insertObject($section,'section');
 		
-		navigationmodule::process_section($section,$subtpl);
+		NavigationModule::process_section($section,$subtpl);
 	}
 	
 	function deleteLevel($parent) {
 		global $db;
 		$kids = $db->selectObjects('section','parent='.$parent);
 		foreach ($kids as $kid) {
-			navigationmodule::deleteLevel($kid->id);
+			NavigationModule::deleteLevel($kid->id);
 		}
 		$secrefs = $db->selectObjects('sectionref','section='.$parent);
 		foreach ($secrefs as $secref) {
@@ -323,7 +322,7 @@ class navigationmodule {
 		foreach ($kids as $kid) {
 			$kid->parent = -1;
 			$db->updateObject($kid,'section');
-			navigationmodule::removeLevel($kid->id);
+			NavigationModule::removeLevel($kid->id);
 		}
 	}
 	
@@ -331,14 +330,14 @@ class navigationmodule {
 		global $db;
 		if ($section->public == 0) {
 			// Not a public section.  Check permissions.
-			return exponent_permissions_check('view',exponent_core_makeLocation('navigationmodule','',$section->id));
+			return exponent_permissions_check('view',exponent_core_makeLocation('NavigationModule','',$section->id));
 		} else { // Is public.  check parents.
 			if ($section->parent <= 0) {
 				// Out of parents, and since we are still checking, we haven't hit a private section.
 				return true;
 			} else {
 				$s = $db->selectObject('section','id='.$section->parent);
-				return navigationmodule::canView($s);
+				return NavigationModule::canView($s);
 			}
 		}
 	}
@@ -357,7 +356,7 @@ class navigationmodule {
     /*
 	//Commented out per Hans and Tom
 	function isPublic($section) {
-		$hier = navigationmodule::levelTemplate(0,0);
+		$hier = NavigationModule::levelTemplate(0,0);
 		
 		while (true) {
 			//echo "Section:<br>";

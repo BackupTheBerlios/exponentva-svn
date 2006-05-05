@@ -25,7 +25,7 @@ if (!defined('EXPONENT')) exit('');
 
 $loc = exponent_core_makeLocation('workflow');
 
-if (exponent_permissions_check('workflow',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('workflow',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 
 	$policies = $db->selectObjects('approvalpolicy');

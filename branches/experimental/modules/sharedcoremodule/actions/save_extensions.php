@@ -19,7 +19,7 @@
 
 if (!defined("EXPONENT")) exit("");
 
-if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedcoremodule'))) {
+if (exponent_permissions_check('manage_site',exponent_core_makeLocation('SharedCoreModule'))) {
 	$site = null;
 	$core = null;
 	if (isset($_POST['site_id'])) {

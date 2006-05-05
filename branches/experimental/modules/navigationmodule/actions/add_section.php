@@ -41,12 +41,12 @@ if (isset($_GET['parent'])) {
 
 // Check to see that A) a parent ID was passed in GET, and B) the id was valid
 if ($parent) {
-	if (exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$parent->id))) {
+	if (exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$parent->id))) {
 		// For this action, all we need to do is output a basically
 		// non-variable template the asks the user what type of page
 		// they want to add to the site Navigation.
 		
-		$template = new template('navigationmodule','_add_whichtype');
+		$template = new template('NavigationModule','_add_whichtype');
 		// We do, however need to know if there are any Pagesets.
 		$template->assign('havePagesets',($db->countObjects('section_template','parent=0') && $parent->id >= 0));
 		// We also need to know if there are any standalone pages.

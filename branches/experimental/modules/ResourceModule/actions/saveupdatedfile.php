@@ -25,7 +25,7 @@ if ($resource) {
 	$iloc = exponent_core_makeLocation($loc->mod,$loc->src,$resource->id);
 	
 	if (exponent_permissions_check('edit',$loc) || exponent_permissions_check('edit',$iloc)) {
-		$directory = 'files/resourcesmodule/'.$loc->src;
+		$directory = 'files/ResourceModule/'.$loc->src;
 		$file = file::update('file',$directory,null,time().'_'.$_FILES['file']['name']);
 		if (is_object($file)) {
 			$id = $db->insertObject($file,'file');

@@ -52,7 +52,7 @@
 			{/if}
 		{/if}
 		{if $permissions.manage_approval == 1}
-			<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=newsitem m=newsmodule s=$__loc->src action=revisions_view id=$newsitem->id}" title="{$_TR.alt_revisions}" alt="{$_TR.alt_revisions}">{$_TR.revisions}</a>
+			<a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=newsitem m=NewsModule s=$__loc->src action=revisions_view id=$newsitem->id}" title="{$_TR.alt_revisions}" alt="{$_TR.alt_revisions}">{$_TR.revisions}</a>
 		{/if}
 		{/permissions}
 		<div style="padding-left: 15px;">
@@ -70,7 +70,7 @@
 	<br /><a class="mngmntlink news_mngmntlink" href="{link action=edit}">{$_TR.create_news}</a>
 {/if}
 {if $in_approval > 0 && $canview_approval_link == 1}
-	<br /><a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=newsitem m=newsmodule s=$__loc->src action=summary}">{$_TR.view_approval}</a>
+	<br /><a class="mngmntlink news_mngmntlink" href="{link module=workflow datatype=newsitem m=NewsModule s=$__loc->src action=summary}">{$_TR.view_approval}</a>
 {/if}
 {if $permissions.view_unpublished == 1}
 	<br /><a class="mngmntlink news_mngmntlink" href="{link action=view_expired}">{$_TR.view_expired}</a>

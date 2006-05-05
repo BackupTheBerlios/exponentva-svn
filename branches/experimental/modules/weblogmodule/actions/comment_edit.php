@@ -44,7 +44,7 @@ if ($post && $post->is_draft == 0) {
 			$form->meta('parent_id',intval($_GET['parent_id']));
 		}
 		
-		$template = new template('weblogmodule','_form_commentEdit',$loc);
+		$template = new template('WeblogModule','_form_commentEdit',$loc);
 		$template->assign('form_html',$form->toHTML());
 		$template->assign('is_edit', (isset($_GET['id']) ? 1 : 0) );
 		$template->output();

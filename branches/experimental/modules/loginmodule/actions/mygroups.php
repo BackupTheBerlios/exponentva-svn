@@ -22,7 +22,7 @@ if (!defined('EXPONENT')) exit('');
 exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 
 if ($user) {
-	$template = new template('administrationmodule','_groupmanager',$loc);
+	$template = new template('AdministrationModule','_groupmanager',$loc);
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	$groups = array();
 	foreach ($db->selectObjects('groupmembership','member_id='.$user->id.' AND is_admin=1') as $memb) {

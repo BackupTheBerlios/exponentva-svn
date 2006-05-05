@@ -114,7 +114,7 @@
 </script>
 <br />
 <form method="post">
-<input type="hidden" name="module" value="administrationmodule" />
+<input type="hidden" name="module" value="AdministrationModule" />
 <input type="hidden" name="action" value="umgr_savemembers" />
 <input type="hidden" name="id" value="{$user->id}"/>
 <input type="hidden" id="membdata" name="membdata" value="" />

@@ -1,16 +1,16 @@
 <?php
 
 return array(
-	'modules/searchmodule/class.php'=>'',
-	'modules/searchmodule/views/Default.tpl'=>'',
-	'modules/searchmodule/actions/search.php'=>'',
-	'modules/searchmodule/actions/spider.php'=>'',
-	'modules/searchmodule/deps.php'=>'',
-	'modules/searchmodule/manifest.php'=>1,
-	'datatypes/searchmodule_config.php'=>'',
-	'datatypes/definitions/searchmodule_config.php'=>'',
-	'modules/searchmodule/views/_results.tpl'=>'',
-	'modules/searchmodule/views/_spiderSite.tpl'=>'',
+	'modules/SearchModule/class.php'=>'',
+	'modules/SearchModule/views/Default.tpl'=>'',
+	'modules/SearchModule/actions/search.php'=>'',
+	'modules/SearchModule/actions/spider.php'=>'',
+	'modules/SearchModule/deps.php'=>'',
+	'modules/SearchModule/manifest.php'=>1,
+	'datatypes/SearchModule_config.php'=>'',
+	'datatypes/definitions/SearchModule_config.php'=>'',
+	'modules/SearchModule/views/_results.tpl'=>'',
+	'modules/SearchModule/views/_spiderSite.tpl'=>'',
 );
 
 ?>

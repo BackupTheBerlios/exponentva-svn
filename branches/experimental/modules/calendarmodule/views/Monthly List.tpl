@@ -14,7 +14,7 @@
  *
  *}
 <a href="{link _common=1 view=Default action=show_view time=$time}">{$_TR.calendar_view}</a>&nbsp;&nbsp;|&nbsp;&nbsp;{$_TR.list_view}<br />
-<a href="#" onClick="window.open('popup.php?module=calendarmodule&src={$__loc->src}&view=Monthly List&template=printerfriendly&time={$time}','printer','title=no,scrollbars=no,width=800,height=600'); return false">{$_TR.printer_friendly}</a>
+<a href="#" onClick="window.open('popup.php?module=CalendarModule&src={$__loc->src}&view=Monthly List&template=printerfriendly&time={$time}','printer','title=no,scrollbars=no,width=800,height=600'); return false">{$_TR.printer_friendly}</a>
 <br />
 <a class="mngmntlink calendar_mngmntlink" href="{link action=show_view _common=1 view='Monthly List' time=$prev_timestamp}"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}left.png"/></a>
 <b>{$time|format_date:"%B %Y"}</b>
@@ -69,7 +69,7 @@
 			{/if}
 		{/if}
 		{if $permissions.manage_approval == 1}
-			<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=revisions_view id=$event->id}">
+			<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=revisions_view id=$event->id}">
 				{$_TR.revisions}
 			</a>
 		{/if}
@@ -88,12 +88,12 @@
 <a class="mngmntlink calendar_mngmntlink" href="{link action=edit id=0}">{$_TR.create_event}</a><br />
 {/if}
 {if $in_approval != 0 && $canview_approval_link == 1}
-<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=summary}">{$_TR.view_approval}</a>
+<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=summary}">{$_TR.view_approval}</a>
 {/if}
 {if $modconfig->enable_categories == 1}
 {if $permissions.manage_categories == 1}
 <br />
-<a href="{link module=categories orig_module=calendarmodule action=manage}" class="mngmntlink calendar_mngmntlink">{$_TR.manage_categories}</a>
+<a href="{link module=categories orig_module=CalendarModule action=manage}" class="mngmntlink calendar_mngmntlink">{$_TR.manage_categories}</a>
 {else}
 <br />
 <a class="mngmntlink calendar_mngmntlink" href="#" onClick="window.open('{$smarty.const.PATH_RELATIVE}popup.php?module=categories&m={$__loc->mod}&action=view&src={$__loc->src}','legend','width=200,height=200,title=no,status=no'); return false" title="{$_TR.alt_view_cat}" alt="{$_TR.alt_view_cat}">{$_TR.view_categories}</a>

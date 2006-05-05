@@ -21,9 +21,9 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 	
-	$i18n = exponent_lang_loadFile('modules/administrationmodule/actions/install_extension.php');
+	$i18n = exponent_lang_loadFile('modules/AdministrationModule/actions/install_extension.php');
 		
 	if ($_FILES['mod_archive']['error'] != UPLOAD_ERR_OK) {
 		
@@ -99,7 +99,7 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('administ
 				if (!$return) {
 					echo '<br />'.$i18n['error_tar'].'<br />';
 				} else {
-					header('Location: ' . URL_FULL . 'index.php?module=administrationmodule&action=verify_extension&type=tar');
+					header('Location: ' . URL_FULL . 'index.php?module=AdministrationModule&action=verify_extension&type=tar');
 				}
 			} else { // must be zip
 				include_once(BASE.'external/Zip.php');
@@ -111,7 +111,7 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('administ
 					echo '<br />'.$i18n['error_zip'].':<br />';
 					echo $zip->_error_code . ' : ' . $zip->_error_string . '<br />';
 				} else {
-					header('Location: ' . URL_FULL . 'index.php?module=administrationmodule&action=verify_extension&type=zip');
+					header('Location: ' . URL_FULL . 'index.php?module=AdministrationModule&action=verify_extension&type=zip');
 				}
 			}
 		}

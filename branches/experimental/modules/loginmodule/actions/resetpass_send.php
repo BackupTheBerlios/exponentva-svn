@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$i18n = exponent_lang_loadFile('modules/loginmodule/actions/resetpass_send.php');
+$i18n = exponent_lang_loadFile('modules/LoginModule/actions/resetpass_send.php');
 
 if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 $u = exponent_users_getUserByName($_POST['username']);
@@ -32,7 +32,7 @@ if ($u != null && $u->is_acting_admin == 0 && $u->is_admin == 0 && $u->email != 
 	$tok->expires = time() + 2*3600;
 	$tok->token = md5(time()).uniqid('');;
 	
-	$e_template = new template('loginmodule','_email_resetconfirm',$loc);
+	$e_template = new template('LoginModule','_email_resetconfirm',$loc);
 	$e_template->assign('token',$tok);
 	$msg = $e_template->render();
 	

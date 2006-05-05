@@ -32,7 +32,7 @@ if ($item) {
 		
 		unset($_SESSION['resource_cache']);
 		
-		$i18n = exponent_lang_loadFile('modules/resourcesmodule/actions/updatefile.php');
+		$i18n = exponent_lang_loadFile('modules/ResourceModule/actions/updatefile.php');
 		
 		$form = new form();
 		$form->meta('action','saveupdatedfile');
@@ -44,7 +44,7 @@ if ($item) {
 		}
 		$form->register('submit','',new buttongroupcontrol($i18n['save'],'',$i18n['cancel']));
 		
-		$template = new template('resourcesmodule','_form_checkIn',$loc);
+		$template = new template('ResourceModule','_form_checkIn',$loc);
 		$template->assign('form_html',$form->toHTML());
 		$template->assign('resource',$item);
 		

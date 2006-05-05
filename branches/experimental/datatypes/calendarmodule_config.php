@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class calendarmodule_config {
+class CalendarModule_config {
 	function form($object) {
-		$i18n = exponent_lang_loadFile('datatypes/calendarmodule_config.php');
+		$i18n = exponent_lang_loadFile('datatypes/CalendarModule_config.php');
 	
 		if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 		exponent_forms_initialize();

@@ -23,7 +23,7 @@ if (!defined("EXPONENT")) exit("");
 	if (!defined("SYS_FORMS")) require_once(BASE."subsystems/forms.php");
 	exponent_forms_initialize();
 	
-	$i18n = exponent_lang_loadFile('modules/htmltemplatemodule/actions/edit_assoc.php');
+	$i18n = exponent_lang_loadFile('modules/HTMLTemplateModule/actions/edit_assoc.php');
 	
 	$form = new form();
 	$templates = $db->selectObjectsIndexedArray("htmltemplate");
@@ -34,7 +34,7 @@ if (!defined("EXPONENT")) exit("");
 		$templates[$tid] = $templates[$tid]->title;
 	}
 	$form->meta("mod",$_GET['mod']);
-	$form->meta("module","htmltemplatemodule");
+	$form->meta("module","HTMLTemplateModule");
 	$form->meta("action","save_assoc");
 	
 	if (count($templates)) {
@@ -47,7 +47,7 @@ if (!defined("EXPONENT")) exit("");
 		$form->register("submit","",$submit);
 	}
 	
-	$template = new template("htmltemplatemodule","_form_editassoc",$loc);
+	$template = new template("HTMLTemplateModule","_form_editassoc",$loc);
 	$template->assign("form_html",$form->toHTML());
 	$template->output();
 // END PERM CHECK

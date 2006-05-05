@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	$u = exponent_users_getUserById(intval($_GET['id']));
 	if ($u) {
@@ -49,7 +49,7 @@ if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_
 			}
 		}
 		
-		$template = new template('administrationmodule','_usermembership',$loc);
+		$template = new template('AdministrationModule','_usermembership',$loc);
 		$template->assign('user',$u);
 		$template->assign('groups',$groups);
 		$template->assign('canAdd',(count($membership) < count($groups) ? 1 : 0));

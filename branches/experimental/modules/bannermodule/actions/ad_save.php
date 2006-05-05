@@ -38,7 +38,7 @@ if (exponent_permissions_check('manage',$loc)) {
 	    $banner->location_data = serialize($loc);
 	
 	    if (!isset($banner->file_id)) {
-		    $directory = 'files/bannermodule/'.$loc->src;
+		    $directory = 'files/BannerModule/'.$loc->src;
 		    $file = file::update('file',$directory,null);
 		    if (is_object($file)) {
 			    $banner->file_id = $db->insertObject($file,'file');

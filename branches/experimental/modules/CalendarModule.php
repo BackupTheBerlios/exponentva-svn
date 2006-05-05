@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class calendarmodule {
-	function name() { return exponent_lang_loadKey('modules/calendarmodule/class.php','module_name'); }
+class CalendarModule {
+	function name() { return exponent_lang_loadKey('modules/CalendarModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description() { return exponent_lang_loadKey('modules/calendarmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/CalendarModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class calendarmodule {
 	function supportsWorkflow() { return true; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/calendarmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/CalendarModule/class.php');
 		
 		if ($internal == '') {
 			return array(
@@ -60,9 +60,9 @@ class calendarmodule {
 		global $user;
 		global $db;
 		
-		$i18n = exponent_lang_loadFile('modules/calendarmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/CalendarModule/class.php');
 		
-		$template = new template('calendarmodule',$view,$loc);
+		$template = new template('CalendarModule',$view,$loc);
 		$template->assign('moduletitle',$title);
 		
 		$canviewapproval = false;
@@ -175,7 +175,7 @@ class calendarmodule {
 									
 				#$days[$start] = $db->selectObjects("calendar","location_data='".serialize($loc)."' AND (eventstart >= $start AND eventend <= " . ($start+86399) . ") AND approved!=0");
 				$edates = $db->selectObjects("eventdate","location_data='".serialize($loc)."' AND date = $start");
-				$days[$start] = calendarmodule::_getEventsForDates($edates);
+				$days[$start] = CalendarModule::_getEventsForDates($edates);
 				
 				for ($j = 0; $j < count($days[$start]); $j++) {
 					$thisloc = exponent_core_makeLocation($loc->mod,$loc->src,$days[$start][$j]->id);
@@ -222,7 +222,7 @@ class calendarmodule {
 				if ($i == $nowinfo['mday']) $currentweek = $week;
 				#$monthly[$week][$i] = $db->selectObjects("calendar","location_data='".serialize($loc)."' AND (eventstart >= $start AND eventend <= " . ($start+86399) . ") AND approved!=0");
 				$dates = $db->selectObjects("eventdate","location_data='".serialize($loc)."' AND date = $start");
-				$monthly[$week][$i] = calendarmodule::_getEventsForDates($dates);
+				$monthly[$week][$i] = CalendarModule::_getEventsForDates($dates);
 				
 				$counts[$week][$i] = count($monthly[$week][$i]);
 				if ($weekday >= 6) {
@@ -256,7 +256,7 @@ class calendarmodule {
 					exponent_permissions_check("manage_approval",$loc)
 				) ? 1 : 0;
 			$dates = $db->selectObjects("eventdate","location_data='" . serialize($loc) . "'");
-			$items = calendarmodule::_getEventsForDates($dates);
+			$items = CalendarModule::_getEventsForDates($dates);
 			if (!$continue) {
 				foreach ($items as $i) {
 					$iloc = exponent_core_makeLocation($loc->mod,$loc->src,$i->id);
@@ -314,7 +314,7 @@ class calendarmodule {
 					$dates = $db->selectObjects("eventdate","location_data='" . serialize($loc) . "' AND date >= ".exponent_datetime_startOfMonthTimestamp(time()) . " AND date <= " . exponent_datetime_endOfMonthTimestamp(time()));
 					break;
 			}
-			$items = calendarmodule::_getEventsForDates($dates,$sort_asc);
+			$items = CalendarModule::_getEventsForDates($dates,$sort_asc);
 			
 			for ($i = 0; $i < count($items); $i++) {
 				$thisloc = exponent_core_makeLocation($loc->mod,$loc->src,$items[$i]->id);
@@ -342,7 +342,7 @@ class calendarmodule {
 		$cats[0]->color = "#000000";
 		$template->assign("categories",$cats);
 		
-		$config = $db->selectObject("calendarmodule_config","location_data='".serialize($loc)."'");
+		$config = $db->selectObject("CalendarModule_config","location_data='".serialize($loc)."'");
 		
 		if (!$config) {
 			$config->enable_categories = 0;
@@ -365,25 +365,25 @@ class calendarmodule {
 	function spiderContent($item = null) {
 		global $db;
 		
-		$i18n = exponent_lang_loadFile('modules/calendarmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/CalendarModule/class.php');
 		
 		if (!defined('SYS_SEARCH')) include_once(BASE.'subsystems/search.php');
 		
 		$search = null;
 		$search->category = $i18n['search_category'];
 		$search->view_link = ''; // FIXME : need a view action
-		$search->ref_module = 'calendarmodule';
+		$search->ref_module = 'CalendarModule';
 		$search->ref_type = 'calendar';
 		
 		if ($item) {
-			$db->delete('search',"ref_module='calendarmodule' AND ref_type='calendar' AND original_id=" . $item->id);
+			$db->delete('search',"ref_module='CalendarModule' AND ref_type='calendar' AND original_id=" . $item->id);
 			$search->original_id = $item->id;
 			$search->body = ' ' . exponent_search_removeHTML($item->body) . ' ';
 			$search->title = ' ' . $item->title . ' ';
 			$search->location_data = $item->location_data;
 			$db->insertObject($search,'search');
 		} else {
-			$db->delete('search',"ref_module='calendarmodule' AND ref_type='calendar'");
+			$db->delete('search',"ref_module='CalendarModule' AND ref_type='calendar'");
 			foreach ($db->selectObjects('calendar') as $item) {
 				$search->original_id = $item->id;
 				$search->body = ' ' . exponent_search_removeHTML($item->body) . ' ';

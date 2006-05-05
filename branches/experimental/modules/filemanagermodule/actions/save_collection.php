@@ -23,7 +23,7 @@ $collection = null;
 if (isset($_POST['id'])) {
 	$collection = $db->selectObject('file_collection','id='.intval($_POST['id']));
 }
-$loc = exponent_core_makeLocation('filemanagermodule');
+$loc = exponent_core_makeLocation('FileManagerModule');
 
 // PERM CHECK
 	$collection = file_collection::update($_POST,$collection);

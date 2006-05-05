@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	$u = $db->selectObject('user','id='.intval($_POST['id']));
 	if ($u) {
 		$db->delete('groupmembership','member_id='.$u->id);

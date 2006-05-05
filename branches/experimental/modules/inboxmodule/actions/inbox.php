@@ -31,7 +31,7 @@ if ($user) {
 	$read = $db->countObjects('privatemessage','recipient='.$user->id.' AND unread=0');
 	$unread = $db->countObjects('privatemessage','recipient='.$user->id.' AND unread=1');
 	
-	$template = new template('inboxmodule','_viewmessages',$loc);
+	$template = new template('InboxModule','_viewmessages',$loc);
 	
 	$template->assign('user',$user);
 	$template->assign('messages',$messages);

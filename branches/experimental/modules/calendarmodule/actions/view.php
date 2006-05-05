@@ -59,12 +59,12 @@ if ($item) {
 	$item->eventstart += ($eventdate->date + $adjustStart); 
 	$item->eventend += ($eventdate->date + $adjustEnd); 
 		
-	$template = new template("calendarmodule","_view",$loc);
+	$template = new template("CalendarModule","_view",$loc);
 
 	if ($item->feedback_form != "") {
 		$formtemplate = new formtemplate('email', $item->feedback_form);
 		$formtemplate->assign('formname', $item->feedback_form);
-		$formtemplate->assign('module','calendarmodule');
+		$formtemplate->assign('module','CalendarModule');
 		$formtemplate->assign('loc', $loc);
 		$formtemplate->assign('action', 'send_feedback');
 		$formtemplate->assign('id', $item->id);
@@ -73,7 +73,7 @@ if ($item) {
 	}
 
 	$template->assign("item",$item);
-	$template->assign("directory","files/calendarmodule/".$loc->src);
+	$template->assign("directory","files/CalendarModule/".$loc->src);
 	$template->register_permissions(
 		array("post","edit","delete","administrate","manage_approval"),
 		$loc

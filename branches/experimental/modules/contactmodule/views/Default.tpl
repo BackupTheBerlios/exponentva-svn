@@ -16,7 +16,7 @@
 {if $moduletitle != ""}<div class="moduletitle contact_moduletitle">{$moduletitle}</div>{/if}
 {if $numContacts != 0}
 <form method="post" action="">
-<input type="hidden" name="module" value="contactmodule"/>
+<input type="hidden" name="module" value="ContactModule"/>
 <input type="hidden" name="action" value="contact"/>
 <input type="hidden" name="src" value="{$loc->src}" />
 <input type="hidden" name="msg" value="_Default" />

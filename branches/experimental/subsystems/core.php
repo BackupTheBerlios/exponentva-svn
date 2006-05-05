@@ -3,6 +3,7 @@
 ##################################################
 #
 # Copyright (c) 2004-2006 OIC Group, Inc.
+# Copyright (c) 2006 Maxim Mueller
 # Written and Designed by James Hunt
 #
 # This file is part of Exponent
@@ -402,7 +403,9 @@ function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 	//TODO: implement caching
 	
 	// new style name processing
-	//$type = array_pop(preg_split("*(?=[A-Z])*", $name));
+	if($type == "guess") {
+		$type = array_pop(preg_split("*(?=[A-Z])*", $name));
+	}
 	
 	// convert types into paths
 	$relpath = '';
@@ -410,6 +413,10 @@ function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 		$relpath .= "modules/";
 	} elseif($type == "forms") {
 		$relpath .= "subsystems/forms/";
+	} elseif($type == "themes") {
+		$relpath .= "themes/";
+	} elseif($type == "datatypes") {
+		$relpath .= "datatypes/";
 	} elseif($type == "controls") {
 		$relpath .= "subsystems/forms/controls/";
 	// new style names
@@ -419,6 +426,8 @@ function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 		$relpath .= "subsystems/forms/";
 	} elseif($type == "Module") {
 		$relpath .= "modules/";
+	} elseif($type == "Theme") {
+		$relpath .= "themes/";
 	}
 	
 	// for later use for searching in lib/common
@@ -437,14 +446,25 @@ function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 		$relpath2 .= "views/";
 	} elseif($subtype == "form") {
 		$relpath2 .= "views/";
+	} elseif($subtype == "action") {
+		$relpath2 .= "actions/";
+		//HACK: workaround for now
+		$subtype = "php";
 	}
 	
-	$relpath2 .= $subname . "." . $subtype;
+	
+	$relpath2 .= $subname;
+	if($subtype != "") {
+		$relpath2 .= "." . $subtype;
+	}
+
 	$relpath .= $relpath2;
 	
 	//TODO: handle subthemes
+	//TODO: now that glob is used build a syntax for it instead of calling it repeatedly
 	//latter override the precursors
-	$locations = array(BASE, THEME_ABSOLUTE);
+	//BASE does not have a trailing slash ?!
+	$locations = array(BASE . "/", THEME_ABSOLUTE);
 	foreach($locations as $location) {
 		// legacy support
 		$checkpaths[] = $location . $typepath . "common/" . $relpath2;
@@ -470,6 +490,37 @@ function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 		return false;
 	}
 		
+}
+
+/* exdoc
+ * This function is a wrapper around exponent_core_resolveFilePaths()
+ * and returns a list of the basenames, minus the fileextensions - if any 
+ *
+ * @param string $type (to be superceeded) type of base ressource (= directory name)
+ * @param string $name (hopefully in the future type named) Ressource identifier (= class name = directory name)
+ * @param string $subtype type of the actual file (= file extension = (future) directory name)
+ * @param string $subname name of the actual file (= filename name without extension)
+ * 
+ * @node Subsystems:Core
+ */
+function exponent_core_buildNameList($type, $name, $subtype, $subname) {
+	$nameList = array();
+	$fileList = exponent_core_resolveFilePaths($type, $name, $subtype, $subname);
+	if ($fileList != false) {
+		foreach ($fileList as $file) {
+			// exponent_core_resolveFilePaths() might also return directories
+			if (basename($file) != "") {
+				// just to make sure: do we have an extension ?
+				// relying on there is only one dot in the filename
+				$extension = strstr(basename($file), ".");
+				$nameList[] = basename($file, $extension);
+			} else {
+				// don't know where this might be needed, but...
+				$nameList[] = array_pop(explode("/", $file));
+			}
+		}
+	}
+	return $nameList;
 }
 
 ?>

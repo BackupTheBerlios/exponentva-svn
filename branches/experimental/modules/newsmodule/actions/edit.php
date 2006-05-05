@@ -39,7 +39,7 @@ if (($news != null && exponent_permissions_check("edit_item",$loc)) ||
 	$form->location($loc);
 	$form->meta("action","save");
 	
-	$template = new template("newsmodule","_form_edit",$loc);
+	$template = new template("NewsModule","_form_edit",$loc);
 	$template->assign("form_html",$form->toHTML());
 	$template->assign("is_edit", (isset($_GET['id']) ? 1 : 0) );
 	$template->output();

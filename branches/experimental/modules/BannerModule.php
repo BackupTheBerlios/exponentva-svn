@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class bannermodule {
-	function name() { return exponent_lang_loadKey('modules/bannermodule/class.php','module_name'); }
+class BannerModule {
+	function name() { return exponent_lang_loadKey('modules/BannerModule/class.php','module_name'); }
 	function author() { return "James Hunt"; }
-	function description() { return exponent_lang_loadKey('modules/bannermodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/BannerModule/class.php','module_description'); }
 	
 	function hasSources() { return true; }
 	function hasContent() { return true; }
@@ -29,7 +29,7 @@ class bannermodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {	
-		$i18n = exponent_lang_loadFile('modules/bannermodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/BannerModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'configure'=>$i18n['perm_configure'],
@@ -46,15 +46,15 @@ class bannermodule {
 			$file = $db->selectObject('file','id='.$b->file_id);
 			file::delete($file);
 		}
-		if (file_exists(BASE.'files/bannermodule/'.$loc->src)) {
-			rmdir(BASE.'files/bannermodule/'.$loc->src);
+		if (file_exists(BASE.'files/BannerModule/'.$loc->src)) {
+			rmdir(BASE.'files/BannerModule/'.$loc->src);
 		}
 		$db->delete('banner_ad',"location_data='".serialize($loc)."'");
 	}
 	
 	function copyContent($oloc,$nloc) {
 		if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
-		$directory = 'files/bannermodule/'.$nloc->src;
+		$directory = 'files/BannerModule/'.$nloc->src;
 		if (!file_exists(BASE.$directory) && exponent_files_makeDirectory($directory) != SYS_FILES_SUCCESS) {
 			return;
 		}
@@ -82,7 +82,7 @@ class bannermodule {
 	function show($view,$loc, $title = '') {
 		global $db;
 		
-		$template = new template('bannermodule',$view,$loc);
+		$template = new template('BannerModule',$view,$loc);
 		$template->assign('title',$title);
 		
 		$viewconfig = array('type'=>'default','number'=>1);
@@ -100,7 +100,7 @@ class bannermodule {
 		} else {
 			if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
 		
-			$directory = 'files/bannermodule/' . $loc->src;
+			$directory = 'files/BannerModule/' . $loc->src;
 			if (!file_exists(BASE.$directory)) {
 				$err = exponent_files_makeDirectory($directory);
 				if ($err != SYS_FILES_SUCCESS) {
@@ -114,7 +114,7 @@ class bannermodule {
 			if ($viewconfig['type'] == 'allbanners') {
 				$bfiles = $db->selectObjectsIndexedArray('file',"directory='".$directory."'");
 				
-				$template->assign('affiliates',bannermodule::listAffiliates());
+				$template->assign('affiliates',BannerModule::listAffiliates());
 				$template->assign('files',$bfiles);
 				$template->assign('banners',$all);
 			} else {

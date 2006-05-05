@@ -39,7 +39,7 @@ class inbox_contactlist {
 		$users = array();
 		if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 		global $user;
-		if (exponent_permissions_check('contact_all',exponent_core_makeLocation('inboxmodule'))) {
+		if (exponent_permissions_check('contact_all',exponent_core_makeLocation('InboxModule'))) {
 			foreach (exponent_users_getAllUsers() as $u) {
 				$users[$u->id] = $u;
 			}

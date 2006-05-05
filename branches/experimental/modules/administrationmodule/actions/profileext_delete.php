@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	$db->delete('profileextension','id='.intval($_GET['id']));
 	exponent_flow_redirect();
 } else {

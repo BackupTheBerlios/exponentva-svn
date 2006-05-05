@@ -28,11 +28,11 @@ if (!$collection) {
 	$collection->name = 'Uncategorized Files';
 	$collection->description = 'Theses files have not been categorized yet,';
 }
-$loc = exponent_core_makeLocation('filemanagermodule');
+$loc = exponent_core_makeLocation('FileManagerModule');
 
 exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 
-$template = new template('filemanagermodule','_picker');
+$template = new template('FileManagerModule','_picker');
 
 $template->assign('collection',$collection);
 

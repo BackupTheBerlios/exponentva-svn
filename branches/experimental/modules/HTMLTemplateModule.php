@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class htmltemplatemodule {
-	function name() { return exponent_lang_loadKey('modules/htmltemplatemodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/htmltemplatemodule/class.php','module_description'); }
+class HTMLTemplateModule {
+	function name() { return exponent_lang_loadKey('modules/HTMLTemplateModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/HTMLTemplateModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return false; }
@@ -29,7 +29,7 @@ class htmltemplatemodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/htmltemplatemodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/HTMLTemplateModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'create'=>$i18n['perm_create'],
@@ -45,13 +45,13 @@ class htmltemplatemodule {
 			exponent_permissions_check('edit',$loc) ||
 			exponent_permissions_check('delete',$loc)
 		) {
-			$template = new template('htmltemplatemodule',$view,$loc);
+			$template = new template('HTMLTemplateModule',$view,$loc);
 			
 			$template->assign('noupload',0);
 			$template->assign('uploadError','');
 				
 			if (!defined('SYS_FILES')) include_once(BASE.'subsystems/files.php');
-			$directory = 'files/htmltemplatemodule/' . $loc->src;
+			$directory = 'files/HTMLTemplateModule/' . $loc->src;
 			if (!file_exists(BASE.$directory)) {
 				$err = exponent_files_makeDirectory($directory);
 				if ($err != SYS_FILES_SUCCESS) {
@@ -76,7 +76,7 @@ class htmltemplatemodule {
 			$template->assign('templates',$templates);
 			$template->register_permissions(
 				array('administrate','create','edit','delete'),
-				exponent_core_makeLocation('htmltemplatemodule'));
+				exponent_core_makeLocation('HTMLTemplateModule'));
 			
 			$template->output();
 		}

@@ -26,14 +26,14 @@ $collection = null;
 if (isset($_GET['id'])) {
 	$collection = $db->selectObject('file_collection','id='.$_GET['id']);
 }
-$loc = exponent_core_makeLocation('filemanagermodule');
+$loc = exponent_core_makeLocation('FileManagerModule');
 
 // PERM CHECK
 	$form = file_collection::form($collection);
-	$form->meta('module','filemanagermodule');
+	$form->meta('module','FileManagerModule');
 	$form->meta('action','save_collection');
 	
-	$template = new template('filemanagermodule','_form_editCollection');
+	$template = new template('FileManagerModule','_form_editCollection');
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_edit',($collection == null ? 0 : 1));
 	$template->output();

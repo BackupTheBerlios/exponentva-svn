@@ -21,7 +21,7 @@ if (!defined("EXPONENT")) exit("");
 
 // PERM CHECK
 	$source_select = array();
-	$module = "containermodule";
+	$module = "ContainerModule";
 	$view = "_sourcePicker";
 	$clickable_mods = null; // Show all
 	$dest = null;
@@ -62,7 +62,7 @@ if (!defined("EXPONENT")) exit("");
 				"clickable"=>(($clickable_mods == null || in_array($modclass,$clickable_mods))?1:0)
 			);
 		} else {
-			$i18n = exponent_lang_loadFile('modules/containermodule/class.php');
+			$i18n = exponent_lang_loadFile('modules/ContainerModule/class.php');
 			$obj->output = sprintf($i18n['mod_not_found'],$orphan->module);
 			$containers[$i]->info = array(
 					"module"=>"Unknown:".$location->mod,
@@ -78,7 +78,7 @@ if (!defined("EXPONENT")) exit("");
 		$orphans[] = $obj;
 	}
 
-	$template = new template("containermodule","Default");
+	$template = new template("ContainerModule","Default");
 	$template->assign("singleview",$view);
 	$template->assign("singlemodule",$module);
 

@@ -39,10 +39,10 @@ $user->is_acting_admin = 1;
 // The $loc variable would normally be created by the Exponent framework
 // when running the action we are about to include.  Here, we synthetically
 // create the location, so that the action doesn't freak out.
-$loc = exponent_core_makeLocation('administrationmodule');
+$loc = exponent_core_makeLocation('AdministrationModule');
 
 // Simulate running the Install Tables action.
-include_once(dirname(__realpath(__FILE__)).'/modules/administrationmodule/actions/installtables.php');
+include_once(dirname(__realpath(__FILE__)).'/modules/AdministrationModule/actions/installtables.php');
 
 // In case something is screwed up in the database, we need to 
 // create some records.
@@ -66,7 +66,7 @@ if ($db->tableIsEmpty('user')) {
 if ($db->tableIsEmpty('modstate')) {
 	echo $i18n['activate_panel'].'<br />';
 	$modstate = null;
-	$modstate->module = 'administrationmodule';
+	$modstate->module = 'AdministrationModule';
 	$modstate->active = 1;
 	$db->insertObject($modstate,'modstate');
 }

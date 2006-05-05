@@ -17,9 +17,9 @@
 #
 ##################################################
 
-if (class_exists('corporatetheme')) return;
+if (class_exists('CorporateTheme')) return;
 
-class corporatetheme {
+class CorporateTheme {
 	function name() { return "Corporate Theme"; }
 	function author() { return "James Hunt"; }
 	function description() { return "A clean and commercial theme perfect for a company web site."; }

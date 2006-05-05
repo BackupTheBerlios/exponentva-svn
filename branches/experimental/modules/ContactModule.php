@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class contactmodule {
-	function name() { return exponent_lang_loadKey('modules/contactmodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/contactmodule/class.php','module_description'); }
+class ContactModule {
+	function name() { return exponent_lang_loadKey('modules/ContactModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/ContactModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class contactmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/contactmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/ContactModule/class.php');
 		
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
@@ -42,13 +42,13 @@ class contactmodule {
 		
 		$contacts = $db->selectObjects('contact_contact',"location_data='".serialize($loc)."'");
 		
-		$t = new template('contactmodule','_standard',$loc);
+		$t = new template('ContactModule','_standard',$loc);
 		$t->register_permissions(array(
 			'administrate','configure'),
 			$loc);
 		$t->output();
 		
-		$template = new template('contactmodule',$view,$loc);
+		$template = new template('ContactModule',$view,$loc);
 		$template->assign('contacts',$contacts);
 		$template->assign('loc',$loc);
 		$template->assign('numContacts',count($contacts));

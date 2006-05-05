@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 $file = str_replace('../','','modules/' . $_REQUEST['m'] . '/actions/' . $_REQUEST['a'] . '.php');
-if (exponent_permissions_check('administration',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('administration',exponent_core_makeLocation('AdministrationModule'))) {
 	if (is_readable($file)) {
 		include($file);
 	} else echo SITE_404_HTML;

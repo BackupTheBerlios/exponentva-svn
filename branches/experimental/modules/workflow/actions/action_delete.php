@@ -19,7 +19,7 @@
 
 if (!defined("EXPONENT")) exit("");
 
-if (exponent_permissions_check('workflow',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('workflow',exponent_core_makeLocation('AdministrationModule'))) {
 	$action = $db->selectObject('workflowaction','id='.intval($_GET['id']));
 	$db->delete('workflowaction','id='.$action->id);
 	$db->decrement('workflowaction','rank',1,'rank >= ' . $action->rank . ' AND policy_id='.$action->policy_id . ' AND type='.$action->type);

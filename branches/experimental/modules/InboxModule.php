@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class inboxmodule {
-	function name() { return exponent_lang_loadKey('modules/inboxmodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/inboxmodule/class.php','module_description'); }
+class InboxModule {
+	function name() { return exponent_lang_loadKey('modules/InboxModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/InboxModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return false; }
@@ -29,7 +29,7 @@ class inboxmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/inboxmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/InboxModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'contact_all'=>$i18n['perm_contact_all']
@@ -48,7 +48,7 @@ class inboxmodule {
 	function show($view,$loc,$title) {
 		global $db, $user;
 		if ($user) {
-			$template = new template('inboxmodule',$view,$loc);
+			$template = new template('InboxModule',$view,$loc);
 			
 			$read = $db->countObjects('privatemessage','recipient='.$user->id.' AND unread=0');
 			$unread = $db->countObjects('privatemessage','recipient='.$user->id.' AND unread=1');

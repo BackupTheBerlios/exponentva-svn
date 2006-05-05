@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class newsmodule {
-	function name() { return exponent_lang_loadKey('modules/newsmodule/class.php','module_name'); }
+class NewsModule {
+	function name() { return exponent_lang_loadKey('modules/NewsModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description() { return exponent_lang_loadKey('modules/newsmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/NewsModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class newsmodule {
 	function supportsWorkflow() { return true; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/newsmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/NewsModule/class.php');
 		if ($internal == '') {
 			return array(
 				'administrate'=>$i18n['perm_administrate'],
@@ -89,7 +89,7 @@ class newsmodule {
 	function show($view,$loc = null,$title = '') {
 		global $db, $user;
 		
-		$config = $db->selectObject('newsmodule_config',"location_data='".serialize($loc)."'");
+		$config = $db->selectObject('NewsModule_config',"location_data='".serialize($loc)."'");
 		if ($config == null) {
 			$config->sortorder = 'ASC';
 			$config->sortfield = 'posted';
@@ -108,7 +108,7 @@ class newsmodule {
 		}
 		
 	
-		$template = new template('newsmodule',$view,$loc);
+		$template = new template('NewsModule',$view,$loc);
 		$template->assign('moduletitle',$title);
 		$template->register_permissions(
 			array('administrate','configure','add_item','delete_item','edit_item','manage_approval','view_unpublished'),
@@ -140,29 +140,29 @@ class newsmodule {
 	function spiderContent($item = null) {
 		global $db;
 		
-		$i18n = exponent_lang_loadFile('modules/newsmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/NewsModule/class.php');
 		
 		if (!defined('SYS_SEARCH')) include_once(BASE.'subsystems/search.php');
 		
 		$search = null;
 		$search->category = $i18n['search_category'];
-		$search->ref_module = 'newsmodule';
+		$search->ref_module = 'NewsModule';
 		$search->ref_type = 'newsitem';
 		
 		if ($item) {
-			$db->delete('search',"ref_module='newsmodule' AND ref_type='newsitem' AND original_id=" . $item->id);
+			$db->delete('search',"ref_module='NewsModule' AND ref_type='newsitem' AND original_id=" . $item->id);
 			$search->original_id = $item->id;
 			$search->title = ' ' . $item->title . ' ';
-			$search->view_link = 'index.php?module=newsmodule&action=view&id='.$item->id;
+			$search->view_link = 'index.php?module=NewsModule&action=view&id='.$item->id;
 			$search->body = ' ' . exponent_search_removeHTML($item->body) . ' ';
 			$search->location_data = $item->location_data;
 			$db->insertObject($search,'search');
 		} else {
-			$db->delete('search',"ref_module='newsmodule' AND ref_type='newsitem'");
+			$db->delete('search',"ref_module='NewsModule' AND ref_type='newsitem'");
 			foreach ($db->selectObjects('newsitem') as $item) {
 				$search->original_id = $item->id;
 				$search->title = ' ' . $item->title . ' ';
-				$search->view_link = 'index.php?module=newsmodule&action=view&id='.$item->id;
+				$search->view_link = 'index.php?module=NewsModule&action=view&id='.$item->id;
 				$search->body = ' ' . exponent_search_removeHTML($item->body) . ' ';
 				$search->location_data = $item->location_data;
 				$db->insertObject($search,'search');

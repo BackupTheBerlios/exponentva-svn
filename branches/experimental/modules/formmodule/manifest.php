@@ -1,10 +1,10 @@
 <?php
 
 return array (
-	'modules/formmodule/class.php'=>'',
-	'modules/formmodule/manifest.php'=>1,
-	'modules/formmodule/views/Default.tpl'=>'',
-	'modules/formmodule/deps.php'=>'',
+	'modules/FormModule/class.php'=>'',
+	'modules/FormModule/manifest.php'=>1,
+	'modules/FormModule/views/Default.tpl'=>'',
+	'modules/FormModule/deps.php'=>'',
 );
 
 ?>

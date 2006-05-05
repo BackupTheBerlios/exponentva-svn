@@ -23,9 +23,9 @@ if (!defined('EXPONENT')) exit('');
 
 $section = section::updatePageset($_POST,null);
 
-if (exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$section->parent))) {
+if (exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$section->parent))) {
 	// Still have to do some pageset processing, mostly handled by a handy
-	// member method of the navigationmodule class.
+	// member method of the NavigationModule class.
 	
 	// Since this is new, we need to increment ranks, in case the user
 	// added it in the middle of the level.
@@ -40,7 +40,7 @@ if (exponent_permissions_check('manage',exponent_core_makeLocation('navigationmo
 	if (isset($_SESSION['nav_cache']['kids']))
 			unset($_SESSION['nav_cache']['kids']);
 			
-	navigationmodule::process_section($section,$_POST['pageset']);
+	NavigationModule::process_section($section,$_POST['pageset']);
 	
 	// Go back to where we came from.  Probably the navigation manager.
 	exponent_flow_redirect();

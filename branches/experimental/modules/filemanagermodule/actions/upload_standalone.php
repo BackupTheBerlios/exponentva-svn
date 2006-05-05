@@ -27,7 +27,7 @@ if (isset($_POST['collection_id'])) {
 	$collection->name = 'Uncategorized Files';
 	$collection->description = 'Theses files have not been categorized yet,';
 }
-$loc = exponent_core_makeLocation('filemanagermodule');
+$loc = exponent_core_makeLocation('FileManagerModule');
 
 // PERM CHECK
 	$file = file::update('file','files',null);
@@ -35,7 +35,7 @@ $loc = exponent_core_makeLocation('filemanagermodule');
 		$file->name = $_POST['name'];
 		$file->collection_id = $collection->id;
 		$file_id = $db->insertObject($file,'file');
-		header('Location: '.URL_FULL.'modules/filemanagermodule/actions/picker.php?id='.$collection->id.'&highlight_file='.$file_id);
+		header('Location: '.URL_FULL.'modules/FileManagerModule/actions/picker.php?id='.$collection->id.'&highlight_file='.$file_id);
 	} else {
 		echo $file;
 	}

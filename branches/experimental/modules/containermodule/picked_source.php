@@ -17,7 +17,7 @@
 #
 ##################################################
 
-define('SCRIPT_EXP_RELATIVE','modules/containermodule/');
+define('SCRIPT_EXP_RELATIVE','modules/ContainerModule/');
 define('SCRIPT_FILENAME','picked_source.php');
 
 include_once('../../exponent.php');

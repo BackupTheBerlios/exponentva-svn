@@ -17,9 +17,9 @@
 #
 ##################################################
 
-if (class_exists('exponenttheme')) return;
+if (class_exists('ExponentTheme')) return;
 
-class exponenttheme {
+class ExponentTheme {
 	function name() { return "ExponentCMS.org"; }
 	function author() { return "James Hunt"; }
 	function description() { return "CSS-driven theme for ExponentCMS.org website(s)"; }

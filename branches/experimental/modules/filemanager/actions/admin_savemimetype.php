@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('files_subsystem',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('files_subsystem',exponent_core_makeLocation('AdministrationModule'))) {
 	$type = null;
 	if (isset($_POST['oldmime'])) {
 		$type = $db->selectObject('mimetype',"mimetype='".$_POST['oldmime']."'");

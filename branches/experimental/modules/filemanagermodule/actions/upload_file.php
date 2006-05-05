@@ -24,7 +24,7 @@ $collection = null;
 if (isset($_GET['id'])) {
 	$collection = $db->selectObject('file_collection','id='.$_GET['id']);
 }
-$loc = exponent_core_makeLocation('filemanagermodule');
+$loc = exponent_core_makeLocation('FileManagerModule');
 
 if ($collection) {
 	// PERM CHECK
@@ -32,7 +32,7 @@ if ($collection) {
 		exponent_forms_initialize();
 		
 		$form = new form();
-		$form->meta('module','filemanagermodule');
+		$form->meta('module','FileManagerModule');
 		$form->meta('action','save_upload');
 		$form->meta('collection_id',$collection->id);
 		

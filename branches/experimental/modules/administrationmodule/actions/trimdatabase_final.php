@@ -21,12 +21,12 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('database',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('database',exponent_core_makeLocation('AdministrationModule'))) {
 	foreach (array_keys($_POST['tables']) as $table) {
 		$db->dropTable($table);
 	}
 	
-	$template = new template('administrationmodule','_tableTrimSummary',$loc);
+	$template = new template('AdministrationModule','_tableTrimSummary',$loc);
 	$template->assign('dropped_tables',array_keys($_POST['tables']));
 	$template->assign('redirect',exponent_flow_get());
 	$template->output();

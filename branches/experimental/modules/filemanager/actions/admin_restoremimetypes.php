@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('files_subsystem',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('files_subsystem',exponent_core_makeLocation('AdministrationModule'))) {
 	$db->delete('mimetype');
 	$mimes = include(BASE.'subsystems/files/mimetypes.php');
 	$obj = null;

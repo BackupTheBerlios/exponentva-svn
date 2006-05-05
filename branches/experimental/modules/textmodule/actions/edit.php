@@ -33,7 +33,7 @@ if (exponent_permissions_check('edit',$loc)) {
 	$form->location($loc);
 	$form->meta('action','save');
 	
-	$template = new template('textmodule','_form_edit',$loc);
+	$template = new template('TextModule','_form_edit',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

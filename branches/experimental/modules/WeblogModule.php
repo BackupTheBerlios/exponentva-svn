@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class weblogmodule {
-	function name() { return exponent_lang_loadKey('modules/weblogmodule/class.php','module_name'); }
+class WeblogModule {
+	function name() { return exponent_lang_loadKey('modules/WeblogModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description() { return exponent_lang_loadKey('modules/weblogmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/WeblogModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class weblogmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/weblogmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/WeblogModule/class.php');
 		
 		if ($internal == '') {
 			return array(
@@ -65,14 +65,14 @@ class weblogmodule {
 	}
 	
 	function show($view,$loc = null, $title = '') {
-		$template = new template('weblogmodule',$view,$loc);
+		$template = new template('WeblogModule',$view,$loc);
 		
 		global $db;
 		global $user;
 		
 		$user_id = ($user ? $user->id : -1);
 
-		$config = $db->selectObject('weblogmodule_config',"location_data='".serialize($loc)."'");
+		$config = $db->selectObject('WeblogModule_config',"location_data='".serialize($loc)."'");
 		if ($config == null) {
 			$config->allow_comments = 1;
 			$config->items_per_page = 10;
@@ -161,7 +161,7 @@ class weblogmodule {
 			$db->delete('weblog_comment','parent_id='.$post->id);
 		}
 		$db->delete('weblog_post',"location_data='".serialize($loc)."'");
-		$db->delete('weblogmodule_config',"location_data='".serialize($loc)."'");
+		$db->delete('WeblogModule_config',"location_data='".serialize($loc)."'");
 	}
 	
 	function copyContent($oloc,$nloc) {
@@ -178,10 +178,10 @@ class weblogmodule {
 				$db->insertObject($comment,'weblog_comment');
 			}
 		}
-		$config = $db->selectObject('weblogmodule_config',"location_data='".serialize($oloc)."'");
+		$config = $db->selectObject('WeblogModule_config',"location_data='".serialize($oloc)."'");
 		unset($config->id);
 		$config->location_data = serialize($nloc);
-		$db->insertObject($config,'weblogmodule_config');
+		$db->insertObject($config,'WeblogModule_config');
 	}
 	
 	function spiderContent($item = null) {
@@ -190,19 +190,19 @@ class weblogmodule {
 		if (!defined('SYS_SEARCH')) require_once(BASE.'subsystems/search.php');
 		
 		$search = null;
-		$search->category = exponent_lang_loadKey('modules/weblogmodule/class.php','search_category');
+		$search->category = exponent_lang_loadKey('modules/WeblogModule/class.php','search_category');
 		$search->view_link = ""; // FIXME : need a view action
-		$search->ref_module = 'weblogmodule';
+		$search->ref_module = 'WeblogModule';
 		$search->ref_type = 'weblog_post';
 		
 		$view_link = array(
-			'module'=>'weblogmodule',
+			'module'=>'WeblogModule',
 			'action'=>'view',
 			'id'=>0
 		);
 		
 		if ($item && $item->is_draft == 0) {
-			$db->delete('search',"ref_module='weblogmodule' AND ref_type='weblog_post' AND original_id=" . $item->id);
+			$db->delete('search',"ref_module='WeblogModule' AND ref_type='weblog_post' AND original_id=" . $item->id);
 			$search->original_id = $item->id;
 			$search->body = " " . exponent_search_removeHTML($item->body) . " ";
 			$search->title = " " . $item->title . " ";
@@ -212,7 +212,7 @@ class weblogmodule {
 			$search->view_link = exponent_core_makeLink($view_link,true);
 			$db->insertObject($search,'search');
 		} else {
-			$db->delete('search',"ref_module='weblogmodule' AND ref_type='weblog_post'");
+			$db->delete('search',"ref_module='WeblogModule' AND ref_type='weblog_post'");
 			foreach ($db->selectObjects('weblog_post','is_private=0 AND is_draft=0') as $item) {
 				$search->original_id = $item->id;
 				$search->body = ' ' . exponent_search_removeHTML($item->body) . ' ';

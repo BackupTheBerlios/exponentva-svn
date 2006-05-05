@@ -29,10 +29,10 @@ if ($user && $user->is_acting_admin == 1) {
 	}
 	
 	$form = section_template::form($page);
-	$form->meta('module','navigationmodule');
+	$form->meta('module','NavigationModule');
 	$form->meta('action','save_template');
 	
-	$template = new template('navigationmodule','_form_editTemplate',$loc);
+	$template = new template('NavigationModule','_form_editTemplate',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_top',($page->parent == 0 ? 1 : 0));
 	$template->output();

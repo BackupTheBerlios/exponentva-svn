@@ -38,7 +38,7 @@ if (isset($_POST['id'])) {
 	}
 }
 
-$template = new template('calendarmodule','_feedback_submitted');
+$template = new template('CalendarModule','_feedback_submitted');
 $template->assign('success',($ret?1:0));
 $template->output();
 

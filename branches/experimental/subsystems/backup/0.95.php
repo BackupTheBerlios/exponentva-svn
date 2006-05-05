@@ -80,12 +80,12 @@ function exponent_backup_095_newsitem($db,$object) {
 	$db->insertObject($object,'newsitem');
 }
 
-// Field 'sortfield' was added to 'newsmodule_config' in 0.96
-// Field 'item_limit' was added to 'newsmodule_config' in 0.96
-function exponent_backup_095_newsmodule_config($db,$object) {
+// Field 'sortfield' was added to 'NewsModule_config' in 0.96
+// Field 'item_limit' was added to 'NewsModule_config' in 0.96
+function exponent_backup_095_NewsModule_config($db,$object) {
 	$object->item_limit = 5;
 	$object->sortfield = 'posted';
-	$db->insertObject($object,'newsmodule_config');
+	$db->insertObject($object,'NewsModule_config');
 }
 
 // Field 'posted' was added to 'resourceitem' in 0.96
@@ -144,13 +144,13 @@ function exponent_backup_095_weblog_post($db,$object) {
 	$db->insertObject($object,'weblog_post');
 }
 
-// Field 'items_per_page' was added to 'weblogmodule_config' in 0.96
-function exponent_backup_095_weblogmodule_config($db,$object) {
+// Field 'items_per_page' was added to 'WeblogModule_config' in 0.96
+function exponent_backup_095_WeblogModule_config($db,$object) {
 	$object->items_per_page = 15; // So that it doesn't default to 0
-	$db->insertObject($object,'weblogmodule_config');
+	$db->insertObject($object,'WeblogModule_config');
 }
 
-// Table 'calendarmodule_config' was added in 0.96
+// Table 'CalendarModule_config' was added in 0.96
 // Table 'category' was added in 0.96
 // Table 'eventdate' was added in 0.96
 // Table 'imagegallery_gallery' was added in 0.96

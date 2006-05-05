@@ -17,9 +17,9 @@
 #
 ##################################################
 
-if (class_exists('personaltheme')) return;
+if (class_exists('PersonalTheme')) return;
 
-class personaltheme {
+class PersonalTheme {
 	function name() { return "Personal Site"; }
 	function author() { return "Shane Thomison"; }
 	function description() { return "A Personal Website, suitable for a weblog."; }

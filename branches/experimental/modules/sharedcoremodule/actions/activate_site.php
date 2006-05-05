@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedcoremodule'))) {
+if (exponent_permissions_check('manage_site',exponent_core_makeLocation('SharedCoreModule'))) {
 	$site = null;
 	if (isset($_GET['id'])) {
 		$site = $db->selectObject('sharedcore_site','id='.intval($_GET['id']));

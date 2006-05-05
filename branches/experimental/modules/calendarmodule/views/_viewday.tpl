@@ -48,7 +48,7 @@
 			{/if}
 		{/if}
 		{if $permissions.manage_approval == 1}
-			<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=revisions_view id=$event->id}" title="{$_TR.alt_revisions}" alt="{$_TR.alt_revisions}">{$_TR.revisions}</a>
+			<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=revisions_view id=$event->id}" title="{$_TR.alt_revisions}" alt="{$_TR.alt_revisions}">{$_TR.revisions}</a>
 		{/if}
 		<div style="padding-left: 10px">
 			<b>{if $event->is_allday == 1}All Day{else}

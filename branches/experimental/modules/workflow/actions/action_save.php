@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('workflow',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('workflow',exponent_core_makeLocation('AdministrationModule'))) {
 	$action = null;
 	if (isset($_POST['id'])) {
 		$action = $db->selectObject("workflowaction","id=".intval($_POST['id']));

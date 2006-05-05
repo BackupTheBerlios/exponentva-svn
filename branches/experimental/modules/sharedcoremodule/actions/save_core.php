@@ -19,8 +19,8 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('manage_core',exponent_core_makeLocation('sharedcoremodule'))) {
-	$i18n = exponent_lang_loadFile('modules/sharedcoremodule/actions/save_core.php');
+if (exponent_permissions_check('manage_core',exponent_core_makeLocation('SharedCoreModule'))) {
+	$i18n = exponent_lang_loadFile('modules/SharedCoreModule/actions/save_core.php');
 
 	$core = null;
 	if (isset($_POST['id'])) {

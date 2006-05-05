@@ -24,7 +24,7 @@ if (!defined('EXPONENT')) exit('');
 	<?php exponent_theme_sourceSelectorInfo(); ?>	<table width="100%" height="632" border="0" cellpadding="0" cellspacing="0">		<tr>			<td height="121" align="left" valign="bottom"><img src="<?php echo THEME_RELATIVE; ?>images/cc_name.gif" width="505" height="41"></td>		</tr>		<tr>			<td height="8" background="<?php echo THEME_RELATIVE; ?>images/cc_slim_back2.gif"></td>    		</tr>		<tr>			<td height="271" align="left" valign="top" background="<?php echo THEME_RELATIVE; ?>images/cc_mid_back.gif" bgcolor="CBB061">
 				<table width="655" border="0" cellspacing="0" cellpadding="0">					<tr>						<td width="101" rowspan="2" align="left" valign="top" bgcolor="666633"><img src="<?php echo THEME_RELATIVE; ?>images/cc_left.jpg" width="101" height="255"></td>						<td height="33" colspan="2" align="left" valign="top">
 							<table width="541" border="0" cellspacing="0" cellpadding="0">								<tr>									<td width="10">&nbsp;</td>									<td width="526" height="27" bgcolor="CBB061">
-										<?php exponent_theme_showModule("navigationmodule","Top Nav"); ?>
+										<?php exponent_theme_showModule("NavigationModule","Top Nav"); ?>
 									</td>								</tr>								<tr align="left" valign="top">									<td height="5" colspan="2"><img src="<?php echo THEME_RELATIVE; ?>images/cc_keyline_top.gif" width="555" height="5"></td>								</tr>							</table>
 						</td>					</tr>					<tr>
 						<?php
@@ -40,14 +40,14 @@ if (!defined('EXPONENT')) exit('');
 									<tr>
 										<td height="221">&nbsp;</td>
 										<td width="160" align="left" valign="top" class="footer">
-									<?php exponent_theme_showModule("loginmodule","Default"); ?>
-									<?php exponent_theme_showModule("previewmodule","Default"); ?>
+									<?php exponent_theme_showModule("LoginModule","Default"); ?>
+									<?php exponent_theme_showModule("PreviewModule","Default"); ?>
 									<br /><hr size="1"/><br /><?php
-								exponent_theme_showModule("navigationmodule","Children Only");
+								exponent_theme_showModule("NavigationModule","Children Only");
 								?><br /><hr size="1"/><br /><?php
-								exponent_theme_showSectionalModule("containermodule","Default","","@left");
+								exponent_theme_showSectionalModule("ContainerModule","Default","","@left");
 								?><br /><hr size="1"/><br /><?php
-								exponent_theme_showSectionalModule("containermodule","Default","","@right");
+								exponent_theme_showSectionalModule("ContainerModule","Default","","@right");
 								?></td>
 										<td>&nbsp;</td>
 									</tr>
@@ -59,7 +59,7 @@ if (!defined('EXPONENT')) exit('');
 									<tr>
 										<td align="left" valign="top">
 									<?php
-									exponent_theme_showModule("textmodule","Default","","Header Text");
+									exponent_theme_showModule("TextModule","Default","","Header Text");
 									exponent_theme_mainContainer();
 							?></td>
 								</tr>
@@ -69,7 +69,7 @@ if (!defined('EXPONENT')) exit('');
 						?>					</tr>				</table>			</tr>			<tr>				<td height="25" align="left" valign="top" style="background-image: url(<?php echo THEME_RELATIVE; ?>images/cc_bot_back2.gif); background-repeat: repeat-x" bgcolor="CBB061">
 					<table width="750" border="0" cellspacing="0" cellpadding="0">						<tr>							<td width="101" height="25" bgcolor="666633">&nbsp;</td>							<td width="180" bgcolor="CBB061">&nbsp;</td>							<td width="1" height="18" bgcolor="999966" align="left" valign="top"></td>							<td width="468" align="left" valign="middle">
 								<table width="374" border="0" cellspacing="0" cellpadding="0">									<tr>										<td width="7">&nbsp;</td>										<td class="footer">
-										<?php exponent_theme_showModule("textmodule","Default","","footer"); ?>
+										<?php exponent_theme_showModule("TextModule","Default","","footer"); ?>
 										</td>
 									</tr>								</table>
 							</td>						</tr>					</table>

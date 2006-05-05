@@ -42,7 +42,7 @@ if (($resource == null && exponent_permissions_check('post',$loc)) ||
 	}
 	
 	if (!isset($resource->file_id)) {
-		$directory = 'files/resourcesmodule/'.$loc->src;
+		$directory = 'files/ResourceModule/'.$loc->src;
 		
 		$file = file::update('file',$directory,null,time().'_'.$_FILES['file']['name']);
 		if (is_object($file)) {

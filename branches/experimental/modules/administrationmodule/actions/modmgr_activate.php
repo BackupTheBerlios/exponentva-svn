@@ -23,7 +23,7 @@ if (!defined('EXPONENT')) exit('');
 
 $_GET['activate'] = intval($_GET['activate']);
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 	if (isset($_GET['all'])) {
 		$db->delete('modstate');
 		$modstate->active = $_GET['activate'];

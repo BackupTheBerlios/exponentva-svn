@@ -135,12 +135,12 @@ if (isset($_REQUEST['action']) && isset($_REQUEST['module'])) {
 	$section = (isset($_REQUEST['section']) ? $_REQUEST['section'] : SITE_DEFAULT_SECTION);
 }
 $section = $db->selectObject('section','id='. intval($section));
-if (!navigationmodule::canView($section)) {
+if (!NavigationModule::canView($section)) {
 	define('AUTHORIZED_SECTION',0);
 } else {
 	define('AUTHORIZED_SECTION',1);
 }
-if (!navigationmodule::isPublic(intval($section))) {
+if (!NavigationModule::isPublic($section)) {
 	define('PUBLIC_SECTION',0);
 } else {
 	define('PUBLIC_SECTION',1);

@@ -57,11 +57,11 @@
 <a class="mngmntlink weblog_mngmntlink" href="{link action=edit}" title="Create a new Calendar Event" alt="Create a new Calendar Event">Create Event</a><br />
 {/if}
 {if $in_approval != 0 && $canview_approval_link == 1}
-<a class="mngmntlink weblog_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=summary}" title="View Calendar Events in Approval" alt="View Calendar Events in Approval">View Approval</a><br />
+<a class="mngmntlink weblog_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=summary}" title="View Calendar Events in Approval" alt="View Calendar Events in Approval">View Approval</a><br />
 {/if}
 {/permissions}
 <br />
 
 {if $modconfig->enable_categories == 1}
-<a href="{link module=categories m=calendarmodule action=manage}" class="mngmntlink weblog_mngmntlink">Manage Categories</a>
+<a href="{link module=categories m=CalendarModule action=manage}" class="mngmntlink weblog_mngmntlink">Manage Categories</a>
 {/if}

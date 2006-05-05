@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	exponent_users_includeProfileExtensions();
 	$existing = $db->selectObject('profileextension',"extension='".preg_replace('/[^A-Za-z0-9_ ]/','',$_GET['ext'])."'");

@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class loginmodule {
-	function name() { return exponent_lang_loadKey('modules/loginmodule/class.php','module_name'); }
+class LoginModule {
+	function name() { return exponent_lang_loadKey('modules/LoginModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; } 
-	function description() { return exponent_lang_loadKey('modules/loginmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/LoginModule/class.php','module_description'); }
 	
 	function hasContent() { return false; }
 	function hasSources() { return false; }
@@ -41,7 +41,7 @@ class loginmodule {
 	}
 
 	function show($view,$loc=null,$title='') {
-		$template = new template('loginmodule',$view,$loc);
+		$template = new template('LoginModule',$view,$loc);
 		$template->assign('title',$title);
 		if (exponent_sessions_loggedIn()) {
 			global $user, $db;

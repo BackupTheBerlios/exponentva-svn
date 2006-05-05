@@ -14,7 +14,7 @@
  *
  *}
 <form method="post">
-	<input type="hidden" name="module" value="uiswitchermodule" />
+	<input type="hidden" name="module" value="UISwitchermodule" />
 	<input type="hidden" name="action" value="switch" /> 
 	<select name="level" onChange="this.form.submit()">
 	{foreach from=$levels key=i item=level}

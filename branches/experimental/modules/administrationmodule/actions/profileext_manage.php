@@ -21,13 +21,13 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	exponent_users_includeProfileExtensions();
 	
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	
-	$template = new template('administrationmodule','_profileextManager',$loc);
+	$template = new template('AdministrationModule','_profileextManager',$loc);
 	
 	exponent_users_clearDeletedExtensions(); // This will clear db of deleted exts.
 	

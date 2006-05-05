@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 if ($user) {
-	$i18n = exponent_lang_loadFile('modules/loginmodule/actions/savepass.php');
+	$i18n = exponent_lang_loadFile('modules/LoginModule/actions/savepass.php');
 	
 	if ($user->password == md5($_POST['oldpass'])) {
 		if ($_POST['pass1'] == $_POST['pass2']) {

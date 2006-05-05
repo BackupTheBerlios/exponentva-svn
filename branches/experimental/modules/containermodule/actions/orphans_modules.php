@@ -33,7 +33,7 @@ if (!defined('EXPONENT')) exit('');
 	}
 	uasort($orphan_mods,'strnatcmp');
 	
-	$template = new template('containermodule','_orphans_modules');
+	$template = new template('ContainerModule','_orphans_modules');
 	$template->assign('orphan_mods',$orphan_mods);
 	$template->output();
 // END PERM CHECK

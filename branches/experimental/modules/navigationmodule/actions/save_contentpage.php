@@ -42,7 +42,7 @@ if ($check_id == -1) {
 }
 
 if (($check_id != -1 && 
-	exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$check_id)) ||
+	exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$check_id)) ||
 	$user->is_acting_admin == 1
 	)) {
 	if (isset($section->id)) {

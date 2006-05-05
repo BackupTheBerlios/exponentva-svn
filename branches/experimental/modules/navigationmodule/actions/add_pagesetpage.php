@@ -41,15 +41,15 @@ if ($user && $user->is_acting_admin == 1) {
 	}
 }
 
-if ($check_id != -1 && exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$check_id))) {
+if ($check_id != -1 && exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$check_id))) {
 	if (!isset($section->id)) {
 		// Adding pagesets only works for adding, not editting.
 		$form = section::pagesetForm($section);
-		$form->meta('module','navigationmodule');
+		$form->meta('module','NavigationModule');
 		$form->meta('action','save_pagesetpage');
 		// Create a template for the form output, so that the themer can
 		// optionally change the form title and caption
-		$template = new template('navigationmodule','_form_addPagesetPage');
+		$template = new template('NavigationModule','_form_addPagesetPage');
 		// Assign the form's rendered HTML, with the customary name 'form_html'
 		$template->assign('form_html',$form->toHTML());
 		$template->output();

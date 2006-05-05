@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$i18n = exponent_lang_loadFile('modules/loginmodule/actions/login.php');
+$i18n = exponent_lang_loadFile('modules/LoginModule/actions/login.php');
 
 if (!defined('SYS_USERS')) require_once('subsystems/users.php');
 exponent_users_login($_POST['username'],$_POST['password']);

@@ -26,14 +26,15 @@ define('SYS_MODULES',1);
 
 /* exdoc
  * This includes all modules available to the system, for use later.
+ * Maxim says: This seems actually only necessary in PHP4 where there is no __autoload()
  * @node Subsystems:Modules
  */
 function exponent_modules_initialize() {
-	if (is_readable(BASE.'modules')) {
-		$dh = opendir(BASE.'modules');
-		while (($file = readdir($dh)) !== false) {
-			if (is_dir(BASE.'modules/'.$file) && is_readable(BASE.'modules/'.$file.'/class.php')) {
-				include_once(BASE.'modules/'.$file.'/class.php');
+	$classFiles = exponent_core_resolveFilePaths("modules", "", "", "*Module.php");
+	if ($classFiles != false) {
+		foreach ($classFiles as $classFile) {
+			if (exponent_modules_moduleExists(basename($classFile, ".php"))) {
+				include_once($classFile);
 			}
 		}
 	}
@@ -47,14 +48,7 @@ function exponent_modules_initialize() {
  * @node Subsystems:Modules
  */
 function exponent_modules_list() {
-	$mods = array();
-	if (is_readable(BASE."modules")) {
-		$dh = opendir(BASE."modules");
-		while (($file = readdir($dh)) !== false) {
-			if (substr($file,-6,6) == "module") $mods[] = $file;
-		}
-	}
-	return $mods;
+	return exponent_core_buildNameList("modules", "", "", "*Module.php");
 }
 
 /* exdoc
@@ -84,9 +78,12 @@ function exponent_modules_listActive() {
  * @node Subsystems:Modules
  */
 function exponent_modules_getJSValidationFile($module,$formname) {
-	if (is_readable(BASE."themes/".DISPLAY_THEME."/modules/$module/js/$formname.validate.js")) return PATH_RELATIVE . "themes/".DISPLAY_THEME."/modules/$module/js/$formname.validate.js";
-	else if (is_readable(BASE."modules/$module/js/$formname.validate.js")) return PATH_RELATIVE."modules/$module/js/$formname.validate.js";
-	return "";
+	$validationFile = exponent_core_resolveFilePaths("modules", $module, "js", $formname . ".validate.js");
+	if ($validationFile != false) {
+		return $validationFile;
+	} else {
+		return "";
+	}
 }
 
 /* exdoc
@@ -127,10 +124,14 @@ function exponent_modules_moduleManagerFormTemplate($template) {
  * @node Subsystems:Modules
  */
 function exponent_modules_verifyModule($basedir) {
+	
+// TODO: better do a hashckeck from a trusted source(=exponent website service)
+
+// disabled because of changes to file structure
 	// class.php
-	if (	!file_exists("$basedir/class.php") ||
-		!is_file("$basedir/class.php") ||
-		!is_readable("$basedir/class.php")	) return false;
+//	if (	!file_exists("$basedir/class.php") ||
+//		!is_file("$basedir/class.php") ||
+//		!is_readable("$basedir/class.php")	) return false;
 	
 	// actions
 	if (file_exists("$basedir/actions") && (
@@ -157,7 +158,7 @@ function exponent_modules_verifyModule($basedir) {
  * @node Subsystems:Modules
  */
 function exponent_modules_moduleExists($name) {
-	return (file_exists(BASE."modules/$name") && is_dir(BASE."modules/$name") && is_readable(BASE."modules/$name/class.php"));
+	return (file_exists(BASE."modules/$name") && is_dir(BASE."modules/$name") && is_readable(BASE."modules/$name.php"));
 }
 
 ?>

@@ -21,12 +21,12 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 
 	$modclass = $_GET['name'];
 	
-	$template = new template('administrationmodule','_examplecontent',$loc);
+	$template = new template('AdministrationModule','_examplecontent',$loc);
 	
 	$views = array();
 	$loc = exponent_core_makeLocation($modclass,'@example');

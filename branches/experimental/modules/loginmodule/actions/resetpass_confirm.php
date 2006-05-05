@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$i18n = exponent_lang_loadFile('modules/loginmodule/actions/resetpass_confirm.php');
+$i18n = exponent_lang_loadFile('modules/LoginModule/actions/resetpass_confirm.php');
 
 $db->delete('passreset_token','expires < ' . time());
 $tok = $db->selectObject('passreset_token','uid='.trim($_GET['uid'])." AND token='".preg_replace('/[^A-Za-z0-9]/','',$_GET['token']) ."'");
@@ -36,7 +36,7 @@ if ($tok == null) {
 	// Send message
 	if (!defined('SYS_SMTP')) require_once(BASE.'subsystems/smtp.php');
 	
-	$e_template = new template('loginmodule','_email_resetdone',$loc);
+	$e_template = new template('LoginModule','_email_resetdone',$loc);
 	$e_template->assign('newpass',$newpass);
 	$msg = $e_template->render();
 	

@@ -293,9 +293,9 @@ class standalonetemplate extends basetemplate {
  * @return string The full filepath of the view template
  */
 function exponent_template_getViewFile($type="", $name="", $view) {
-	$viewfilepath = array_shift(exponent_core_resolveFilePaths($type, $name, "tpl", $view));
+	$viewfilepath = exponent_core_resolveFilePaths($type, $name, "tpl", $view);
 	if ($viewfilepath != false) {
-		return $viewfilepath;
+		return array_shift($viewfilepath);
 	} else if ($view != DEFAULT_VIEW) {
 		// If we get here, try it with a different view.
 		return exponent_template_getViewFile($type, $name, DEFAULT_VIEW);
@@ -369,35 +369,24 @@ function exponent_template_getViewConfigOptions($module,$view) {
 	return $options;
 }
 
-function exponent_template_getFormTemplates($type) {
-	$forms = array();
-	
-	//Get the forms from the base form diretory
-	$formFiles = exponent_core_resolveFilePaths("forms", $type, "tpl", "[!_]*");
-	foreach($formFiles as $formFile) {
-		$forms[substr(basename($formFile), 0, -4)] = substr(basename($formFile), 0, -4);
-	}
-	return $forms;
+function exponent_template_listFormTemplates($type) {
+	return exponent_core_buildNameList("forms", $type, "tpl", "[!_]*");
 }
 
 
 /* exdoc
+ * 
  * Looks through the module's views directory and returns
  * all non-internal views that are found there.
  * Returns an array of all standard view names.
  * This array is unsorted.
  *
  * @param string $module The classname of the module to get views for.
+ * @param string $lang deprecated, was used to list language specific templates
  * @node Subsystems:Template
  */
-function exponent_template_listModuleViews($module,$lang = LANG) {
-	$views = array();
-	//Get the views
-	$viewFiles = exponent_core_resolveFilePaths("modules", $module, "tpl", "[!_]*");
-	foreach($viewFiles as $viewFile) {
-		$views[] = substr(basename($viewFile), 0, -4);
-	}
-	return $views;
+function exponent_template_listModuleViews($module, $lang = LANG) {
+	return exponent_core_buildNameList("modules", $module, "tpl", "[!_]*");
 
 }
 

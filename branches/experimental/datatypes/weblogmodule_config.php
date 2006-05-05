@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class weblogmodule_config {
+class WeblogModule_config {
 	function form($object) {
-		$i18n = exponent_lang_loadFile('datatypes/weblogmodule_config.php');
+		$i18n = exponent_lang_loadFile('datatypes/WeblogModule_config.php');
 	
 		if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 		exponent_forms_initialize();

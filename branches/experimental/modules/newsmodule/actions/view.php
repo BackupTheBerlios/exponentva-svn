@@ -36,7 +36,7 @@ if ($news != null) {
 	$news->real_posted = ($news->publish != 0 ? $news->publish : $news->posted);
 	
 	$view = (isset($_GET['view']) ? $_GET['view'] : "_viewSingle");
-	$template = new template("newsmodule",$view,$loc);
+	$template = new template("NewsModule",$view,$loc);
 	
 	$template->assign("newsitem",$news);
 	$template->assign("loc",$loc);

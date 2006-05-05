@@ -21,7 +21,7 @@ if (!defined('EXPONENT')) exit('');
 
 exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 
-$config = $db->selectObject('weblogmodule_config',"location_data='".serialize($loc)."'");
+$config = $db->selectObject('WeblogModule_config',"location_data='".serialize($loc)."'");
 if ($config == null) {
 	$config->allow_comments = 1;
 }
@@ -69,7 +69,7 @@ if ($this_post) {
 		$this_post->comments = $db->selectObjects('weblog_comment','parent_id='.$this_post->id);
 		usort($this_post->comments,'exponent_sorting_byPostedDescending');
 	
-		$template = new template('weblogmodule','_view',$loc);
+		$template = new template('WeblogModule','_view',$loc);
 	
 		$template->assign('this_post',$this_post);
 		$template->assign('next_post',$next_post);

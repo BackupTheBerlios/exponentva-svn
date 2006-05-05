@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	$ext = null;
 	if (isset($_GET['id'])) {
 		$ext = $db->selectObject('profileextension','id='.intval($_GET['id']));

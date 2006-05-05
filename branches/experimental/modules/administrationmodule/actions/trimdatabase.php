@@ -25,7 +25,7 @@ $dropped_count = 0;
 $dropped_tables = 0;
 $real_dropped_count = 0;
 
-if (exponent_permissions_check('database',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('database',exponent_core_makeLocation('AdministrationModule'))) {
     
     $droppable_tables = array();
 	
@@ -59,7 +59,7 @@ if (exponent_permissions_check('database',exponent_core_makeLocation('administra
 	
 	$droppable_count = count($droppable_tables);
 	
-	$template = new template('administrationmodule','_tableTrimSummary',$loc);
+	$template = new template('AdministrationModule','_tableTrimSummary',$loc);
 	$template->assign('status',$dropped_tables);
 
     $template->assign('dropped',$dropped_count);

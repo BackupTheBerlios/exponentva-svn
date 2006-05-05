@@ -25,7 +25,7 @@
 
 if (!defined("EXPONENT")) exit("");
 
-if (exponent_permissions_check('htmlarea',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('htmlarea',exponent_core_makeLocation('AdministrationModule'))) {
 	$config = $db->selectObject('toolbar_' . SITE_WYSIWYG_EDITOR, "id=".intval($_GET['id']));
 
 ?>
@@ -101,9 +101,9 @@ if ($config == null) {
 <br />
 <hr size="1" />
 <form method="post">
-<input type="hidden" name="module" value="administrationmodule"/>
+<input type="hidden" name="module" value="AdministrationModule"/>
 <input type="hidden" name="action" value="run"/>
-<input type="hidden" name="m" value="administrationmodule"/>
+<input type="hidden" name="m" value="AdministrationModule"/>
 <input type="hidden" name="a" value="htmlarea_saveconfig"/>
 <?php if ($config->id) { ?><input type="hidden" name="id" value="<?php echo $config->id; ?>"/><?php } ?>
 <input type="hidden" name="config" value="" id="config_htmlarea" />

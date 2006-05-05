@@ -27,7 +27,7 @@ if (!defined("EXPONENT")) exit("");
 	if ($t) {
 		exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	
-		$template = new template("htmltemplatemodule","_view",$loc);
+		$template = new template("HTMLTemplateModule","_view",$loc);
 		
 		$template->assign("template",$t);
 		$template->register_permissions(

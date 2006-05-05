@@ -29,7 +29,7 @@ if (!document.body.appendChild) {
 <form name="form" method="post" action="{$smarty.const.SCRIPT_RELATIVE}{$smarty.const.SCRIPT_FILENAME}?" enctype="">
 	{if $is_edit}<input type="hidden" name="id" value="{$container->id}" />
 	{/if}<input type="hidden" name="rank" value="{$container->rank}" />
-	<input type="hidden" name="module" value="containermodule" />
+	<input type="hidden" name="module" value="ContainerModule" />
 	<input type="hidden" name="src" value="{$loc->src}" />
 	<input type="hidden" name="int" value="{$loc->int}" />
 	{if $rerank == 1}<input type="hidden" name="rerank" value="1" />{/if}
@@ -45,7 +45,7 @@ if (!document.body.appendChild) {
 			{if $can_activate_modules == 1 && $is_edit == 0}
 			<tr>
 				<td></td>
-				<td><i>{$_TR.been_deactivated}  <a class="mngmntlink container_mngmntlink" href="{link module=administrationmodule action=managemodules}">{$_TR.access_manager}</a></i></td>
+				<td><i>{$_TR.been_deactivated}  <a class="mngmntlink container_mngmntlink" href="{link module=AdministrationModule action=managemodules}">{$_TR.access_manager}</a></i></td>
 			</tr>
 			{/if}
 			<tr>
@@ -113,7 +113,7 @@ if (!document.body.appendChild) {
 		</table>	
 		</td><td width="50%">
 			<b>{$_TR.preview}</b><br />
-			<iframe id="iframePreview" src="{$smarty.const.PATH_RELATIVE}modules/containermodule/nosourceselected.php" width="100%" height="250" style="border: 1px dashed #DDD;"></iframe>
+			<iframe id="iframePreview" src="{$smarty.const.PATH_RELATIVE}modules/ContainerModule/nosourceselected.php" width="100%" height="250" style="border: 1px dashed #DDD;"></iframe>
 		</td></tr>
 	</table>
 </form>

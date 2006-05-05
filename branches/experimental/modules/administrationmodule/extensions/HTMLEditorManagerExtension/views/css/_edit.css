@@ -1,0 +1,10 @@
+.ToolbarDesigner_toolboxbutton:hover {
+	border : 2px red solid;
+}
+.ToolbarDesigner_toolboxbutton_selected {
+	background-color : grey;
+}
+.ToolbarDesigner_messageline {
+	font-size: 12px;
+	font-style: italic;
+}

@@ -29,10 +29,10 @@ if (isset($_GET['id'])) {
 
 if (exponent_permissions_check('manage_af',$loc)) {
 	$form = banner_affiliate::form($af);
-	$form->meta('module','bannermodule');
+	$form->meta('module','BannerModule');
 	$form->meta('action','af_save');
 	
-	$template = new template('bannermodule','_form_af_edit',$loc);
+	$template = new template('BannerModule','_form_af_edit',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_edit',(isset($_GET['id'])?1:0));
 	$template->output();

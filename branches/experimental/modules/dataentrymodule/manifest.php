@@ -1,8 +1,8 @@
 <?php
 
 return array(
-	'modules/dataentrymodule/class.php'=>'',
-	'modules/dataentrymodule/manifest.php'=>1,
+	'modules/DataEntryModule/class.php'=>'',
+	'modules/DataEntryModule/manifest.php'=>1,
 );
 
 ?>

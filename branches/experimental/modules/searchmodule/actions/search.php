@@ -21,7 +21,7 @@
 if (!defined("EXPONENT")) exit("");
 
 // First, check our module config
-$config = $db->selectObject('searchmodule_config',"location_data='".serialize($loc)."'");
+$config = $db->selectObject('SearchModule_config',"location_data='".serialize($loc)."'");
 if ($config == null) {
 	$config->is_categorized = 0;
 }
@@ -30,7 +30,7 @@ if (!defined("SYS_SEARCH")) include_once(BASE."subsystems/search.php");
 $search_string = trim(strtolower(strip_tags($_GET['search_string'])));
 
 if ($search_string == "") {
-	echo exponent_lang_loadKey('modules/searchmodule/actions/search.php','need_term');
+	echo exponent_lang_loadKey('modules/SearchModule/actions/search.php','need_term');
 	return;
 }
 
@@ -49,7 +49,7 @@ foreach ($db->selectObjects("search",exponent_search_whereClause(array("title","
 	$sectionref = $db->selectObject("sectionref","module='".$rloc->mod."' AND source='".$rloc->src."'");
 	$section = $db->selectObject("section","id=".$sectionref->section);
 	
-	$canview = navigationmodule::canView($section);
+	$canview = NavigationModule::canView($section);
 	if ($canview && $r->view_perm != '') {
 		// No point in checking the perm stuff if they cant even see the section
 		$canview = false; // They need to have specific perms on the module.
@@ -140,7 +140,7 @@ foreach ($db->selectObjects("search",exponent_search_whereClause(array("title","
 	}
 }
 
-$template = new template('searchmodule','_results');
+$template = new template('SearchModule','_results');
 $template->assign('config',$config);
 $template->assign('query',join(' ',$terms));
 $template->assign('good_terms',$terms);

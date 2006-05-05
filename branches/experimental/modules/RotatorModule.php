@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class rotatormodule {
-	function name() { return exponent_lang_loadKey('modules/rotatormodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/rotatormodule/class.php','module_description'); }
+class RotatorModule {
+	function name() { return exponent_lang_loadKey('modules/RotatorModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/RotatorModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class rotatormodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/rotatormodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/RotatorModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'manage'=>$i18n['perm_manage'],
@@ -47,7 +47,7 @@ class rotatormodule {
 		} else {
 			$obj->text = '';
 		}
-		$template = new template('rotatormodule',$view,$loc);
+		$template = new template('RotatorModule',$view,$loc);
 		$template->assign('moduletitle',$title);
 		$template->assign('content',$obj);
 		$template->register_permissions(

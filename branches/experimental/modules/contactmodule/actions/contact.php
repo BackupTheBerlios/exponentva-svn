@@ -19,14 +19,14 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$i18n = exponent_lang_loadFile('modules/contactmodule/actions/contact.php');
+$i18n = exponent_lang_loadFile('modules/ContactModule/actions/contact.php');
 
-$template = new template('contactmodule',$_POST['msg'],$loc);
+$template = new template('ContactModule',$_POST['msg'],$loc);
 $template->assign('post',$_POST);
 
 $msg = $template->render();
 
-$config = $db->selectObject('contactmodule_config',"location_data='".serialize($loc)."'");
+$config = $db->selectObject('ContactModule_config',"location_data='".serialize($loc)."'");
 if ($config == null) {
 	$config->subject = $i18n['default_subject'];
 	$config->replyto_address = '';
@@ -57,7 +57,7 @@ foreach ($db->selectObjects('contact_contact',"location_data='".serialize($loc).
 
 if (!defined('SYS_SMTP')) include_once(BASE.'subsystems/smtp.php');
 if (exponent_smtp_mail($emails,$config->from_address,$config->subject,$msg,$headers)) {
-	$template = new template('contactmodule','_final_message');
+	$template = new template('ContactModule','_final_message');
 	$template->assign('message',$config->final_message);
 	$template->output();
 } else {

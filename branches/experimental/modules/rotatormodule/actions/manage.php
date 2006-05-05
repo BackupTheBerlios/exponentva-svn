@@ -24,7 +24,7 @@ if (exponent_permissions_check('manage',$loc)) {
 
 	$objects = $db->selectObjects('rotator_item',"location_data='".serialize($loc)."'");
 	
-	$template = new template('rotatormodule','_manage',$loc);
+	$template = new template('RotatorModule','_manage',$loc);
 	$template->assign('items',$objects);
 	$template->register_permissions(
 		array('administrate','manage'),

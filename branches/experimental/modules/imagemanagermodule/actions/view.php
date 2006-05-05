@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 if ($item) {
 	$loc = unserialize($item->location_data);
 	
-	$template = new template("imagemanagermodule","_view",$loc);
+	$template = new template("ImageManagerModule","_view",$loc);
 	
 	$file = $db->selectObject("file","id=".$item->file_id);
     

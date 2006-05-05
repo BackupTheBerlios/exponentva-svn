@@ -38,10 +38,10 @@ if ($user) {
 		}
 	}
 	$form = privatemessage::form($msg);
-	$form->meta('module','inboxmodule');
+	$form->meta('module','InboxModule');
 	$form->meta('action','send');
 
-	$template = new template('inboxmodule','_form_compose',$loc);
+	$template = new template('InboxModule','_form_compose',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

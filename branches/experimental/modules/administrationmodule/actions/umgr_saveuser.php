@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 #if ($user && $user->is_acting_admin == 1) {
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	if (!defined('SYS_SECURITY')) require_once(BASE.'subsystems/security.php');
@@ -34,7 +34,7 @@ if (exponent_permissions_check('user_management',exponent_core_makeLocation('adm
 		exponent_users_saveUser($u);
 		exponent_flow_redirect();
 	} else {
-		$i18n = exponent_lang_loadFile('modules/administrationmodule/actions/umgr_saveuser.php');
+		$i18n = exponent_lang_loadFile('modules/AdministrationModule/actions/umgr_saveuser.php');
 		$_POST['username'] = trim($_POST['username']);
 		if (exponent_users_getUserByName($_POST['username']) != null) {
 			$post = $_POST;

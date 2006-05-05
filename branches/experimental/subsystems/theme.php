@@ -206,7 +206,7 @@ function exponent_theme_showTopSectionalModule($module,$view,$title,$prefix = nu
  * @node Subsystems:Theme
  */
 function exponent_theme_showModule($module,$view = "Default",$title = "",$source = null,$pickable = false,$section = null) {
-	if (!AUTHORIZED_SECTION && $module != 'navigationmodule' && $module != 'loginmodule') {
+	if (!AUTHORIZED_SECTION && $module != 'NavigationModule' && $module != 'LoginModule') {
 		return;
 	}
 	global $db;
@@ -218,7 +218,7 @@ function exponent_theme_showModule($module,$view = "Default",$title = "",$source
 		}
 		$section = $db->selectObject('section','id='.$section_id);
 	}
-	if ($module == "loginmodule" && defined("PREVIEW_READONLY") && PREVIEW_READONLY == 1) return;
+	if ($module == "LoginModule" && defined("PREVIEW_READONLY") && PREVIEW_READONLY == 1) return;
 	
 	if (exponent_sessions_isset("themeopt_override")) {
 		$config = exponent_sessions_get("themeopt_override");
@@ -240,7 +240,7 @@ function exponent_theme_showModule($module,$view = "Default",$title = "",$source
 		}
 	}
 	if (defined("SELECTOR") && call_user_func(array($module,"hasSources"))) {
-		containermodule::wrapOutput($module,$view,$loc,$title);
+		ContainerModule::wrapOutput($module,$view,$loc,$title);
 	} else {
 		if (is_callable(array($module,"show"))) {
 			call_user_func(array($module,"show"),$view,$loc,$title);
@@ -271,8 +271,8 @@ function exponent_theme_canViewPage() {
 	global $db;
 	$last_section = exponent_sessions_get("last_section");
 	$section = $db->selectObject("section","id=".$last_section);
-	if ($section && navigationModule::canView($section)) {
-		$sloc = exponent_core_makeLocation("navigationmodule","",$section->id);
+	if ($section && NavigationModule::canView($section)) {
+		$sloc = exponent_core_makeLocation("NavigationModule","",$section->id);
 		return exponent_permissions_check("view",$sloc);
 	} else return true;
 	*/
@@ -316,7 +316,7 @@ function exponent_theme_main() {
 		}
 	} else {
 		if (isset($_REQUEST['module'])) {
-			include_once(BASE."modules/containermodule/actions/orphans_content.php");
+			include_once(BASE."modules/ContainerModule/actions/orphans_content.php");
 		} else {
 			$i18n = exponent_lang_loadFile('subsystems/theme.php');
 			echo $i18n['select_module'];
@@ -347,11 +347,10 @@ function exponent_theme_runAction() {
 		$loc->src = (isset($_REQUEST['src']) ? $_REQUEST['src'] : "");
 		$loc->int = (isset($_REQUEST['int']) ? $_REQUEST['int'] : "");
 		
-		$actfile = "/" . $_REQUEST['module'] . "/actions/" . $_REQUEST['action'] . ".php";
-		if (isset($_REQUEST['_common'])) $actfile = "/common/actions/" . $_REQUEST['action'] . ".php";
+		$actfile = exponent_core_resolveFilePaths("modules", $_REQUEST['module'], "action", $_REQUEST['action']);
 		
-		if (is_readable(BASE.'modules/'.$actfile)) {
-			include_once(BASE.'modules/'.$actfile);
+		if ($actfile != false) {
+			include_once(array_pop($actfile));
 		} else {
 			$i18n = exponent_lang_loadFile('subsystems/theme.php');
 			echo SITE_404_HTML . '<br /><br /><hr size="1" />';
@@ -401,9 +400,9 @@ function exponent_theme_mainContainer() {
 		
 #	if (exponent_sessions_isset("themeopt_override")) {
 #		$config = exponent_sessions_get("themeopt_override");
-		exponent_theme_showSectionalModule("containermodule","Default","","@section");
+		exponent_theme_showSectionalModule("ContainerModule","Default","","@section");
 #	} else {
-#		exponent_theme_showSectionalModule("containermodule","Default","","@section");
+#		exponent_theme_showSectionalModule("ContainerModule","Default","","@section");
 #	}
 }
 

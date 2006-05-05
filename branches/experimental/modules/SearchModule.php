@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class searchmodule {
-	function name() { return exponent_lang_loadKey('modules/searchmodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/searchmodule/class.php','module_description'); }
+class SearchModule {
+	function name() { return exponent_lang_loadKey('modules/SearchModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/SearchModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class searchmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/searchmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/SearchModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'configure'=>$i18n['perm_configure']
@@ -37,7 +37,7 @@ class searchmodule {
 	}
 	
 	function show($view,$loc = null, $title = '') {
-		$template = new template('searchmodule',$view,$loc);
+		$template = new template('SearchModule',$view,$loc);
 		
 		$template->assign('loc',$loc);
 		

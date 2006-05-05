@@ -19,7 +19,7 @@
 
 if (!defined("EXPONENT")) exit("");
 
-if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedcoremodule'))) {
+if (exponent_permissions_check('manage_site',exponent_core_makeLocation('SharedCoreModule'))) {
 	$i18n = exponent_lang_loadFile('modules/sharecoremodule/actions/save_site.php');
 
 	$site = null;
@@ -90,7 +90,7 @@ if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedc
 					$newdb = exponent_database_connect($_POST['db_user'],$_POST['db_pass'],$_POST['db_host'].':'.$_POST['db_port'],$_POST['db_name'],$_POST['db_engine'],true);
 					$newdb->prefix = $_POST['db_table_prefix'] . '_';
 					
-					// Following code snipped from modules/administrationmodule/actions/installtables.php
+					// Following code snipped from modules/AdministrationModule/actions/installtables.php
 					$dir = $site->path."datatypes/definitions";
 					if (is_readable($dir)) {
 						$tables = array();
@@ -138,7 +138,7 @@ if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedc
 						if ($newdb->tableIsEmpty('modstate')) {
 							echo $i18n_db['activate_panel'].'<br />';
 							$modstate = null;
-							$modstate->module = 'administrationmodule';
+							$modstate->module = 'AdministrationModule';
 							$modstate->active = 1;
 							$newdb->insertObject($modstate,'modstate');
 						}
@@ -154,14 +154,14 @@ if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedc
 							$sid = $newdb->insertObject($section,'section');
 						}
 						
-						$template = new template('administrationmodule','_tableInstallSummary',$loc);
+						$template = new template('AdministrationModule','_tableInstallSummary',$loc);
 						$template->assign('status',$tables);
 						$template->output();
 					}
 					// End snip
 					
 					// New site, time to go to the next place, the modules linker
-					$url = URL_FULL . "index.php?module=sharedcoremodule&action=edit_site_modules&site_id=".$site->id;
+					$url = URL_FULL . "index.php?module=SharedCoreModule&action=edit_site_modules&site_id=".$site->id;
 					header("Location: $url");
 					exit('Redirecting...');
 				} else {
@@ -185,7 +185,7 @@ if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedc
 			$db->updateObject($site,'sharedcore_site');
 			if ($site->inactive == 0) {
 				// Take them to the modules page, because that's probably why they went to edit in the first place.
-				$url = URL_FULL . 'index.php?module=sharedcoremodule&action=edit_site_modules&site_id='.$site->id;
+				$url = URL_FULL . 'index.php?module=SharedCoreModule&action=edit_site_modules&site_id='.$site->id;
 				header('Location: '.$url);
 				exit;
 			} else {

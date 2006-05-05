@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 $t = null;
-$loc = exponent_core_makeLocation('htmltemplatemodule');
+$loc = exponent_core_makeLocation('HTMLTemplateModule');
 if (isset($_POST['id'])) {
 	$t = $db->selectObject('htmltemplate','id='.intval($_POST['id']));
 }

@@ -17,9 +17,9 @@
 #
 ##################################################
 
-if (class_exists('portaltheme')) return;
+if (class_exists('PortalTheme')) return;
 
-class portaltheme {
+class PortalTheme {
 	function name() { return "Portal Site"; }
 	function author() { return "Jake Hamann (jake@jakehamann.com)"; }
 	function description() { return "A simple portal page theme."; }

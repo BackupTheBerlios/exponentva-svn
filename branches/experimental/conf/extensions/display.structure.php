@@ -21,20 +21,20 @@
 if (!defined('EXPONENT')) exit('');
 
 $themes = array();
-if (is_readable(BASE.'themes')) {
-	$theme_dh = opendir(BASE.'themes');
-	while (($theme_file = readdir($theme_dh)) !== false) {
-		if (is_readable(BASE.'themes/'.$theme_file.'/class.php')) {
-			// Need to avoid the duplicate theme problem.
-			if (!class_exists($theme_file)) {
-				include_once(BASE.'themes/'.$theme_file.'/class.php');
-			}
-			
-			if (class_exists($theme_file)) {
-				// Need to avoid instantiating non-existent classes.
-				$t = new $theme_file();
-				$themes[$theme_file] = $t->name();
-			}
+$themeFiles = exponent_core_resolveFilePaths("", "", "", "*Theme.php");
+if ($themeFiles != false) {
+	foreach ($themeFiles as $themeFile) {
+		// Need to avoid the duplicate theme problem. e.g. it has been loaded before
+		// needed because php4 does not have __autoload()
+		$themeClass = basename($themeFile, ".php");
+		if (!class_exists($themeClass)) {
+			include_once($themeFile);
+		}
+		
+		if (class_exists($themeClass)) {
+			// Need to avoid instantiating non-existent classes.
+			$t = new $themeClass();
+			$themes[$themeClass] = $t->name();
 		}
 	}
 }

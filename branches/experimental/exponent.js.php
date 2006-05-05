@@ -104,7 +104,7 @@ function openSelector(mod,dest,vmod,vview) {
 }
 
 function openContentSelector(mod,dest,view) {
-	var url = PATH_RELATIVE+"content_selector.php?showmodules="+mod+"&dest="+escape(dest)+"&vmod=containermodule&vview="+view;
+	var url = PATH_RELATIVE+"content_selector.php?showmodules="+mod+"&dest="+escape(dest)+"&vmod=ContainerModule&vview="+view;
 	openWindow(url,'contentPicker','title=no,toolbar=no,width=640,height=480,scrollbars=yes');
 }
 

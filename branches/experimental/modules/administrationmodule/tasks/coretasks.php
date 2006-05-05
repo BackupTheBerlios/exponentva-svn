@@ -19,61 +19,61 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$i18n = exponent_lang_loadFile('modules/administrationmodule/tasks/coretasks.php');
+$i18n = exponent_lang_loadFile('modules/AdministrationModule/tasks/coretasks.php');
 
 $stuff = array(
 	$i18n['user_management']=>array(
 		'useraccounts'=>array(
 			'title'=>$i18n['user_accounts'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'useraccounts'),
 		'usersessions'=>array(
 			'title'=>$i18n['user_sessions'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'usersessions'),
 		'groupaccounts'=>array(
 			'title'=>$i18n['group_accounts'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'groupaccounts'),
 		'profiledefinitions'=>array(
 			'title'=>$i18n['profile_definitions'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'profileext_manage')
 	),
 	$i18n['extensions']=>array(
 		'managemodules'=>array(
 			'title'=>$i18n['manage_modules'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'managemodules'),
 		'managethemes'=>array(
 			'title'=>$i18n['manage_themes'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'managethemes'),
 		'managesubsystems'=>array(
 			'title'=>$i18n['manage_subsystems'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'managesubsystems'),
 		'upload_extension'=>array(
 			'title'=>$i18n['upload_extension'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'upload_extension')
 	),
 	$i18n['database']=>array(
 		'orphanedcontent'=>array(
 			'title'=>$i18n['archived_modules'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'orphanedcontent'),
 		'installdatabase'=>array(
 			'title'=>$i18n['install_tables'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'installtables'),
 		'trimdatabase'=>array(
 			'title'=>$i18n['trim_database'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'trimdatabase'),
 		'optimizedatabase'=>array(
 			'title'=>$i18n['optimize_database'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'optimizedatabase'),
 		'import'=>array(
 			'title'=>$i18n['import_data'],
@@ -87,7 +87,7 @@ $stuff = array(
 	$i18n['configuration']=>array(
 		'configuresite'=>array(
 			'title'=>$i18n['configure_site'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'configuresite'),
 		'mimetypes'=>array(
 			'title'=>$i18n['file_types'],
@@ -99,7 +99,7 @@ $stuff = array(
 			'action'=>'admin_manage_policies'),
 		'sysinfo'=>array(
 			'title'=>$i18n['system_info'],
-			'module'=>'administrationmodule',
+			'module'=>'AdministrationModule',
 			'action'=>'sysinfo'),
 	)
 );

@@ -17,7 +17,7 @@
 #
 ##################################################
 
-class addressbookmodule {
+class AddressbookModule {
 	function name() { return exponent_lang_loadKey('modules/addressbookmodule/class.php','module_name'); }
 	function description() { return exponent_lang_loadKey('modules/addressbookmodule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }

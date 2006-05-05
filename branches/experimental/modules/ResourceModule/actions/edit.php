@@ -37,7 +37,7 @@ if (($resource == null && exponent_permissions_check('post',$loc)) ||
 	$form->location($loc);
 	$form->meta('action','save');
 	
-	$template = new template('resourcesmodule','_form_edit',$loc);
+	$template = new template('ResourceModule','_form_edit',$loc);
 	
 	if (!isset($resource->id)) {
 		$ranks = array();
@@ -50,11 +50,11 @@ if (($resource == null && exponent_permissions_check('post',$loc)) ||
 	}
 	
 	if (!isset($resource->file_id)) {
-		$i18n = exponent_lang_loadFile('modules/resourcesmodule/actions/edit.php');
+		$i18n = exponent_lang_loadFile('modules/ResourceModule/actions/edit.php');
 		
 		$form->registerBefore('submit','file',$i18n['file'],new uploadcontrol());
 		
-		$dir = 'files/resourcesmodule/'.$loc->src;
+		$dir = 'files/ResourceModule/'.$loc->src;
 		if (!is_really_writable(BASE.$dir)) {
 			$template->assign('dir_not_readable',1);
 			$form->controls['submit']->disabled = true;

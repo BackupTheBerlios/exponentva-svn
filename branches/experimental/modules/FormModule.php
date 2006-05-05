@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class formmodule {
-	function name() { return exponent_lang_loadKey('modules/formmodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/formmodule/class.php','module_description'); }
+class FormModule {
+	function name() { return exponent_lang_loadKey('modules/FormModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/FormModule/class.php','module_description'); }
 	function author() { return 'Greg Otte'; }
 	
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class formmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = "") {
-		$i18n = exponent_lang_loadFile('modules/formmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/FormModule/class.php');
 		if ($internal == "") {
 			return array(
 				"administrate"=>$i18n['perm_administrate'],
@@ -58,7 +58,7 @@ class formmodule {
 		if (!defined("SYS_FORMS")) require_once(BASE."subsystems/forms.php");
 		exponent_forms_initialize();
 		
-		$i18n = exponent_lang_loadFile('modules/formmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/FormModule/class.php');
 		
 		if (defined("PREVIEW_READONLY") && !defined("SELECTOR")) {
 			// Pass
@@ -124,7 +124,7 @@ class formmodule {
 				$form->controls['submit']->disabled = true;
 				$formmsg .= $i18n['no_actions']; 
 			}
-			$template = new template("formmodule",$view,$loc);
+			$template = new template("FormModule",$view,$loc);
 			$template->assign("formmsg",$formmsg);
 			$template->assign("form_html",$form->toHTML($f->id));
 			$template->assign("form",$f);

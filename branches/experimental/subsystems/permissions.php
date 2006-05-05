@@ -81,9 +81,9 @@ function exponent_permissions_load($user) {
 			}
 		}
 		// Retrieve sectional admin status.
-		// First, figure out what sections the user has permission to manage, through the navigationmodule permissions
-		if (isset($exponent_permissions_r['navigationmodule']['']) && is_array($exponent_permissions_r['navigationmodule'][''])) {
-			foreach ($exponent_permissions_r['navigationmodule'][''] as $id=>$perm_data) {
+		// First, figure out what sections the user has permission to manage, through the NavigationModule permissions
+		if (isset($exponent_permissions_r['NavigationModule']['']) && is_array($exponent_permissions_r['NavigationModule'][''])) {
+			foreach ($exponent_permissions_r['NavigationModule'][''] as $id=>$perm_data) {
 				if ($perm_data['manage'] == 1) {
 					// The user is allowed to manage sections.
 					// Pull in all stuff for the section, using section ref.
@@ -125,7 +125,7 @@ function exponent_permissions_load($user) {
 		if ($has_admin) {
 			$ui_levels[] = $i18n['perms'];
 		}
-		if (isset($exponent_permissions_r['containermodule']) && count($exponent_permissions_r['containermodule'])) {
+		if (isset($exponent_permissions_r['ContainerModule']) && count($exponent_permissions_r['ContainerModule'])) {
 			$ui_levels[] = $i18n['structure'];
 		}
 	}
@@ -207,10 +207,10 @@ function exponent_permissions_check($permission,$location) {
 			}
 		}
 	}
-	if (!$has_perm && $location->mod != 'navigationmodule') {
+	if (!$has_perm && $location->mod != 'NavigationModule') {
 		global $db;
 		foreach ($db->selectObjects('sectionref',"is_original=1 AND module='".$location->mod."' AND source='".$location->src."'") as $secref) {
-			if (exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$secref->section))) {
+			if (exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$secref->section))) {
 				$has_perm = true;
 				break;
 			}
@@ -272,7 +272,7 @@ function exponent_permissions_checkUser($user,$permission,$location,$explicitOnl
 				$implicit = true;
 				break;
 			}
-			$section_perms = $db->selectObjects('grouppermission','gid='.$memb->group_id." AND module='navigationmodule' AND permission='manage'");
+			$section_perms = $db->selectObjects('grouppermission','gid='.$memb->group_id." AND module='NavigationModule' AND permission='manage'");
 			foreach ($section_perms as $perm) {
 				if ($db->countObjects('sectionref','is_original=1 AND section='.$perm->internal." AND module='".$location->mod."' AND source='".$location->src."'")) {
 					$implicit = true;
@@ -281,9 +281,9 @@ function exponent_permissions_checkUser($user,$permission,$location,$explicitOnl
 			}
 		}
 	}
-	if (!$implicit && $location->mod != 'navigationmodule') {
+	if (!$implicit && $location->mod != 'NavigationModule') {
 		foreach ($db->selectObjects('sectionref',"is_original=1 AND module='".$location->mod."' AND source='".$location->src."'") as $secref) {
-			if (exponent_permissions_checkUser($user,'manage',exponent_core_makeLocation('navigationmodule','',$secref->section))) {
+			if (exponent_permissions_checkUser($user,'manage',exponent_core_makeLocation('NavigationModule','',$secref->section))) {
 				$implicit = true;
 				break;
 			}
@@ -291,7 +291,7 @@ function exponent_permissions_checkUser($user,$permission,$location,$explicitOnl
 
 		// Now check the section management
 		/*
-		$section_perms = $db->selectObjects('userpermission','uid='.$user->id." AND module='navigationmodule' AND permission='manage'");
+		$section_perms = $db->selectObjects('userpermission','uid='.$user->id." AND module='NavigationModule' AND permission='manage'");
 		foreach ($section_perms as $perm) {
 			if ($db->countObjects('sectionref','is_original=1 AND section='.$perm->internal." AND module='".$location->mod."' AND source='".$location->src."'")) {
 				$implicit = true;
@@ -321,7 +321,7 @@ function exponent_permissions_checkGroup($group,$permission,$location,$explicitO
 	if (!$explicit){
 		// Calculate implicit permissions if we dont' already have explicit perms
 		$implicit = false;
-		foreach ($db->selectObjects('grouppermission','gid='.$group->id." AND module='navigationmodule' AND permission='manage'") as $perm) {
+		foreach ($db->selectObjects('grouppermission','gid='.$group->id." AND module='NavigationModule' AND permission='manage'") as $perm) {
 			if ($db->countObjects('sectionref','is_original=1 AND section='.$perm->internal." AND module='".$location->mod."' AND source='".$location->src."'")) {
 				$implicit = true;
 				break;

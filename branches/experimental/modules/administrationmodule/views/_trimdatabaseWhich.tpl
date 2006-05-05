@@ -16,7 +16,7 @@
 <div class="form_title">Trim Database</div>
 <div class="form_header">Exponent has examined the database and determined which tables are no longer being used.  Please select which ones you want to remove from the database.</div>
 <form method="post" action="">
-<input type="hidden" name="module" value="administrationmodule" />
+<input type="hidden" name="module" value="AdministrationModule" />
 <input type="hidden" name="action" value="trimdatabase_final" />
 <table cellpadding="2" cellspacing="0" width="100%" border="0">
 {foreach from=$droppable_tables item=rowcount key=table}

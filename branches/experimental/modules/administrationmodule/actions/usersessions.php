@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED, SYS_FLOW_ACTION);
 
 	$db->delete('sessionticket','last_active < ' . (time() - SESSION_TIMEOUT));
@@ -35,7 +35,7 @@ if (exponent_permissions_check('user_management',exponent_core_makeLocation('adm
 		$sessions[$i]->duration = exponent_datetime_duration($sessions[$i]->last_active,$sessions[$i]->start_time);
 	}
 	
-	$template = new template('administrationmodule','_sessionmanager',$loc);
+	$template = new template('AdministrationModule','_sessionmanager',$loc);
 	$template->assign('sessions',$sessions);
 	$template->assign('user',$user);
 	$template->output();

@@ -17,7 +17,7 @@
 #
 ##################################################
 
-class filemanagermodule {
+class FileManagerModule {
 	function name() { return 'Exponent File Manager'; }
 	function description() { return 'Manages all uploaded files for the site.'; }
 	function author() { return 'James Hunt'; }
@@ -43,12 +43,12 @@ class filemanagermodule {
 	}
 	
 	function show($view,$loc = null, $title = "") {
-		$loc = exponent_core_makeLocation('filemanagermodule');
+		$loc = exponent_core_makeLocation('FileManagerModule');
 		
 		global $db;
 		$collections = $db->selectObjects('file_collection');
 		
-		$template = new template('filemanagermodule',$view,$loc);
+		$template = new template('FileManagerModule',$view,$loc);
 		$template->assign('collections',$collections);
 		
 		$template->output();

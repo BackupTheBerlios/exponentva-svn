@@ -28,20 +28,20 @@ if (isset($_GET['id'])) {
 }
 
 if (exponent_permissions_check('manage',$loc)) {
-	$i18n = exponent_lang_loadFile('modules/bannermodule/actions/ad_edit.php');
+	$i18n = exponent_lang_loadFile('modules/BannerModule/actions/ad_edit.php');
 
 	$form = banner_ad::form($banner);
 	$form->location($loc);
 	$form->meta('action','ad_save');
 	
-	if (is_really_writable(BASE.'files/bannermodule/'.$loc->src)) {
+	if (is_really_writable(BASE.'files/BannerModule/'.$loc->src)) {
 		$form->registerBefore('submit','file',$i18n['file'],new uploadcontrol());
 	} else {
 		$form->controls['submit']->disabled = 1;
 		$form->registerBefore('name',null,'',new htmlcontrol('<div class="error">'.$i18n['no_upload'].'</div>'));
 	}
 	
-	$template = new template('bannermodule','_form_ad_edit');
+	$template = new template('BannerModule','_form_ad_edit');
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_edit',(isset($_GET['id']) ? 1 : 0));
 	$template->output();

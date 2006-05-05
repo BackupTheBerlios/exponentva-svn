@@ -35,7 +35,7 @@ if (($post == null && exponent_permissions_check('post',$loc)) ||
 	$form->location($loc);
 	$form->meta('action','post_save');
 	
-	$template = new template('weblogmodule','_form_postEdit',$loc);
+	$template = new template('WeblogModule','_form_postEdit',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->assign('is_edit', (isset($_GET['id']) ? 1 : 0) );
 	$template->output();

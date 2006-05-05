@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	if (isset($_POST['id'])) { // Existing user profile edit
 		$g = exponent_users_getGroupById($_POST['id']);
@@ -31,7 +31,7 @@ if (exponent_permissions_check('user_management',exponent_core_makeLocation('adm
 		exponent_flow_redirect();
 	} else {
 		if (exponent_users_getGroupByName($_POST['name']) != null) {
-			$i18n = exponent_lang_loadFile('modules/administrationmodule/actions/gmgr_savegroup.php');
+			$i18n = exponent_lang_loadFile('modules/AdministrationModule/actions/gmgr_savegroup.php');
 			$post = $_POST;
 			$post['_formError'] = $i18n['name_taken'];
 			exponent_sessions_set('last_POST',$post);

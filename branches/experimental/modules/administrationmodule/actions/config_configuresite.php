@@ -21,17 +21,17 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('configuration',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('configuration',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 	exponent_forms_initialize();
 	if (!defined('SYS_CONFIG')) require_once(BASE.'subsystems/config.php');
 	
 	$configname = (isset($_GET['configname']) ? $_GET['configname'] : "");
 	$form = exponent_config_configurationForm($configname);
-	$form->meta('module','administrationmodule');
+	$form->meta('module','AdministrationModule');
 	$form->meta('action','config_save');
 	
-	$template = new template('administrationmodule','_config_configuresite',$loc);
+	$template = new template('AdministrationModule','_config_configuresite',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

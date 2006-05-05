@@ -48,7 +48,7 @@ if (	($item == null && exponent_permissions_check('post',$loc)) ||
     	if (!isset($item->id)) {
 	    	if (!defined('SYS_FILES')) include_once(BASE.'subsystems/files.php');
 	
-    		$directory = 'files/imagemanagermodule/'.$loc->src;
+    		$directory = 'files/ImageManagerModule/'.$loc->src;
 	    	$fname = null;
 		
 		    if (exponent_files_uploadDestinationFileExists($directory,'file')) {

@@ -108,10 +108,10 @@
 			};
 			
 			function onBrowse() {
-				window.open("../../../modules/filemanagermodule/actions/picker.php?id=0", "Browser");
+				window.open("../../../modules/FileManagerModule/actions/picker.php?id=0", "Browser");
 				return false;
 			
-			//	window.open("../../../source_selector.php?showmodules=imagemanagermodule&dest=&vmod=imagemanagermodule&vview=_sourcePicker&hideOthers=1","palette","toolbar=no,title=no,width=640,height=480,scrollbars=yes");
+			//	window.open("../../../source_selector.php?showmodules=ImageManagerModule&dest=&vmod=ImageManagerModule&vview=_sourcePicker&hideOthers=1","palette","toolbar=no,title=no,width=640,height=480,scrollbars=yes");
 			}
 	/* ]]> */		
 	</script>

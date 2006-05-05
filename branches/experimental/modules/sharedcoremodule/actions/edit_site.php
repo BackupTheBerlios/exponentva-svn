@@ -19,17 +19,17 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('manage_site',exponent_core_makeLocation('sharedcoremodule'))) {
+if (exponent_permissions_check('manage_site',exponent_core_makeLocation('SharedCoreModule'))) {
 	$site = null;
 	if (isset($_GET['id'])) {
 		$site = $db->selectObject('sharedcore_site','id='.intval($_GET['id']));
 	}
 	
 	$form = sharedcore_site::form($site);
-	$form->meta('module','sharedcoremodule');
+	$form->meta('module','SharedCoreModule');
 	$form->meta('action','save_site');
 	
-	$template = new template('sharedcoremodule','_form_editSite');
+	$template = new template('SharedCoreModule','_form_editSite');
 	$template->assign('is_edit',(!isset($site->id)));
 	$template->assign('form_html',$form->toHTML());
 	$template->output();

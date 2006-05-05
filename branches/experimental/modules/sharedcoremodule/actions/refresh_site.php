@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$loc = exponent_core_makeLocation('sharedcoremodule');
+$loc = exponent_core_makeLocation('SharedCoreModule');
 if (exponent_permissions_check('manage_core',$loc) || exponent_permissions_check('manage_site',$loc)) {
 	$site = null;
 	if (isset($_GET['id'])) {

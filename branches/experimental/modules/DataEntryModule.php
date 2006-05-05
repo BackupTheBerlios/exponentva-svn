@@ -17,7 +17,7 @@
 #
 ##################################################
 
-class dataentrymodule {
+class DataEntryModule {
 	function name() { return "Data Entry Reports Module"; }
 	function description() { return "Allows the creation of arbitrary database tables, provides forms to manage table data, and reports to view and analyze it.<br><font color='red'><b>This is not functional yet!!</b></b></font>"; }
 	function author() { return "Greg Otte and James Hunt"; }
@@ -52,7 +52,7 @@ class dataentrymodule {
 		$tables = $db->selectObjects("dataentry_table","location_data='".serialize($loc)."'");
 		$uninstalled = $db->selectObjects("dataentry_table","location_data='".serialize($loc)."' AND installed=0");
 		
-		$template = new template("dataentrymodule",$view,$loc);
+		$template = new template("DataEntryModule",$view,$loc);
 		$template->assign("tables",$tables);
 		$template->assign("uninstalled",$uninstalled);
 		$template->assign("numToInstall",count($uninstalled));
@@ -61,7 +61,7 @@ class dataentrymodule {
 			$loc
 		);
 	*/
-		$template = new template("dataentrymodule",$view,$loc);
+		$template = new template("DataEntryModule",$view,$loc);
 		$forms = $db->selectObjects("dataentry_form","location_data='".serialize($loc)."'");
 		$reports = $db->selectObjects("dataentry_report","location_data='".serialize($loc)."'");
 		$template->assign("forms",$forms);

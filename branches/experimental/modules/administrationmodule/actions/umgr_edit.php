@@ -21,12 +21,12 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) {
+if (isset($_GET['id']) && exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
 	
 	$u = exponent_users_getUserById(intval($_GET['id']));
 	
-	$template = new template('administrationmodule','_umgr_edit_which',$loc);
+	$template = new template('AdministrationModule','_umgr_edit_which',$loc);
 	$template->assign('user',$u);
 	$template->output();
 } else {

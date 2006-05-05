@@ -21,9 +21,9 @@ if (!defined('EXPONENT')) exit('');
 
 exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 
-$template = new template('weblogmodule','_view_page',$loc);
+$template = new template('WeblogModule','_view_page',$loc);
 
-$config = $db->selectObject('weblogmodule_config',"location_data='".serialize($loc)."'");
+$config = $db->selectObject('WeblogModule_config',"location_data='".serialize($loc)."'");
 if ($config == null) {
 	$config->allow_comments = 1;
 	$config->items_per_page = 10;

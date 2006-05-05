@@ -13,7 +13,7 @@
  * GPL: http://www.gnu.org/licenses/gpl.txt
  *
  *}
-{if $container->info.clickable && $container->info.class == "imagemanagermodule"}
+{if $container->info.clickable && $container->info.class == "ImageManagerModule"}
 	<div class="container_editbox">
 		<div class="container_box">
 			<div width="100%" style="width: 100%">

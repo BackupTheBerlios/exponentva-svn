@@ -31,7 +31,7 @@ class privatemessage {
 		global $db, $user;
 		
 		if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');
-		if (exponent_permissions_check('contact_all',exponent_core_makeLocation('inboxmodule'))) {
+		if (exponent_permissions_check('contact_all',exponent_core_makeLocation('InboxModule'))) {
 			foreach (exponent_users_getAllUsers() as $u) {
 				$users[$u->id] = $u->firstname . ' ' . $u->lastname . ' (' . $u->username . ')';
 			}
@@ -60,7 +60,7 @@ class privatemessage {
 		foreach ($db->selectObjects('inbox_contactlist','owner='.$user->id) as $g) {
 			$groups['list_'.$g->id] = $g->name . ' ' . $i18n['personal_list'];
 		}
-		if (exponent_permissions_check('contact_all',exponent_core_makeLocation('inboxmodule'))) {
+		if (exponent_permissions_check('contact_all',exponent_core_makeLocation('InboxModule'))) {
 			foreach (exponent_users_getAllGroups(1,0) as $g) {
 				$groups['group_'.$g->id] = $g->name . ' ' . $i18n['system_group'];
 			}

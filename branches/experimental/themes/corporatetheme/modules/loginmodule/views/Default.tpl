@@ -73,7 +73,7 @@
 		
 			<form method="post" action="?">
 				<input type="hidden" name="action" value="login" />
-				<input type="hidden" name="module" value="loginmodule" />
+				<input type="hidden" name="module" value="LoginModule" />
 				<input type="text" name="username" id="login_username" size="15" /><br />
 				<input type="password" name="password" id="login_password" size="15" /><br />
 				<input type="submit" value="Login" /><br />

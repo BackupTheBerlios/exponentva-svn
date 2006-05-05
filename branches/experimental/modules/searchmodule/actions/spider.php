@@ -20,8 +20,8 @@
 //GREP:VIEWIFY
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('searching',exponent_core_makeLocation('administrationmodule'))) {
-	$template = new template('searchmodule','_spiderSite');
+if (exponent_permissions_check('searching',exponent_core_makeLocation('AdministrationModule'))) {
+	$template = new template('SearchModule','_spiderSite');
 	
 	if (!defined('SYS_MODULES')) include_once(BASE.'subsystems/modules.php');
 	$db->delete('search');

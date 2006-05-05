@@ -36,7 +36,7 @@ if (phpversion() >= 5) {
 	 * of autoloading
 	 * @node Subsystems:Autoloader
 	 */
-	$auto_dirs = array(BASE.'datatypes', BASE.'subsystems/forms', BASE.'subsystems/forms/controls');
+	$auto_dirs = array('datatypes', 'forms', 'controls', 'themes', 'modules');
 	
 	/* exdoc
 	 * This function overrides the default PHP5 autoloader,
@@ -50,8 +50,9 @@ if (phpversion() >= 5) {
 	function __autoload($class) {
 		global $auto_dirs;
 		foreach ($auto_dirs as $auto_dir) {
-			if (is_readable($auto_dir.'/'.$class.'.php')) {
-				include_once($auto_dir.'/'.$class.'.php');
+			$classFile = exponent_core_resolveFilePaths($auto_dir, "", "", $class . ".php");
+			if ($classFile != false) {
+				include_once(array_pop($classFile));
 				return;
 			}
 		}

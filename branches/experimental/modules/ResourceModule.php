@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class resourcesmodule {
-	function name() { return exponent_lang_loadKey('modules/resourcesmodule/class.php','module_name'); }
+class ResourceModule {
+	function name() { return exponent_lang_loadKey('modules/ResourceModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description() { return exponent_lang_loadKey('modules/resourcesmodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/ResourceModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasViews() { return true; }
@@ -29,7 +29,7 @@ class resourcesmodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/resourcesmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/ResourceModule/class.php');
 		if ($internal == '') {
 			return array(
 				'administrate'=>$i18n['perm_administrate'],
@@ -59,9 +59,9 @@ class resourcesmodule {
 	function show($view,$loc,$title = '') {
 		if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
 		
-		$template = new template('resourcesmodule',$view,$loc);
+		$template = new template('ResourceModule',$view,$loc);
 		
-		$directory = 'files/resourcesmodule/' . $loc->src;
+		$directory = 'files/ResourceModule/' . $loc->src;
 		if (!file_exists(BASE.$directory)) {
 			$err = exponent_files_makeDirectory($directory);
 			if ($err != SYS_FILES_SUCCESS) {
@@ -119,13 +119,13 @@ class resourcesmodule {
 			}
 			$db->delete('resourceitem_wf_revision','wf_original='.$res->id);
 		}
-		rmdir(BASE.'files/resourcesmodule/'.$loc->src);
+		rmdir(BASE.'files/ResourceModule/'.$loc->src);
 		$db->delete('resourceitem',"location_data='".serialize($loc)."'");
 	}
 	
 	function copyContent($oloc,$nloc) {
 		if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
-		$directory = 'files/resourcesmodule/'.$nloc->src;
+		$directory = 'files/ResourceModule/'.$nloc->src;
 		if (!file_exists(BASE.$directory) && exponent_files_makeDirectory($directory) != SYS_FILES_SUCCESS) {
 			return;
 		}
@@ -147,7 +147,7 @@ class resourcesmodule {
 	}
 	
 	function spiderContent($item = null) {
-		$i18n = exponent_lang_loadFile('modules/resourcesmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/ResourceModule/class.php');
 		
 		global $db;
 		
@@ -155,25 +155,25 @@ class resourcesmodule {
 		
 		$search = null;
 		$search->category = $i18n['search_category'];
-		$search->ref_module = 'resourcesmodule';
+		$search->ref_module = 'ResourceModule';
 		$search->ref_type = 'resourceitem';
 		
 		if ($item) {
-			$db->delete('search',"ref_module='resourcesmodule' AND ref_type='resourceitem' AND original_id=" . $item->id);
+			$db->delete('search',"ref_module='ResourceModule' AND ref_type='resourceitem' AND original_id=" . $item->id);
 			$search->original_id = $item->id;
 			$search->body = ' ' . exponent_search_removeHTML($item->description) . ' ';
 			$search->title = ' ' . $item->name . ' ';
 			$search->location_data = $item->location_data;
-			$search->view_link = 'index.php?module=resourcesmodule&action=view&id='.$item->id;
+			$search->view_link = 'index.php?module=ResourceModule&action=view&id='.$item->id;
 			$db->insertObject($search,'search');
 		} else {
-			$db->delete('search',"ref_module='resourcesmodule' AND ref_type='resourceitem'");
+			$db->delete('search',"ref_module='ResourceModule' AND ref_type='resourceitem'");
 			foreach ($db->selectObjects('resourceitem') as $item) {
 				$search->original_id = $item->id;
 				$search->body = ' ' . exponent_search_removeHTML($item->description) . ' ';
 				$search->title = ' ' . $item->name . ' ';
 				$search->location_data = $item->location_data;
-				$search->view_link = 'index.php?module=resourcesmodule&action=view&id='.$item->id;
+				$search->view_link = 'index.php?module=ResourceModule&action=view&id='.$item->id;
 				$db->insertObject($search,'search');
 			}
 		}

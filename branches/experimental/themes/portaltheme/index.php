@@ -49,23 +49,23 @@ if (!defined('EXPONENT')) exit('');
 					<td style="background-image: url(<?php echo THEME_RELATIVE; ?>images/leftbar_2.gif);"></td>
 					<td>
 						<div style="padding: 4px; border-bottom: 1px solid grey">
-							<?php pathos_theme_showModule("navigationmodule","Top Nav"); ?>
+							<?php pathos_theme_showModule("NavigationModule","Top Nav"); ?>
 						</div>
 						<table width="100%" cellspacing="0">
 							<tbody>
 								<tr>
 									<td valign="top" width="156" style="border-right: 1px solid grey; padding: 4px;">
-										<?php pathos_theme_showModule("loginmodule","Default"); ?>
-										<?php pathos_theme_showModule("previewmodule","Default"); ?>
+										<?php pathos_theme_showModule("LoginModule","Default"); ?>
+										<?php pathos_theme_showModule("PreviewModule","Default"); ?>
 										<br /><hr size="1" />
-										<?php pathos_theme_showModule("navigationmodule","Children Only"); ?>
+										<?php pathos_theme_showModule("NavigationModule","Children Only"); ?>
 										<br /><hr size="1" /><br />
-										<?php pathos_theme_showSectionalModule("containermodule","Default","","@left"); ?>
+										<?php pathos_theme_showSectionalModule("ContainerModule","Default","","@left"); ?>
 									</td>
 									<td valign="top" style="padding: 7px;">
 										<?php
 										if (!pathos_theme_inAction()) {
-											pathos_theme_showModule("navigationmodule","Breadcrumb");
+											pathos_theme_showModule("NavigationModule","Breadcrumb");
 											echo "<br />";
 											echo "<br />";
 										}
@@ -74,7 +74,7 @@ if (!defined('EXPONENT')) exit('');
 										?>
 									</td>
 									<td style="border-left: 1px solid grey; padding: 4px;" width="156" valign="top">
-										<?php pathos_theme_showSectionalModule("containermodule","Default","","@right"); ?>
+										<?php pathos_theme_showSectionalModule("ContainerModule","Default","","@right"); ?>
 									</td>
 								</tr>
 							</tbody>
@@ -90,7 +90,7 @@ if (!defined('EXPONENT')) exit('');
 				<tr>
 					<td style="background-image: url(<?php echo THEME_RELATIVE; ?>images/leftbar_3bg.gif); background-repeat: repeat-y;"></td>
 					<td style="padding: 5px; background-image: url(<?php echo THEME_RELATIVE; ?>images/bottombg.gif);">
-						<?php pathos_theme_showModule("textmodule","Footer","","footer"); ?>
+						<?php pathos_theme_showModule("TextModule","Footer","","footer"); ?>
 					</td>
 					<td style="background-image: url(<?php echo THEME_RELATIVE; ?>images/rightbar_3bg.gif); background-repeat: repeat-y;"></td>
 				</tr>

@@ -36,11 +36,11 @@ if (exponent_sessions_loggedIn()) {
 	exit('Redirecting...');
 } 
 
-$i18n = exponent_lang_loadFile('modules/loginmodule/actions/loginredirect.php');
-loginmodule::show('Default',null,$i18n['login']);
+$i18n = exponent_lang_loadFile('modules/LoginModule/actions/loginredirect.php');
+LoginModule::show('Default',null,$i18n['login']);
 
 
-$template = new template('loginmodule','_login_redirect');
+$template = new template('LoginModule','_login_redirect');
 
 $template->assign('output',ob_get_contents());
 ob_end_clean();

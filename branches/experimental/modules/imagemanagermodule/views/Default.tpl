@@ -39,7 +39,7 @@
 			<tr>
 				<td>
 					{if $smarty.const.SELECTOR == 1}
-					<a class="mngmntlink imagemanager_mngmntlink" href="{$smarty.const.PATH_RELATIVE}modules/imagemanagermodule/picked.php?url={$files[$fid]->directory}/{$files[$fid]->filename}">
+					<a class="mngmntlink imagemanager_mngmntlink" href="{$smarty.const.PATH_RELATIVE}modules/ImageManagerModule/picked.php?url={$files[$fid]->directory}/{$files[$fid]->filename}">
 						{if $item->scale == 100}
 						<img src="{$smarty.const.PATH_RELATIVE}{$files[$fid]->directory}/{$files[$fid]->filename}" border="0" title="{$_TR.use_image}" alt="{$_TR.use_image}"/>
 						{else}
@@ -58,7 +58,7 @@
 				</td>
 				<td>
 					{if $smarty.const.SELECTOR == 1}
-					<a class="mngmntlink imagemanager_mngmntlink" href="{$smarty.const.PATH_RELATIVE}modules/imagemanagermodule/picked.php?url={$files[$fid]->directory}/{$files[$fid]->filename}" title="{$_TR.use_image}" alt="{$_TR.use_image}">
+					<a class="mngmntlink imagemanager_mngmntlink" href="{$smarty.const.PATH_RELATIVE}modules/ImageManagerModule/picked.php?url={$files[$fid]->directory}/{$files[$fid]->filename}" title="{$_TR.use_image}" alt="{$_TR.use_image}">
 						{$item->name}
 					</a>
 					{else}

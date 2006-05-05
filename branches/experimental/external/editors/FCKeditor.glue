@@ -106,7 +106,7 @@ ob_start();
 		oFCKeditor.Config['FlashUpload'] = "false";
 	
 		oFCKeditor.Config['LinkBrowserURL'] = "<?PHP echo $path_to_editor; ?>../connector/FCKeditor_link.php";
-		oFCKeditor.Config['ImageBrowserURL'] = "<?PHP echo $path_to_editor; ?>../../../modules/filemanagermodule/actions/picker.php?id=0";
+		oFCKeditor.Config['ImageBrowserURL'] = "<?PHP echo $path_to_editor; ?>../../../modules/FileManagerModule/actions/picker.php?id=0";
 		
 		//HACK: god, i do hate this editor ! Why can't i simply configure the toolbars and plugins from here ? There ARE other reasons to hate it ...
 		oFCKeditor.Config["CustomConfigurationsPath"] = "http://localhost:8080/external/editors/fcktoolbarconfig.js.php?plugins=" + encodeURI(myConfig.setupPlugins(Exponent.WYSIWYG_toolbar)) + "&toolbar=" + encodeURI(myConfig.setupToolbar(Exponent.WYSIWYG_toolbar));

@@ -58,11 +58,11 @@
 <a class="mngmntlink calendar_mngmntlink" href="{link action=edit}" title="{$_TR.alt_create}" alt="{$_TR.alt_create}">{$_TR.create}</a><br />
 {/if}
 {if $in_approval != 0 && $canview_approval_link == 1}
-<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=summary}" title="{$_TR.alt_approval}" alt="{$_TR.alt_approval}">{$_TR.view_approval}</a><br />
+<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=summary}" title="{$_TR.alt_approval}" alt="{$_TR.alt_approval}">{$_TR.view_approval}</a><br />
 {/if}
 {/permissions}
 <br />
 
 {if $modconfig->enable_categories == 1}
-<a href="{link module=categories m=calendarmodule action=manage}" class="mngmntlink calendar_mngmntlink">{$_TR.alt_manage_categories}</a>
+<a href="{link module=categories m=CalendarModule action=manage}" class="mngmntlink calendar_mngmntlink">{$_TR.alt_manage_categories}</a>
 {/if}

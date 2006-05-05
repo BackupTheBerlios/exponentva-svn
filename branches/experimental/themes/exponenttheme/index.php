@@ -32,15 +32,15 @@ if (!defined('EXPONENT')) exit('');
 		<img id="header" src="<?php echo THEME_RELATIVE;?>images/header1.jpg" height="126" width="319" />
 		<div id="logo_holder"><img id="logo" src="<?php echo THEME_RELATIVE;?>images/logo.jpg" height="66" width="280" /></div>
 		<div id="header_bottom"></div>
-		<div id="nav_holder"><?php exponent_theme_showModule("navigationmodule","Top Nav"); ?></div>
+		<div id="nav_holder"><?php exponent_theme_showModule("NavigationModule","Top Nav"); ?></div>
 	
 		<div id="rightbar"><div class="inner"></div></div>
 		<div id="leftbar"><div class="inner">
-		<?php exponent_theme_showModule("containermodule","Default","","left"); ?>
+		<?php exponent_theme_showModule("ContainerModule","Default","","left"); ?>
 		<hr size="1" />
-		<?php exponent_theme_showModule("loginmodule","Default","Member Login"); ?>
+		<?php exponent_theme_showModule("LoginModule","Default","Member Login"); ?>
 		<hr size="1" />
-		<?php exponent_theme_showSectionalModule("containermodule","Default","","@left"); ?>
+		<?php exponent_theme_showSectionalModule("ContainerModule","Default","","@left"); ?>
 		</div></div>
 	
 		<div id="main">

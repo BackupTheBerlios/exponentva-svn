@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('workflow',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('workflow',exponent_core_makeLocation('AdministrationModule'))) {
 	$oldpolicy = null;
 	if (isset($_POST['id'])) $oldpolicy = $db->selectObject('approvalpolicy','id='.intval($_POST['id']));
 	

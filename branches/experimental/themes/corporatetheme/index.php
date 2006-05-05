@@ -46,7 +46,7 @@ if (!defined('EXPONENT')) exit('');
 				<tr>
 					<td height="28" valign="top" style="padding-left: 20px; padding-top: 3px; background-image: url(<?php echo THEME_RELATIVE;?>images/title_bg.gif); border-top: 5px solid lightblue; ">
 						
-						<?php exponent_theme_showModule("navigationmodule","Top Nav"); ?>
+						<?php exponent_theme_showModule("NavigationModule","Top Nav"); ?>
 					</td>
 				</tr>
 			</table>
@@ -58,10 +58,10 @@ if (!defined('EXPONENT')) exit('');
 			<td valign="top" width="55" height="100%" background="<?php echo THEME_RELATIVE;?>images/l01.gif"><img src="<?php echo THEME_RELATIVE;?>images/left.gif"></td>
 			<td valign="top" height="100%" width="215" style="padding: 5px">
 			<?php
-			exponent_theme_showModule("loginmodule","Default");
-			exponent_theme_showModule("previewmodule","Default");
-			exponent_theme_showModule("navigationmodule","Children Only");
-			exponent_theme_showSectionalModule("containermodule","Narrow","","@sidebar");
+			exponent_theme_showModule("LoginModule","Default");
+			exponent_theme_showModule("PreviewModule","Default");
+			exponent_theme_showModule("NavigationModule","Children Only");
+			exponent_theme_showSectionalModule("ContainerModule","Narrow","","@sidebar");
 			?>
 			</td>
 			<td valign="top" height="100%" width="471" style="border: 0px solid blue; padding-right: 15px">
@@ -71,7 +71,7 @@ if (!defined('EXPONENT')) exit('');
 				<tr>
 					<td><br /></td>
 				</tr>
-				<?php exponent_theme_showModule("navigationmodule","Breadcrumb"); ?>
+				<?php exponent_theme_showModule("NavigationModule","Breadcrumb"); ?>
 				<tr>
 					<td height="100%" valign="top" style="padding-top: 20px">
 						<?php exponent_theme_main(); ?>
@@ -84,7 +84,7 @@ if (!defined('EXPONENT')) exit('');
 		</tr>
 		<tr>
 			<td colspan="4" style="padding-left: 10px; padding-right: 10px">
-				<?php exponent_theme_showModule("textmodule","Wide","","copyright"); ?>
+				<?php exponent_theme_showModule("TextModule","Wide","","copyright"); ?>
 			</td>
 		</tr>
 		</table>

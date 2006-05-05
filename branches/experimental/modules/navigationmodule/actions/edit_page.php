@@ -17,7 +17,7 @@
 #
 ##################################################
 
-define('SCRIPT_EXP_RELATIVE','modules/navigationmodule/actions/');
+define('SCRIPT_EXP_RELATIVE','modules/NavigationModule/actions/');
 define('SCRIPT_FILENAME','edit_page.php');
 
 ob_start();
@@ -40,15 +40,15 @@ $page = ($template && $template->subtheme != '' && is_readable(BASE.'themes/'.DI
 	'themes/'.DISPLAY_THEME.'/index.php'
 );
 
-$i18n = exponent_lang_loadFile('modules/navigationmodule/actions/edit_page.php');
+$i18n = exponent_lang_loadFile('modules/NavigationModule/actions/edit_page.php');
 
 exponent_sessions_set('themeopt_override',array(
 	'src_prefix'=>'@st'.$id,
 	'ignore_mods'=>array(
-		'navigationmodule',
-		'loginmodule'
+		'NavigationModule',
+		'LoginModule'
 	),
-	'mainpage'=>PATH_RELATIVE.'modules/navigationmodule/actions/edit_page.php',
+	'mainpage'=>PATH_RELATIVE.'modules/NavigationModule/actions/edit_page.php',
 	'backlinktext'=>$i18n['back']
 ));
 

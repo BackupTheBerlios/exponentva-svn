@@ -16,7 +16,7 @@
 <div class="form_title">{$_TR.form_title}</div>
 <div class="form_header">{$_TR.form_header}</div>
 <form action="?" method="post">
-<input type="hidden" name="module" value="calendarmodule" />
+<input type="hidden" name="module" value="CalendarModule" />
 <input type="hidden" name="action" value="delete_process" />
 <input type="hidden" name="id" value="{$event->id}" />
 <table cellspacing="0" cellpadding="2" width="100%">

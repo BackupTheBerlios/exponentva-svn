@@ -28,9 +28,9 @@ if ($user && $user->is_acting_admin == 1) {
 	if ($page) {
 		exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	
-		$template = new template('navigationmodule','_view_template',$loc);
+		$template = new template('NavigationModule','_view_template',$loc);
 		$template->assign('template',$page);
-		$template->assign('subs',navigationmodule::getTemplateHierarchyFlat($page->id));
+		$template->assign('subs',NavigationModule::getTemplateHierarchyFlat($page->id));
 		
 		$template->output();
 	} else {

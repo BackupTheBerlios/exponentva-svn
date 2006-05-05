@@ -22,7 +22,7 @@ if (!defined('EXPONENT')) exit('');
 if ($user && $user->is_acting_admin == 1) {
 	exponent_flow_set(SYS_FLOW_PROTECTED, SYS_FLOW_ACTION);
 	
-	$template = new template('navigationmodule','_manager_pagesets',$loc);
+	$template = new template('NavigationModule','_manager_pagesets',$loc);
 	
 	$tpls = $db->selectObjects('section_template','parent=0');
 	$template->assign('templates',$tpls);

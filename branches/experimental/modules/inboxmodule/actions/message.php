@@ -24,7 +24,7 @@ if ($user) {
 	
 	if ($msg) {
 		if ($msg->recipient == $user->id) { // OR check for mng perms.
-			$template = new template('inboxmodule','_viewmessage',$loc);
+			$template = new template('InboxModule','_viewmessage',$loc);
 			
 			$template->assign('message',$msg);
 			

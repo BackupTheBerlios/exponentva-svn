@@ -17,9 +17,9 @@
 #
 ##################################################
 
-if (class_exists('defaulttheme')) return;
+if (class_exists('DefaultTheme')) return;
 
-class defaulttheme {
+class DefaultTheme {
 	function name() { return "Default Theme"; }
 	function author() { return "Shane Thomison"; }
 	function description() { return "This is the default theme for Exponent."; }

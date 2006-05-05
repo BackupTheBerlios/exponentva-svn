@@ -223,7 +223,7 @@ if ($passed) {
 	
 	if ($db->tableIsEmpty('modstate')) {
 		$modstate = null;
-		$modstate->module = 'administrationmodule';
+		$modstate->module = 'AdministrationModule';
 		$modstate->active = 1;
 		$db->insertObject($modstate,'modstate');
 	}

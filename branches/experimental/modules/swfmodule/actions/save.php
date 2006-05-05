@@ -29,7 +29,7 @@ if (isset($_POST['m']) && isset($_POST['s'])) {
 		$data = swfitem::update($_POST,$data);
 		$data->location_data = serialize($floc);
 		
-		$directory = 'files/swfmodule/' ;
+		$directory = 'files/SWFModule/' ;
 		$filefield = 'swf_name';
 		if (isset($_FILES[$filefield]) && $_FILES[$filefield]['name'] != '') {
 			if (isset($data->swf_id) && ($data->swf_id != 0)) {

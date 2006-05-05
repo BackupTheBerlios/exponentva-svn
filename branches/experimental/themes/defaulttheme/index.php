@@ -35,18 +35,18 @@ if (!defined('EXPONENT')) exit('');
 				<td bgcolor="339bcc">
 				</td>
 			</tr>			<tr>				<td height="75" colspan="2" align="left" valign="top" bgcolor="339bcc"><img src="<?php echo THEME_RELATIVE; ?>images/title.gif" width="550" height="75" title="Exponent Content Management System" alt="Exponent Content Management System" /></td>			</tr>			<tr>				<td colspan="2" height="1" bgcolor="000000"></td>			</tr>			<tr>				<td colspan="2" height="20" bgcolor="339bcc" align="right" id="topNavContainer">
-					<?php exponent_theme_showModule("navigationmodule","Top Nav"); ?>
+					<?php exponent_theme_showModule("NavigationModule","Top Nav"); ?>
 				</td>			</tr>			<tr>				<td colspan="2" height="1" bgcolor="000000"></td>			</tr>			<tr>				<td id="leftSidebarContainer" width="175" align="left" valign="top" bgcolor="99cc33" style="padding-left: 10px; padding-top: 20px; padding-right: 10px; width: 175px;">
-					<?php						exponent_theme_showModule("loginmodule","Default");
+					<?php						exponent_theme_showModule("LoginModule","Default");
 						echo "<br /><hr size='1' /><br />";
-						exponent_theme_showModule("navigationmodule","Full Hierarchy");
-						#exponent_theme_showModule("navigationmodule","Marked Hierarchy");
-						#exponent_theme_showModule("navigationmodule","Collapsing Hierarchy");
-						#exponent_theme_showModule("navigationmodule","Expanding Hierarchy");					?>
+						exponent_theme_showModule("NavigationModule","Full Hierarchy");
+						#exponent_theme_showModule("NavigationModule","Marked Hierarchy");
+						#exponent_theme_showModule("NavigationModule","Collapsing Hierarchy");
+						#exponent_theme_showModule("NavigationModule","Expanding Hierarchy");					?>
 				</td>				<td align="left" valign="top" style="padding-left: 20px; padding-right: 20px; padding-top: 20px;">
 					<?php
 					if (!exponent_theme_inAction()) {
-						exponent_theme_showModule("navigationmodule","Breadcrumb");
+						exponent_theme_showModule("NavigationModule","Breadcrumb");
 						echo "<br />";
 						echo "<br />";
 					}
@@ -55,6 +55,6 @@ if (!defined('EXPONENT')) exit('');
 					?>
 					<br /><br />
 					<?php
-					exponent_theme_showModule("textmodule","Default","Footer","@footer");
+					exponent_theme_showModule("TextModule","Default","Footer","@footer");
 					?>
 				</td>			</tr>		</table>	</body></html>

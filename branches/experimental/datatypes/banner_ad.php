@@ -57,7 +57,7 @@ class banner_ad {
 		
 		$i18n = exponent_lang_loadFile('datatypes/banner_ad.php');
 		
-		$affiliates = bannermodule::listAffiliates();
+		$affiliates = BannerModule::listAffiliates();
 		
 		$form->register('name',$i18n['name'],new textcontrol($object->name));
 		$submit = new buttongroupcontrol($i18n['save'],'',$i18n['cancel']);

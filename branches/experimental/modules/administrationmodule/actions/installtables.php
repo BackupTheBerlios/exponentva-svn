@@ -47,7 +47,7 @@ if (is_readable($dir)) {
 	}
 	ksort($tables);
 	
-	$template = new template("administrationmodule","_tableInstallSummary",$loc);
+	$template = new template("AdministrationModule","_tableInstallSummary",$loc);
 	$template->assign("status",$tables);
 	$template->output();
 }

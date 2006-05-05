@@ -27,7 +27,7 @@
                                 <td align="left" valign="top" bgcolor="99999">
                                         <table width="177" border="0" cellpadding="0" cellspacing="0" bgcolor="#999999">
                                 <tr>
-                                                        <td width="20" align="left" valign="top"><img class="mngmnt_icon" src="{$smarty.const.PATH_RELATIVE}modules/calendarmodule/images/topcurve.gif" width="20" height="20" /></td>
+                                                        <td width="20" align="left" valign="top"><img class="mngmnt_icon" src="{$smarty.const.PATH_RELATIVE}modules/CalendarModule/images/topcurve.gif" width="20" height="20" /></td>
                                                         <td width="132" class="moduletitle calendar_highlights_moduletitle">{if $moduletitle != ""}<div align="center">{$moduletitle}</div>{/if}</td>
                                                         <td width="20"></td>
                                                 </tr>
@@ -83,7 +83,7 @@
 			{/if}
 		{/if}
 		{if $permissions.manage_approval == 1}
-			<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=revisions_view id=$event->id}" title="{$_TR.alt_revisions}" alt="{$_TR.alt_revisions}">{$_TR.revisions}</a>
+			<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=revisions_view id=$event->id}" title="{$_TR.alt_revisions}" alt="{$_TR.alt_revisions}">{$_TR.revisions}</a>
 		{/if}
 		{/permissions}
 		<br />
@@ -98,7 +98,7 @@
 <a class="mngmntlink calendar_mngmntlink" href="{link action=edit id=0}" title="{$_TR.alt_create}" alt="{$_TR.alt_create}">{$_TR.create}</a><br />
 {/if}
 {if $in_approval != 0 && $canview_approval_link == 1}
-<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=calendarmodule s=$__loc->src action=summary}" title="{$_TR.alt_approval}" alt="{$_TR.alt_approval}">{$_TR.approval}</a>
+<a class="mngmntlink calendar_mngmntlink" href="{link module=workflow datatype=calendar m=CalendarModule s=$__loc->src action=summary}" title="{$_TR.alt_approval}" alt="{$_TR.alt_approval}">{$_TR.approval}</a>
 {/if}
 {/permissions}
                                                                                 </td>
@@ -110,7 +110,7 @@
                                 </td>
                         </tr>
                         <tr>
-                                <td height="10" align="left" valign="top" bgcolor="999999"><img class="mngmnt_icon" src="{$smarty.const.PATH_RELATIVE}modules/calendarmodule/images/bottomcurve.gif" width="10" height="10" /></td>
+                                <td height="10" align="left" valign="top" bgcolor="999999"><img class="mngmnt_icon" src="{$smarty.const.PATH_RELATIVE}modules/CalendarModule/images/bottomcurve.gif" width="10" height="10" /></td>
                         </tr>
                 </table>
 
@@ -118,7 +118,7 @@
 {if $modconfig->enable_categories == 1}
 {if $permissions.manage_categories == 1}
 <br />
-<a href="{link module=categories orig_module=calendarmodule action=manage}" class="mngmntlink calendar_mngmntlink">{$_TR.manage_categories}</a>
+<a href="{link module=categories orig_module=CalendarModule action=manage}" class="mngmntlink calendar_mngmntlink">{$_TR.manage_categories}</a>
 {else}
 <br />
 <a class="mngmntlink calendar_mngmntlink" href="#" onClick="window.open('{$smarty.const.PATH_RELATIVE}popup.php?module=categories&m={$__loc->mod}&action=view&src={$__loc->src}','legend','width=200,height=200,title=no,status=no'); return false" title="{$_TR.alt_view_cat}" alt="{$_TR.alt_view_cat}">{$_TR.view_categories}</a>

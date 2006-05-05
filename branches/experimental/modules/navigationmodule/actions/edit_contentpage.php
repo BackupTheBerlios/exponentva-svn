@@ -40,13 +40,13 @@ if ($user->is_acting_admin == 1 /*TODO: section admin*/) {
 		//$section->parent = $db->selectObject('section','parent='.intval($_GET['parent']));
 	}
 
-	if (exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$check_id))) {	
+	if (exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$check_id))) {	
 		$form = section::form($section);
-		$form->meta('module','navigationmodule');
+		$form->meta('module','NavigationModule');
 		$form->meta('action','save_contentpage');
 		// Create a template for the form output, to allow the themer to optionally
 		// change the form titles and captions, and to aide in translation.
-		$template = new template('navigationmodule','_form_editContentPage');
+		$template = new template('NavigationModule','_form_editContentPage');
 		// Assign the concentional 'is_edit' flag to let the view show different text to the
 		// use in case of a create and an edit operation.
 		$template->assign('is_edit',isset($section->id));

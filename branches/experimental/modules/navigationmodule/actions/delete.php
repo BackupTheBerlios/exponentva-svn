@@ -22,7 +22,7 @@ if (!defined('EXPONENT')) exit('');
 if ($user->is_acting_admin == 1) {
 	$section = $db->selectObject('section','id='.intval($_GET['id']));
 	if ($section) {
-		navigationmodule::deleteLevel($section->id);
+		NavigationModule::deleteLevel($section->id);
 		$db->delete('section','id=' . $section->id);
 		$db->decrement('section','rank',1,'rank > ' . $section->rank . ' AND parent='.$section->parent);
 		

@@ -30,7 +30,7 @@ if ($user) {
 		$banned[$i]->user = exponent_users_getUserById($banned[$i]->user_id);
 	}
 	
-	$template = new template('inboxmodule','_viewcontacts',$loc);
+	$template = new template('InboxModule','_viewcontacts',$loc);
 	$template->assign('groups',  $groups);
 	$template->assign('banned',  $banned);
 	$template->output();

@@ -64,13 +64,13 @@ class calendar {
 		$form->register('eventend',$i18n['eventend'],new TimeControl($object->eventend, $object->is_allday ? false : true));
 		
 		if (!isset($object->id)) {
-			$customctl = file_get_contents(BASE.'modules/calendarmodule/form.part');
+			$customctl = file_get_contents(BASE.'modules/CalendarModule/form.part');
 			$datectl = new PopupDateTimeControl($object->eventstart+365*86400,'',false);
 			$customctl = str_replace('%%UNTILDATEPICKER%%',$datectl->controlToHTML('untildate'),$customctl);
 			$form->register('recur',$i18n['recurrence'],new customcontrol($customctl));
 		} else if ($object->is_recurring == 1) {
 			// Edit applies to one or more...
-			$template = new template('calendarmodule','_recur_dates');
+			$template = new template('CalendarModule','_recur_dates');
 			global $db;
 			$eventdates = $db->selectObjects('eventdate','event_id='.$object->id);
 			if (!defined('SYS_SORTING')) require_once(BASE.'subsystems/sorting.php');

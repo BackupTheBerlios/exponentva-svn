@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class uiswitchermodule {
-	function name() { return exponent_lang_loadKey('modules/uiswitchermodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/uiswitchermodule/class.php','module_description'); }
+class UISwitchermodule {
+	function name() { return exponent_lang_loadKey('modules/UISwitchermodule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/UISwitchermodule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return false; }
@@ -35,7 +35,7 @@ class uiswitchermodule {
 	function show($view,$loc = null, $title = '') {
 		$ui_levels = exponent_sessions_get('uilevels');
 		if (count($ui_levels)) {
-			$template = new template('uiswitchermodule',$view,$loc);
+			$template = new template('UISwitchermodule',$view,$loc);
 			$template->assign('levels',$ui_levels);
 			$default = (exponent_sessions_isset('uilevel') ? exponent_sessions_get('uilevel') : max(array_keys($ui_levels)));
 			$template->assign('default_level',$default);

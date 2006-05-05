@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class sharedcoremodule {
-	function name() { return exponent_lang_loadKey('modules/sharedcoremodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/sharedcoremodule/class.php','module_description'); }
+class SharedCoreModule {
+	function name() { return exponent_lang_loadKey('modules/SharedCoreModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/SharedCoreModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasSources() { return false; }
@@ -29,7 +29,7 @@ class sharedcoremodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/sharedcoremodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/SharedCoreModule/class.php');
 		
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
@@ -39,7 +39,7 @@ class sharedcoremodule {
 	}
 	
 	function deleteIn($loc) {
-		// FIXME:Implement deleteIn for sharedcoremodule
+		// FIXME:Implement deleteIn for SharedCoreModule
 		// FIXME:
 	}
 	
@@ -48,7 +48,7 @@ class sharedcoremodule {
 	}
 	
 	function show($view,$loc = null,$title='') {
-		$template = new template('sharedcoremodule',$view);
+		$template = new template('SharedCoreModule',$view);
 		
 		global $db;
 		$cores = array();

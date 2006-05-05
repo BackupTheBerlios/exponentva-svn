@@ -24,7 +24,7 @@ if ($item) {
 
 	if ($item->is_recurring == 1) { // need to give user options
 		
-		$template = new template('calendarmodule','_form_delete');
+		$template = new template('CalendarModule','_form_delete');
 		
 		$eventdate = $db->selectObject('eventdate','id='.intval($_GET['date_id']));
 		$template->assign('checked_date',$eventdate);
@@ -46,7 +46,7 @@ if ($item) {
 		
 	}  else {
 		// Process a regular delete
-		include(BASE.'modules/calendarmodule/delete.php');
+		include(BASE.'modules/CalendarModule/delete.php');
 	}
 } else {
 	echo SITE_404_HTML;

@@ -21,7 +21,7 @@ if (!defined('EXPONENT')) exit('');
 
 // Part of the Database category
 
-if (exponent_permissions_check('database',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('database',exponent_core_makeLocation('AdministrationModule'))) {
 	$src = urldecode($_GET['delsrc']);
 	
 	$mod = new $_GET['mod']();

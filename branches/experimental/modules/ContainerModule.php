@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class containermodule {
-	function name() { return exponent_lang_loadKey('modules/containermodule/class.php','module_name'); }
+class ContainerModule {
+	function name() { return exponent_lang_loadKey('modules/ContainerModule/class.php','module_name'); }
 	function author() { return 'James Hunt'; }
-	function description() { return exponent_lang_loadKey('modules/containermodule/class.php','module_description'); }
+	function description() { return exponent_lang_loadKey('modules/ContainerModule/class.php','module_description'); }
 	
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -29,7 +29,7 @@ class containermodule {
 	function supportsWorkflow() { return false; }
 	
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/containermodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/ContainerModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'add_module'=>$i18n['perm_add_module'],
@@ -55,14 +55,14 @@ class containermodule {
 	}
 	
 	function show($view,$loc = null,$title = '') {
-		$i18n = exponent_lang_loadFile('modules/containermodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/ContainerModule/class.php');
 	
 		$source_select = array();
 		$clickable_mods = null; // Show all
 		$dest = null;
 		
 		$singleview = '_container';
-		$singlemodule = 'containermodule';
+		$singlemodule = 'ContainerModule';
 		
 		if (exponent_sessions_isset('source_select') && defined('SELECTOR')) {
 			$source_select = exponent_sessions_get('source_select');
@@ -92,7 +92,7 @@ class containermodule {
 			$title = $container->title;
 		}
 		
-		$template = new template('containermodule',$view,$loc);
+		$template = new template('ContainerModule',$view,$loc);
 		if ($dest) $template->assign('dest',$dest);
 		$template->assign('singleview',$singleview);
 		$template->assign('singlemodule',$singlemodule);
@@ -215,7 +215,7 @@ class containermodule {
 	}
 	
 	function wrapOutput($modclass,$view,$loc = null,$title = '') {
-		if (defined('SOURCE_SELECTOR') && strtolower($modclass) != 'containermodule') {
+		if (defined('SOURCE_SELECTOR') && strtolower($modclass) != 'ContainerModule') {
 			$container = null;
 			$mod = new $modclass();
 			

@@ -28,12 +28,12 @@ if (isset($_GET['id'])) {
 	$collection->name = 'Uncategorized Files';
 	$collection->description = 'Theses files have not been categorized yet,';
 }
-$loc = exponent_core_makeLocation('filemanagermodule');
+$loc = exponent_core_makeLocation('FileManagerModule');
 
 if ($collection) {
 	exponent_flow_set(SYS_FLOW_PUBLIC,SYS_FLOW_ACTION);
 	
-	$template = new template('filemanagermodule','_view');
+	$template = new template('FileManagerModule','_view');
 	$template->assign('collection',$collection);
 	
 	$files = $db->selectObjects('file','collection_id='.$collection->id);

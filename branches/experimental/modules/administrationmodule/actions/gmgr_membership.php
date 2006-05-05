@@ -28,7 +28,7 @@ $memb = $db->selectObject('groupmembership','member_id='.$user->id.' AND group_i
 
 $perm_level = 0;
 if ($memb) $perm_level = 1;
-if (exponent_permissions_check('user_management',exponent_core_makeLocation('administrationmodule'))) $perm_level = 2;
+if (exponent_permissions_check('user_management',exponent_core_makeLocation('AdministrationModule'))) $perm_level = 2;
 
 if ($perm_level) {
 	$group = $db->selectObject('group','id='.$_GET['id']);
@@ -59,7 +59,7 @@ if ($perm_level) {
 			}
 		}
 		
-		$template = new template('administrationmodule','_groupmembership',$loc);
+		$template = new template('AdministrationModule','_groupmembership',$loc);
 		$template->assign('group',$group);
 		$template->assign('users',$users);
 		$template->assign('canAdd',(count($members) < count($users) ? 1 : 0));

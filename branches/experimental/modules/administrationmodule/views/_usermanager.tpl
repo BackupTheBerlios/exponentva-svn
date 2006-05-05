@@ -28,8 +28,8 @@
 		var out = '';
 		if (object.var_is_admin == 0) {
 		{/literal}
-			out = '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','administrationmodule','action','umgr_edit','id',object.var_id) +'"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" /></a>'+
-			  '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','administrationmodule','action','umgr_delete','id',object.var_id) +'" onClick="return confirm(\'Are you sure you want to delete the user \\\'' + object.var_firstname + ' ' + object.var_lastname + ' ('+object.var_username+')\\\'?\');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>';
+			out = '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','AdministrationModule','action','umgr_edit','id',object.var_id) +'"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}edit.png" /></a>'+
+			  '<a class="mngmntlink administration_mngmntlink" href="'+makeLink('module','AdministrationModule','action','umgr_delete','id',object.var_id) +'" onClick="return confirm(\'Are you sure you want to delete the user \\\'' + object.var_firstname + ' ' + object.var_lastname + ' ('+object.var_username+')\\\'?\');"><img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}delete.png" /></a>';
 			if (object.var_is_locked == 1) {ldelim}
 			   out += '<img class="mngmnt_icon" border="0" src="{$smarty.const.ICON_RELATIVE}lock.png" />';
 			{rdelim}

@@ -30,7 +30,7 @@ if (exponent_permissions_check('configure',$loc)) {
 	$form->meta('m',$loc->mod);
 	$form->meta('s',$loc->src);
 	$form->meta('i',$loc->int);
-	$template = new template('swfmodule','_form_edit',$loc);
+	$template = new template('SWFModule','_form_edit',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

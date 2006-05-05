@@ -21,8 +21,8 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('configuration',exponent_core_makeLocation('administrationmodule'))) {
-	$template = new template('administrationmodule','_sysinfo',$loc);
+if (exponent_permissions_check('configuration',exponent_core_makeLocation('AdministrationModule'))) {
+	$template = new template('AdministrationModule','_sysinfo',$loc);
 	
 	ob_start();
 	phpinfo(INFO_GENERAL+INFO_CONFIGURATION+INFO_MODULES);

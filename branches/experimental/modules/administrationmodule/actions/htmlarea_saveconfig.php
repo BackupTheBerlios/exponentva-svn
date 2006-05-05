@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('htmlarea',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('htmlarea',exponent_core_makeLocation('AdministrationModule'))) {
 	$config = null;
 	if (isset($_POST['id'])) $config = $db->selectObject('toolbar_' . SITE_WYSIWYG_EDITOR,'id='.intval($_POST['id']));
 	$config->name = $_POST['config_name'];

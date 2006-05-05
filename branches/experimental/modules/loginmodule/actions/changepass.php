@@ -24,7 +24,7 @@ if ($user) {
 	if (!defined('SYS_FORMS')) require_once('subsystems/forms.php');
 	exponent_forms_initialize();
 	
-	$i18n = exponent_lang_loadFile('modules/loginmodule/actions/changepass.php');
+	$i18n = exponent_lang_loadFile('modules/LoginModule/actions/changepass.php');
 	
 	$form = new form();
 	$form->location($loc);
@@ -35,7 +35,7 @@ if ($user) {
 	
 	$form->register('submit','',new buttongroupcontrol($i18n['change']));
 	
-	$template = new template('loginmodule','_form_changePassword',$loc);
+	$template = new template('LoginModule','_form_changePassword',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 

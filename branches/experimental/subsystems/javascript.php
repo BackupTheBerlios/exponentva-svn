@@ -93,7 +93,7 @@ function exponent_javascript_array($array) {
 	foreach ($array as $val) {
 		if (is_string($val)) $js .= "'".str_replace("'","&apos;",$val)."',";
 		else if (is_array($val)) $js .= exponent_javascript_array($val) . ",";
-		else if (is_object($val)) $js .= exponent_javascript_object($val,$var) . ",";
+		else if (is_object($val)) $js .= exponent_javascript_object($val,$val) . ",";
 		else $js .= "$val,";
 	}
 	return substr($js,0,-1) . ")";

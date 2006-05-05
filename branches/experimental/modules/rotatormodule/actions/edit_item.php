@@ -33,7 +33,7 @@ if (exponent_permissions_check('manage',$loc)) {
 	$form->location($loc);
 	$form->meta('action','save_item');
 	
-	$template = new template('rotatormodule','_form_edit');
+	$template = new template('RotatorModule','_form_edit');
 	$template->assign('is_edit',isset($item->id));
 	$template->assign('form_html',$form->toHTML());
 	$template->output();

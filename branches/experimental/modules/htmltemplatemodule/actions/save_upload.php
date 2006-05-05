@@ -25,7 +25,7 @@ if (exponent_permissions_check('create',$loc)) {
 	
 	$t = htmltemplate::update($_POST,$t);
 
-	$directory = 'files/htmltemplatemodule';
+	$directory = 'files/HTMLTemplateModule';
 	$file = file::update('file',$directory,null);
 	if (is_object($file)) { // Everything worked out.
 		$t->body = file_get_contents(BASE.$directory.'/'.$file->filename);

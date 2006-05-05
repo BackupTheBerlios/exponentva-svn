@@ -20,13 +20,13 @@
 if (!defined('EXPONENT')) exit('');
 
 if ($user) {
-	$template = new template("inboxmodule","_form_banUser",$loc);
+	$template = new template("InboxModule","_form_banUser",$loc);
 	
 	$form = inbox_contactbanned::form(null);
-	$form->meta('module','inboxmodule');
+	$form->meta('module','InboxModule');
 	$form->meta('action','ban');
 	
-	$template = new template('inboxmodule','_form_banUser',$loc);
+	$template = new template('InboxModule','_form_banUser',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

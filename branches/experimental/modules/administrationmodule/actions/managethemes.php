@@ -21,7 +21,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('extensions',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('extensions',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	$themes = array();
 	if (is_readable(BASE.'themes')) {
@@ -42,7 +42,7 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('administ
 		}
 	}
 	
-	$template = new template('administrationmodule','_thememanager',$loc);
+	$template = new template('AdministrationModule','_thememanager',$loc);
 	
 	$template->assign('themes',$themes);
 	

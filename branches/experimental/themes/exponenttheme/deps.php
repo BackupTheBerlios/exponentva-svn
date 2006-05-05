@@ -20,18 +20,18 @@
 if (!defined('EXPONENT')) exit('');
 
 return array(
-	'm_containermodule'=>array(
-		'name'=>'containermodule',
+	'm_ContainerModule'=>array(
+		'name'=>'ContainerModule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),
-	'm_navigationmodule'=>array(
-		'name'=>'navigationmodule',
+	'm_NavigationModule'=>array(
+		'name'=>'NavigationModule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),
-	'm_loginmodule'=>array(
-		'name'=>'loginmodule',
+	'm_LoginModule'=>array(
+		'name'=>'LoginModule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	)

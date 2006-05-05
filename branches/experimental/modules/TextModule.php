@@ -17,10 +17,10 @@
 #
 ##################################################
 
-class textmodule {
-	function name()		{ return exponent_lang_loadKey('modules/textmodule/class.php','module_name'); }
+class TextModule {
+	function name()		{ return exponent_lang_loadKey('modules/TextModule/class.php','module_name'); }
 	function author()		{ return 'James Hunt'; }
-	function description()	{ return exponent_lang_loadKey('modules/textmodule/class.php','module_description'); }
+	function description()	{ return exponent_lang_loadKey('modules/TextModule/class.php','module_description'); }
 
 	function hasContent() { return true; }
 	function hasSources() { return true; }
@@ -37,7 +37,7 @@ class textmodule {
 			$db->delete('textitem_wf_info','real_id='.$text->id);
 			
 			// Remove search key
-			$db->delete('search',"ref_module='textmodule' AND ref_type='textitem' AND original_id=" . $text->id);
+			$db->delete('search',"ref_module='TextModule' AND ref_type='textitem' AND original_id=" . $text->id);
 		}
 	}
 	
@@ -52,7 +52,7 @@ class textmodule {
 	}
 
 	function permissions($internal = '') {
-		$i18n = exponent_lang_loadFile('modules/textmodule/class.php');
+		$i18n = exponent_lang_loadFile('modules/TextModule/class.php');
 		return array(
 			'administrate'=>$i18n['perm_administrate'],
 			'edit'=>$i18n['perm_edit'],
@@ -64,7 +64,7 @@ class textmodule {
 	function show($view,$loc,$title = '') {
 		global $db;
 		
-		$template = new template('textmodule',$view,$loc);
+		$template = new template('TextModule',$view,$loc);
 		
 		$textitem = $db->selectObject('textitem',"location_data='" . serialize($loc) . "'");
 		if (!$textitem) {
@@ -88,18 +88,18 @@ class textmodule {
 		$search = null;
 		$search->title = '';
 		$search->view_link = '';
-		$search->category = exponent_lang_loadKey('modules/textmodule/class.php','search_post_type');
-		$search->ref_module = 'textmodule';
+		$search->category = exponent_lang_loadKey('modules/TextModule/class.php','search_post_type');
+		$search->ref_module = 'TextModule';
 		$search->ref_type = 'textitem';
 		
 		if ($item) {
-			$db->delete('search',"ref_module='textmodule' AND ref_type='textitem' AND original_id=" . $item->id);
+			$db->delete('search',"ref_module='TextModule' AND ref_type='textitem' AND original_id=" . $item->id);
 			$search->original_id = $item->id;
 			$search->body = ' ' . exponent_search_removeHTML($item->text) . ' ';
 			$search->location_data = $item->location_data;
 			$db->insertObject($search,'search');
 		} else {
-			$db->delete('search',"ref_module='textmodule' AND ref_type='textitem'");
+			$db->delete('search',"ref_module='TextModule' AND ref_type='textitem'");
 			foreach ($db->selectObjects('textitem') as $item) {
 				$search->original_id = $item->id;
 				$search->body = ' ' . exponent_search_removeHTML($item->text) . ' ';

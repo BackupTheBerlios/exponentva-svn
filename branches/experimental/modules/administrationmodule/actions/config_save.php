@@ -21,14 +21,14 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('configuration',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('configuration',exponent_core_makeLocation('AdministrationModule'))) {
 	if (!defined('SYS_CONFIG')) require_once(BASE.'subsystems/config.php');
 	
 	$continue = true;
 	if ($user->is_admin == 1) { // Only do the database stuff if we are a super admin
 		$errors = '';
 		
-		$i18n = exponent_lang_loadFile('modules/administrationmodule/actions/config_save.php');
+		$i18n = exponent_lang_loadFile('modules/AdministrationModule/actions/config_save.php');
 		
 		// Test the prefix
 		if (preg_match("/[^A-Za-z0-9]/",$_POST['c']['DB_TABLE_PREFIX'])) {
@@ -56,7 +56,7 @@ if (exponent_permissions_check('configuration',exponent_core_makeLocation('admin
 		}
 	}
 	
-	$template = new template('administrationmodule','_config_results');
+	$template = new template('AdministrationModule','_config_results');
 	
 	if ($continue) {
 		exponent_config_saveConfiguration($_POST);
@@ -66,7 +66,7 @@ if (exponent_permissions_check('configuration',exponent_core_makeLocation('admin
 		
 			$db = $newdb;
 			ob_start();
-			include_once(BASE.'modules/administrationmodule/actions/installtables.php');
+			include_once(BASE.'modules/AdministrationModule/actions/installtables.php');
 			$ob = ob_get_contents();
 			ob_end_clean();
 			if ($db->tableIsEmpty('user')) {
@@ -80,7 +80,7 @@ if (exponent_permissions_check('configuration',exponent_core_makeLocation('admin
 			
 			if ($db->tableIsEmpty('modstate')) {
 				$modstate = null;
-				$modstate->module = 'administrationmodule';
+				$modstate->module = 'AdministrationModule';
 				$modstate->active = 1;
 				$db->insertObject($modstate,'modstate');
 			}

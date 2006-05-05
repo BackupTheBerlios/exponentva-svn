@@ -19,7 +19,7 @@
 
 if (!defined('EXPONENT')) exit('');
 
-$config = $db->selectObject("newsmodule_config","location_data='".serialize($loc)."'");
+$config = $db->selectObject("NewsModule_config","location_data='".serialize($loc)."'");
 if ($config == null) {
 	$config->sortorder = "ASC";
 	$config->item_limit = 10;
@@ -37,7 +37,7 @@ if (!$canviewapproval) { // still not able to view
 }
 
 
-$template = new template("newsmodule",(isset($_GET['view']) ? $_GET['view']:"Default"),$loc);
+$template = new template("NewsModule",(isset($_GET['view']) ? $_GET['view']:"Default"),$loc);
 $template->register_permissions(
 	array("administrate","configure","add_item","delete_item","edit_items","manage_approval"),
 	$loc

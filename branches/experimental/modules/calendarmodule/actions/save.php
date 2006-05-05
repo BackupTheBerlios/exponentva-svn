@@ -88,7 +88,7 @@ if (($item == null && exponent_permissions_check("post",$loc)) ||
 			$eventdate->date = exponent_datetime_startOfDayTimestamp(PopupDateTimeControl::parseData("eventdate",$_POST));
 			$db->updateObject($eventdate,'eventdate');
 		}
-		calendarmodule::spiderContent($item);
+		CalendarModule::spiderContent($item);
 	} else {
 		exponent_forms_initialize();
 		$start_recur = exponent_datetime_startOfDayTimestamp(PopupDateTimeControl::parseData("eventdate",$_POST));
@@ -135,7 +135,7 @@ if (($item == null && exponent_permissions_check("post",$loc)) ||
 			$edate->date = $d;
 			$db->insertObject($edate,"eventdate");
 		}
-		calendarmodule::spiderContent($item);
+		CalendarModule::spiderContent($item);
 	}
 	exponent_flow_redirect();
 } else {

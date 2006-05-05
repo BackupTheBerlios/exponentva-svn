@@ -30,8 +30,8 @@ return array(
 	"themes/personaltheme/images/jde_textarea_lft.gif"=>"1bbf255aceaa733806880cd1f84622c6",
 	"themes/personaltheme/images/jde_textarea_sliver.gif"=>"cf35f02e5ed708bbf3b1c1349d19362c",
 	"themes/personaltheme/images/spacer.gif"=>"9e58327bfbbbe2905b5b7e3e650c3ca8",
-	"themes/personaltheme/modules/navigationmodule/views/Side Navigation.tpl"=>"a3039b376b997b5b4b39f79703e2e434",
-	"themes/personaltheme/modules/administrationmodule/views/_thememanager.tpl"=>"1ca61e172254ccb0ff0542609c30d6bb",
+	"themes/personaltheme/modules/NavigationModule/views/Side Navigation.tpl"=>"a3039b376b997b5b4b39f79703e2e434",
+	"themes/personaltheme/modules/AdministrationModule/views/_thememanager.tpl"=>"1ca61e172254ccb0ff0542609c30d6bb",
 	"themes/personaltheme/manifest.php"=>1,
 	"themes/personaltheme/deps.php"=>"",
 );

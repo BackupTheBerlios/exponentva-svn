@@ -32,7 +32,7 @@ if ($banner) {
 		//$db->delete('banner_ad','id='.$banner->id);
 
         // deleting the bannner itself [H.W.]
-        $filedir = "files/bannermodule/".$loc->src;
+        $filedir = "files/BannerModule/".$loc->src;
         if (file_exists(BASE."/$filedir")) {
         
             // Get the file we need to delete

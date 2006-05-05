@@ -17,12 +17,12 @@
 #
 ##################################################
 
-define('SCRIPT_EXP_RELATIVE','modules/containermodule/');
+define('SCRIPT_EXP_RELATIVE','modules/ContainerModule/');
 define('SCRIPT_FILENAME','nosourceselected.php');
 
 include_once('../../exponent.php');
 
-$template = new template('containermodule','_nocontent');
+$template = new template('ContainerModule','_nocontent');
 $template->output();
 
 ?>

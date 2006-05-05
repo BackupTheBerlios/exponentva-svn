@@ -21,10 +21,10 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('configuration',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('configuration',exponent_core_makeLocation('AdministrationModule'))) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 	
-	$i18n = exponent_lang_loadFile('modules/administrationmodule/actions/configuresite.php');
+	$i18n = exponent_lang_loadFile('modules/AdministrationModule/actions/configuresite.php');
 
 	$configname = (isset($_GET['configname']) ? $_GET['configname'] : "");
 	
@@ -44,13 +44,13 @@ if (exponent_permissions_check('configuration',exponent_core_makeLocation('admin
 	if (!array_key_exists($configname,$profiles)) $configname = "";
 	uasort($profiles,'strnatcmp');
 	
-	$template = new template('administrationmodule','_configuresiteview',$loc);
+	$template = new template('AdministrationModule','_configuresiteview',$loc);
 	
 	$form = new form();
 	
 	$dd = new dropdowncontrol($configname,$profiles);
 	$href = preg_replace("/&configname.*/",'',$_SERVER['REQUEST_URI']);
-	$dd->jsHooks['onChange'] = "document.location.href = makeLink('module','administrationmodule','action','configuresite','configname',this.options[this.selectedIndex].value);";
+	$dd->jsHooks['onChange'] = "document.location.href = makeLink('module','AdministrationModule','action','configuresite','configname',this.options[this.selectedIndex].value);";
 	$form->register('configname',$i18n['profile'],$dd);
 	$template->assign('form_html',$form->toHTML());
 	

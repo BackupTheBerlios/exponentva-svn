@@ -43,13 +43,13 @@ if ($user && $user->is_acting_admin == 1) {
 	$check_id = $section->parent;
 }
 
-if ($check_id != -1 && exponent_permissions_check('manage',exponent_core_makeLocation('navigationmodule','',$check_id))) {
+if ($check_id != -1 && exponent_permissions_check('manage',exponent_core_makeLocation('NavigationModule','',$check_id))) {
 	$form = section::externalAliasForm($section);
-	$form->meta('module','navigationmodule');
+	$form->meta('module','NavigationModule');
 	$form->meta('action','save_externalalias');
 	// Create a template for the form's output, to allow the themer to optionally
 	// change the form title and caption.  This will help with translation.
-	$template = new template('navigationmodule','_form_editExternalAlias');
+	$template = new template('NavigationModule','_form_editExternalAlias');
 	// Assign the customary 'is_edit' flag with the template, so that the view can show different
 	// text to the user if they are creating a new alias or editing an existing one.
 	$template->assign('is_edit',isset($section->id));

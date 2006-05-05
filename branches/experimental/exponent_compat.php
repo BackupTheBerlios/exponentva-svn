@@ -6,16 +6,16 @@ modules/addressbookmodule/class.php:			function exponent_sorting_byFirstNameAsce
 modules/addressbookmodule/class.php:			function exponent_sorting_byFirstNameDescending($a,$b) {
 modules/addressbookmodule/class.php:			function exponent_sorting_byLastNameAscending($a,$b) {
 modules/addressbookmodule/class.php:			function exponent_sorting_byLastNameDescending($a,$b) {
-modules/calendarmodule/actions/delete_form.php:			function exponent_sorting_byDateAscending($a,$b) {
-modules/calendarmodule/class.php:			function exponent_sorting_byEventStartAscending($a,$b) {
-modules/calendarmodule/class.php:			function exponent_sorting_byEventStartAscending($a,$b) {
-modules/calendarmodule/class.php:			function exponent_sorting_byEventStartDescending($a,$b) {
+modules/CalendarModule/actions/delete_form.php:			function exponent_sorting_byDateAscending($a,$b) {
+modules/CalendarModule/class.php:			function exponent_sorting_byEventStartAscending($a,$b) {
+modules/CalendarModule/class.php:			function exponent_sorting_byEventStartAscending($a,$b) {
+modules/CalendarModule/class.php:			function exponent_sorting_byEventStartDescending($a,$b) {
 subsystems/backup/0.95.php:function exponent_backup_095_clearedTable($db,$table) {
 subsystems/backup/0.95.php:function exponent_backup_095_addressbook_contact($db,$object) {
 subsystems/backup/0.95.php:function exponent_backup_095_calendar($db,$object) {
 subsystems/backup/0.95.php:function exponent_backup_095_container($db,$object) {
 subsystems/backup/0.95.php:function exponent_backup_095_newsitem($db,$object) {
-subsystems/backup/0.95.php:function exponent_backup_095_newsmodule_config($db,$object) {
+subsystems/backup/0.95.php:function exponent_backup_095_NewsModule_config($db,$object) {
 subsystems/backup/0.95.php://function exponent_backup_095_resourceitem($db,$object) {
 subsystems/backup/0.95.php://function exponent_backup_095_section($db,$object) {
 subsystems/backup/0.95.php://function exponent_backup_095_section_template($db,$object) {
@@ -23,7 +23,7 @@ subsystems/backup/0.95.php:function exponent_backup_095_troubleshooter($db,$obje
 subsystems/backup/0.95.php:function exponent_backup_095_user($db,$object) {
 subsystems/backup/0.95.php:function exponent_backup_095_weblog_comment($db,$object) {
 subsystems/backup/0.95.php:function exponent_backup_095_weblog_post($db,$object) {
-subsystems/backup/0.95.php:function exponent_backup_095_weblogmodule_config($db,$object) {
+subsystems/backup/0.95.php:function exponent_backup_095_WeblogModule_config($db,$object) {
 subsystems/backup/normalize.php:function exponent_backup_normalize_sections($db,$parent = 0) {
 subsystems/backup.php:function exponent_backup_dumpDatabase($db,$tables = null,$force_version = null) {
 subsystems/backup.php:function exponent_backup_restoreDatabase($db,$file,&$errors,$force_version = null) {

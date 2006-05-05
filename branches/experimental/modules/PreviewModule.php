@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class previewmodule {
-	function name() { return exponent_lang_loadKey('modules/previewmodule/class.php','module_name'); }
-	function description() { return exponent_lang_loadKey('modules/previewmodule/class.php','module_description'); }
+class PreviewModule {
+	function name() { return exponent_lang_loadKey('modules/PreviewModule/class.php','module_name'); }
+	function description() { return exponent_lang_loadKey('modules/PreviewModule/class.php','module_description'); }
 	function author() { return 'James Hunt'; }
 	
 	function hasContent() { return false; }
@@ -41,7 +41,7 @@ class previewmodule {
 	}
 	
 	function show($view,$loc = null, $title = '') {
-		$template = new template('previewmodule',$view,$loc);
+		$template = new template('PreviewModule',$view,$loc);
 		
 		$level = 99;
 		if (exponent_sessions_isset('uilevel')) {

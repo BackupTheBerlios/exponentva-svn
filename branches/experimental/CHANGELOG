@@ -16,7 +16,7 @@
 - Resource module: Checks for the excistance of files before a link to a file is shown [HW]
 - Added a notification to the connect code for the database (mysql) simular as phpReview [HW]
 - The pathos lib is fixed to only accept typecasted sections [HW].
-- A php injection problem is fixed in the bannermodule [HW]
+- A php injection problem is fixed in the BannerModule [HW]
 - Removed unused Caching code and added new navigation cacheing for better performance [JH & HW]
 - Added charsets to htmlentities calls (for better i18n support)
 - Added full system-level i18n support [JH, FD, HW]
@@ -64,7 +64,7 @@ Technical changes (this does not cover some of the stuff in the Release Notes) f
 - Resource module: Checks for the excistance of files before a link to a file is shown [HW]
 - Added a notification to the connect code for the database (mysql) simular as phpReview [HW]
 - The pathos lib is fixed to only accept typecasted sections [HW].
-- A php injection problem is fixed in the bannermodule [HW]
+- A php injection problem is fixed in the BannerModule [HW]
 - Removed unused Caching code and added new navigation cacheing for better performance [JH & HW]
 - Added charsets to htmlentities calls (for better i18n support)
 - Added full system-level i18n support [JH, FD, HW]

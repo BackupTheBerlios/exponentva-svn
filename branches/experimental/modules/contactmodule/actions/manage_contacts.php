@@ -37,7 +37,7 @@ if (exponent_permissions_check('configure',$loc)) {
 		$contacts[] = $c;
 	}
 	
-	$template = new template('contactmodule','_contactmanager',$loc);
+	$template = new template('ContactModule','_contactmanager',$loc);
 	$template->assign('contacts',$contacts);
 	$template->output();
 } else {

@@ -25,10 +25,10 @@ if ($user) {
 	exponent_forms_initialize();
 	
 	$form = exponent_users_form($user);
-	$form->meta('module','loginmodule');
+	$form->meta('module','LoginModule');
 	$form->meta('action','saveprofile');
 	
-	$template = new template('loginmodule','_form_editProfile',$loc);
+	$template = new template('LoginModule','_form_editProfile',$loc);
 	$template->assign('form_html',$form->toHTML());
 	$template->output();
 } else {

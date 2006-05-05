@@ -21,14 +21,14 @@
 
 if (!defined('EXPONENT')) exit('');
 
-if (exponent_permissions_check('database',exponent_core_makeLocation('administrationmodule'))) {
+if (exponent_permissions_check('database',exponent_core_makeLocation('AdministrationModule'))) {
 	$before = $db->databaseInfo();
 	foreach (array_keys($before) as $table) {
 		$db->optimize($table);
 	}
 	$after = $db->databaseInfo();
 	
-	$template = new template('administrationmodule','_optimizedatabase',$loc);
+	$template = new template('AdministrationModule','_optimizedatabase',$loc);
 	$template->assign('before',$before);
 	$template->assign('after',$after);
 	

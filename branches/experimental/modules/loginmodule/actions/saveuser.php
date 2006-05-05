@@ -20,7 +20,7 @@
 if (!defined('EXPONENT')) exit('');
 
 if (!$user && SITE_ALLOW_REGISTRATION == 1) {
-	$i18n = exponent_lang_loadFile('modules/loginmodule/actions/saveuser.php');
+	$i18n = exponent_lang_loadFile('modules/LoginModule/actions/saveuser.php');
 
 	$capcha_real = exponent_sessions_get('capcha_string');
 	if (!defined('SYS_USERS')) require_once(BASE.'subsystems/users.php');

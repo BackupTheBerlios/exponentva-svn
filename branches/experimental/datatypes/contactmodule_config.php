@@ -17,9 +17,9 @@
 #
 ##################################################
 
-class contactmodule_config {
+class ContactModule_config {
 	function form($object) {
-		$i18n = exponent_lang_loadFile('datatypes/contactmodule_config.php');
+		$i18n = exponent_lang_loadFile('datatypes/ContactModule_config.php');
 		
 		if (!defined('SYS_FORMS')) require_once(BASE.'subsystems/forms.php');
 		exponent_forms_initialize();

@@ -20,7 +20,7 @@
 if (!defined("EXPONENT")) exit("");
 
 // PERM CHECK
-	htmltemplatemodule::show(DEFAULT_VIEW);
+	HTMLTemplateModule::show(DEFAULT_VIEW);
 // END PERM CHECK
 
 ?>

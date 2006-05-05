@@ -28,7 +28,7 @@
 
 <div class="moduletitle search_moduletitle">{$moduletitle}</div>
 <form method="get" action="">
-<input type="hidden" name="module" value="searchmodule" />
+<input type="hidden" name="module" value="SearchModule" />
 <input type="hidden" name="src" value="{$loc->src}" />
 <input type="hidden" name="action" value="search" />
 <input type="text" name="search_string" size="20" />

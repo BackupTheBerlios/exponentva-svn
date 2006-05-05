@@ -56,7 +56,7 @@ foreach ($db->selectObjects("newsitem","location_data='".serialize($loc)."' AND 
 if ($hasperm) {
 	exponent_flow_set(SYS_FLOW_PROTECTED,SYS_FLOW_ACTION);
 
-	$template = new template("newsmodule","_view_unpublished",$loc);
+	$template = new template("NewsModule","_view_unpublished",$loc);
 	$template->assign("expired",$expired);
 	$template->assign("unpublished",$unpub);
 	$template->register_permissions(

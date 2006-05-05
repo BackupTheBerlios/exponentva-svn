@@ -108,11 +108,11 @@
 			};
 
 			function openSectionLinker() {
-				window.open("../../../modules/navigationmodule/nav.php?linkbase="+escape("../../external/editors/connector/section_linked.php?dummy"),"sectionlinker","toolbar=no,title=no,width=250,height=480,scrollbars=yes");
+				window.open("../../../modules/NavigationModule/nav.php?linkbase="+escape("../../external/editors/connector/section_linked.php?dummy"),"sectionlinker","toolbar=no,title=no,width=250,height=480,scrollbars=yes");
 			}
 
 			function openContentLinker() {
-				window.open("../../../content_selector.php?dest="+escape("external/editors/connector/content_linked.php?dummy")+"&vview=_linkPicker&vmod=containermodule&showmodules=all","contentlinker","toolbar=no,title=no,width=640,height=480,scrollbars=yes");
+				window.open("../../../content_selector.php?dest="+escape("external/editors/connector/content_linked.php?dummy")+"&vview=_linkPicker&vmod=ContainerModule&showmodules=all","contentlinker","toolbar=no,title=no,width=640,height=480,scrollbars=yes");
 			}
 		/* ]]> */
 		</script>

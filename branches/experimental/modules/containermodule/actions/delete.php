@@ -41,7 +41,7 @@ if ($container != null) {
 		$locref = $db->selectObject('locationref',"module='".$iloc->mod."' AND source='".$iloc->src."' AND internal='".$iloc->int."'");
 		if ($locref->refcount == 0 && exponent_permissions_check('administrate',$iloc) && call_user_func(array($iloc->mod,'hasContent')) == 1) {
 		
-			$template = new template('containermodule','_lastreferencedelete',$loc);
+			$template = new template('ContainerModule','_lastreferencedelete',$loc);
 			$template->assign('iloc',$iloc);
 			$template->assign('redirect',exponent_flow_get());
 			$template->output();

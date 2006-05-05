@@ -21,7 +21,7 @@ if (!defined('EXPONENT')) exit('');
 
 if ($user) {
 	
-	$i18n = exponent_lang_loadFile('modules/inboxmodule/actions/send.php');
+	$i18n = exponent_lang_loadFile('modules/InboxModule/actions/send.php');
 	
 	if (!defined('SYS_USERS')) include_once(BASE.'subsystems/users.php');
 	if (!defined('SYS_FORMS')) include_once(BASE.'subsystems/forms.php');

@@ -112,8 +112,8 @@ return array(
 	),
 	
 	// Modules
-	'm_administrationmodule'=>array(
-		'name'=>'administrationmodule',
+	'm_AdministrationModule'=>array(
+		'name'=>'AdministrationModule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),

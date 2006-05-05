@@ -31,7 +31,7 @@ if (!defined("EXPONENT")) exit("");
 			$mods[$mod]->associated = $db->selectObjects("htmltemplateassociation","module='$mod'");
 		}
 	}
-	$template = new template("htmltemplatemodule","_viewassocs",$loc);
+	$template = new template("HTMLTemplateModule","_viewassocs",$loc);
 	
 	$template->assign("modules",$mods);
 	

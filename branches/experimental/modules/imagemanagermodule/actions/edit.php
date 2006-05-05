@@ -34,9 +34,9 @@ if (	($item == null && exponent_permissions_check('post',$loc)) ||
 	$form->location($loc);
 	$form->meta('action','save');
 	
-	$template = new template('imagemanagermodule','_form_edit',$loc);
+	$template = new template('ImageManagerModule','_form_edit',$loc);
 	
-	$directory = BASE.'files/imagemanagermodule/'.$loc->src;
+	$directory = BASE.'files/ImageManagerModule/'.$loc->src;
 	if (!isset($item->id) && !is_really_writable($directory)) {
 		$template->assign('dir_not_writable',1);
 		$form->controls['submit']->disabled = 1;
