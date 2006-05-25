@@ -3,28 +3,28 @@
 if (!defined('EXPONENT')) exit('');
 
 return array(
-	'm_ContainerModule'=>array(
-		'name'=>'ContainerModule',
+	'm_containermodule'=>array(
+		'name'=>'containermodule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),
-	'm_NavigationModule'=>array(
-		'name'=>'NavigationModule',
+	'm_navigationmodule'=>array(
+		'name'=>'navigationmodule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),
-	'm_LoginModule'=>array(
-		'name'=>'LoginModule',
+	'm_loginmodule'=>array(
+		'name'=>'loginmodule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),
-	'm_PreviewModule'=>array(
-		'name'=>'PreviewModule',
+	'm_previewmodule'=>array(
+		'name'=>'previewmodule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	),
-	'm_TextModule'=>array(
-		'name'=>'TextModule',
+	'm_textmodule'=>array(
+		'name'=>'textmodule',
 		'type'=>CORE_EXT_MODULE,
 		'comment'=>''
 	)

@@ -1,3 +1,10 @@
+HEAD
+- Added new generic file resolver[MM]
+- Added multi HTMLEditor support FCKeditor, TinyMCE, Xinha[MM]
+- Added new TimeControl, offering 12/24 hours switch[MM]
+- Added Exponent JS namespace object[MM]
+- Added includeMiscFiles Smarty postfilter[MM]
+
 0.96.5
 - Fixed bug (mostly) in calendar module where event times were off on the days DST changed [FD]
 - Fixed bug in calendar module where monthly events displyed in the list view were cutoff after the day DST changed [IB]

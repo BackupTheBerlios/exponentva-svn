@@ -40,7 +40,7 @@ return array(
 	"themes/portaltheme/images/rightbar_3.gif"=>"19c6cf0c2a4dacd01e6c919de04b7b78",
 	"themes/portaltheme/images/rightbar_3bg.gif"=>"bbcdea6f55a7e849b873a65e507c1816",
 	"themes/portaltheme/images/welcome.gif"=>"3005e518537eb94965af76b6c5787821",
-	"themes/portaltheme/modules/TextModule/views/Footer.tpl"=>"e4a153d09f073749707c98047e0ab58f",
+	"themes/portaltheme/modules/textmodule/views/Footer.tpl"=>"e4a153d09f073749707c98047e0ab58f",
 	"themes/portaltheme/manifest.php"=>1,
 	"themes/portaltheme/deps.php"=>"",
 );
