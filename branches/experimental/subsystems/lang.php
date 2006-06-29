@@ -45,7 +45,7 @@ function exponent_lang_initialize() {
 		if (is_readable(BASE.'subsystems/lang/'.USE_LANG.'.php')) {
 			define('LANG',USE_LANG); // Lang file exists.
 		} else {
-			define('LANG','en'); // Fallback to 'en' if language file not present.
+			define('LANG','eng_US'); // Fallback to 'en' if language file not present.
 		}
 		$info = include(BASE.'subsystems/lang/'.LANG.'.php');
 		setlocale(LC_ALL,$info['locale']);
@@ -82,7 +82,7 @@ function exponent_lang_loadFile($filename) {
 	}
 	
 	// If we get to this point, the preferred language does not exist.  Try english.
-	$file = realpath(BASE.'subsystems/lang/en/'.$filename);
+	$file = realpath(BASE.'subsystems/lang/eng_US/'.$filename);
 	if (is_readable($file)) {
 #		// HACK
 #		$r = include($file);
