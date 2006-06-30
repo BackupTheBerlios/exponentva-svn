@@ -20,9 +20,10 @@
 if (class_exists('PortalTheme')) return;
 
 class PortalTheme {
-	function name() { return "Portal Site"; }
-	function author() { return "Jake Hamann (jake@jakehamann.com)"; }
-	function description() { return "A simple portal page theme."; }
+	function name() { return "Exponent Theme v1"; }
+	function author() { return "Exponent Designing Crew"; }
+	function description() { return "ExponentCMS.org Theme."; }
+}
 }
 
 ?>

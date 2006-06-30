@@ -34,7 +34,7 @@ class user {
 			$object->lastname = '';
 			$object->email = '';
 			// Username and Password can only be specified for a new user.  To change the password,
-			// a different form is used (part of the LoginModule)
+			// a different form is used (part of the loginmodule)
 			$form->register('username',$i18n['desired_username'],new textcontrol());
 			$form->register('pass1',$i18n['pass1'], new passwordcontrol());
 			$form->register('pass2',$i18n['pass2'],new passwordcontrol());

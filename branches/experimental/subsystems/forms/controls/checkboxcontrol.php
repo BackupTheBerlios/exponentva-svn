@@ -91,9 +91,9 @@ class checkboxcontrol extends formcontrol {
 		return isset($values[$name])?1:0;
 	}
 	
-	function templateFormat($db_data, $ctl) {
-		return ($db_data==1)?"Yes":"No";
-	}
+	//function templateFormat($db_data, $ctl) {
+	//	return ($db_data==1)?"Yes":"No";
+	//}
 	
 	function form($object) {
 		$i18n = exponent_lang_loadFile('subsystems/forms/controls/checkboxcontrol.php');
