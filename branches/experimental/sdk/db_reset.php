@@ -39,7 +39,7 @@ $user->is_acting_admin = 1;
 // The $loc variable would normally be created by the Exponent framework
 // when running the action we are about to include.  Here, we synthetically
 // create the location, so that the action doesn't freak out.
-$loc = exponent_core_makeLocation('AdministrationModule');
+$loc = exponent_core_makeLocation('administrationmodule');
 
 foreach ($db->getTables(false) as $table) {
 	$table = substr($table,strlen($db->prefix));
@@ -48,7 +48,7 @@ foreach ($db->getTables(false) as $table) {
 }
 
 // Simulate running the Install Tables action.
-include_once(BASE.'modules/AdministrationModule/actions/installtables.php');
+include_once(BASE.'modules/administrationmodule/actions/installtables.php');
 
 // In case something is screwed up in the database, we need to 
 // create some records.
@@ -72,7 +72,7 @@ if ($db->tableIsEmpty('user')) {
 if ($db->tableIsEmpty('modstate')) {
 	echo TR_DBRECOVER_ACTIVATEADMINMOD.'<br />';
 	$modstate = null;
-	$modstate->module = 'AdministrationModule';
+	$modstate->module = 'administrationmodule';
 	$modstate->active = 1;
 	$db->insertObject($modstate,'modstate');
 }
