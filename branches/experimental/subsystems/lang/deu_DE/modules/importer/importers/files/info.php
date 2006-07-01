@@ -1,8 +1,8 @@
 <?php
 
 return array(
-	'importer_name'=>'Uploaddatemimorter',
-	'importer_description'=>'This importer allows you to restore the uploaded files that were backed up with the Uploaded Files Exporter.',
+	'importer_name'=>'Datei-Importer',
+	'importer_description'=>'Der Datei-Importer ermöglicht Ihnen den Reimport von per Datei-Export gesicherter Dateien.',
 );
 
 ?>

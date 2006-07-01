@@ -7,14 +7,14 @@ return array(
 	'fnln'=>'Vorname / Nachname',
 	'in_files'=>'Benutzername aus CSV Datei nehmen',
 	
-	'rand_pass'=>'Zufallspaßwörter erzeugen',
-	'def_pass'=>'Das unten vorgegebe Paßwort verwenden',
-	'pass_in_file'=>'Password aus der CSV Datei nehmen',
+	'rand_pass'=>'Zufallspasswörter erzeugen',
+	'def_pass'=>'Das unten vorgegebens Passwort verwenden',
+	'pass_in_file'=>'Passwort aus der CSV Datei nehmen',
 	
-	'name_options'=>'Verwende die Namenändern Option',
-	'pass_options'=>'Paßwort Erzeugen Option',
-	'password'=>'Vorgegebenes Paßwort',
-	'update'=>'Benutzer Updaten die bereits in DB vorhanden sind',
+	'name_options'=>'Verwende die Name-Ändern Option',
+	'pass_options'=>'Passwort-Erzeugen Option',
+	'password'=>'Vorgegebenes Passwort',
+	'update'=>'Benutzer Updaten, die bereits in der DB vorhanden sind',
 	
 	'submit'=>'Weiter',
 	'cancel'=>'Abbrechen',

@@ -3,10 +3,8 @@
 return array(
 	'alt_userperm'=>'Berechtigung zuweisen für Nachtrichtenzentrum',
 	'alt_groupperm'=>'Gruppenberechtigung zuweisen für das Nachrichtenzentrum',
-	
-	
-	'unread'=>'Sie haben %s ungelese Nachricht(en)',
-	'total'=>'%s Gesamt Nachrichten',
+	'unread'=>'Sie haben <b>%s</b> ungelesene Nachricht(en)',
+	'total'=>'<b>%s</b> Gesamt Nachrichten',
 	'inbox'=>'Posteingang',
 );
 

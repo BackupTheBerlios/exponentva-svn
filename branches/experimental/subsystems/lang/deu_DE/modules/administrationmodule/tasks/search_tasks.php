@@ -2,7 +2,7 @@
 
 return array(
 	'searching'=>'Suchen',
-	'spider_site'=>'Spider Site',
+	'spider_site'=>'Spider-Seite',
 );
 
 ?>

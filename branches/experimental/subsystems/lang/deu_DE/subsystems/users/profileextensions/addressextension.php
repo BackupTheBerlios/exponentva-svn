@@ -2,9 +2,9 @@
 
 return array(
 	'extension_name'=>'Adressenerweiterung',
-	'extension_description'=>'Fügt zu einem Benutzer Adressinformation hinzu.',
+	'extension_description'=>'Fügt zu einem Benutzer Adressinformationen hinzu.',
 
-	'header'=>'Adresseninformation',
+	'header'=>'Adressinformation',
 	'address1'=>'Adresse',
 	'address2'=>'',
 	'city'=>'Stadt/Ort',

@@ -2,7 +2,7 @@
 
 return array(
 	'username'=>'Benutzername',
-	'reset'=>'Paßwort zurücksetzen',
+	'reset'=>'Passwort zurücksetzen',
 );
 
 ?>

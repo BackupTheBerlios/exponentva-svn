@@ -7,16 +7,16 @@ return array(
 	'view_week'=>'Eine Woche anzeigen',
 	'alt_view_week'=>'Ganze Woche anzeigen',
 	
-	'alt_userperm'=>'Benutzerberechtigungen zuweisen für Kalenderereignis',
-	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Kalenderereignis',
+	'alt_userperm'=>'Benutzerberechtigungen zuweisen für Ereignis',
+	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Ereignis',
 	
-	'alt_edit'=>'Ändere Kalenderereignis',
-	'alt_edit_disabled'=>'Ändern ist deaktiviert weil Kalenderereignis in Genehmigungsprozess ist.',
+	'alt_edit'=>'Ändere Ereignis',
+	'alt_edit_disabled'=>'Ändern ist deaktiviert weil Ereignis im Genehmigungsprozess ist.',
 	
-	'alt_delete'=>'Lösche Kalenderereignis',
-	'delete_confirm'=>'Sind sie sicher das Sie diesen Eintrag löschen wollen? Kalenderereignis?',
-	'alt_delete_disabled'=>'Löschen deaktiviert -  Kalenderereignis in Genehmigung',
-	'alt_revisions'=>'Zeige Erstellungsverlauf für das Kalenderereignis',
+	'alt_delete'=>'Lösche Ereignis',
+	'delete_confirm'=>'Sind sie sicher das Sie dieses Ereignis löschen wollen?',
+	'alt_delete_disabled'=>'Löschen deaktiviert -  Ereignis in Genehmigung',
+	'alt_revisions'=>'Zeige Erstellungsverlauf für das Ereignis',
 	'revisions'=>'Überarbeitungen',
 
 	'no_events'=>'Keine Ereignisse',

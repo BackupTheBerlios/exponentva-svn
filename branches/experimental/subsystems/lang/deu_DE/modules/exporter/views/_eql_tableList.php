@@ -2,7 +2,7 @@
 
 return array(
 	'form_title'=>'Aktuelle Datenbank sichern',
-	'form_header'=>'Listed below are all of the tables in your site\'s database.  Select which tables you wish to backup, and then click the "Export Data" button.  Doing so will generate an EQL file (which you must save) that contains the data in the selected tables.  This file can be used later to restore the database to the current state.',
+	'form_header'=>'Nachfolgend finden Sie eine Liste aller in Ihrer DBenthaltenen Tabellen. Wählen Sie die zu exportierenden aus und klicken auf "Datei Export". Danach wird eine EQL-Datei (welche Siesichern sollten) erstellt, in der die Daten der von Ihnen ausgewählten Tabvellen enthalten sind. Mit dieser EQL-Datei können Sie später die gesicherten Daten in Ihre DB reimportieren.',
 	
 	'at_least_one'=>'Sie müssen zumindest eine Tabelle auswählen.',
 	
@@ -10,7 +10,7 @@ return array(
 	'deselect_all'=>'Alles abwählen',
 	
 	'file_template'=>'File Name Template:',
-	'template_description'=>'Use __DOMAIN__ for this website\'s domain name, __DB__ for the site\'s database name and any strftime options for time specification. The EQL extension will be added for you. Any other text will be preserved.',
+	'template_description'=>'Verwenden Sie __DOMAIN__ für die Domain dieser Website, __DB__ für den Namen der Datenbank, und Angaben zum Zeitpunkt der Sicherung. Die EQL-Dateierweiterung wird automatisch angefügt. Jeder weitere Text bleibt erhalten.',
 	
 	'export_data'=>'Exportiere Daten',
 );

@@ -2,10 +2,12 @@
 
 return array(
 	'title'=>'Verwende vorhandene Datenbank',
-	'p1'=>'Eine bereits vorhandene DB kann f¸r Exponent verwendet werden. Dabei gilt es jedoch folgendes zu wissen: ',
+	'p1'=>'Eine bereits vorhandene DB kann f¸r Exponent verwendet werden. Dabei sollten Sie aber beachten: ',
 	'p2'=>'Exponent benˆtigt seine eigenen Tabellen innerhalb einer vorhandenen DB.  Dazu vergibt man einfach ein Tabellenvorzeichen.',
-	'p3'=>'Das Tabellenvorzeichen ist wie eine Adresse und weiﬂt unterschiedlichen Anwendungen die richtigen Tabellen zu. Das bedeutet auch, das zwei Exponentsites <b>eine</b> DB z.B. "Web" benutzen kˆnnen wenn bei der Installation unterschiedliche Tabellenvorezichen wie z.B. "privat" und "Firma" vergeben werden.',
-	'p4'=>'Exponent erweitert ihre Tabellenvorzeichen aus Sicherheitsgr¸nden mit einen Unterstrich.',
+	'p3'=>'Das Tabellenvorzeichen ist wie eine Adresse und weist unterschiedlichen Anwendungen die richtigen Tabellen zu. Das bedeutet auch, daﬂ zwei Exponentsites EINE DB z.B. "Web" benutzen kˆnnen, wenn bei der Installation unterschiedliche
+	 Tabellenvorzeichen wie z.B. "privat" und "Firma" vergeben werden.',
+	
+	 'p4'=>'Exponent erweitert ihre Tabellenvorzeichen aus Sicherheitsgr¸nden mit einem vorangestellten Unterstrich.',
 );
 
 ?>

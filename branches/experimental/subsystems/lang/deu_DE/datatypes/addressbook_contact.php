@@ -10,7 +10,7 @@ return array(
 	'state'=>'Bundesland',
 	'zip'=>'PLZ',
 	
-	'email'=>'E-mail Adresse',
+	'email'=>'E-Mail Adresse',
 	'webpage'=>'Webseite',
 	
 	'phone'=>'Telefon',

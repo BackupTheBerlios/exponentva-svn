@@ -3,9 +3,9 @@
 return array(
 	'mimetype'=>'MIME Type',
 	'name'=>'Name',
-	'icon'=>'Ikon',
+	'icon'=>'Icon',
 	
-	'changeicon'=>'Ikon ändern',
+	'changeicon'=>'Icon ändern',
 	
 	'save'=>'Speichern',
 	'cancel'=>'Abbrechen',

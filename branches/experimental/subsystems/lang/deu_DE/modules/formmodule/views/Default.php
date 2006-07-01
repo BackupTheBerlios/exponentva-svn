@@ -6,9 +6,9 @@ return array(
 	'alt_configure'=>'Konfigurieren des Formular-Moduls',
 	
 	'view_data'=>'Zeige Daten an',
-	'edit_settings'=>'Ändere Formular Einstellungen',
+	'edit_settings'=>'Ändere Formulareinstellungen',
 	'edit_form'=>'Ändere Formular',
-	'edit_report'=>'Ändere Bericht Einstellungen',
+	'edit_report'=>'Ändere Berichteinstellungen',
 );
 
 ?>

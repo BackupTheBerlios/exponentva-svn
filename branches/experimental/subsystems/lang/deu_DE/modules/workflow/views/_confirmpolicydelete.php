@@ -1,13 +1,13 @@
 <?php
 
 return array(
-	'warning'=>'<b>Achtung:</b> Diese Beträg unterliegen einer Freigaberichtlinie. Löschen der Richtlinie löscht zugleich auch die damit verbundenen Überarbeitungen - Diese Aktion kann <b>nicht</b> rückgängig gemacht werden.',
+	'warning'=>'<b>Achtung:</b> Diese Beiträge unterliegen einer Freigaberichtlinie. Löschen der Richtlinie löscht zugleich auch die damit verbundenen Überarbeitungen. Diese Aktion kann <b>nicht</b> rückgängig gemacht werden.',
 	
-	'title'=>'Title',
+	'title'=>'Titel',
 	'version'=>'Version',
 	'module'=>'Modul',
 	
-	'no_paths'=>'Diese Beträg unterliegen keiner Freigaberichtlinie. Es sollte keine Problem beim löschen geben.',
+	'no_paths'=>'Diese Beträge unterliegen keiner Freigaberichtlinie. Es sollte keine Problem beim löschen geben.',
 	'delete'=>'Lösche diese Richtlinie',
 );
 

@@ -1,4 +1,4 @@
-Exponent.Forms.TimeControl.init = function(controlname) {
+eXp.Forms.TimeControl.init = function(controlname) {
 	myTimestamp = document.getElementById(controlname + "_timestamp");
 	myHours = document.getElementById(controlname + "_hours");
 	myMinutes = document.getElementById(controlname + "_minutes");
@@ -25,7 +25,7 @@ Exponent.Forms.TimeControl.init = function(controlname) {
 	myMinutes.setAttribute("value", myDate.getMinutes());
 }
 
-Exponent.Forms.TimeControl.updateTime = function(source, destination) {
+eXp.Forms.TimeControl.updateTime = function(source, destination) {
 
 	// please note that for some reason source.getAttribute("value")
 	// and source.value give different return different values

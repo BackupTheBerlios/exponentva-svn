@@ -2,7 +2,8 @@
 
 return array(
 	'subsystem_name'=>'Javascript Subsystem',
-	'subsystem_description'=>'A PHP->Javascript translation layer that generates Javascript code for PHP objects and arrays.',
+	'subsystem_description'=>'Ein PHP->Javascript Übersetzungs-Layer, das Javascript-
+	Code für PHP-Objekte und Arrays generiert.',
 );
 
 ?>

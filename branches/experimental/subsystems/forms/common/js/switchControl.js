@@ -1,6 +1,7 @@
-//GPL applies
-// (c) 2005 Maxim Mueller
-Exponent.Forms.switchControl = function (id,status) {
+// Copyright 2005-2006 Maxim Mueller
+// This File is Part of the Exponent CMS
+// GPL applies
+eXp.Forms.switchControl = function (id,status) {
 	myElem = document.getElementById(id);
 
 	//TODO: disable form inputs with disabled="disabled"

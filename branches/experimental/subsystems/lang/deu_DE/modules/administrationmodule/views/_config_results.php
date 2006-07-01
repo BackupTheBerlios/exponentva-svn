@@ -5,8 +5,8 @@ return array(
 	'continue'=>'Weiter',
 	
 	'errors'=>'Fehler bei der Datenbankverbindung',
-	'not_saved'=>'Konfiguration wurde nicht geseichert.',
-	'reconfigure'=>'Neu Konfigurieren',
+	'not_saved'=>'Konfiguration wurde nicht gespeichert.',
+	'reconfigure'=>'Neu konfigurieren',
 );
 
 ?>

@@ -2,7 +2,7 @@
 
 return array(
 	'subsystem_name'=>'Bilder Teilsystem',
-	'subsystem_description'=>'Bildervorschau Routinen.',
+	'subsystem_description'=>'Bildervorschau-Routinen.',
 );
 
 ?>

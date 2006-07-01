@@ -2,7 +2,7 @@
 
 return array(
 	'select'=>'[Bitte auswählen]',
-	'spacer'=>'Spacer',
+	'spacer'=>'Platzhalter',
 	'line'=>'Horizontale Linie',
 );
 

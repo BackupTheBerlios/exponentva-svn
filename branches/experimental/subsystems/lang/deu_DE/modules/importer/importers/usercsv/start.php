@@ -7,8 +7,8 @@ return array(
 	'space'=>'Leerzeichen',
 	
 	'delimiter'=>'Trennzeichen',
-	'upload'=>'CSV Datei hochladen',
-	'rowstart'=>'CSV Datei hochladen',
+	'upload'=>'CSV-Datei hochladen',
+	'rowstart'=>'CSV-Datei hochladen',
 	
 	'submit'=>'Weiter',
 	'cancel'=>'Abbrechen',

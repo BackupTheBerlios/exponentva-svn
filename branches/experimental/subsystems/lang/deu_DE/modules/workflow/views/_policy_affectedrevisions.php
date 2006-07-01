@@ -1,14 +1,15 @@
 <?php
 
 return array(
-	'warning'=>'The following items are current under the authority of the approval policy you are trying to save.',
+	'warning'=>'Nachfolgende Einträge warten derzeit auf eine Freigabe-
+	richtlinie.',
 	
-	'title'=>'Title',
+	'title'=>'Titel',
 	'version'=>'Version',
 	'module'=>'Modul',
 	
 	're_evaluate'=>'Wiedervorlage',
-	'restart'=>'Restart',
+	'restart'=>'Neustart',
 	
 	'approved'=>'Freigeben',
 	'no_change'=>'Keine Änderung',

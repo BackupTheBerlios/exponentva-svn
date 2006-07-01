@@ -3,11 +3,11 @@
 // GPL applies
 
 // initialize the subnamespace "TimeControl"
-if(Exponent) {
+if(eXp) {
 	//dont overwrite preexisting stuff
-	if(Exponent.Forms) {
-		if(!Exponent.Forms.TimeControl) {
-			Exponent.Forms.TimeControl = new Object();
+	if(eXp.Forms) {
+		if(!eXp.Forms.TimeControl) {
+			eXp.Forms.TimeControl = new Object();
 		}
 	}
 }

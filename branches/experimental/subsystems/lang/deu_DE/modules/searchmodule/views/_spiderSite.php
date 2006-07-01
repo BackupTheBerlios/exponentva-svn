@@ -3,7 +3,7 @@
 return array(
 	'regenerating'=>'Neuaufbauen des Suchindex',
 	'regenerated'=>'Neuaufbauen',
-	'no_support'=>'Keine Sucheunterstützung',
+	'no_support'=>'Keine Suchunterstützung',
 );
 
 ?>

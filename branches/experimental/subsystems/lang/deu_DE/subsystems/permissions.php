@@ -3,8 +3,8 @@
 return array(
 	'preview'=>'Vorschau',
 	'normal'=>'Normal',
-	'perms'=>'Berechtigungs Management',
-	'structure'=>'Struktur Management',
+	'perms'=>'Berechtigungs-Management',
+	'structure'=>'Struktur-Management',
 );
 
 ?>

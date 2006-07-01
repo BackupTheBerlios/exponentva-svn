@@ -11,13 +11,14 @@ return array(
 	
 	'alt_edit'=>'Ändere Blogbeiträge',
 	'alt_delete'=>'Lösche Blogbeiträge',
-	'delete_confirm'=>'Sind sie sicher das Sie diese Blogbeiträge löschen wollen?',
+	'delete_confirm'=>'Sind Sie sicher, daß Sie diese Blogbeiträge löschen wollen?',
 	
 	'comment'=>'Kommentar',
 	
 	'alt_edit_comment'=>'Kommentar ändern',
 	'alt_delete_comment'=>'Kommentar löschen',
-	'delete_comment_confirm'=>'Sind sie sicher das Sie diesen Kommentar löschen möchten?',
+	'delete_comment_confirm'=>'Sind Sie sicher, daß Sie diesen Kommentar löschen
+	wollen?',
 	
 	'next'=>'Weiter',
 	

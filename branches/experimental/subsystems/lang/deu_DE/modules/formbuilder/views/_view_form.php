@@ -5,7 +5,7 @@ return array(
 	'form_header'=>'Mittels Drop down fügen Sie Felder im Formular ein.',
 	'add_a'=>'Hinzufügen von',
 	'done'=>'Fertig',
-	'append_existing'=>'Füge Felder aus einer vorhandenen Form hinzu',
+	'append_existing'=>'Füge Felder aus einem vorhandenen Formular hinzu',
 );
 
 ?>

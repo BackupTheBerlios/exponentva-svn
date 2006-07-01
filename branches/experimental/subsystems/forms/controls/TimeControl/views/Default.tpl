@@ -15,17 +15,17 @@
 <div class="TimeControl" id="{$name}_TimeControl">
 	<script type="text/javascript">
 		// convert the timestamp into hours, minutes and if needed am/pm and set the input controls
-		Exponent.register('Exponent.Forms.TimeControl.init("{$name}")');
-		Exponent.register('Exponent.Forms.switchControl("{$name}_TimeControl", {$showcontrol})');
+		eXp.register('eXp.Forms.TimeControl.init("{$name}")');
+		eXp.register('eXp.Forms.switchControl("{$name}_TimeControl", {$showcontrol})');
 	</script>
 		
 	<input type="hidden" id="{$name}_timestamp" name="{$name}_timestamp" value="{$timestamp}"/>
 
-	<input onchange="Exponent.Forms.TimeControl.updateTime(this, document.getElementById('{$name}_timestamp'))" type="text" id="{$name}_hours" name="{$name}_hours" />
+	<input onchange="eXp.Forms.TimeControl.updateTime(this, document.getElementById('{$name}_timestamp'))" type="text" id="{$name}_hours" name="{$name}_hours" />
 	:
-	<input onchange="Exponent.Forms.TimeControl.updateTime(this, document.getElementById('{$name}_timestamp'))" type="text" id="{$name}_minutes" name="{$name}_minutes" />
+	<input onchange="eXp.Forms.TimeControl.updateTime(this, document.getElementById('{$name}_timestamp'))" type="text" id="{$name}_minutes" name="{$name}_minutes" />
 {if $hourformat == 12}
-	<select onchange="Exponent.Forms.TimeControl.updateTime(this, document.getElementById('{$name}_timestamp'))" id="{$name}_ampm" name="{$name}_ampm">
+	<select onchange="eXp.Forms.TimeControl.updateTime(this, document.getElementById('{$name}_timestamp'))" id="{$name}_ampm" name="{$name}_ampm">
 		<option value="am">am</option>
 		<option value="pm">pm</option>
 	</select>

@@ -2,7 +2,7 @@
 
 return array(
 	'form_title'=>'Dateiarchiv importieren',
-	'form_header'=>'Um ihre Dateien wiederherzustellen verwenden laden Sie das Archiv unter Verwendung dieses Formulars, hoch.',
+	'form_header'=>'Um Ihre Dateien wiederherzustellen, laden Sie das Archiv unter Verwendung dieses Formulars hoch.',
 );
 
 ?>

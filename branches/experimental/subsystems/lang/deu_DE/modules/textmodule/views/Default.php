@@ -2,9 +2,9 @@
 
 return array(
 	// Alternate  Image Text / Link Titles
-	'alt_userperm'=>'Benutzerberechtigungen zuweisen für Text Module',
-	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Text Module',
-	'alt_noedit'=>'Ändern ist deaktiviert das ein Text in Genehmigung ist',
+	'alt_userperm'=>'Benutzerberechtigungen zuweisen für Text Modul',
+	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Text-Modul',
+	'alt_noedit'=>'Ändern ist deaktiviert, da der Text in Genehmigung ist',
 	'alt_edit'=>'Text ändern',
 	
 	// Link Text

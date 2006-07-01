@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'message'=>'Ihr neues Paßwort lautet "%s"',
+	'message'=>'Ihr neues Passwort lautet "%s"',
 );
 
 ?>

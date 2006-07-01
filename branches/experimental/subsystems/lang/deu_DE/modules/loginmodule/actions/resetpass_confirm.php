@@ -1,13 +1,13 @@
 <?php
 
 return array(
-	'from_name'=>'Paßwortverwaltung',
-	'from_email'=>'Paßwörter',
-	'title'=>'Ihr neues Paßwort',
+	'from_name'=>'Passwortverwaltung',
+	'from_email'=>'Passwörter',
+	'title'=>'Ihr neues Passwort',
 	
-	'sent'=>'Ihr neues Paßwort wurde per E-mail an Sie versendet.',
+	'sent'=>'Ihr neues Passwort wurde per E-mail an Sie versendet.',
 	'expired'=>'Ihre Sitzung ist abegelaufen.',
-	'smtp_error'=>'Fehler beim Versenden ihres neuen Paßworts.  Bitte sprechen Sie mit dem Administrator.',
+	'smtp_error'=>'Fehler beim Versenden ihres neuen Passworts. Bitte sprechen Sie mit dem Administrator.',
 	
 );
 

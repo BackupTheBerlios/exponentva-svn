@@ -2,7 +2,7 @@
 
 return array(
 	'module_name'=>'Blog-Modul',
-	'module_description'=>'Ein einfaches Blog auch als Gästebuch verwendbar.',
+	'module_description'=>'Ein einfaches Blog, auch als Gästebuch verwendbar.',
 	
 	'perm_administrate'=>'Verwalten',
 	'perm_configure'=>'Konfigurieren',
@@ -17,7 +17,6 @@ return array(
 	'perm_edit_one'=>'Beitrag ändern',
 	'perm_delete_one'=>'Beitrag löschen',
 	'perm_view_private_one'=>'Falls Private, Beitrag anzeigen',
-	
 	'search_category'=>'Blog Beiträge',
 );
 

@@ -5,7 +5,7 @@ return array(
 	'bgcolor'=>'Hintergrundfarbe',
 	'height'=>'Flash Höhe',
 	'width'=>'Flash Breite',
-	'alignment'=>'Zuordnungt',
+	'alignment'=>'Zuordnung',
 	'loop'=>'Wiederhole Animation (Schleife)',
 	'swf_name'=>'Flashdatei',
 	'alt_image_name'=>'Kein Flash<br />Alternatives Bild',

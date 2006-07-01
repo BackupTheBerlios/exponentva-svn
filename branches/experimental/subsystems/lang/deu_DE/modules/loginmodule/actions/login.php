@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'login_error'=>'<b>Benutzername oder Paﬂwort falsch </b>',
+	'login_error'=>'<b>Benutzername oder Passwort falsch </b>',
 );
 
 ?>

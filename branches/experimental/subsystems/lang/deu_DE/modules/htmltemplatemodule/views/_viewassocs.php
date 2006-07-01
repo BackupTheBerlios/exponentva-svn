@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'note'=>'Anmerkung: Es wurde noch keine Vorlage definiert.  Sie müssen zuerst eine oder mehrere Genehmigungsrichtlinien festlegen bevor Sie eine Verknüpfung zu Modulen vornehemen.',
+	'note'=>'Anmerkung: Es wurde noch keine Vorlage definiert.  Sie müssen zuerst eine oder mehrere Genehmigungsrichtlinien festlegen, bevor Sie eine Verknüpfung zu Modulen vornehmen können.',
 	'template'=>'Vorlage',
 	
 	'associate'=>'Verknüpfe Vorlage',

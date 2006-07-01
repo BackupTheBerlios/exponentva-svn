@@ -3,8 +3,8 @@
 return array(
 	'name'=>'Namen',
 	'rank'=>'Position',
-	'parent'=>'Übergeordnete-Seite',
-	'new_window'=>'In neuen Fenster öffnen',
+	'parent'=>'Übergeordnete Seite',
+	'new_window'=>'In neuem Fenster öffnen',
 	
 	'save'=>'Speichern',
 	'cancel'=>'Abbrechen',

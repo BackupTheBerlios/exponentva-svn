@@ -25,10 +25,10 @@ return array(
 	'cancel'=>'Abbrechen',
 	
 	'button_header'=>'Button Einstellungen',
-	'email_header'=>'E-mail Einstelungen',
+	'email_header'=>'E-mail Einstellungen',
 	'database_header'=>'Datenbank Einstellungen',
 	
-	'warning_data_loss'=>'Um Datenverlust zu verhindern können Sie ein einmal in der Datenbank gespeichertes Formular <b>nicht</> mehr löschen.',
+	'warning_data_loss'=>'Um Datenverlust zu verhindern, können Sie ein einmal in der Datenbank gespeichertes Formular <b>nicht</> mehr löschen.',
 );
 
 ?>

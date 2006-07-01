@@ -4,7 +4,7 @@ return array(
 	'subtitle'=>'Überprüfe Datenbankkonfiguration',
 	'succeeded'=>'Erfolgreich',
 	'failed'=>'Fehlgeschlagen',
-	'bad_prefix'=>'Ungültiges Tabellenvorzeichen.  Bitte nur Nummern und Buchstaben verwenden.',
+	'bad_prefix'=>'Ungültiges Tabellenvorzeichen. Bitte nur Nummern und Buchstaben verwenden.',
 	'connecting'=>'Verbinde...',
 	
 	'check_create'=>'Überprüfe CREATE TABLE Berechtigung',
@@ -22,7 +22,7 @@ return array(
 	'passed'=>'Datenbanktests erfolgreich abgeschlossen.',
 	
 	'errors_encountered_eql'=>'Während der Erstellung der Tabellen sind leider Fehler aufgetreten.',
-	'eql_success'=>'Die Beispielseiten wurden in die Datenbank eingestellt.  Die Seiten werden bei Ihren ersten Schritten mit Exponent sehr hilfreich sein. Verändern Sie die Seiten nach ihren Anforderungen.',
+	'eql_success'=>'Die Beispielseiten wurden in die Datenbank eingetragen.  Die Seiten werden bei Ihren ersten Schritten mit Exponent sehr hilfreich sein. Verändern Sie die Seiten nach ihren Anforderungen.',
 	
 	'continue'=>'Administrator anlegen',
 	'back'=>'Bitte verändern die ihre Datenbankangaben.',

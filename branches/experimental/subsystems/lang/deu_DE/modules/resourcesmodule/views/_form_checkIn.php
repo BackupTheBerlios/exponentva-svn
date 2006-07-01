@@ -2,7 +2,7 @@
 
 return array(
 	'form_title'=>'Update Datei',
-	'form_header'=>'Verwenden Sie dieses Formular um eien neue Version ihrer Datei hochzuladen.',
+	'form_header'=>'Verwenden Sie dieses Formular, um eine neue Version Ihrer Datei hochzuladen.',
 );
 
 ?>

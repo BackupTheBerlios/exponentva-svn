@@ -4,7 +4,7 @@ return array(
 	'name'=>'Name',
 	'description'=>'Beschreibung',
 	'file'=>'Bild',
-	'scale'=>'Skalierung %',
+	'scale'=>'Skalierung in %',
 	'save'=>'Speichern',
 	'cancel'=>'Abbrechen',
 );

@@ -9,7 +9,7 @@ return array(
 	'delete'=>'Markierte löschen',
 	
 	'none_selected'=>'Sie haben keine Überarbeitungen ausgewählt.',
-	'delete_confirm'=>'Sind Sie sicher das Sie diese Überarbeitung löschen möchten?',
+	'delete_confirm'=>'Sind Sie sicher, daß Sie diese Überarbeitung löschen möchten?',
 );
 
 ?>

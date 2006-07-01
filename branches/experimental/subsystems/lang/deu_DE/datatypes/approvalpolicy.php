@@ -3,13 +3,13 @@
 return array(
 	'name'=>'Richtlinienname',
 	'description'=>'Beschreibung',
-	'max_approvers'=>'Maximum Anzahl der Genehmiger',
+	'max_approvers'=>'Maximale Anzahl der Genehmiger',
 	'required_approvals'=>'Anzahl der nötigen Genehmigungen',
 	
 	'on_approve'=>'Falls genehmigt zu 100%',
-	'on_edit'=>'Falls verändert und Genehmigt',
-	'on_deny'=>'Fall nicht Genehmigt',
-	'delete_on_deny'=>'Content löschen wenn er nicht Genehmigt ist?',
+	'on_edit'=>'Falls verändert und genehmigt',
+	'on_deny'=>'Fall nicht genehmigt',
+	'delete_on_deny'=>'Content löschen wenn er nicht genehmigt ist?',
 	
 	'save'=>'Speichern',
 	'cancel'=>'Abbrechen',

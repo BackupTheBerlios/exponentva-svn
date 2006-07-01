@@ -2,7 +2,7 @@
 
 return array(
 	'module_name'=>'Text-Modul',
-	'module_description'=>'Zum Eingeben und Verwalten von Text. Dieses Module ist sicher das am meisten benutzte',
+	'module_description'=>'Zum eingeben und verwalten von Text. Dieses Module ist sicher das am meisten benutzte',
 	
 	'perm_administrate'=>'Verwalten',
 	'perm_edit'=>'Ändere',

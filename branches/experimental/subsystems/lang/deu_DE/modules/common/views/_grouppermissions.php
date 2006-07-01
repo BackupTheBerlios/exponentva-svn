@@ -2,7 +2,7 @@
 
 return array(
 	'form_title'=>'Zuweisen einer Gruppenberechtigung',
-	'form_header'=>'Mithilfe dieses Formulares können Sie einer Gruppe Berechtigungen zuweisen.',
+	'form_header'=>'Mithilfe dieses Formulars können Sie einer Gruppe Berechtigungen zuweisen.',
 	
 	'no_users'=>'Es ist kein Benutzer vorhanden.',
 	'no_groups'=>'Es gibt noch keine Gruppe.',

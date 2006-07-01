@@ -6,14 +6,14 @@ return array(
 	'welcome'=>'Willkommen, %s',
 	'edit_profile'=>'Profil ändern',
 	'my_groups'=>'Meine Gruppen',
-	'change_password'=>'Paßwort ändern',
+	'change_password'=>'Passwort ändern',
 	'logout'=>'Abmelden',
 	
 	'anon_users'=>'Besucher sehen das',
 	'login'=>'Anmelden',
 	
 	'create_account'=>'Konto erstellen',
-	'forgot_password'=>'Paßwort anfordern',
+	'forgot_password'=>'Passwort anfordern',
 );
 
 ?>

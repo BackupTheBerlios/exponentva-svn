@@ -1,11 +1,11 @@
 <?php
 
 return array(
-	'alt_userperm'=>'Benutzerberechtigungen zuweisen für Container Module',
-	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Container Module',
-	'alt_configure'=>'Ändere das Layout für Container Module',
+	'alt_userperm'=>'Benutzerberechtigungen zuweisen für Container-Modul',
+	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Container-Modul',
+	'alt_configure'=>'Ändere das Layout für Container-Modul',
 	
-	'container_module'=>'Container Modul',
+	'container_module'=>'Container-Modul',
 	
 	'move_up'=>'%s nach oben',
 	'move_down'=>'%s nach unten',
@@ -16,7 +16,7 @@ return array(
 	'shown_in'=>'Darstellung in %s Ansicht',
 	'workflow'=>'Verwende "%s" Workflow Richtlinie',
 	'delete'=>'Lösche  %s',
-	'delete_confirm'=>'Sind sie sicher das Sie diesen Eintrag löschen wollen? %s?',
+	'delete_confirm'=>'Sind Sie sicher, daß Sie diesen Eintrag löschen wollen? %s?',
 );
 
 ?>

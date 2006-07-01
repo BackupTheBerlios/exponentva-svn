@@ -2,7 +2,7 @@
 
 return array(
 	'form_title'=>'Modul auswählen',
-	'form_header'=>'Unten sind Module aufgeführt die Hochladen Dateien behinhalten.',
+	'form_header'=>'Nachstehend sind Module aufgeführt die hochgeladene Dateien beinhalten.',
 	
 	'module'=>'Modul',
 	
@@ -10,7 +10,8 @@ return array(
 	'deselect_all'=>'Alles abwählen',
 	
 	'file_template'=>'Vorlagenname:',
-	'template_description'=>'Verwenden Sie __DOMAIN__ für diese Webseite. Die Dateierweiterungen werden automatisch inzugefügt.',
+	'template_description'=>'Verwenden Sie __DOMAIN__ für diese Webseite. Die Dateierweiterungen werden automatisch
+	hinzugefügt.',
 	
 	'export_files'=>'Dateien exportieren',
 );

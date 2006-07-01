@@ -2,7 +2,7 @@
 
 return array(
 	'form_title'=>'Kategorien verwalten',
-	'form_header'=>'Darunter sehen Sie eine Kategorieliste.',
+	'form_header'=>'Nachfolgend sehen Sie eine Kategorieliste.',
 	
 	'name'=>'Name',
 	

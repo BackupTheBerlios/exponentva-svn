@@ -2,7 +2,9 @@
 
 return array(
 	'subsystem_name'=>'Webservices Subsystem',
-	'subsystem_description'=>'A wrapper around either NuSOAP or the built-in PHP5 SOAP platform.  This subsystem enables parts of the system to provide and consume SOAP web services over HTTP.',
+	'subsystem_description'=>'Ein Wrapper für NuSOAP oder die integrierte PHP5 SOAP
+	Plattform.  Dieses Subsystem verwendet Teile des Systems um SOAP Webservice über HTTP
+	zu entwickeln und vertreiben.',
 );
 
 ?>

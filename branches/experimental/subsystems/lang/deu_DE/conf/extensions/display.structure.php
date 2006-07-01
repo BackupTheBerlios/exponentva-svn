@@ -6,8 +6,8 @@ return array(
 	'theme_real'=>'Themen',
 	'theme_real_desc'=>'Das aktuelle Thema',
 	
-	'attribution'=>'Auszeichung',
-	'attribution_desc'=>'Art und Weise wie der Name eines Benutzers dargstellt wird.',
+	'attribution'=>'Auszeichnung',
+	'attribution_desc'=>'Art und Weise wie der Name eines Benutzers dargestellt wird.',
 	
 	'datetime_format'=>'Datums- und Zeitformat',
 	'datetime_format_desc'=>'Systemweite Voreinstellung. Zeigt Datum und Zeit an.',

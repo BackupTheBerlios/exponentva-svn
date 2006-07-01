@@ -6,7 +6,7 @@ return array(
 	
 	'perm_administrate'=>'Verwalten',
 	'perm_create'=>'Neue Vorlage erstellen',
-	'perm_edit'=>'Änderen',
+	'perm_edit'=>'Ändern',
 	'perm_delete'=>'Löschen',
 );
 

@@ -2,8 +2,8 @@
 
 return array(
 	'desired_username'=>'Gewünschter Benutzername',
-	'pass1'=>'Paßwort',
-	'pass2'=>'Paßwort wiederholen',
+	'pass1'=>'Passwort',
+	'pass2'=>'Passwort wiederholen',
 	
 	'firstname'=>'Vorname',
 	'lastname'=>'Nachname',

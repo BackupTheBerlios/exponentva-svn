@@ -5,9 +5,9 @@ return array(
 	'extension_description'=>'Benutzer können Telefonummern im Profil speichern ',
 	
 	'header'=>'Telefoninformationen',
-	'home_phone'=>'Standart',
+	'home_phone'=>'Privat',
 	'bus_phone'=>'Geschäftlich',
-	'other_phone'=>'Zusätzliche Nummern',
+	'other_phone'=>'Handy',
 	'email'=>'E-Mail',
 	
 	'pref_contact'=>'Bevorzugte Kontaktmethode',

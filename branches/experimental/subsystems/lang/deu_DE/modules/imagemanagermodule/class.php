@@ -2,7 +2,7 @@
 
 return array(
 	'module_name'=>'Bilder-Manager',
-	'module_description'=>'Mithilfe des Bildermanagers können Bilder vom Computer hochgeladen und dann im Editor verwendet werden können.',
+	'module_description'=>'Mit dem Bildermanager können Bilder von Ihrem Computer hochgeladen und dann im Editor verwendet werden.',
 	
 	'perm_administrate'=>'Verwalten',
 	'perm_post'=>'Hochladen',

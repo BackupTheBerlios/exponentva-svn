@@ -3,9 +3,9 @@
 // GPL applies
 
 // initialize the subnamespace "Forms" 
-if(Exponent) {
+if(eXp) {
 	//dont overwrite preexisting stuff
-	if(!Exponent.Forms) {
-		Exponent.Forms = new Object();
+	if(!eXp.Forms) {
+		eXp.Forms = new Object();
 	}
 }

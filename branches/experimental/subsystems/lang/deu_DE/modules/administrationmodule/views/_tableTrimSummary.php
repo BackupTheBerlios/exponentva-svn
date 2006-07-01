@@ -2,11 +2,11 @@
 
 return array(
 	'form_title'=>'Trim Database',
-	'form_header'=>'Exponent is removing tables that are no longer used from its database.  Shown below is a summay of the actions that occured.',
+	'form_header'=>'Exponent entfernt Tabellen, welche von der Datenbank nicht mehr benötigt werden.  Nachfolgend sehen Sie eine Zusammenfassung der durchgeführten Aktivitäten.',
 	
-	'no_unused'=>'No unused tables were found.',
+	'no_unused'=>'Keine unbenutzten Tabellen gefunden.',
 	
-	'dropped'=>'Dropped',
+	'dropped'=>'Übersprungen',
 );
 
 ?>

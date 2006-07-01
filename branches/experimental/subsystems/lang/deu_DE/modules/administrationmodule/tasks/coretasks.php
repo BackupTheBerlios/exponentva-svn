@@ -1,19 +1,19 @@
 <?php
 
 return array(
-	'user_management'=>'Benutzer Verwaltung',
+	'user_management'=>'Benutzer-Verwaltung',
 	
 	'user_accounts'=>'Benutzerkonten',
 	'user_sessions'=>'Benutzersitzungen',
 	'group_accounts'=>'Gruppenkonten',
-	'profile_definitions'=>'Profile Definitions',
+	'profile_definitions'=>'Profil-Definitionen',
 	
 	
 	'extensions'=>'Erweiterungen',
 	
 	'manage_modules'=>'Module verwalten',
 	'manage_themes'=>'Themen verwalten',
-	'manage_subsystems'=>'Subsystems',
+	'manage_subsystems'=>'Subsysteme',
 	'upload_extension'=>'Erweiterungen hochladen',
 	
 	
@@ -32,7 +32,7 @@ return array(
 	'configure_site'=>'Site konfigurieren',
 	'file_types'=>'Dateitypen',
 	'workflow_policies'=>'Workflow Richtlinien',
-	'system_info'=>'System Info',
+	'system_info'=>'System-Info',
 );
 
 ?>

@@ -1,8 +1,8 @@
 <?php
 
 return array(
-	'form_title'=>'E-mail allen Benutzer',
-	'form_header'=>'Verwenden Sie diese Form um allen Benutzer eine E-mail zu senden.',
+	'form_title'=>'E-Mail an alle Benutzer',
+	'form_header'=>'Verwenden Sie dieses Formular, um allen Benutzern eine E-mail zu senden.',
 );
 
 ?>

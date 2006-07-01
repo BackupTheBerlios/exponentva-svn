@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'actions'=>'GenehmigungAktionen',
+	'actions'=>'Genehmigung Aktionen',
 	'cancel'=>'Abbrechen',
 	'approve'=>'Genehmigen so-wie-es-ist',
 	'edit'=>'Ändere',

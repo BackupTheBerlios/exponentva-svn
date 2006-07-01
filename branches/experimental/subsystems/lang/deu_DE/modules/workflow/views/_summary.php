@@ -1,11 +1,12 @@
 <?php
 
 return array(
-	'delete_confirm'=>'Die wird alle Genehmehmigungspfade löschen und vom Workflow entfernen - Sicher das Sie das tun möchten?',
+	'delete_confirm'=>'Dies wird alle Genehmehmigungspfade löschen und vom Workflow entfernen - Sicher
+	daß Sie das tun möchten?',
 	'open'=>'Öffnen',
 	'closed'=>'Schließen',
 	
-	'last_updated'=>'Letzer Update',
+	'last_updated'=>'Letzes Update',
 	'policy'=>'Richtlinie',
 	'comment'=>'Kommentar',
 	'poster'=>'Ersteller',

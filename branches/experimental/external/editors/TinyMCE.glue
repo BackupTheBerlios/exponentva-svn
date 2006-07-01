@@ -19,11 +19,9 @@
 #it provides the code for the htmleditorcontrol class' controltoHTML() method
 # it's based on James Hunt's code for that original class
 
-ob_start(); 
 if (!defined("CTL_HTMLAREAINIT")) {
 ?>
-	<script type="text/javascript" src="<?PHP echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>/jscripts/tiny_mce/tiny_mce.js"></script>
-	<script type="text/javascript" src="<?php echo PATH_RELATIVE . 'external/editors/' . SITE_WYSIWYG_EDITOR; ?>_toolbox.js"></script>
+	<script type="text/javascript" src="<?PHP echo $path_to_editor; ?>jscripts/tiny_mce/tiny_mce.js"></script>
 	
 	<!-- load languagefile, prepare for HTMLArea popup(Link + Image Browsers) -->
 	<script type="text/javascript">
@@ -32,7 +30,7 @@ if (!defined("CTL_HTMLAREAINIT")) {
 	global $db;
 	$config = $db->selectObject("toolbar_TinyMCE", "active=1");
 	if ($config) {
-		echo "		Exponent.WYSIWYG_toolbar = " . $config->data . ";\n";
+		echo "		eXp.WYSIWYG_toolbar = " . $config->data . ";\n";
 	}
 ?>
 		// new namespace for our config
@@ -46,8 +44,8 @@ if (!defined("CTL_HTMLAREAINIT")) {
 				for(currButton = 0; currButton < myToolbar[currRow].length; currButton++) {
 					currItem = myToolbar[currRow][currButton];
 					// plugin required ?
-					if(Exponent.WYSIWYG_toolboxbuttons[currItem][2] != "") {
-						plugins.push(Exponent.WYSIWYG_toolboxbuttons[currItem][2]);
+					if(eXp.WYSIWYG_toolboxbuttons[currItem][2] != "") {
+						plugins.push(eXp.WYSIWYG_toolboxbuttons[currItem][2]);
 					}
 				}
 			}
@@ -137,9 +135,9 @@ if (!defined("CTL_HTMLAREAINIT")) {
 						Dialog._arguments = new Array();
 						Dialog._arguments['f_url'] = tinyMCE.getAttrib(imageElm, "src");
 						Dialog._arguments['f_alt'] = tinyMCE.getAttrib(imageElm, "alt");
-						Dialog._arguments['f_border'] = tinyMCE.getAttrib(imageElm, "border");;
-						Dialog._arguments['f_horiz'] = tinyMCE.getAttrib(imageElm, "hspace");;
-						Dialog._arguments['f_vert'] = tinyMCE.getAttrib(imageElm, "vspace");;
+						Dialog._arguments['f_border'] = tinyMCE.getAttrib(imageElm, "border");
+						Dialog._arguments['f_horiz'] = tinyMCE.getAttrib(imageElm, "hspace");
+						Dialog._arguments['f_vert'] = tinyMCE.getAttrib(imageElm, "vspace");
 						Dialog._arguments['f_align'] = tinyMCE.getAttrib(imageElm, "align");
 					//} else {
 						// just in case values were set in a previous run
@@ -164,13 +162,14 @@ if (!defined("CTL_HTMLAREAINIT")) {
 								theme_advanced_toolbar_location : "top",
 								theme_advanced_layout_manager	: "SimpleLayout",
 								add_unload_trigger				: false,
-								language						: "<?PHP echo LANG?>",
+								//eXp's new lang naming semantics are incompatible to pretty much everything, translation functions are needed
+								//language						: "<?PHP echo LANG; ?>",
 								execcommand_callback 			: "myCustomExecCommandHandler",
 								convert_urls					: false
 							};
-		if (Exponent.WYSIWYG_toolbar) {
-			myConfig.setupPlugins(Exponent.WYSIWYG_toolbar);
-			myConfig.setupToolbar(Exponent.WYSIWYG_toolbar);
+		if (eXp.WYSIWYG_toolbar) {
+			myConfig.setupPlugins(eXp.WYSIWYG_toolbar);
+			myConfig.setupToolbar(eXp.WYSIWYG_toolbar);
 		}
 		
 		tinyMCE.init(myConfig.config);
@@ -193,11 +192,3 @@ if (!defined("CTL_HTMLAREAINIT")) {
 	</script> 
 
 	<textarea class="mceEditor" id="<?php echo $name; ?>" name="<?php echo $name; ?>" style="width:100%" rows="24" cols="80"><?php echo htmlentities($this->default, ENT_COMPAT, LANG_CHARSET);?></textarea> 
-
-
-<?PHP
-
-$html = ob_get_contents();
-ob_end_clean(); 
-
-?>

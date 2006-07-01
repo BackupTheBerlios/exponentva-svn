@@ -209,7 +209,11 @@ function exponent_users_login($username, $password) {
 	// Check to make sure that the username exists ($user is not null), the password is correct,
 	// and that the account is either not locked, or an admin account (account locking doesn't
 	// apply to administrators.
-	if ($user != null && ($user->is_admin == 1 || $user->is_locked == 0) && $user->password == md5($password)) {
+	if ($user->password == md5($password)) {
+		
+		if ($user->is_locked == 1) {
+			break;
+		}
 		// Retrieve the full profile, complete with all Extension data.
 		$user = exponent_users_getFullProfile($user);
 
@@ -386,7 +390,6 @@ function exponent_users_create($formvalues) {
 
 	// Insert the user object into the database, and save the ID.
 	global $db;
-	$u->created_on = time();
 	$u->id = $db->insertObject($u,'user');
 
 	// Calculate Group Memeberships for newly created users.  Any groups that

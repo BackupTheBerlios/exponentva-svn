@@ -26,18 +26,6 @@ var onLoadInits = new Array(); // array of functions
 
 var openWindows = new Array(); // array of window references.
 
-// Compatibility layer
-function pathosJSinitialize() {
-	exponentJSinitialize();
-}
-function pathosJSregister(func) {
-	exponentJSregister();
-}
-function pathosGetCookie(name) {
-	return exponentGetCookie(name);
-}
-//End compatibility layer
-
 function exponentJSinitialize() {
 	for (i = 0; i < onLoadInits.length; i++) {
 		// if the last sign is a ")", then we are likely to have a function -> new style allows for function parameters
@@ -186,14 +174,14 @@ String.prototype.trim = function() {
 
 //EXPERIMENTAL: introduction of a common namespace object
 //TODO: migrate all of E`s JS API to this new object
-Exponent = new Object();
+eXp = new Object();
 
-Exponent.LANG = "<?php echo LANG; ?>";
-Exponent.PATH_RELATIVE = "<?php echo PATH_RELATIVE; ?>";
-Exponent.THEME_RELATIVE = "<?php echo THEME_RELATIVE; ?>";
-Exponent.ICON_RELATIVE = "<?php echo ICON_RELATIVE; ?>";
+eXp.LANG = "<?php echo LANG; ?>";
+eXp.PATH_RELATIVE = "<?php echo PATH_RELATIVE; ?>";
+eXp.THEME_RELATIVE = "<?php echo THEME_RELATIVE; ?>";
+eXp.ICON_RELATIVE = "<?php echo ICON_RELATIVE; ?>";
 
-Exponent.includeOnce = function(id, file) {
+eXp.includeOnce = function(id, file) {
 		// do we even have to do something ?
 		if (!document.getElementById(id)){
 		
@@ -212,4 +200,4 @@ Exponent.includeOnce = function(id, file) {
 		};	
 };
 
-Exponent.register = exponentJSregister;	
+eXp.register = exponentJSregister;	

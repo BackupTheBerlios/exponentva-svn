@@ -8,7 +8,7 @@ return array(
 	'save'=>'Speichern',
 	'cancel'=>'Abbrechen',
 	
-	'nomembers'=>'Sie können keine Kontaktliste erstellen weil Sie noch keinen Benutzer im System angelegt haben.',
+	'nomembers'=>'Sie können keine Kontaktliste erstellen, weil Sie noch keinen Benutzer im System angelegt haben.',
 );
 
 ?>

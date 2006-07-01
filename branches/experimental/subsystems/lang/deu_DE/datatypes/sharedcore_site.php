@@ -5,7 +5,7 @@ return array(
 	'name'=>'Site Name',
 	'path'=>'Pfad',
 	'host'=>'Hostname',
-	'relpath'=>'Relative Pfad',
+	'relpath'=>'Relativer Pfad',
 	
 	
 	'modules'=>'Modul',
@@ -16,8 +16,8 @@ return array(
 	'save'=>'Speichern',
 	'cancel'=>'Abbrechen',
 	
-	'bad_prefix'=>'Fehlerhaftes Tabellenvorzeichen  es dürfen nur reguläre alfanumerische Zeichen verwendet werden.',
-	'cant_connect'=>'Fehlerhafte Datenbankverbindung. Bitte überprüfen Sie die alle eingebeben Daten nochmals.',
+	'bad_prefix'=>'Fehlerhaftes Tabellenvorzeichen. Es dürfen nur reguläre alphanumerische Zeichen verwendet werden.',
+	'cant_connect'=>'Fehlerhafte Datenbankverbindung. Bitte überprüfen Sie alle eingebeben Daten nochmals.',
 	'perm_denied'=>'Kann den Befehl %s nicht ausführen.',
 );
 

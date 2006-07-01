@@ -1,13 +1,14 @@
 <?php
 
 return array(
-	'subtitle'=>'Erstellen des Administrator-Konto',
+	'subtitle'=>'Erstellen des Administratorkontos',
 	'username'=>'Benutzername',
-	'username_desc'=>'Der Benutzername (Webmaster) ist das Administrator-Konto. Bitte verändern Sie <b>SOFORT</b> die Voreinstellung <i>admin</i>.',
+	'username_desc'=>'Der Benutzername (webmaster_expo) ist das
+	Administratorkonto. Bitte verändern Sie <b>SOFORT</b> die Voreinstellung "admin".',
 	'username_default'=>'admin',
 	
-	'password'=>'Paßwort',
-	'password_desc'=>'Zum Benutzernamen gehört ein Paßwort. Voreinsgestellt ist <i>admin</i>. Bitte ändern Sie das <b>SOFORT</b> in z.B. <i>123_Amin!expo</i> .',
+	'password'=>'Passwort',
+	'password_desc'=>'Zum Benutzernamen gehört ein Passwort. Voreingestellt ist "admin". Bitte ändern Sie das <b>SOFORT</b> in z.B. "123_Amin!expo" .',
 	'password_default'=>'admin',
 	
 	'firstname'=>'Vorname',
@@ -16,9 +17,9 @@ return array(
 	'lastname'=>'Nachname',
 	'lastname_default'=>'Nachname',
 	
-	'email'=>'Ihre E-mailadresse',
+	'email'=>'Ihre E-Mailadresse',
 	
-	'continue'=>'<i>Weiter...</i>',
+	'continue'=>'Weiter...',
 );
 
 ?>

@@ -8,7 +8,7 @@ return array(
 	
 	'items'=>'Liste',
 	'cols'=>'Anzahl Spalten',
-	'spacing_msg'=>'Ist Anzahl Spalten = 0  dann werden alle Einträge in einer Reihe angeordnet.',
+	'spacing_msg'=>'Ist Anzahl Spalten = 0, dann werden alle Einträge in einer Reihe angeordnet.',
 	'spacing'=>'Abstand zwischen Spalten',
 	
 	'save'=>'Speichern',

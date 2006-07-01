@@ -1,8 +1,8 @@
 <?php
 
 return array(
-	'personal_list'=>'(personal list)',
-	'system_group'=>'(system group)',
+	'personal_list'=>'(Persönliche Liste)',
+	'system_group'=>'(System Gruppe)',
 	
 	'recipient'=>'Empfänger',
 	'copyto'=>'Kopie senden an',

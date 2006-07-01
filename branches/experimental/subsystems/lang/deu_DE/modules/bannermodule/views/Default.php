@@ -1,9 +1,9 @@
 <?php
 
 return array(
-	'alt_userperm'=>'Berechtigung zuweisen für Banner Manager',
-	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Banner Manager',
-	'alt_configure'=>'Konfigurieren des Banner Managers',
+	'alt_userperm'=>'Berechtigung zuweisen für Banner-Manager',
+	'alt_groupperm'=>'Gruppenberechtigung zuweisen für Banner-Manager',
+	'alt_configure'=>'Konfigurieren des Banner-Managers',
 	'new_banner'=>'Neuen Banner erstellen',
 	
 	'uploads_disabled'=>'Hochladen ist deaktiviert.',

@@ -3,7 +3,7 @@
 return array(
 	'title'=>'Schlagzeile',
 	'body'=>'Text',
-	'publish'=>'Wann Veröffentlichen?',
+	'publish'=>'Wann veröffentlichen?',
 	'unpublish'=>'Offline am?',
 	
 	'nopublish'=>'Sofort veröffentlichen',
