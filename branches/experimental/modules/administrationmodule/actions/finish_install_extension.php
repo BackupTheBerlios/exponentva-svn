@@ -30,26 +30,28 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('Administ
 	if (!file_exists($ext_filename) || !is_dir($ext_filename)) {
 		$template->assign('nofiles',1);
 	} else {
-		if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
+		if (!defined('SYS_FILES')) {
+			require_once(BASE . 'subsystems/files.php');
+		}
 		$success = array();
-		foreach (array_keys(exponent_files_listFlat($ext_filename,true,null,array(),$ext_filename)) as $file) {
+		foreach (array_keys(exponent_files_listFlat($ext_filename, true, null, array(), $ext_filename)) as $file) {
 			if ($file != '/archive.tar' && $file != '/archive.tar.gz' && $file != 'archive.tar.bz2' && $file != '/archive.zip') {
 				exponent_files_makeDirectory(dirname($file));
-				$success[$file] = copy($ext_filename . $file,BASE . substr($file,1));
-				if (basename($file) == 'views_c') chmod(BASE . substr($file,1),0777);
+				$success[$file] = copy($ext_filename . $file, BASE . substr($file,1));
+				if (basename($file) == 'views_c') chmod(BASE . substr($file, 1), 0777);
 			}
 		}
 		
 		$del_return = exponent_files_removeDirectory($ext_filename);
 		echo $del_return;
 		
-		$template->assign('nofiles',0);
-		$template->assign('success',$success);
+		$template->assign('nofiles', 0);
+		$template->assign('success', $success);
 		
-		$template->assign('redirect',exponent_flow_get());
+		$template->assign('redirect', exponent_flow_get());
 		
 		ob_start();
-		include(BASE.'modules/AdministrationModule/actions/installtables.php');
+			include(BASE . 'modules/AdministrationModule/actions/installtables.php');
 		ob_end_clean();
 	}
 	

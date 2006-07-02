@@ -68,9 +68,12 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('Administ
 			if (!defined('SYS_FILES')) require_once(BASE.'subsystems/files.php');
 		
 			// Look for stale sessid directories:
-			$sessid = session_id();
-			if (file_exists(BASE."extensionuploads/$sessid") && is_dir(BASE."extensionuploads/$sessid")) exponent_files_removeDirectory("extensionuploads/$sessid");
-			$return = exponent_files_makeDirectory("extensionuploads/$sessid");
+			$ext_filename = BASE . "/tmp/uploads/" . session_id();
+			
+			if (file_exists($ext_filename) && is_dir($ext_filename)) {
+				exponent_files_removeDirectory($ext_filename);
+			}
+			$return = exponent_files_makeDirectory($ext_filename);
 			if ($return != SYS_FILES_SUCCESS) {
 				switch ($return) {
 					case SYS_FILES_FOUNDFILE:
@@ -86,7 +89,7 @@ if (exponent_permissions_check('extensions',exponent_core_makeLocation('Administ
 				}
 			}
 			
-			$dest = BASE."extensionuploads/$sessid/archive$ext";
+			$dest = $ext_filename . "/archive$ext";
 			move_uploaded_file($_FILES['mod_archive']['tmp_name'],$dest);
 			
 			if ($compression != 'zip') {// If not zip, must be tar
