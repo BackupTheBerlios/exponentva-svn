@@ -127,8 +127,8 @@ function exponent_modules_verifyModule($basedir) {
 	
 // TODO: better do a hashckeck from a trusted source(=exponent website service)
 
-// disabled because of changes to file structure
-	// class.php
+//	disabled because of changes to file structure
+//	class.php
 //	if (	!file_exists("$basedir/class.php") ||
 //		!is_file("$basedir/class.php") ||
 //		!is_readable("$basedir/class.php")	) return false;
@@ -143,10 +143,11 @@ function exponent_modules_verifyModule($basedir) {
 		!is_dir("$basedir/views") ||
 		!is_readable("$basedir/views"))) return false;
 	
-	// views_c
-	if (file_exists("$basedir/views_c") && (
-		!is_dir("$basedir/views_c") ||
-		!is_readable("$basedir/views_c"))) return false;
+//	disabled because of changes to file structure
+//	views_c
+//	if (file_exists("$basedir/views_c") && (
+//		!is_dir("$basedir/views_c") ||
+//		!is_readable("$basedir/views_c"))) return false;
 		
 	return true;
 }

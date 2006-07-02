@@ -19,7 +19,7 @@ return array(
 	
 	'modules'=>'Exponent testet die mitgelieferten Module um sicherszustellen, daß alles korrekt installiert werden kann. Falls es dabei zu Problemem kommt, wenden Sie sich bitte an das Deutsche Portal (<a href="http://www.Exponentcms-portal.de/" target="_blank">http://www.Exponentcms-portal.de/</a>).',
 	
-	 'views_c'=>'Exponent verwendet Smarty, um die Daten von der Darstellung zu trennen. Smarty-Templates werden jedoch aus Geschwindigkeitsgründen in PHP compiliert, die erzeugten compilierten Templates werden im Verzeichnis views_c gespeichert. Für dieses Verzeichnis muss der Webserver ebenfalls Schreibberechtigung haben.',
+	 'views_c'=>'Exponent verwendet Smarty, um die Daten von der Darstellung zu trennen. Smarty-Templates werden jedoch aus Geschwindigkeitsgründen in PHP compiliert, die erzeugten compilierten Templates werden im Verzeichnis /tmp/views_c gespeichert. Für dieses Verzeichnis muss der Webserver ebenfalls Schreibberechtigung haben.',
 	
 	 'extensionuploads'=>'Wenn Sie das Upload Extension Feature im Administrator Control Panel benutzen, werden die Dateien zuerst im Verzeichnis extensionuploads temporär gespeichert. Deshalb benötigt der Webserver vollen Zugriff auf dieses Verzeichnis.',
 	

@@ -24,6 +24,4 @@ class PortalTheme {
 	function author() { return "Exponent Designing Crew"; }
 	function description() { return "ExponentCMS.org Theme."; }
 }
-}
-
 ?>

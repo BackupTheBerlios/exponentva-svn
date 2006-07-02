@@ -119,7 +119,7 @@ class template extends basetemplate {
 		//
 		
 
-		$this->tpl->compile_dir = BASE.'/views_c';
+		$this->tpl->compile_dir = BASE.'/tmp/views_c';
 		$this->tpl->compile_id = md5($this->viewfile);
 		
 		$expected_view = ($this->viewfile == TEMPLATE_FALLBACK_VIEW ? $view : $this->view);
@@ -175,7 +175,7 @@ class ControlTemplate extends basetemplate {
 		$this->view = substr(basename($this->viewfile),0,-4);
 		$this->tpl->template_dir = $this->viewdir;
 		
-		$this->tpl->compile_dir = BASE.'/views_c';
+		$this->tpl->compile_dir = BASE.'/tmp/views_c';
 		$this->tpl->compile_id = md5($this->viewfile);
 		
 		$this->tpl->assign("__view", $this->view);
@@ -209,7 +209,7 @@ class formtemplate extends basetemplate {
 		$this->viewdir = realpath(dirname($this->viewfile));
 		
 		$this->tpl->template_dir = $this->viewdir;
-		$this->tpl->compile_dir = BASE.'views_c';
+		$this->tpl->compile_dir = BASE.'/tmp/views_c';
 		
 		$this->tpl->compile_id = md5($this->viewfile);
 		
@@ -237,7 +237,7 @@ class filetemplate extends basetemplate {
 		$this->tpl->template_dir = $this->viewdir;
 		// Make way for i18n
 		// $this->tpl->compile_dir = $this->viewdir."_c";
-		$this->tpl->compile_dir = BASE.'/views_c';
+		$this->tpl->compile_dir = BASE.'/tmp/views_c';
 		$this->tpl->compile_id = md5($this->viewfile);
 		
 		$this->tpl->assign("__view", $this->view);
@@ -272,7 +272,7 @@ class standalonetemplate extends basetemplate {
 		$this->tpl->template_dir = $this->viewdir;
 		// Make way for i18n
 		// $this->tpl->compile_dir = $this->viewdir."_c";
-		$this->tpl->compile_dir = BASE.'/views_c';
+		$this->tpl->compile_dir = BASE.'/tmp/views_c';
 		$this->tpl->compile_id = md5($this->viewfile);
 		
 		$this->tpl->assign("__view",$view);

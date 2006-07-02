@@ -37,7 +37,7 @@ function checkFiles($rel_dir,$all_files,&$unclaimed) {
 	$rel_dir = $rel_dir . ($rel_dir != "" ? "/" : "");
 	$dh = opendir(BASE.$rel_dir);
 	$exclude_dirs = array("files","external","cache","sdk","testing","conf/profiles");
-	$exclude_all = array("CVS","views_c");
+	$exclude_all = array("CVS","tmp/views_c");
 	while (($file = readdir($dh)) !== false) {
 		if (is_dir(BASE.$rel_dir.$file) && substr($file,0,1) != "." && !in_array($rel_dir.$file,$exclude_dirs) && !in_array($file,$exclude_all)) {
 			checkFiles("$rel_dir$file",$all_files,$unclaimed);

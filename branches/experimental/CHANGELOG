@@ -1,9 +1,18 @@
-HEAD
+Experimental
 - Added new generic file resolver[MM]
 - Added multi HTMLEditor support FCKeditor, TinyMCE, Xinha[MM]
 - Added new TimeControl, offering 12/24 hours switch[MM]
-- Added Exponent JS namespace object[MM]
+- Added eXp JS namespace object to the exponent.js.php[MM]
+- Added eXp.WYSIWYG, eXp.Forms and eXp.Forms.TimeControl JS child-namespace objects[MM]
+- Enhanced exponentJSinitialize can execute js functions with parameters now[MM]
 - Added includeMiscFiles Smarty postfilter[MM]
+- Enhanced AdministrationModule->Configure Site uses HTMLEditors now for creating Error Texts[MM]
+- Enhanced moved views_c and extensionuploads to tmp[MM]
+- Added ControlTemplate class using the includeMiscFiles Smarty postfilter[MM]
+- Added a set language page to the installation wizzard[MM]
+- Fixed removed iconpopup.php due to security reasons[MM]
+- Enhanced moved class.php files out of the <somemodule> and <sometheme> and placed them one level up, renaming them to SomeModule.php and SomeTheme.php(=called like the classes now)[MM]
+- Enhanced begun removal of PHP4 and pathos support hacks[MM]
 
 0.96.5
 - Fixed bug (mostly) in calendar module where event times were off on the days DST changed [FD]

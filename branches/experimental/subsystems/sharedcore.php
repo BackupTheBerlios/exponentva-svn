@@ -139,7 +139,7 @@ function exponent_sharedcore_setup($core,$site) {
 		"modules",
 		"subsystems",
 		"themes",
-		"views_c"
+		"tmp/views_c"
 	);
 	
 	$fh = fopen($linkdest."overrides.php","w");
@@ -148,7 +148,7 @@ function exponent_sharedcore_setup($core,$site) {
 	
 	exponent_files_copyDirectoryStructure($linksrc,$linkdest,$exclude);
 	
-	mkdir($linkdest."views_c",fileperms($linksrc."views_c"));
+	mkdir($linkdest."tmp/views_c",fileperms($linksrc."tmp/views_c"));
 	mkdir($linkdest."modules",fileperms($linksrc."modules"));
 	mkdir($linkdest."themes",fileperms($linksrc."themes"));
 	mkdir($linkdest."subsystems",fileperms($linksrc."subsystems"));

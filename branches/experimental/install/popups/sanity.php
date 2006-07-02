@@ -95,7 +95,7 @@ $i18n = exponent_lang_loadFile('install/popups/sanity.php');
 </tr>
 
 <tr>
-	<td class="bodytext" style="font-weight: bold;" valign="top"><a name="fdp_views_c" />views_c/</td>
+	<td class="bodytext" style="font-weight: bold;" valign="top"><a name="fdp_views_c" />/tmp/views_c/</td>
 	<td class="bodytext" valign="top">
 		<div class="sanity_req"><?php echo $i18n['rw_server']; ?></div>
 		<br />
@@ -104,22 +104,22 @@ $i18n = exponent_lang_loadFile('install/popups/sanity.php');
 		<br />
 		<b><?php echo $i18n['unix_solution']; ?>:</b>
 		<div class="sanity_shell">
-			chown <span class="var">WEBUSER</span> <span class="var">EXPONENT</span>/views_c
+			chown <span class="var">WEBUSER</span> <span class="var">EXPONENT</span>/tmp/views_c
 		</div>
 	</td>
 </tr>
 
 <tr>
-	<td class="bodytext" style="font-weight: bold;" valign="top"><a name="fdp_extensionuploads" />extensionuploads/</td>
+	<td class="bodytext" style="font-weight: bold;" valign="top"><a name="fdp_extensionuploads" />/tmp/uploads/</td>
 	<td class="bodytext" valign="top">
 		<div class="sanity_req"><?php echo $i18n['rw_server']; ?></div>
 		<br />
-		<?php echo $i18n['extensionuploads']; ?>
+		<?php echo $i18n['uploads']; ?>
 		<br />
 		<br />
 		<b><?php echo $i18n['unix_solution']; ?>:</b>
 		<div class="sanity_shell">
-			chown <span class="var">WEBUSER</span> <span class="var">EXPONENT</span>/extensionuploads
+			chown <span class="var">WEBUSER</span> <span class="var">EXPONENT</span>/tmp/uploads
 		</div>
 	</td>
 </tr>
@@ -140,7 +140,7 @@ $i18n = exponent_lang_loadFile('install/popups/sanity.php');
 </tr>
 
 <tr>
-	<td class="bodytext" style="font-weight: bold;" valign="top"><a name="fdp_tmp" />tmp/</td>
+	<td class="bodytext" style="font-weight: bold;" valign="top"><a name="fdp_tmp" />/tmp/</td>
 	<td class="bodytext" valign="top">
 		<div class="sanity_req"><?php echo $i18n['rw_server']; ?></div>
 		<br />
