@@ -73,6 +73,24 @@ class formcontrol {
 	function templateFormat($db_data, $ctl = null) {
 		return isset($db_data)?$db_data:"";
 	}
+	
+	/* exdoc
+	 * 
+	 * renders the viewitem using the template engine
+	 * this method could actually be inherited fron a generic base view item class
+	 *
+	 * @param string $view optional, the view the template engine should use to render the data
+	 * @node Subsystems:Forms:Controls
+	 */
+	function show($view = "Default") {
+		//TODO: do some introspection, get the name of the class
+		$template = new ControlTemplate("WYSIWYGEditorControl", $view);
+		
+		// pass the viewitem(by reference) on to the next step of the pipeline: output
+		$template->viewitem = &$this;
+
+		return $template->render();
+	}
 }
 
 ?>

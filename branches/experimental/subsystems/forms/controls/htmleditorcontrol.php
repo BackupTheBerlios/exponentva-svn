@@ -58,7 +58,9 @@ class htmleditorcontrol extends formcontrol {
 	function controlToHTML($name) {
 		
 		$PATH_TO_INCs = BASE . "external/editors/";
-
+		$PATH_TO_EDITOR = BASE . "external/editors/";
+		
+		
 		if(is_readable($PATH_TO_INCs . SITE_WYSIWYG_EDITOR . '.glue')){
 			include($PATH_TO_INCs . SITE_WYSIWYG_EDITOR . '.glue');
 			return $html;

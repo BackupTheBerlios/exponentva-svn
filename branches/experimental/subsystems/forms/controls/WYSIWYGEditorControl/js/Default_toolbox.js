@@ -18,11 +18,10 @@
 //TODO: determine whether the Editor provides a queryable API for that
 //TODO: adjust for themes
 
-//TODO: possibly create a subobject WYSIWYG ?
 // first = action name
 // second = icon location
 // third = required plugin
-Exponent.WYSIWYG_toolboxbuttons =	{
+Exponent.WYSIWYG.toolbox =	{
 									"about" : ["About Xinha", "/external/editors/Xinha/images/ed_about.gif", ""],
 									"cut" : ["cut", "/external/editors/Xinha/images/ed_cut.gif", ""],
 									"createlink" : ["link", "/external/editors/Xinha/images/ed_link.gif", ""],

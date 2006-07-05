@@ -39,7 +39,7 @@ if (!function_exists('array_walk_recursive'))
             if (is_array($funcname)) {
                 $funcname = $funcname[0] . '::' . $funcname[1];
             }
-            trigger_error('array_walk_recursive() Not a valid callback ' . $user_func, E_USER_WARNING);
+            trigger_error('array_walk_recursive() Not a valid callback ' . $funcname, E_USER_WARNING);
             return;
         }
 

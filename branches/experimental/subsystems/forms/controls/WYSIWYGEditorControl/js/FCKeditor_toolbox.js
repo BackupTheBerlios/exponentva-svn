@@ -18,11 +18,10 @@
 //TODO: determine whether the Editor provides a queryable API for that
 //TODO: adjust for themes
 
-//TODO: possibly create a subobject WYSIWYG ?
 // first = action name
 // second = icon location
 // third = required plugin
-Exponent.WYSIWYG_toolboxbuttons =	{
+Exponent.WYSIWYG.toolbox =	{
 									"About" : ["About FCKEditor", "/external/editors/FCKeditor/editor/skins/default/toolbar/about.gif", ""],
 									"Image" : ["Image", "/external/editors/FCKeditor/editor/skins/default/toolbar/image.gif", ""],
 									"Link" : ["Link", "/external/editors/FCKeditor/editor/skins/default/toolbar/link.gif", ""],

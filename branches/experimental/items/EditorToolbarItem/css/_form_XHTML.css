@@ -1,0 +1,6 @@
+.htmleditor_toolboxbutton:hover {
+	border : 2px red solid;
+}
+.htmleditor_toolboxbutton_selected {
+	background-color : grey;
+}

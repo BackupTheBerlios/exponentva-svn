@@ -17,6 +17,9 @@ return array(
 	
 	'time_format'=>'Time Format',
 	'time_format_desc'=>'Default system-wide date format, displaying time only.',
+	
+	'weeks_start_on'=>'Start of the Week',
+	'weeks_start_on'=>'The day on which calendars begin their weeks.',
 );
 
 ?>

@@ -39,7 +39,7 @@ if (!function_exists('strpbrk'))
         }
 
         if (!is_scalar($char_list)) {
-            trigger_error('strpbrk() expects parameter 2 to be scalar, ' . gettype($needle) . ' given', E_USER_WARNING);
+            trigger_error('strpbrk() expects parameter 2 to be scalar, ' . gettype($char_list) . ' given', E_USER_WARNING);
             return false;
         }
 

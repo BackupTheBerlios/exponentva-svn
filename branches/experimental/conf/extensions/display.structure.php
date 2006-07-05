@@ -72,7 +72,7 @@ return array(
 		),
 		'DISPLAY_WEEKS_START_ON'=>array(
 			'title'=>$i18n['weeks_start_on'],
-			'description'=>$i18n['weeks_start_on'],
+			'description'=>$i18n['weeks_start_on_desc'],
 			'control'=>new dropdowncontrol(null,exponent_config_dropdownData('weeks_start_on'))
 		)
 	)

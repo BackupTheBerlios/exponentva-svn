@@ -17,6 +17,9 @@ return array(
 	
 	'time_format'=>'Zeitformat',
 	'time_format_desc'=>'Systemweite Voreinstellung. Zeigt nur die Zeit an.',
+	
+	'weeks_start_on'=>'Wochenbeginn',
+	'weeks_start_on'=>'Systemweite Voreinstellung. Legt den Tag des Wochenbeginns fest.'
 );
 
 ?>

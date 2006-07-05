@@ -1,5 +1,4 @@
-<?PHP
-
+{*
 ##################################################
 #
 # Copyright (c) 2005-2006  Maxim Mueller
@@ -17,29 +16,21 @@
 ##################################################
 
 #This glue file is included by subsystems/forms/controls/htmleditorcontrol.php
-#it provides the code for the htmleditorcontrol class' controltoHTML() method 
+#it provides the code for the htmleditorcontrol class' controltoHTML() method
 # it's based on James Hunt's code for that original class
- 
- 
- 
-?>
-	<script type="text/javascript" src="<?PHP echo $path_to_editor; ?>/fckeditor.js"></script>
+*}
+{* find a few good definitions for classes on different scopes*}
+<div class="">
+	<script type="text/javascript" src="{$dm->path_to_editor}fckeditor.js"></script>
 	
-	<!-- load languagefile, prepare for HTMLArea popup(Link + Image Browsers) -->
 	<script type="text/javascript">
 	/* <![CDATA[ */
-<?php
-	
-	global $db;
-	$config = $db->selectObject("toolbar_FCKeditor", "active=1");
-	if ($config) {
-		echo "		eXp.WYSIWYG_toolbar = " . $config->data . ";\n";
-	}
-?>
-		// create namespace object
-		myConfig = new Object();
+	{* include this piece, load the toolbox and namespace there as well, decide whether to introduce and autoloader for "common" on this level *}
+	{IF $toolbar != null}
+		eXp.WYSIWYG.toolbar = "{$dm->toolbar}";
+	{/IF}
 		
-		myConfig.serialize = function(myArray) {
+		eXp.WYSIWYG.serialize = function(myArray) {
 			var myStr = "[";
 			for (i = 0; i < myArray.length; i++) {
 				// do we have more than one dimension ?
@@ -65,7 +56,7 @@
 			return myStr;
 		}
 		
-		myConfig.setupToolbar = function(myToolbar) {
+		eXp.WYSIWYG.setupToolbar = function(myToolbar) {
 			myLength = myToolbar.length;
 			for(currRow = 1; currRow < myLength; currRow++) {
 				//FCKeditor's way of forcing rowbreaks is placing an "/" behind an array element
@@ -74,27 +65,26 @@
 			return this.serialize(myToolbar);
 		}
 	
-		myConfig.setupPlugins = function(myToolbar) {
+		eXp.WYSIWYG.setupPlugins = function(myToolbar) {
 			plugins = new Array();
 			
 			for(currRow = 0; currRow < myToolbar.length; currRow++) {
 				for(currButton = 0; currButton < myToolbar[currRow].length; currButton++) {
 					currItem = myToolbar[currRow][currButton];
 					// plugin required ?
-					if(eXp.WYSIWYG_toolboxbuttons[currItem][2] != "") {
-						plugins.push(eXp.WYSIWYG_toolboxbuttons[currItem][2]);
+					if(eXp.WYSIWYG.toolbox[currItem][2] != "") {
+						plugins.push(eXp.WYSIWYG.toolbox[currItem][2]);
 					}
 				}
 			}
 			return this.serialize(plugins);
 		}
 
-		var oFCKeditor = new FCKeditor('<?PHP echo $name; ?>');
+		var oFCKeditor = new FCKeditor('{$dm->name}');
 		
 			
-		oFCKeditor.BasePath = "<?PHP echo $path_to_editor; ?>";
-		//why do the demo articles contain newline characters ?
-		oFCKeditor.Value = "<?PHP echo addslashes(str_replace(array("\n","\r"), "", $this->default)); ?>";
+		oFCKeditor.BasePath = "{$path_to_editor}";
+		oFCKeditor.Value = "{$dm->content}";
 		
 		oFCKeditor.Height= '300';
 
@@ -102,14 +92,15 @@
 		oFCKeditor.Config['ImageUpload'] = "false";
 		oFCKeditor.Config['FlashUpload'] = "false";
 	
-		oFCKeditor.Config['LinkBrowserURL'] = "<?PHP echo $path_to_editor; ?>../connector/FCKeditor_link.php";
-		oFCKeditor.Config['ImageBrowserURL'] = "<?PHP echo $path_to_editor; ?>../../../modules/FileManagerModule/actions/picker.php?id=0";
+		oFCKeditor.Config['LinkBrowserURL'] = "{$dm->path_to_editor}../connector/FCKeditor_link.php";
+		oFCKeditor.Config['ImageBrowserURL'] = "{$dm->path_to_editor}../../../modules/FileManagerModule/actions/picker.php?id=0";
 		
 		//HACK: god, i do hate this editor ! Why can't i simply configure the toolbars and plugins from here ? There ARE other reasons to hate it ...
-		if (eXp.WYSIWYG_toolbar) {
-			oFCKeditor.Config["CustomConfigurationsPath"] = "<?PHP echo PATH_RELATIVE; ?>external/editors/fcktoolbarconfig.js.php?plugins=" + encodeURI(myConfig.setupPlugins(eXp.WYSIWYG_toolbar)) + "&toolbar=" + encodeURI(myConfig.setupToolbar(eXp.WYSIWYG_toolbar));
+		if (eXp.WYSIWYG.toolbar) {
+			oFCKeditor.Config["CustomConfigurationsPath"] = "{$smarty.const.PATH_RELATIVE}external/editors/fcktoolbarconfig.js.php?plugins=" + encodeURI(eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar)) + "&toolbar=" + encodeURI(eXp.WYSIWYG.setupToolbar(eXp.WYSIWYG.toolbar));
 		}
 		oFCKeditor.Create();
-		
+		delete eXp.WYSIWYG;
 	/* ]]> */
 	</script>
+</div>

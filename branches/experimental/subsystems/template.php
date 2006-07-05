@@ -151,19 +151,17 @@ class template extends basetemplate {
  */
 class ControlTemplate extends basetemplate {
 	
+	public $viewitem;
+	
 	//PHP5 constructor
 	function __constructor($control, $view = "Default", $loc = null) {
-		ControlTemplate($control, $view , $loc=null);
-	}
-	
-	//PHP4 fallback constructor
-	function ControlTemplate($control, $view = "Default", $loc = null) {
 		
 		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
 		
 		// Set up the Smarty template variable we wrap around.
 		$this->tpl = new Smarty();
-		$this->tpl->php_handling = SMARTY_PHP_REMOVE;
+		//Some wysiwyg editors use php as their default initializer
+		//$this->tpl->php_handling = SMARTY_PHP_REMOVE;
 		$this->tpl->plugins_dir[] = BASE . 'subsystems/template/Smarty/plugins';
 		
 		//autoload filters
@@ -182,12 +180,26 @@ class ControlTemplate extends basetemplate {
 		$this->tpl->assign("__name", $control);
 		$this->tpl->assign("__redirect", exponent_flow_get());
 	}
+	/*
+	 * Render the template and return the result to the caller.
+	 * temporary override for testing functionality
+	 */
+	function render() {
+		//pump the viewitem into the view layer
+		
+		$this->tpl->assign("vi", $this->viewitem);
+		$this->tpl->assign("dm", $this->viewitem->datamodel);
+		
+		// Load language constants
+		$this->tpl->assign('_TR',exponent_lang_loadFile($this->viewdir.'/'.$this->view.'.php'));
+		return $this->tpl->fetch($this->view.'.tpl');
+	}
 }
 
 /*
  * Form Template Wrapper
  *
- * This class wraps is used for site wide forms.  
+ * This class is used for site wide forms.  
  *
  * @package Subsystems
  * @subpackage Template
@@ -311,7 +323,7 @@ function exponent_template_getModuleViewFile($name, $view, $recurse=true) {
 	return exponent_template_getViewFile("modules", $name, $view);
 }
 
-// I thing these still need to be i18n-ized
+// I think these still need to be i18n-ized
 function exponent_template_getViewConfigForm($module,$view,$form,$values) {
 	$form_file = "";
 	$filepath = array_shift(exponent_core_resolveFilePaths("modules", $module , "form" , $view));

@@ -16,6 +16,9 @@
 //#
 //##################################################
 
+//initialize namespace
+eXp.WYSIWYG = new Object();	
+
 var used = new Array();
 var rows = new Array();
 var rowlens = new Array();
@@ -25,8 +28,8 @@ var g_row = 0;
 var g_pos = 0;
 var g_maxRowLength = 0;
 
-var removeIcon = ICON_RELATIVE+"delete.gif";
-var removeDisabledIcon = ICON_RELATIVE+"delete.disabled.gif";
+var removeIcon = eXp.ICON_RELATIVE+"delete.gif";
+var removeDisabledIcon = eXp.ICON_RELATIVE+"delete.disabled.gif";
 var lastTd = null;
 var imageSuffix = ".gif";
 
@@ -368,29 +371,42 @@ function ie_register() {
 }
 
 // used to build a toolbox of available buttons, the array eXp.WYSIWYG_toolbar in /external/editors/<currenteditor>_toolbar.js has to be maintened manually(for now)
-function exponentJSbuildHTMLEditorButtonSelector(Buttons) {
-	myButtonPanel = document.getElementById("htmleditor_toolbox");
+eXp.WYSIWYG.initToolbox = function(Buttons) {
+	myButtonPanel = document.getElementById("WYSIWYGToolbox");
 	
 	for (currButton in Buttons) {
 		myButton_img  = document.createElement("img");
-		myButton_a  = document.createElement("a");
-		myButton_td  = document.createElement("td");
 		
 		// difference between internal name and displayed name is possible because of i18n 
 		myButton_img.setAttribute("src", Buttons[currButton][1]);
 		myButton_img.setAttribute("title", Buttons[currButton][0]);
 		myButton_img.setAttribute("alt", currButton);
 		myButton_img.setAttribute("id", "img_" + currButton);
+		myButton_img.setAttribute("onclick","register('" + currButton + "')");
+		myButton_img.setAttribute('class' , 'htmleditor_toolboxbutton');
 		
-		myButton_a.setAttribute("id", "a_" + currButton);
-		myButton_a.setAttribute("onclick","register('" + currButton + "')");
+		myButtonPanel.appendChild(myButton_img);
 		
-		myButton_td.setAttribute("id", "td_" + currButton);
-		myButton_td.setAttribute('class' , 'htmleditor_toolboxbutton');
+	}
+}
+
+eXp.WYSIWYG.initToolbar = function(Buttons) {
+	if (Buttons) {
+		// one initial row.
+		rows.push(new Array());
+		rowlens.push(0);
+	} else {		
+		for(currRow = 0; currRow < eXp.WYSIWYG.toolbar.length; currRow++) {
+			rows.push(new Array());
+			rowlens.push(0);
 		
-		myButton_a.appendChild(myButton_img);
-		myButton_td.appendChild(myButton_a);
-		myButtonPanel.appendChild(myButton_td);
-		
+			for(currButton = 0; currButton < eXp.WYSIWYG.toolbar[currRow].length; currButton++) {
+				//TODO: decide whether to disallow empty rows altoghether -> htmlareatoolbarbuilder.js->save()
+				if (eXp.WYSIWYG.toolbar[currRow][currButton] != "") {
+					rows[currRow].push(eXpt.WYSIWYG.toolbar[currRow][currButton]);
+					disableToolbox(eXp.WYSIWYG.toolbar[currRow][currButton]);
+				}
+			}
+		}
 	}
 }

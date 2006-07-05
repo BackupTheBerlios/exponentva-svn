@@ -108,5 +108,4 @@ function exponent_forms_listControlTypes() {
 	}
 	return $list;
 }
-
 ?>
