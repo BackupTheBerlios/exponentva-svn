@@ -84,7 +84,7 @@ class formcontrol {
 	 */
 	function show($view = "Default") {
 		//TODO: do some introspection, get the name of the class
-		$template = new ControlTemplate("WYSIWYGEditorControl", $view);
+		$template = new ControlTemplate(get_class($this), $view);
 		
 		// pass the viewitem(by reference) on to the next step of the pipeline: output
 		$template->viewitem = &$this;
