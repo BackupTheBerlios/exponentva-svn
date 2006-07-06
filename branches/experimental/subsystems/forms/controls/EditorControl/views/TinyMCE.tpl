@@ -19,8 +19,9 @@
 #it provides the code for the htmleditorcontrol class' controltoHTML() method
 # it's based on James Hunt's code for that original class
 *}
-{* find a few good definitions for classes on different scopes*}
-<div class="">
+{* the header include contains the starting <div> tag*}	
+	{include file="_header.inc" toolbar="`$dm->toolbar`"}
+	
 	<textarea id="{$dm->name}" name="{$dm->name}" class="mceEditor">{$dm->content}</textarea>
 
 	<script type="text/javascript" src="{$dm->path_to_editor}jscripts/tiny_mce/tiny_mce.js"></script>
@@ -28,11 +29,7 @@
 	<!-- load languagefile, prepare for HTMLArea popup(Link + Image Browsers) -->
 	<script type="text/javascript">
 	/* <![CDATA[ */
-	{* include this piece, load the toolbox and namespace there as well, decide whether to introduce and autoloader for "common" on this level *}
-	{IF $toolbar != null}
-		eXp.WYSIWYG.toolbar = "{$dm->toolbar}";
-	{/IF}
-		
+{IF $dm->toolbar != NULL}
 	// if plugins are needed, set them up
 	eXp.WYSIWYG.setupPlugins = function (myToolbar) {
 		plugins = new Array();
@@ -74,7 +71,7 @@
 			}	
 		}
 	}
-		
+{/IF}		
 		
 	//we need this to get the data from the popup(object for "opener" interaction)
 	var Dialog = new Object();
@@ -164,10 +161,10 @@
 							execcommand_callback 			: "myCustomExecCommandHandler",
 							convert_urls					: false
 						};
-	if (eXp.WYSIWYG.toolbar) {
-		eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar);
-		eXp.WYSIWYG.setupToolbar(eXp.WYSIWYG.toolbar);
-	}
+{IF $dm->toolbar != NULL}
+	eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar);
+	eXp.WYSIWYG.setupToolbar(eXp.WYSIWYG.toolbar);
+{/IF}
 		
 	tinyMCE.init(eXp.WYSIWYG.config);
 	delete eXp.WYSIWYG;

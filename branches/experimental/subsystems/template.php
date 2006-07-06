@@ -154,7 +154,7 @@ class ControlTemplate extends basetemplate {
 	public $viewitem;
 	
 	//PHP5 constructor
-	function __constructor($control, $view = "Default", $loc = null) {
+	function __construct($control, $view = "Default", $loc = null) {
 		
 		include_once(BASE.'external/Smarty/libs/Smarty.class.php');
 		
@@ -189,6 +189,10 @@ class ControlTemplate extends basetemplate {
 		
 		$this->tpl->assign("vi", $this->viewitem);
 		$this->tpl->assign("dm", $this->viewitem->datamodel);
+		
+		//call childobjects show() method recursively, based on render depth setting
+		//assign output
+		
 		
 		// Load language constants
 		$this->tpl->assign('_TR',exponent_lang_loadFile($this->viewdir.'/'.$this->view.'.php'));

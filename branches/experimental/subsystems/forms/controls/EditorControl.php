@@ -22,7 +22,7 @@ if (!defined('EXPONENT')) exit('');
 
 /*
  * WYSIWYG Editor Control Class
- * Controller Part of the WYSIWYGEditor View Item
+ * Controller Part of the Editor View Item
  *
  * @author Maxim Mueller, based on James Hunt's htmleditorcontrol
  * @copyright 2006 Maxim Mueller
@@ -31,13 +31,13 @@ if (!defined('EXPONENT')) exit('');
  * @package Subsystems
  * @subpackage Forms
  */
-class WYSIWYGEditorControl extends formcontrol {
+class EditorControl extends formcontrol {
 	
 	public $datamodel; //every view item commands a datamodel
 	public $context; //most likely identical to $loc
 	
 	//PHP5 constructor
-	function __constructor($content = "", $context = "") {
+	function __construct($content = "", $context = "") {
 		$this->datamodel = new Object();
 		
 		$this->datamodel->content = htmlentities($content, ENT_COMPAT, LANG_CHARSET); // the content that is to be edited

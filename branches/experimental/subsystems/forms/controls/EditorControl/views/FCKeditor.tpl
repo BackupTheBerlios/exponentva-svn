@@ -19,17 +19,14 @@
 #it provides the code for the htmleditorcontrol class' controltoHTML() method
 # it's based on James Hunt's code for that original class
 *}
-{* find a few good definitions for classes on different scopes*}
-<div class="">
+{* the header include contains the starting <div> tag*}	
+	{include file="_header.inc" toolbar="`$dm->toolbar`"}
+
 	<script type="text/javascript" src="{$dm->path_to_editor}fckeditor.js"></script>
 	
 	<script type="text/javascript">
 	/* <![CDATA[ */
-	{* include this piece, load the toolbox and namespace there as well, decide whether to introduce and autoloader for "common" on this level *}
-	{IF $toolbar != null}
-		eXp.WYSIWYG.toolbar = "{$dm->toolbar}";
-	{/IF}
-		
+{IF $dm->toolbar != NULL}
 		eXp.WYSIWYG.serialize = function(myArray) {
 			var myStr = "[";
 			for (i = 0; i < myArray.length; i++) {
@@ -79,6 +76,7 @@
 			}
 			return this.serialize(plugins);
 		}
+{/IF}		
 
 		var oFCKeditor = new FCKeditor('{$dm->name}');
 		
@@ -95,10 +93,11 @@
 		oFCKeditor.Config['LinkBrowserURL'] = "{$dm->path_to_editor}../connector/FCKeditor_link.php";
 		oFCKeditor.Config['ImageBrowserURL'] = "{$dm->path_to_editor}../../../modules/FileManagerModule/actions/picker.php?id=0";
 		
+{IF $dm->toolbar != NULL}
 		//HACK: god, i do hate this editor ! Why can't i simply configure the toolbars and plugins from here ? There ARE other reasons to hate it ...
-		if (eXp.WYSIWYG.toolbar) {
-			oFCKeditor.Config["CustomConfigurationsPath"] = "{$smarty.const.PATH_RELATIVE}external/editors/fcktoolbarconfig.js.php?plugins=" + encodeURI(eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar)) + "&toolbar=" + encodeURI(eXp.WYSIWYG.setupToolbar(eXp.WYSIWYG.toolbar));
-		}
+		oFCKeditor.Config["CustomConfigurationsPath"] = "{$smarty.const.PATH_RELATIVE}external/editors/fcktoolbarconfig.js.php?plugins=" + encodeURI(eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar)) + "&toolbar=" + encodeURI(eXp.WYSIWYG.setupToolbar(eXp.WYSIWYG.toolbar));
+{/IF}
+		
 		oFCKeditor.Create();
 		delete eXp.WYSIWYG;
 	/* ]]> */

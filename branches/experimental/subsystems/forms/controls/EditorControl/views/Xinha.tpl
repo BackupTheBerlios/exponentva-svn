@@ -19,8 +19,8 @@
 #it provides the code for the htmleditorcontrol class' controltoHTML() method 
 # it's based on James Hunt's code for that original class
 *}
-{* find a few good definitions for classes on different scopes*}
-<div class="">
+{* the header include contains the starting <div> tag*}	
+	{include file="_header.inc" toolbar="`$dm->toolbar`"}
 	<textarea id="{$dm->name}" name="{$dm->name}">{$dm->content}</textarea>
 
 	<script type="text/javascript">
@@ -35,12 +35,7 @@
 	
 	<script type="text/javascript">
 	/* <![CDATA[ */
-
-	{* include this piece, load the toolbox and namespace there as well, decide whether to introduce and autoloader for "common" on this level *}
-	{IF $toolbar != null}
-		eXp.WYSIWYG.toolbar = "{$dm->toolbar}";
-	{/IF}
-	
+{IF $dm->toolbar != NULL}	
 	// if plugins are needed, set them up
 	eXp.WYSIWYG.setupPlugins = function (myToolbar) {
 		plugins = new Array();
@@ -61,6 +56,7 @@
 			HTMLArea.loadPlugin(plugins[currPlugin]);
 		}
 	}
+{/IF}
 		
 	// Setup the basic HTMLArea environment
 	HTMLArea.loadPlugin("ContextMenu");
@@ -80,13 +76,13 @@
 		"about": "about.html",
 		"help": "editor_help.html"
 	};
-	
+
+{IF $dm->toolbar != NULL}	
 	//if there is a configured toolbar set it up	
-	if (eXp.WYSIWYG.toolbar) {
-		eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar);
-		//The save format of the toolbar is directly compatible with Xinha/HTMLArea
-		eXp.WYSIWYG.config.toolbar = eXp.WYSIWYG.toolbar;
-	}
+	eXp.WYSIWYG.setupPlugins(eXp.WYSIWYG.toolbar);
+	//The save format of the toolbar is directly compatible with Xinha/HTMLArea
+	eXp.WYSIWYG.config.toolbar = eXp.WYSIWYG.toolbar;
+{/IF}
 		
 	oXinha = new HTMLArea("{$dm->name}");
 	oXinha.config = eXp.WYSIWYG.config;
