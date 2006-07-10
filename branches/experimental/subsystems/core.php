@@ -401,8 +401,10 @@ function glob2keyedArray($workArray){
  */
 function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 	//TODO: implement caching
+	//TODO: optimization - walk the tree backwards and stop on the first match
 	
 	// new style name processing
+	//once baseclasses are in place, simply lookup the baseclass name of an object
 	if($type == "guess") {
 		$type = array_pop(preg_split("*(?=[A-Z])*", $name));
 	}
@@ -468,7 +470,7 @@ function exponent_core_resolveFilePaths($type, $name, $subtype, $subname) {
 	foreach($locations as $location) {
 		// legacy support
 		$checkpaths[] = $location . $typepath . "common/" . $relpath2;
-		$checkpaths[] = $location . $typepath . "lib/" . $relpath2;
+		//$checkpaths[] = $location . $typepath . "lib/" . $relpath2;
 		$checkpaths[] = $location . $relpath;
 	}
 	
